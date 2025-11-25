@@ -165,6 +165,9 @@
   <data name="toolStripButton_PLC.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageAboveText</value>
   </data>
+  <data name="toolStripButton_PLC.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="tSBut_InitCam.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
