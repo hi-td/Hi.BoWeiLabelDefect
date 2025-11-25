@@ -873,6 +873,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="其他\扩展组件\but_run.zh-CN.resx">
       <DependentUpon>but_run.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="软件主体\4四相机\Show4.en-US.resx">
       <DependentUpon>Show4.cs</DependentUpon>
