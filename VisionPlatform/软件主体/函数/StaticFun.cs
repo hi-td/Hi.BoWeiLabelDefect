@@ -325,7 +325,7 @@ namespace StaticFun
             try
             {
                 Zoom();
-                if (but_Run.Text == "运行" || but_Run.Text == "Start")
+                if (but_Run.Text == "开始" || but_Run.Text == "Start")
                 {
                     but_Run.Image = Resources.runing;
                     if (CamCommon.m_listCamSer.Count != 0)
@@ -379,7 +379,7 @@ namespace StaticFun
                         }
                     }
                     but_Run.Image = Resources.stop;
-                    but_Run.Text = GlobalData.Config._language == EnumData.Language.english ? "Start" : "运行";
+                    but_Run.Text = GlobalData.Config._language == EnumData.Language.english ? "Start" : "开始";
                     but_Run.BackColor = default;
                 }
             }

@@ -368,7 +368,7 @@ namespace VisionPlatform
                 var save = GlobalPath.SavePath.ModbusTcpPath;
                 var json = JsonConvert.SerializeObject(DataSerializer._ModbusTcp);
                 System.IO.File.WriteAllText(save, json);
-                MessageBox.Show("保存成功!");
+
             }
             catch (Exception ex)
             {

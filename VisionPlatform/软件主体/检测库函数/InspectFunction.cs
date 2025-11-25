@@ -831,7 +831,7 @@ namespace VisionPlatform
 
                                 #region 发送当前拍照完成信号
                                 var index = keys[1].Index;
-                                var addr = new Address(SoftType.M, index, DataType.Bit);
+                                var addr = new Address(SoftType.D, index, DataType.Int32);
                                 addr.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr);
                                 #endregion

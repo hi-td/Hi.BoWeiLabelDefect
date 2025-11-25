@@ -185,12 +185,12 @@ namespace VisionPlatform
                             var content = File.ReadAllText(SavePath.ModbusTcpPath);
                             DataSerializer._ModbusTcp.ModbusTcpPara =
                                 JsonConvert.DeserializeObject<ModbusTcpPara>(content);
-                            _plc.IpAddress = "192.168.3.250";
+                            _plc.IpAddress = "192.168.1.88";
                             _plc.Port = 502;
                         }
                         else
                         {
-                            _plc.IpAddress = "192.168.3.250";
+                            _plc.IpAddress = "192.168.1.88";
                             _plc.Port = 502;
                         }
                         progress = 60;
@@ -207,7 +207,7 @@ namespace VisionPlatform
                         {
                             if (!File.Exists(SavePath.ModbusTcpPath))
                             {
-                                DataSerializer._ModbusTcp.ModbusTcpPara.IpAddress = "192.168.3.250";
+                                DataSerializer._ModbusTcp.ModbusTcpPara.IpAddress = "192.168.1.88";
                                 DataSerializer._ModbusTcp.ModbusTcpPara.Port = 502;
                                 DataSerializer._ModbusTcp.ModbusTcpPara.nSlaveAddress = 1;
                                 DataSerializer._ModbusTcp.ModbusTcpPara.ConnectTimeout = 1000;
