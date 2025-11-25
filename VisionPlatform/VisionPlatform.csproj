@@ -1,0 +1,1217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenVINO.runtime.win.2025.1.0.1\build\net\OpenVINO.runtime.win.props" Condition="Exists('..\packages\OpenVINO.runtime.win.2025.1.0.1\build\net\OpenVINO.runtime.win.props')" />
+  <Import Project="..\packages\SixLabors.ImageSharp.3.1.6\build\SixLabors.ImageSharp.props" Condition="Exists('..\packages\SixLabors.ImageSharp.3.1.6\build\SixLabors.ImageSharp.props')" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD5BB189-370F-43A5-8546-DAF19FCD23D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VisionPlatform</RootNamespace>
+    <AssemblyName>VisionPlatform</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aardvark.Base">
+      <HintPath>..\packages\Aardvark.Base.5.3.14\lib\netstandard2.0\Aardvark.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Aardvark.Base.FSharp">
+      <HintPath>..\packages\Aardvark.Base.FSharp.5.3.14\lib\netstandard2.0\Aardvark.Base.FSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GxIAPINET, Version=1.0.7684.26772, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\GxIAPINET.dll</HintPath>
+    </Reference>
+    <Reference Include="halcondotnet, Version=13.0.2.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\halcondotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Hi.Ltd">
+      <HintPath>..\lib\Hi.Ltd.dll</HintPath>
+    </Reference>
+    <Reference Include="Hi.Ltd.SqlServer, Version=2025.4.4.1155, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hi.Ltd.SqlServer.2025.4.21.1155\lib\net48\Hi.Ltd.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Hi.Ltd.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\MC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.OnnxRuntime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f27f157f0a5b7bb6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ML.OnnxRuntime.Managed.1.17.1\lib\netstandard2.0\Microsoft.ML.OnnxRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="MvCameraControl.Net, Version=3.4.0.1, Culture=neutral, PublicKeyToken=52fddfb3f94be800, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MVSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\MVSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus, Version=3.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus.3.0.81\lib\net46\NModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus4, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus4.2.1.0\lib\net40\NModbus4.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=4.0.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework.legacy, Version=4.0.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\nunit.framework.legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="NXPressSystermLib, Version=1.0.7.10, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NXPressSystermLib.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.11.0.20250506\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.Extensions.4.9.0.20240103\lib\net48\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenVINO_CSharp_API, Version=2024.3.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenVINO.CSharp.API.2024.3.0.2\lib\net48\OpenVINO_CSharp_API.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="OpenVINO_CSharp_API_Extensions, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenVINO.CSharp.API.Extensions.1.0.2\lib\net48\OpenVINO_CSharp_API_Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenVINO_CSharp_API_Extensions_OpenCvSharp, Version=1.0.6.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenVINO.CSharp.API.Extensions.OpenCvSharp.1.0.6.3\lib\net48\OpenVINO_CSharp_API_Extensions_OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.37.2.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.37.2\lib\net462\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.9.0.1\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.8.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThridLibray, Version=1.0.0.31445, Culture=neutral, PublicKeyToken=407bb547be8622a9, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\ThridLibray.dll</HintPath>
+    </Reference>
+    <Reference Include="Unme.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=da57c01ae4598fdd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Unme.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vlc.DotNet.Core.3.1.0\lib\net45\Vlc.DotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core.Interops, Version=3.1.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vlc.DotNet.Core.Interops.3.1.0\lib\net45\Vlc.DotNet.Core.Interops.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Forms, Version=3.1.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vlc.DotNet.Forms.3.1.0\lib\net45\Vlc.DotNet.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdSharp, Version=0.8.0.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.0\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="软件主体\检测功能\CtrlDefect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlDefect.Designer.cs">
+      <DependentUpon>CtrlDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLine_Line.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLine_Line.Designer.cs">
+      <DependentUpon>CtrlLine_Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPhotometricStereo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPhotometricStereo.Designer.cs">
+      <DependentUpon>FormPhotometricStereo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\模板匹配\CtrlNccModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\模板匹配\CtrlNccModel.Designer.cs">
+      <DependentUpon>CtrlNccModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准库函数\Yolov8深度学习\detresult.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\Yolov8_Det.cs" />
+    <Compile Include="软件主体\检测功能\CtrlHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlHome.Designer.cs">
+      <DependentUpon>CtrlHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlTcpAdress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlTcpAdress.Designer.cs">
+      <DependentUpon>CtrlTcpAdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\BarcodeScannerHelper.cs" />
+    <Compile Include="DataBase\ConnectData.cs" />
+    <Compile Include="DataBase\Logging.cs" />
+    <Compile Include="DataBase\MesHelper.cs" />
+    <Compile Include="DataBase\Parse.cs" />
+    <Compile Include="DataBase\PLCRecipeRecord.cs" />
+    <Compile Include="DataBase\Serializer.cs" />
+    <Compile Include="DataBase\Variable.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="其他\历史记录\History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\历史记录\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\HDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\Input.Designer.cs">
+      <DependentUpon>Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\数据库配置\DatabaseSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\数据库配置\DatabaseSetting.Designer.cs">
+      <DependentUpon>DatabaseSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\语音\Warning.cs" />
+    <Compile Include="数据库相关\ProduceInfo.cs" />
+    <Compile Include="软件主体\检测功能\CtrlLabelMove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlLabelMove.Designer.cs">
+      <DependentUpon>CtrlLabelMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\LockScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\LockScreenForm.Designer.cs">
+      <DependentUpon>LockScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\ModbusTCP\Auxiliary\Address.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\Constant.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\Dog.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\IModbus.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\IModbusTcp.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\Modbus.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\ModbusTcp.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\NativeMethod.cs" />
+    <Compile Include="通讯\ModbusTCP\Auxiliary\Variable.cs" />
+    <Compile Include="其他\扩展组件\CtrlOK_NG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlOK_NG.Designer.cs">
+      <DependentUpon>CtrlOK_NG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlPNCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlPNCode.Designer.cs">
+      <DependentUpon>CtrlPNCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlQRCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlQRCode.Designer.cs">
+      <DependentUpon>CtrlQRCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCalib.Designer.cs">
+      <DependentUpon>FormCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\数据统计\CtrlAllStates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\数据统计\CtrlAllStates.Designer.cs">
+      <DependentUpon>CtrlAllStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\图像保存\CtrlImageSave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\图像保存\CtrlImageSave.Designer.cs">
+      <DependentUpon>CtrlImageSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\数据统计\CtrlStates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\数据统计\CtrlStates.Designer.cs">
+      <DependentUpon>CtrlStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="相机SDK\CtrlCamShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="相机SDK\CtrlCamShow.Designer.cs">
+      <DependentUpon>CtrlCamShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlEqualDividROI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlEqualDividROI.Designer.cs">
+      <DependentUpon>CtrlEqualDividROI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlValueRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlValueRange.Designer.cs">
+      <DependentUpon>CtrlValueRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceThd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceThd.Designer.cs">
+      <DependentUpon>CtrlColorSpaceThd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlStaticThd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlStaticThd.Designer.cs">
+      <DependentUpon>CtrlStaticThd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\TrackBarValueChange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\TrackBarValueChange.Designer.cs">
+      <DependentUpon>TrackBarValueChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\RectROIMove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\RectROIMove.Designer.cs">
+      <DependentUpon>RectROIMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlRatioRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\CtrlRatioRange.Designer.cs">
+      <DependentUpon>CtrlRatioRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\图像饱和度\CtrlSaturation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\图像饱和度\CtrlSaturation.Designer.cs">
+      <DependentUpon>CtrlSaturation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\HEditCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\OcrCls.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\OcrConfig.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\OcrDet.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\OcrModel.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\ocr_rec.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\paddleocr_utility.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\paddle_ocr.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\post_processor.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\predictor.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\preprocess.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\runtime_option.cs" />
+    <Compile Include="软件主体\深度学习-OCR\paddleocr\utility.cs" />
+    <Compile Include="软件主体\深度学习-OCR\PP-OCR.cs" />
+    <Compile Include="通讯\PLC轴控界面\Axises.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Axises.Designer.cs">
+      <DependentUpon>Axises.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\AxisT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\AxisT.Designer.cs">
+      <DependentUpon>AxisT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\AxisZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\AxisZ.Designer.cs">
+      <DependentUpon>AxisZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Input.Designer.cs">
+      <DependentUpon>Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Manual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\PLC轴控界面\Manual.Designer.cs">
+      <DependentUpon>Manual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\CtrlLEDSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\CtrlLEDSet.Designer.cs">
+      <DependentUpon>CtrlLEDSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLEDCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLEDCom.Designer.cs">
+      <DependentUpon>FormLEDCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\LEDControl.cs" />
+    <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceTrans.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceTrans.Designer.cs">
+      <DependentUpon>CtrlColorSpaceTrans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\CtrlColorMethod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\CtrlColorMethod.Designer.cs">
+      <DependentUpon>CtrlColorMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\颜色学习\CtrlColorTrain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\颜色\颜色学习\CtrlColorTrain.Designer.cs">
+      <DependentUpon>CtrlColorTrain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能\5线序检测\LineColor.cs" />
+    <Compile Include="软件主体\检测功能\FrontFun.cs" />
+    <Compile Include="标准功能模块\坐标标定\XYCalib.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\坐标标定\XYCalib.Designer.cs">
+      <DependentUpon>XYCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\直线拟合\CtrlFitLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\直线拟合\CtrlFitLine.designer.cs">
+      <DependentUpon>CtrlFitLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Init.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Md5.cs" />
+    <Compile Include="VlcVideo.cs" />
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\扩展组件\but_run.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="其他\扩展组件\but_run.designer.cs">
+      <DependentUpon>but_run.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\FormLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\FormLanguage.Designer.cs">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\配方文件\FormReadGlobalData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\配方文件\FormReadGlobalData.Designer.cs">
+      <DependentUpon>FormReadGlobalData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\配方文件\FormSaveGlobalData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\配方文件\FormSaveGlobalData.Designer.cs">
+      <DependentUpon>FormSaveGlobalData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\FormShowResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\FormShowResult.Designer.cs">
+      <DependentUpon>FormShowResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\显示字体\FormShowSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\显示字体\FormShowSet.Designer.cs">
+      <DependentUpon>FormShowSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\FormUIConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\FormUIConfig.Designer.cs">
+      <DependentUpon>FormUIConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\操作说明视频\FormOperateInstruct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\操作说明视频\FormOperateInstruct.Designer.cs">
+      <DependentUpon>FormOperateInstruct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\联系我们\FormContactEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\联系我们\FormContactEdit.Designer.cs">
+      <DependentUpon>FormContactEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\联系我们\FormContactUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\联系我们\FormContactUs.Designer.cs">
+      <DependentUpon>FormContactUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他\联系我们\FormLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他\联系我们\FormLogIn.Designer.cs">
+      <DependentUpon>FormLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\1单相机\Show1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\1单相机\Show1.Designer.cs">
+      <DependentUpon>Show1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\2双相机\Show2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\2双相机\Show2.Designer.cs">
+      <DependentUpon>Show2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\3三相机\Show3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\3三相机\Show3.Designer.cs">
+      <DependentUpon>Show3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\4四相机\Show4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\4四相机\Show4.Designer.cs">
+      <DependentUpon>Show4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\5五相机\Show5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\5五相机\Show5.designer.cs">
+      <DependentUpon>Show5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\6六相机\Show6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\6六相机\Show6.designer.cs">
+      <DependentUpon>Show6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\FormLogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\FormLogo.Designer.cs">
+      <DependentUpon>FormLogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\主显示界面\FormMainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\主显示界面\FormMainUI.Designer.cs">
+      <DependentUpon>FormMainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\函数\AllCamIO.cs" />
+    <Compile Include="软件主体\函数\Events.cs" />
+    <Compile Include="标准库函数\Function.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\Result.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\Result_obb.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\SegmentationResult.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\Yolov8_Obb.cs" />
+    <Compile Include="标准库函数\Yolov8深度学习\Yolov8_Seg.cs" />
+    <Compile Include="软件主体\检测库函数\InspectFunction.cs" />
+    <Compile Include="软件主体\函数\StaticFun.cs" />
+    <Compile Include="软件主体\检测库函数\InspectData.cs" />
+    <Compile Include="标准库函数\BaseData.cs" />
+    <Compile Include="软件主体\数据序列化\EnumData.cs" />
+    <Compile Include="软件主体\数据序列化\Json.cs" />
+    <Compile Include="软件主体\数据序列化\Path.cs" />
+    <Compile Include="软件主体\数据序列化\Serializer.cs" />
+    <Compile Include="软件主体\数据序列化\DataSerializer.cs" />
+    <Compile Include="软件主体\检测功能\FormTeachMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\FormTeachMaster.Designer.cs">
+      <DependentUpon>FormTeachMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\直线拟合\BaseLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\直线拟合\BaseLine.Designer.cs">
+      <DependentUpon>BaseLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="标准功能模块\阈值分割\CtrlThd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="标准功能模块\阈值分割\CtrlThd.Designer.cs">
+      <DependentUpon>CtrlThd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\Login.designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\LoginTX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\LoginTX.Designer.cs">
+      <DependentUpon>LoginTX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\Registered.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能配置\Registered.Designer.cs">
+      <DependentUpon>Registered.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\ModbusTCP\FormModelBusTcpComm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\ModbusTCP\FormModelBusTcpComm.Designer.cs">
+      <DependentUpon>FormModelBusTcpComm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="相机SDK\CamCommon.cs" />
+    <Compile Include="相机SDK\FormCamParamSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="相机SDK\FormCamParamSet.designer.cs">
+      <DependentUpon>FormCamParamSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="相机SDK\大华\CameraOperator.cs" />
+    <Compile Include="相机SDK\大华\DaHuaCam.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\CDeviceStateInfo.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\CFps.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\CStatistics.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\CStopWatch.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\GxBitmap.cs" />
+    <Compile Include="相机SDK\大恒相机\Common\Win32Bitmap.cs" />
+    <Compile Include="相机SDK\大恒相机\DaHengCam.cs" />
+    <Compile Include="相机SDK\大恒相机\Operate.cs" />
+    <Compile Include="相机SDK\海康威视\HikVisionCam.cs" />
+    <Compile Include="相机SDK\迈德威视\MindVision.cs" />
+    <Compile Include="通讯\串口\Class_RTU.cs" />
+    <Compile Include="通讯\串口\FormPLCRTU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\串口\FormPLCRTU.Designer.cs">
+      <DependentUpon>FormPLCRTU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\串口\Modbus_RTU.cs" />
+    <Compile Include="通讯\光源控制器\FormLED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLED.Designer.cs">
+      <DependentUpon>FormLED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLightCH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLightCH.Designer.cs">
+      <DependentUpon>FormLightCH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormIOcomm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormIOcomm.Designer.cs">
+      <DependentUpon>FormIOcomm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormIOSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormIOSend.Designer.cs">
+      <DependentUpon>FormIOSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormModbusIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormModbusIO.Designer.cs">
+      <DependentUpon>FormModbusIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormSetCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\文煜IO\FormSetCom.designer.cs">
+      <DependentUpon>FormSetCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\文煜IO\WENYU_PIO32P.cs" />
+    <Compile Include="通讯\相机IO\FormMindVisionCamIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\相机IO\FormMindVisionCamIO.Designer.cs">
+      <DependentUpon>FormMindVisionCamIO.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlDefect.resx">
+      <DependentUpon>CtrlDefect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLine_Line.resx">
+      <DependentUpon>CtrlLine_Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPhotometricStereo.resx">
+      <DependentUpon>FormPhotometricStereo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\模板匹配\CtrlNccModel.resx">
+      <DependentUpon>CtrlNccModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlHome.resx">
+      <DependentUpon>CtrlHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlTcpAdress.resx">
+      <DependentUpon>CtrlTcpAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\历史记录\History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\CtrlOK_NG.resx">
+      <DependentUpon>CtrlOK_NG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\Input.en-US.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\数据库配置\DatabaseSetting.resx">
+      <DependentUpon>DatabaseSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlLabelMove.resx">
+      <DependentUpon>CtrlLabelMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlPNCode.resx">
+      <DependentUpon>CtrlPNCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlQRCode.resx">
+      <DependentUpon>CtrlQRCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCalib.resx">
+      <DependentUpon>FormCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\数据统计\CtrlAllStates.resx">
+      <DependentUpon>CtrlAllStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormLanguage.zh-Hans.resx">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\图像保存\CtrlImageSave.resx">
+      <DependentUpon>CtrlImageSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\数据统计\CtrlStates.resx">
+      <DependentUpon>CtrlStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="相机SDK\CtrlCamShow.resx">
+      <DependentUpon>CtrlCamShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\CtrlEqualDividROI.resx">
+      <DependentUpon>CtrlEqualDividROI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\CtrlValueRange.resx">
+      <DependentUpon>CtrlValueRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceThd.resx">
+      <DependentUpon>CtrlColorSpaceThd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\but_run.zh-CN.resx">
+      <DependentUpon>but_run.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\4四相机\Show4.en-US.resx">
+      <DependentUpon>Show4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\5五相机\Show5.en-US.resx">
+      <DependentUpon>Show5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\6六相机\Show6.en-US.resx">
+      <DependentUpon>Show6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\CtrlStaticThd.resx">
+      <DependentUpon>CtrlStaticThd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\TrackBarValueChange.resx">
+      <DependentUpon>TrackBarValueChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\RectROIMove.resx">
+      <DependentUpon>RectROIMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\CtrlRatioRange.resx">
+      <DependentUpon>CtrlRatioRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\图像饱和度\CtrlSaturation.resx">
+      <DependentUpon>CtrlSaturation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\坐标标定\XYCalib.resx">
+      <DependentUpon>XYCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\直线拟合\CtrlFitLine.resx">
+      <DependentUpon>CtrlFitLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceTrans.resx">
+      <DependentUpon>CtrlColorSpaceTrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.en-US.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\but_run.en-US.resx">
+      <DependentUpon>but_run.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\扩展组件\but_run.resx">
+      <DependentUpon>but_run.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormLanguage.en-US.resx">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormLanguage.resx">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\配方文件\FormReadGlobalData.en-US.resx">
+      <DependentUpon>FormReadGlobalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\配方文件\FormReadGlobalData.resx">
+      <DependentUpon>FormReadGlobalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\配方文件\FormSaveGlobalData.en-US.resx">
+      <DependentUpon>FormSaveGlobalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\配方文件\FormSaveGlobalData.resx">
+      <DependentUpon>FormSaveGlobalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormShowResult.en-US.resx">
+      <DependentUpon>FormShowResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormShowResult.resx">
+      <DependentUpon>FormShowResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\显示字体\FormShowSet.en-US.resx">
+      <DependentUpon>FormShowSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\显示字体\FormShowSet.resx">
+      <DependentUpon>FormShowSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormUIConfig.en-US.resx">
+      <DependentUpon>FormUIConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\FormUIConfig.resx">
+      <DependentUpon>FormUIConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\操作说明视频\FormOperateInstruct.resx">
+      <DependentUpon>FormOperateInstruct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\联系我们\FormContactEdit.resx">
+      <DependentUpon>FormContactEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\联系我们\FormContactUs.resx">
+      <DependentUpon>FormContactUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他\联系我们\FormLogIn.resx">
+      <DependentUpon>FormLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\1单相机\Show1.en-US.resx">
+      <DependentUpon>Show1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\1单相机\Show1.resx">
+      <DependentUpon>Show1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\2双相机\Show2.en-US.resx">
+      <DependentUpon>Show2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\2双相机\Show2.resx">
+      <DependentUpon>Show2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\3三相机\Show3.en-US.resx">
+      <DependentUpon>Show3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\3三相机\Show3.resx">
+      <DependentUpon>Show3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\4四相机\Show4.resx">
+      <DependentUpon>Show4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\5五相机\Show5.resx">
+      <DependentUpon>Show5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\6六相机\Show6.resx">
+      <DependentUpon>Show6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\FormLogo.resx">
+      <DependentUpon>FormLogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\主显示界面\FormMainUI.en-US.resx">
+      <DependentUpon>FormMainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\主显示界面\FormMainUI.resx">
+      <DependentUpon>FormMainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\FormTeachMaster.en-US.resx">
+      <DependentUpon>FormTeachMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\FormTeachMaster.resx">
+      <DependentUpon>FormTeachMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\直线拟合\BaseLine.resx">
+      <DependentUpon>BaseLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\阈值分割\CtrlThd.en-US.resx">
+      <DependentUpon>CtrlThd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\阈值分割\CtrlThd.resx">
+      <DependentUpon>CtrlThd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\颜色\CtrlColorMethod.resx">
+      <DependentUpon>CtrlColorMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="标准功能模块\颜色\颜色学习\CtrlColorTrain.resx">
+      <DependentUpon>CtrlColorTrain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能配置\LockScreenForm.resx">
+      <DependentUpon>LockScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能配置\Login.en-US.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能配置\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能配置\LoginTX.resx">
+      <DependentUpon>LoginTX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能配置\Registered.resx">
+      <DependentUpon>Registered.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Axises.resx">
+      <DependentUpon>Axises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\AxisT.en-US.resx">
+      <DependentUpon>AxisT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\AxisT.resx">
+      <DependentUpon>AxisT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\AxisZ.en-US.resx">
+      <DependentUpon>AxisZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\AxisZ.resx">
+      <DependentUpon>AxisZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Home.en-US.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Input.en-US.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Manual.en-US.resx">
+      <DependentUpon>Manual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\PLC轴控界面\Manual.resx">
+      <DependentUpon>Manual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\CtrlLEDSet.resx">
+      <DependentUpon>CtrlLEDSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLEDCom.resx">
+      <DependentUpon>FormLEDCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\ModbusTCP\FormModelBusTcpComm.en-US.resx">
+      <DependentUpon>FormModelBusTcpComm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\ModbusTCP\FormModelBusTcpComm.resx">
+      <DependentUpon>FormModelBusTcpComm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="相机SDK\FormCamParamSet.resx">
+      <DependentUpon>FormCamParamSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\串口\FormPLCRTU.resx">
+      <DependentUpon>FormPLCRTU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLED.en-US.resx">
+      <DependentUpon>FormLED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLED.resx">
+      <DependentUpon>FormLED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLightCH.en-US.resx">
+      <DependentUpon>FormLightCH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLightCH.resx">
+      <DependentUpon>FormLightCH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormIOcomm.en-US.resx">
+      <DependentUpon>FormIOcomm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormIOcomm.resx">
+      <DependentUpon>FormIOcomm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormIOSend.en-US.resx">
+      <DependentUpon>FormIOSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormIOSend.resx">
+      <DependentUpon>FormIOSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormModbusIO.resx">
+      <DependentUpon>FormModbusIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\文煜IO\FormSetCom.resx">
+      <DependentUpon>FormSetCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\相机IO\FormMindVisionCamIO.resx">
+      <DependentUpon>FormMindVisionCamIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="相机SDK\巴斯勒\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hi.ltd.ico" />
+    <Content Include="hi128_128.ico" />
+    <Content Include="resources\60f97dac2a846.png" />
+    <Content Include="resources\camera2.png" />
+    <Content Include="resources\ClockWiseOff.png" />
+    <Content Include="resources\ClockWiseOn.png" />
+    <Content Include="resources\CounterClockWiseOff.png" />
+    <Content Include="resources\CounterClockWiseOn.png" />
+    <Content Include="resources\DotMoveDownOff.png" />
+    <Content Include="resources\DotMoveDownOn.png" />
+    <Content Include="resources\DotMoveLeftOff.png" />
+    <Content Include="resources\DotMoveLeftOn.png" />
+    <Content Include="resources\DotMoveRightOff.png" />
+    <Content Include="resources\DotMoveRightOn.png" />
+    <Content Include="resources\DotMoveUpOff.png" />
+    <Content Include="resources\DotMoveUpOn.png" />
+    <Content Include="resources\favicon %281%29.png" />
+    <Content Include="resources\io_led_off16_16.png" />
+    <Content Include="resources\io_led_on16_16.png" />
+    <Content Include="resources\lime_button_on16_16.png" />
+    <Content Include="resources\MoveDownOff.png" />
+    <Content Include="resources\MoveDownOn.png" />
+    <Content Include="resources\MoveLeftOff.png" />
+    <Content Include="resources\MoveLeftOn.png" />
+    <Content Include="resources\MoveRightOff.png" />
+    <Content Include="resources\MoveRightOn.png" />
+    <Content Include="resources\MoveUpOff.png" />
+    <Content Include="resources\MoveUpOn.png" />
+    <Content Include="resources\red_button_on16_16.png" />
+    <Content Include="resources\tgrss-xtrq6.png" />
+    <Content Include="resources\中英文切换-中文 %282%29.png" />
+    <Content Include="resources\分支机构.png" />
+    <Content Include="resources\勾选.png" />
+    <Content Include="resources\暂停.png" />
+    <Content Include="resources\运行中.png" />
+    <Content Include="yixing.ico" />
+    <Content Include="相机SDK\迈德威视\MVSDK.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.Managed.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.Managed.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets'))" />
+    <Error Condition="!Exists('..\packages\SixLabors.ImageSharp.3.1.6\build\SixLabors.ImageSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SixLabors.ImageSharp.3.1.6\build\SixLabors.ImageSharp.props'))" />
+    <Error Condition="!Exists('..\packages\VideoLAN.LibVLC.Windows.3.0.21\build\VideoLAN.LibVLC.Windows.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\VideoLAN.LibVLC.Windows.3.0.21\build\VideoLAN.LibVLC.Windows.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenVINO.runtime.win.2025.1.0.1\build\net\OpenVINO.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenVINO.runtime.win.2025.1.0.1\build\net\OpenVINO.runtime.win.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.17.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" />
+  <Import Project="..\packages\VideoLAN.LibVLC.Windows.3.0.21\build\VideoLAN.LibVLC.Windows.targets" Condition="Exists('..\packages\VideoLAN.LibVLC.Windows.3.0.21\build\VideoLAN.LibVLC.Windows.targets')" />
+</Project>
