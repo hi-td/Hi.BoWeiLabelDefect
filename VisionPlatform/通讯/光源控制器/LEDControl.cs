@@ -1,5 +1,6 @@
 ﻿using BaseData;
 using EnumData;
+using Hi.Ltd;
 using StaticFun;
 using System;
 using System.Collections.Generic;
@@ -68,12 +69,12 @@ namespace VisionPlatform
             string strPortName = "";
             try
             {
+                Dictionary<string, BaseData.LEDRTU> dictempLed = dicLed.Clone();
                 dicComDevice = new Dictionary<string, SerialPort>();
-                foreach (var led in dicLed)
+                foreach (var led in dictempLed)
                 {
                     strPortName = led.Key;
                     ledRTU = led.Value;
-                    ledRTU.bOpen = false;
                     SerialPort comDevice = new SerialPort();
                     comDevice.PortName = led.Key;
                     comDevice.BaudRate = ledRTU.BaudRate;
@@ -93,8 +94,9 @@ namespace VisionPlatform
                     {
                         dicComDevice.Add(strPortName, comDevice);
                     }
-                    ledRTU.bOpen = true;
-                    dicLed[led.Key] = ledRTU;
+                    BaseData.LEDRTU eDRTU = dicLed[led.Key];
+                    eDRTU.bOpen = true;
+                    dicLed[led.Key] = eDRTU;
                     MessageFun.ShowMessage($"光源控制器{led.Key}打开成功!", true, $"The serial port {led.Key}of the light source controller has been successfully opened!");
                     Thread.Sleep(2);
                 }

@@ -828,9 +828,25 @@ namespace VisionPlatform
                                 address.Value = 0;
                                 FormMainUI._plc.WriteDevice(address);
                                 ts = new TimeSpan(DateTime.Now.Ticks);
-                                 PhotometricInspect(inspectItems);
+                                if(Receiveindex == 0)
+                                {
+                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.LeftSide);
+                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
+                                    PhotometricInspect(inspectItem);
+                                    Thread.Sleep(10);
+                                    camItem = new CamInspectItem(20, InspectItem.RightSide);
+                                    inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
+                                    PhotometricInspect(inspectItem);
+                                }
+                                else
+                                {
+                                    CamInspectItem camItem = new CamInspectItem(30, InspectItem.Front);
+                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[30].strCamSer, FormMainUI.m_dicCtrlCamShow[30].Fun, camItem);
+                                    inspectItems.camItem = new CamInspectItem(30, InspectItem.Front);
+                                    PhotometricInspect(inspectItem);
+                                }
                                 #region 发送当前拍照完成信号
-                                var index = keys[1].Index;
+                                    var index = keys[1].Index;
                                 var addr = new Address(SoftType.M, index, DataType.Bit);
                                 addr.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr);
