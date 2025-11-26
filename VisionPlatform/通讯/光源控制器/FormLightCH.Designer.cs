@@ -158,6 +158,7 @@
             this.cmbBox_PortName.Name = "cmbBox_PortName";
             this.cmbBox_PortName.Size = new System.Drawing.Size(67, 20);
             this.cmbBox_PortName.TabIndex = 1;
+            this.cmbBox_PortName.SelectedIndexChanged += new System.EventHandler(this.cmbBox_PortName_SelectedIndexChanged);
             // 
             // FormLightCH
             // 

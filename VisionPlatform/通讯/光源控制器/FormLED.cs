@@ -116,7 +116,11 @@ namespace VisionPlatform
                 param.DataBits = int.Parse(tbx_dataBit.Text);
                 param.parity = (Parity)iparity;
                 param.stopBits = (StopBits)iStopBits;
-
+                param.bOpen = false;
+                if (lbl_statu.Text == "已打开")
+                {
+                    param.bOpen = true;
+                }
             }
             catch (SystemException error)
             {

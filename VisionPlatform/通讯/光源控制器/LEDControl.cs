@@ -184,6 +184,7 @@ namespace VisionPlatform
                 SendData = SendData + str_Bright + "#";
                 if (led.bOpen)
                 {
+                    comDevice.Open();
                     byte[] SendBytes = null;
                     SendBytes = Encoding.Default.GetBytes(SendData);
                     comDevice.Write(SendBytes, 0, SendBytes.Length);//发送数据
