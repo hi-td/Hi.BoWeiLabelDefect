@@ -21,7 +21,7 @@ namespace VisionPlatform
         ToolStripComboBox cb_IO = new ToolStripComboBox();  //IO点位
         ToolStripMenuItem item_IOIn = new ToolStripMenuItem("I/O输入点");
         ToolStripMenuItem item_IOOut = new ToolStripMenuItem("I/O输出点");
-        ToolStripMenuItem item_light = new ToolStripMenuItem("光源控制");
+        //ToolStripMenuItem item_light = new ToolStripMenuItem("光源控制");
         ToolStripComboBox cb_light = new ToolStripComboBox(); //光源通道
         ToolStripItem del = new ToolStripMenuItem("删除");
         public static Panel m_panelWindow;
@@ -53,7 +53,7 @@ namespace VisionPlatform
             {
                 item_IOIn = new ToolStripMenuItem("I/O Input Points");
                 item_IOOut = new ToolStripMenuItem("I/O Output Point");
-                item_light = new ToolStripMenuItem("Light Source Control");
+                //item_light = new ToolStripMenuItem("Light Source Control");
                 cb_light = new ToolStripComboBox(); //光源通道
                 del = new ToolStripMenuItem("Delete");
             }

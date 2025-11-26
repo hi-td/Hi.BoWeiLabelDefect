@@ -1,7 +1,9 @@
 ﻿using BaseData;
+using Hi.Ltd.Threading;
 using Newtonsoft.Json;
 using StaticFun;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
@@ -10,6 +12,7 @@ namespace VisionPlatform
 {
     public partial class FormLED : Form
     {
+        Dictionary<string, CheckBox> dicCheckBox = new Dictionary<string, CheckBox>();
         public FormLED()
         {
             InitializeComponent();
@@ -18,12 +21,18 @@ namespace VisionPlatform
         private void InitUI()
         {
             //COM口
+            flowLayoutPanel.Clear();
+            dicCheckBox = new Dictionary<string, CheckBox>();
             string[] strPort = SerialPort.GetPortNames();
             if (strPort.Length > 0)
             {
                 foreach (var item in strPort)
                 {
                     this.cbx_portName.Items.Add(item);
+                    CheckBox cb = new CheckBox();
+                    cb.Text = item;
+                    flowLayoutPanel.Controls.Add(cb);
+                    dicCheckBox.Add(item, cb);
                 }
                 this.cbx_portName.SelectedIndex = 0;
             }
@@ -145,6 +154,8 @@ namespace VisionPlatform
                     return;
                 }
                 LEDControl.CloseLED(ref ledRTU);
+                dicCheckBox[ledRTU.PortName].Checked = false;
+                dicCheckBox[ledRTU.PortName].BackColor = System.Drawing.Color.Transparent;
             }
             try
             {
@@ -152,6 +163,8 @@ namespace VisionPlatform
                 if (GlobalData.Config._language == EnumData.Language.english)
                 {
                     lbl_statu.Text = "Opened";
+                    dicCheckBox[ledRTU.PortName].Checked = true;
+                    dicCheckBox[ledRTU.PortName].BackColor = Color.LightGreen;
                     MessageBox.Show("Reset and open serial port successfully!");
                 }
                 else
@@ -175,6 +188,8 @@ namespace VisionPlatform
             {
                 LEDRTU ledRTU = InitParam();
                 LEDControl.CloseLED(ref ledRTU);
+                dicCheckBox[ledRTU.PortName].Checked = false;
+                dicCheckBox[ledRTU.PortName].BackColor = System.Drawing.Color.Transparent;
                 if (GlobalData.Config._language == EnumData.Language.english)
                 {
                     lbl_statu.Text = "Not opened";
