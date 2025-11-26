@@ -593,7 +593,7 @@ public sealed class ModbusTcp : Modbus, IModbusTcp
                 switch (address.DataType)
                 {
                     case DataType.Bit:
-                        WriteSingleCoil((ushort)address.Index, address.Value.ToBoolean());
+                        WriteSingleCoil((ushort)(address.Index+8192), address.Value.ToBoolean());
                         iReturnCode = 0;
                         break;
                     case DataType.UInt16:
@@ -766,7 +766,7 @@ public sealed class ModbusTcp : Modbus, IModbusTcp
                                 {
                                     var sw = new Stopwatch();
                                     sw.Start();
-                                    var content = ReadCoils((ushort)mAddr[i].Index, ReadBitCount);
+                                    var content = ReadCoils((ushort)(mAddr[i].Index+8192), ReadBitCount);
                                     sw.Stop();
                                     var elapsed = sw.ElapsedMilliseconds;
 

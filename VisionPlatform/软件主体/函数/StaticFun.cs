@@ -146,59 +146,59 @@ namespace StaticFun
                 Zoom();
                 if (but_Run.Text == "运行" || but_Run.Text == "Start")
                 {
-                    timeExceeded = false;
-                    PlcExceeded = false;
-                    timer = new System.Timers.Timer(20000);
-                    timer.Elapsed += OnTimedEvent;
-                    timer.AutoReset = false; // 只触发一次
+                    //timeExceeded = false;
+                    //PlcExceeded = false;
+                    //timer = new System.Timers.Timer(20000);
+                    //timer.Elapsed += OnTimedEvent;
+                    //timer.AutoReset = false; // 只触发一次
 
                     but_Run.Image = Resources.runing;
                     if (CamCommon.m_listCamSer.Count != 0)
                     {
-                        //整机还原
-                        var addressM5 = new Address(SoftType.M, 5, DataType.Bit);
-                        addressM5.Value = 1;
-                        FormMainUI._plc.WriteDevice(addressM5);
-                        Thread.Sleep(2000);
-                        //整机启动
-                        var address = new Address(SoftType.M, 1, DataType.Bit);
-                        address.Value = 1;
-                        FormMainUI._plc.WriteDevice(address);
-                        timer.Start();
-                        while (!timeExceeded && !PlcExceeded)
-                        {
-                            //整机运行中
-                            var readAdress = new Address(SoftType.M, 13, DataType.Bit);
-                            var rRes = FormMainUI._plc.ReadDeviceRandom(FormMainUI.addressesPlc, out var datas);
-                            int key = FormMainUI.M13.GetHashCode();
-                            if (rRes == 0)
-                            {
-                                if (Convert.ToInt32(datas[key].Value) == 1)
-                                {
-                                    PlcExceeded = true;
-                                    timeExceeded = false;
-                                    timer.Stop();
-                                    continue;
-                                }
-                            }
-                        }
-                        if (timeExceeded)
-                        {
-                            return;
-                        }
+                        ////整机还原
+                        //var addressM5 = new Address(SoftType.M, 5, DataType.Bit);
+                        //addressM5.Value = 1;
+                        //FormMainUI._plc.WriteDevice(addressM5);
+                        //Thread.Sleep(2000);
+                        ////整机启动
+                        //var address = new Address(SoftType.M, 1, DataType.Bit);
+                        //address.Value = 1;
+                        //FormMainUI._plc.WriteDevice(address);
+                        //timer.Start();
+                        //while (!timeExceeded && !PlcExceeded)
+                        //{
+                        //    //整机运行中
+                        //    var readAdress = new Address(SoftType.M, 13, DataType.Bit);
+                        //    var rRes = FormMainUI._plc.ReadDeviceRandom(FormMainUI.addressesPlc, out var datas);
+                        //    int key = FormMainUI.M13.GetHashCode();
+                        //    if (rRes == 0)
+                        //    {
+                        //        if (Convert.ToInt32(datas[key].Value) == 1)
+                        //        {
+                        //            PlcExceeded = true;
+                        //            timeExceeded = false;
+                        //            timer.Stop();
+                        //            continue;
+                        //        }
+                        //    }
+                        //}
+                        //if (timeExceeded)
+                        //{
+                        //    return;
+                        //}
                         //FormMainUI.M826.Value = false;
                         //FormMainUI._plc.WriteDevice(FormMainUI.M826);
                         //FormMainUI.M800.Value = 0;
                         //FormMainUI._plc.WriteDevice(FormMainUI.M800);
                         //NG产品无论怎样在自动运行前都置位一次
-                        var addr = new Address(SoftType.M, 807, DataType.Bit);
-                        addr.Value = 0;
-                        FormMainUI._plc.WriteDevice(addr);
+                        //var addr = new Address(SoftType.M, 807, DataType.Bit);
+                        //addr.Value = 0;
+                        //FormMainUI._plc.WriteDevice(addr);
                         CamCommon.StopLiveAll();   //防止抓拍出来的图片不对
                         if (Start())
                         {
-                            timeExceeded = false;//计时时间
-                            PlcExceeded = false;//PLC标志点
+                            //timeExceeded = false;//计时时间
+                            //PlcExceeded = false;//PLC标志点
                             FormMainUI.bRun = true;
                             InspectFunction.isAuto = true;
                             FormMainUI.bCountNum = true;
@@ -329,7 +329,7 @@ namespace StaticFun
             try
             {
                 Zoom();
-                if (but_Run.Text == "开始" || but_Run.Text == "Start")
+                if (but_Run.Text == "运行" || but_Run.Text == "Start")
                 {
                     but_Run.Image = Resources.runing;
                     if (CamCommon.m_listCamSer.Count != 0)
@@ -383,7 +383,7 @@ namespace StaticFun
                         }
                     }
                     but_Run.Image = Resources.stop;
-                    but_Run.Text = GlobalData.Config._language == EnumData.Language.english ? "Start" : "开始";
+                    but_Run.Text = GlobalData.Config._language == EnumData.Language.english ? "Start" : "运行";
                     but_Run.BackColor = default;
                 }
             }
