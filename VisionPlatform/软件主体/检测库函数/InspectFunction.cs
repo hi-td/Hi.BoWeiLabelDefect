@@ -5,6 +5,7 @@ using DAL;
 using HalconDotNet;
 using Hi.Ltd;
 using Hi.Ltd.Enumerations;
+using Hi.Ltd.SqlServer;
 using StaticFun;
 using System;
 using System.Collections.Generic;
@@ -827,17 +828,29 @@ namespace VisionPlatform
                                 address.Value = 0;
                                 FormMainUI._plc.WriteDevice(address);
                                 ts = new TimeSpan(DateTime.Now.Ticks);
-                                List<HObject> listImages = inspectItems.fun.PhotometricGrabImages(inspectItems.camItem.cam, inspectItems.strCamSer);
-
+                                if(Receiveindex == 0)
+                                {
+                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.LeftSide);
+                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
+                                    PhotometricInspect(inspectItem);
+                                    Thread.Sleep(10);
+                                    camItem = new CamInspectItem(20, InspectItem.RightSide);
+                                    inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
+                                    PhotometricInspect(inspectItem);
+                                }
+                                else
+                                {
+                                    CamInspectItem camItem = new CamInspectItem(30, InspectItem.Front);
+                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[30].strCamSer, FormMainUI.m_dicCtrlCamShow[30].Fun, camItem);
+                                    inspectItems.camItem = new CamInspectItem(30, InspectItem.Front);
+                                    PhotometricInspect(inspectItem);
+                                }
                                 #region 发送当前拍照完成信号
-                                var index = keys[1].Index;
+                                    var index = keys[1].Index;
                                 var addr = new Address(SoftType.M, index, DataType.Bit);
                                 addr.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr);
                                 #endregion
-
-                                ts = new TimeSpan(DateTime.Now.Ticks);
-                                PhotometricInspect(inspectItems);
                                 TimeSpan ts_end = new TimeSpan(DateTime.Now.Ticks);
                                 double spanSeconds = ts_end.Subtract(ts).Duration().TotalSeconds;
                                 if (spanSeconds > 30)
@@ -845,6 +858,7 @@ namespace VisionPlatform
                                     WriteStringtoImage(20, 40, 20, "检测超时！", "red", strEnglish: "Capture timeout!");
                                     break;
                                 }
+                                
                             }
                             else if (nRead == 0)
                             {
@@ -1228,6 +1242,7 @@ namespace VisionPlatform
                 //拍照总用时
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
                 PhotometricStereoImage proImages = PhotometricStereo(listImages);
+                inspectItem.fun.DispRegion(proImages.Gradient);
                 switch (inspectItem.camItem.item)
                 {
                     case InspectItem.Front:
@@ -1606,12 +1621,12 @@ namespace VisionPlatform
                         }
                         ts_timeOut = new TimeSpan(DateTime.Now.Ticks);
                         double spanTotalSeconds = ts_timeOut.Subtract(ts).Duration().TotalSeconds;
-                        if (spanTotalSeconds > 5)
+                        if (spanTotalSeconds > 3)
                         {
                             WriteStringtoImage(20, 40, 20, "抓图超时！", "red", strEnglish: "Capture timeout!");
                             break;
                         }
-                        Thread.Sleep(2);
+                        Thread.Sleep(20);
                     }
                 }
             }

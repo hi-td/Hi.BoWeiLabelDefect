@@ -305,7 +305,7 @@ namespace StaticFun
                         foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
                         {
                             CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
-                            if (camID % 10 == 0)
+                            if (camID == 10 || camID==30)
                             {
                                 //只给主相机开线程
                                 new Task(() => { ctrlCamShow.Fun.RunTcp(FormMainUI.m_dicCtrlCamShow); }, TaskCreationOptions.LongRunning).Start();

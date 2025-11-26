@@ -33,6 +33,7 @@ namespace VisionPlatform
                     cb.Text = item;
                     cb.Enabled = false;
                     cb.Padding = new Padding(3);
+                    //cb.Dock = DockStyle.Left;
                     flowLayoutPanel.Controls.Add(cb);
                     dicCheckBox.Add(item, cb);
                 }

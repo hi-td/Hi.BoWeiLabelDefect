@@ -21,6 +21,7 @@ namespace VisionPlatform
         }
         public void SetPort(string strPortName)
         {
+            if (null == strPortName) return;
             this.myPort = strPortName;
             if (null != DataSerializer._COMConfig.dicLed &&
                 DataSerializer._COMConfig.dicLed.ContainsKey(myPort))

@@ -124,6 +124,7 @@
             this.Lbl_HeightField.Name = "Lbl_HeightField";
             this.Lbl_HeightField.Size = new System.Drawing.Size(79, 28);
             this.Lbl_HeightField.Text = "高度信息图";
+            this.Lbl_HeightField.Visible = false;
             this.Lbl_HeightField.Click += new System.EventHandler(this.Lbl_HeightField_Click);
             // 
             // tableLayoutPanel1
