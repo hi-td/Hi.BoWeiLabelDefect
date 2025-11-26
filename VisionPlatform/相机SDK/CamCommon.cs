@@ -8,14 +8,13 @@ namespace CamSDK
 {
     public class CamCommon
     {
-
         public struct CamParam
         {
             public float exposure;   //曝光
             public float gain;       //增益
             public float frame;      //帧率
         }
-        public static Dictionary<string,int> m_listCamSer = new Dictionary<string,int>();//相机名称列表，添加到comboBox控件，后续所有list的顺序与此变量保持一致
+        public static Dictionary<string, int> m_listCamSer = new Dictionary<string, int>();//相机名称列表，添加到comboBox控件，后续所有list的顺序与此变量保持一致
         public static bool[] m_bOpen;                 //相机是否打开
         public static bool[] m_bLive;                 //相机是否处于实时显示状态
         public static bool[] m_bTriggerMode;           //相机是否处于触发状态
@@ -394,7 +393,7 @@ namespace CamSDK
                     StaticFun.MessageFun.ShowMessage("无法识别的相机品牌。");
                     return;
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -580,7 +579,7 @@ namespace CamSDK
             {
                 if (m_listCamSer.ContainsKey(strCamSer))
                 {
-                    camID=m_listCamSer[strCamSer];
+                    camID = m_listCamSer[strCamSer];
                     return camID;
                 }
                 return -1;
@@ -589,7 +588,7 @@ namespace CamSDK
             {
                 StaticFun.MessageFun.ShowMessage(ex.Message);
                 return -1;
-            }           
+            }
         }
         public static void GetCapability(string strCamSer, out tSdkCameraCapbility tCameraCapability)
         {

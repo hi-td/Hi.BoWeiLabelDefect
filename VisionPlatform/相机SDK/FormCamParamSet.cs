@@ -38,11 +38,13 @@ namespace VisionPlatform
                 {
                     groupBox_Light.Visible = true;
                     CHBright[] cHBright = new CHBright[6];
+                    string strPort = "";
                     if (DataSerializer._globalData.dicImageing.ContainsKey(myCamID))
                     {
                         cHBright = DataSerializer._globalData.dicImageing[myCamID].CHBright;
+                        strPort = DataSerializer._globalData.dicImageing[myCamID].strPort;
                     }
-                    formLightSet = new FormLightCH(myCamID, cHBright);
+                    formLightSet = new FormLightCH(myCamID, strPort, cHBright);
                     this.groupBox_Light.Controls.Add(formLightSet);
                 }
                 return true;

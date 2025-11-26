@@ -1,7 +1,5 @@
 ﻿using BaseData;
-using Newtonsoft.Json;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace VisionPlatform
@@ -9,15 +7,17 @@ namespace VisionPlatform
     public partial class FormLightCH : Form
     {
         bool isLoad = true;
+        string myPort = "";
         CHBright[] arrayCHBright = new CHBright[6];
         int myCamID;
-        public FormLightCH(int camID, CHBright[] cHBright)
+        public FormLightCH(int camID, string strPort, CHBright[] cHBright)
         {
             InitializeComponent();
             this.TopLevel = false;
             this.Visible = true;
             this.Dock = DockStyle.Fill;
             this.myCamID = camID;
+            this.myPort = strPort;
             this.arrayCHBright = cHBright;
             InitUI();
         }
@@ -51,13 +51,27 @@ namespace VisionPlatform
                 ctrlLEDSet4.ValueChanged += but_Confirm_Click;
                 ctrlLEDSet5.ValueChanged += but_Confirm_Click;
                 ctrlLEDSet6.ValueChanged += but_Confirm_Click;
-
+                ctrlLEDSet1.SetPort(myPort);
+                ctrlLEDSet2.SetPort(myPort);
+                ctrlLEDSet3.SetPort(myPort);
+                ctrlLEDSet4.SetPort(myPort);
+                ctrlLEDSet5.SetPort(myPort);
+                ctrlLEDSet6.SetPort(myPort);
                 ctrlLEDSet1.LoadParam(1, this.arrayCHBright[0]);
                 ctrlLEDSet2.LoadParam(2, this.arrayCHBright[1]);
                 ctrlLEDSet3.LoadParam(3, this.arrayCHBright[2]);
                 ctrlLEDSet4.LoadParam(4, this.arrayCHBright[3]);
                 ctrlLEDSet5.LoadParam(5, this.arrayCHBright[4]);
                 ctrlLEDSet6.LoadParam(6, this.arrayCHBright[5]);
+                cmbBox_PortName.Items.Clear();
+                foreach (string strPort in DataSerializer._COMConfig.dicLed.Keys)
+                {
+                    cmbBox_PortName.Items.Add(strPort);
+                }
+                if ("" != myPort)
+                {
+                    cmbBox_PortName.Text = myPort;
+                }
             }
             catch (Exception ex)
             {
@@ -93,12 +107,14 @@ namespace VisionPlatform
                 {
                     Imageing param = DataSerializer._globalData.dicImageing[myCamID];
                     param.CHBright = InitParam();
+                    param.strPort = myPort;
                     DataSerializer._globalData.dicImageing[myCamID] = param;
                 }
                 else
                 {
                     Imageing param = new Imageing()
                     {
+                        strPort = myPort,
                         CHBright = InitParam(),
                     };
                     DataSerializer._globalData.dicImageing.Add(myCamID, param);
@@ -106,7 +122,7 @@ namespace VisionPlatform
             }
             catch (Exception ex)
             {
-                StaticFun.MessageFun.ShowMessage($"光源配置保存失败:{ex}",true);
+                StaticFun.MessageFun.ShowMessage($"光源配置保存失败:{ex}", true);
             }
         }
     }

@@ -243,20 +243,24 @@ namespace StaticFun
                 //检测光源控制器是否链接正常
                 if (_InitConfig.initConfig.bDigitLight)
                 {
-                    if (!LEDControl.isOpen)
+                    foreach (var led in DataSerializer._COMConfig.dicLed)
                     {
-                        int try_connect = 0;
-                        while (!LEDControl.isOpen && try_connect < 3)
+                        BaseData.LEDRTU ledRTU = led.Value;
+                        if (!ledRTU.bOpen)
                         {
-                            LEDControl.OpenLedCom(DataSerializer._COMConfig.Led);
-                            try_connect++;
-                            Thread.Sleep(20);
+                            int try_connect = 0;
+                            while (!led.Value.bOpen && try_connect < 3)
+                            {
+                                LEDControl.OpenLedCom(ref ledRTU);
+                                try_connect++;
+                                Thread.Sleep(20);
+                            }
                         }
-                    }
-                    if (!LEDControl.isOpen)
-                    {
-                        MessageBox.Show("光源控制器链接异常，请检查光源控制器。");
-                        return false;
+                        if (!ledRTU.bOpen)
+                        {
+                            MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
+                            return false;
+                        }
                     }
                 }
                 //检测通讯是否正常
@@ -397,20 +401,24 @@ namespace StaticFun
                 //检测光源控制器是否链接正常
                 if (_InitConfig.initConfig.bDigitLight)
                 {
-                    if (!LEDControl.isOpen)
+                    foreach (var led in DataSerializer._COMConfig.dicLed)
                     {
-                        int try_connect = 0;
-                        while (!LEDControl.isOpen && try_connect < 3)
+                        BaseData.LEDRTU ledRTU = led.Value;
+                        if (!ledRTU.bOpen)
                         {
-                            LEDControl.OpenLedCom(DataSerializer._COMConfig.Led);
-                            try_connect++;
-                            Thread.Sleep(20);
+                            int try_connect = 0;
+                            while (!led.Value.bOpen && try_connect < 3)
+                            {
+                                LEDControl.OpenLedCom(ref ledRTU);
+                                try_connect++;
+                                Thread.Sleep(20);
+                            }
                         }
-                    }
-                    if (!LEDControl.isOpen)
-                    {
-                        MessageBox.Show("光源控制器链接异常，请检查光源控制器。");
-                        return false;
+                        if (!ledRTU.bOpen)
+                        {
+                            MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
+                            return false;
+                        }
                     }
                 }
                 //检测IO通讯是否正常

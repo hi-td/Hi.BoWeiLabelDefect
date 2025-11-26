@@ -33,6 +33,7 @@ namespace BaseData
             CHBright = new CHBright[6];
         }
         public CamCommon.CamParam camParam;
+        public string strPort;
         public CHBright[] CHBright { get; set; }
     }
 
@@ -56,11 +57,12 @@ namespace BaseData
     [Serializable]
     public struct LEDRTU
     {
-        public int BaudRate;
-        public string PortName;
-        public int DataBits;
-        public Parity parity;
-        public StopBits stopBits;
+        public string PortName;          //端口号
+        public bool bOpen;               //是否打开
+        public int BaudRate;             //波特率
+        public int DataBits;             //数据位
+        public Parity parity;            //校验位
+        public StopBits stopBits;        //停止位
     }
     #endregion
 

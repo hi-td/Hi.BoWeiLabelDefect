@@ -30,13 +30,12 @@ namespace VisionPlatform
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLED));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.btn_openPort = new System.Windows.Forms.Button();
             this.btn_closePort = new System.Windows.Forms.Button();
             this.lbl_statu = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_portName = new System.Windows.Forms.ComboBox();
@@ -48,27 +47,20 @@ namespace VisionPlatform
             this.tbx_dataBit = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbx_baudRate = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_openPort, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_closePort, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.lbl_statu, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // button1
@@ -77,11 +69,6 @@ namespace VisionPlatform
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
             // 
             // btn_openPort
             // 
@@ -102,6 +89,11 @@ namespace VisionPlatform
             resources.ApplyResources(this.lbl_statu, "lbl_statu");
             this.lbl_statu.ForeColor = System.Drawing.Color.Red;
             this.lbl_statu.Name = "lbl_statu";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
             // tableLayoutPanel1
             // 
@@ -125,11 +117,12 @@ namespace VisionPlatform
             // 
             // cbx_portName
             // 
-            resources.ApplyResources(this.cbx_portName, "cbx_portName");
             this.cbx_portName.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.cbx_portName, "cbx_portName");
             this.cbx_portName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_portName.FormattingEnabled = true;
             this.cbx_portName.Name = "cbx_portName";
+            this.cbx_portName.SelectedIndexChanged += new System.EventHandler(this.cbx_portName_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -138,8 +131,8 @@ namespace VisionPlatform
             // 
             // cbx_stopBit
             // 
-            resources.ApplyResources(this.cbx_stopBit, "cbx_stopBit");
             this.cbx_stopBit.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.cbx_stopBit, "cbx_stopBit");
             this.cbx_stopBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_stopBit.FormattingEnabled = true;
             this.cbx_stopBit.Name = "cbx_stopBit";
@@ -151,8 +144,8 @@ namespace VisionPlatform
             // 
             // cbx_parityBit
             // 
-            resources.ApplyResources(this.cbx_parityBit, "cbx_parityBit");
             this.cbx_parityBit.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.cbx_parityBit, "cbx_parityBit");
             this.cbx_parityBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_parityBit.FormattingEnabled = true;
             this.cbx_parityBit.Name = "cbx_parityBit";
@@ -179,24 +172,31 @@ namespace VisionPlatform
             this.cbx_baudRate.FormattingEnabled = true;
             this.cbx_baudRate.Name = "cbx_baudRate";
             // 
+            // tableLayoutPanel3
+            // 
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
             // FormLED
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormLED";
             this.Load += new System.EventHandler(this.FormLED_Load);
-            this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbx_parityBit;
         private System.Windows.Forms.ComboBox cbx_stopBit;
         private System.Windows.Forms.ComboBox tbx_dataBit;
@@ -214,5 +214,6 @@ namespace VisionPlatform
         private System.Windows.Forms.Button btn_openPort;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

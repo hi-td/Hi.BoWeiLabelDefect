@@ -1575,8 +1575,10 @@ namespace VisionPlatform
                     //设置光源亮度
                     cHBrights = new CHBright[4];
                     int nLight = DataSerializer._globalData.dicImageing[camID].CHBright[i].nBrightness;
+                    string strPort = DataSerializer._globalData.dicImageing[camID].strPort;
+                    LEDRTU ledRTU = DataSerializer._COMConfig.dicLed[strPort];
                     cHBrights[i] = new CHBright(true, nLight);
-                    myLEDCtrl.SetLED(cHBrights);
+                    myLEDCtrl.SetLED(ledRTU, cHBrights);
                     b_image = false;
                     CamCommon.GrabImage(strCamSer);
                     TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
@@ -1599,7 +1601,7 @@ namespace VisionPlatform
                                 }
                                 Thread.Sleep(2);
                             }
-                            myLEDCtrl.LEDAllOff(cHBrights);
+                            myLEDCtrl.LEDAllOff(ledRTU, cHBrights);
                             break;
                         }
                         ts_timeOut = new TimeSpan(DateTime.Now.Ticks);

@@ -1,16 +1,16 @@
-﻿using System;
+﻿using BaseData;
+using CamSDK;
+using EnumData;
+using Hi.Ltd;
+using Microsoft.Win32;
+using Newtonsoft.Json;
+using StaticFun;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using BaseData;
-using CamSDK;
-using EnumData;
-using Newtonsoft.Json;
 using WENYU_IO;
-using StaticFun;
-using Microsoft.Win32;
-using Hi.Ltd;
 
 namespace VisionPlatform
 {
@@ -350,10 +350,13 @@ namespace VisionPlatform
                                 //将所有光源通道亮度值设置为0
                                 for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
                                 {
-                                    LEDControl.SetBrightness(ch, 0);
+                                    foreach (var led in DataSerializer._COMConfig.dicLed.Values)
+                                    {
+                                        LEDControl.SetBrightness(led, ch, 0);
+                                    }
                                 }
                                 //关闭光源控制器串口
-                                LEDControl.CloseLED();
+                                LEDControl.CloseAllLED();
                             }
                             CamCommon.CloseAllCam();
                             Process.GetCurrentProcess().Kill();
@@ -844,7 +847,7 @@ namespace VisionPlatform
             if (null != dic_SubCam && dic_SubCam.ContainsKey(nSel))
             {
                 numUpD_SubCam.Value = dic_SubCam[nSel];
-            
+
             }
             else
             {
@@ -881,7 +884,7 @@ namespace VisionPlatform
 
         private void cB_Modbus_CheckedChanged(object sender, EventArgs e)
         {
-            if(cB_Modbus.Checked)
+            if (cB_Modbus.Checked)
             {
                 if (initConfig.initConfig.comMode.TYPE == EnumData.COMType.COM)
                 {

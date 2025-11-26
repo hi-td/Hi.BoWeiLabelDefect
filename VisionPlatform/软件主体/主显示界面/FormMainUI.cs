@@ -485,12 +485,8 @@ namespace VisionPlatform
 
                 if (GlobalData.Config._InitConfig.initConfig.bDigitLight)
                 {
-                    LEDControl.OpenLedCom(DataSerializer._COMConfig.Led);
+                    LEDControl.OpenAllLedCom(ref DataSerializer._COMConfig.dicLed);
                     Thread.Sleep(10);
-                    if (!LEDControl.isOpen)
-                    {
-                        MessageFun.ShowMessage("光源控制器链接异常，请检查光源控制器。", strEnglish: "The connection of the light source controller is abnormal. Please check the light source controller.");
-                    }
                 }
             }
             catch (Exception ex)
@@ -650,16 +646,16 @@ namespace VisionPlatform
                         WENYU_PIO32P.WY_WriteOutPutBit2(WENYU.DevID, 1);
                         WENYU.CloseIO();
                     }
-                    if (GlobalData.Config._InitConfig.initConfig.bDigitLight && LEDControl.isOpen)
-                    {
-                        //将所有光源通道亮度值设置为0
-                        for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
-                        {
-                            LEDControl.SetBrightness(ch, 0);
-                        }
-                        //关闭光源控制器串口
-                        LEDControl.CloseLED();
-                    }
+                    //if (GlobalData.Config._InitConfig.initConfig.bDigitLight && LEDControl.isOpen)
+                    //{
+                    //    //将所有光源通道亮度值设置为0
+                    //    for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
+                    //    {
+                    //        LEDControl.SetBrightness(ch, 0);
+                    //    }
+                    //    //关闭光源控制器串口
+                    //    LEDControl.CloseLED();
+                    //}
                     if (GlobalData.Config._InitConfig.initConfig.comMode.TYPE == EnumData.COMType.NET)//关闭M1点
                     {
                         var address = new Address(SoftType.M, 1, DataType.Bit);

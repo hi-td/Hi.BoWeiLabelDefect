@@ -7,25 +7,25 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VisionPlatform
 {
     public class LEDControl
     {
-        public static bool isOpen = false;      //监听光源控制器串口是否打开
-        private static SerialPort ComDevice = new SerialPort();
-        int[] nSetLed = new int[6];
-        public static bool OpenLedCom(BaseData.LEDRTU led)
+        //public static bool isOpen = false;      //监听光源控制器串口是否打开
+        //private static SerialPort ComDevice = new SerialPort();
+        //int[] nSetLed = new int[6];
+        public static bool OpenLedCom(ref BaseData.LEDRTU led)
         {
             try
             {
                 if (null == led.PortName)
                 {
-                    isOpen = false;
+                    led.bOpen = false;
                     return false;
                 }
+                SerialPort ComDevice = new SerialPort();
                 ComDevice.PortName = led.PortName;
                 ComDevice.BaudRate = led.BaudRate;
                 ComDevice.Parity = led.parity;
@@ -36,23 +36,92 @@ namespace VisionPlatform
                     ComDevice.Close();
                 }
                 ComDevice.Open();
-                isOpen = true;
-                MessageFun.ShowMessage("光源控制器串口打开成功!", true, "The serial port of the light source controller has been successfully opened!");
+                led.bOpen = true;
+                MessageFun.ShowMessage($"光源控制器串口{led.PortName}打开成功!", true, "The serial port of the light source controller has been successfully opened!");
                 Thread.Sleep(2);
                 return true;
             }
             catch (Exception ex)
             {
-                isOpen = false;
-                MessageFun.ShowMessage("光源控制器串口打开失败：" + ex.ToString(), true, "The serial port of the light source controller failed to open:" + ex.ToString());
+                led.bOpen = false;
+                MessageFun.ShowMessage($"光源控制器串口{led.PortName}打开失败：" + ex.ToString(), true, "The serial port of the light source controller failed to open:" + ex.ToString());
                 return false;
             }
         }
-
-        public static void CloseLED()
+        public static void CloseLED(ref BaseData.LEDRTU ledRTU)
         {
-            ComDevice.Close();
-            isOpen = false;
+            ledRTU.bOpen = false;
+            SerialPort comDevice = new SerialPort();
+            comDevice.PortName = ledRTU.PortName;
+            comDevice.BaudRate = ledRTU.BaudRate;
+            comDevice.Parity = ledRTU.parity;
+            comDevice.DataBits = ledRTU.DataBits;
+            comDevice.StopBits = ledRTU.stopBits;
+            comDevice.Close();
+        }
+        public static bool OpenAllLedCom(ref Dictionary<string, BaseData.LEDRTU> dicLed)
+        {
+            LEDRTU ledRTU = new LEDRTU();
+            string strPortName = "";
+            try
+            {
+                foreach (var led in dicLed)
+                {
+                    strPortName = led.Key;
+                    ledRTU = led.Value;
+                    ledRTU.bOpen = false;
+                    SerialPort comDevice = new SerialPort();
+                    comDevice.PortName = led.Key;
+                    comDevice.BaudRate = ledRTU.BaudRate;
+                    comDevice.Parity = ledRTU.parity;
+                    comDevice.DataBits = ledRTU.DataBits;
+                    comDevice.StopBits = ledRTU.stopBits;
+                    if (comDevice.IsOpen)
+                    {
+                        comDevice.Close();
+                    }
+                    comDevice.Open();
+                    ledRTU.bOpen = true;
+                    dicLed[led.Key] = ledRTU;
+                    MessageFun.ShowMessage($"光源控制器{led.Key}打开成功!", true, $"The serial port {led.Key}of the light source controller has been successfully opened!");
+                    Thread.Sleep(2);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageFun.ShowMessage($"光源控制器串口打开失败，请检查光源控制器：{ex}", true, $"The serial port of the light source controller open failed,please check it:{ex}");
+                if ("" != strPortName)
+                {
+                    ledRTU.bOpen = false;
+                    dicLed[strPortName] = ledRTU;
+                }
+                return false;
+            }
+
+        }
+        public static void CloseAllLED()
+        {
+            try
+            {
+                foreach (var led in DataSerializer._COMConfig.dicLed)
+                {
+                    LEDRTU ledRTU = led.Value;
+                    ledRTU.bOpen = false;
+                    SerialPort comDevice = new SerialPort();
+                    comDevice.PortName = led.Key;
+                    comDevice.BaudRate = ledRTU.BaudRate;
+                    comDevice.Parity = ledRTU.parity;
+                    comDevice.DataBits = ledRTU.DataBits;
+                    comDevice.StopBits = ledRTU.stopBits;
+                    comDevice.Close();
+                    DataSerializer._COMConfig.dicLed[led.Key] = ledRTU;
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage($"CloseAllLED:{ex}", true);
+            }
         }
 
         /// <summary>
@@ -60,11 +129,21 @@ namespace VisionPlatform
         /// </summary>
         /// <param name="CH"></param>  通道，从1开始
         /// <param name="brightness"></param> 亮度
-        public static bool SetBrightness(int CH, int brightness)
+        public static bool SetBrightness(BaseData.LEDRTU led, int CH, int brightness)
         {
             string str_Bright = "";
             try
             {
+                if (null == led.PortName || led.bOpen == false)
+                {
+                    return false;
+                }
+                SerialPort comDevice = new SerialPort();
+                comDevice.PortName = led.PortName;
+                comDevice.BaudRate = led.BaudRate;
+                comDevice.Parity = led.parity;
+                comDevice.DataBits = led.DataBits;
+                comDevice.StopBits = led.stopBits;
                 int length = brightness.ToString().Length;
                 if (length == 1)
                 {
@@ -103,12 +182,11 @@ namespace VisionPlatform
                         break;
                 }
                 SendData = SendData + str_Bright + "#";
-                if (isOpen)
+                if (led.bOpen)
                 {
                     byte[] SendBytes = null;
                     SendBytes = Encoding.Default.GetBytes(SendData);
-                   // MessageFun.ShowMessage($"发送数据:{SendData}");
-                    ComDevice.Write(SendBytes, 0, SendBytes.Length);//发送数据
+                    comDevice.Write(SendBytes, 0, SendBytes.Length);//发送数据
                 }
                 else
                 {
@@ -134,7 +212,7 @@ namespace VisionPlatform
 
         private static readonly object setCHLock = new object();
 
-        public void SetLED(CHBright[] cHBrights)
+        public void SetLED(BaseData.LEDRTU led, CHBright[] cHBrights)
         {
             try
             {
@@ -144,7 +222,7 @@ namespace VisionPlatform
                 }
                 for (int n = 0; n < cHBrights.Count(); n++)
                 {
-                    LEDControl.SetBrightness(n+1, cHBrights[n].bOpen ? cHBrights[n].nBrightness : 0);
+                    LEDControl.SetBrightness(led, n + 1, cHBrights[n].bOpen ? cHBrights[n].nBrightness : 0);
                 }
                 Thread.Sleep(60);
             }
@@ -155,7 +233,7 @@ namespace VisionPlatform
 
         }
 
-        public void LEDAllOff(CHBright[] cHBrights)
+        public void LEDAllOff(BaseData.LEDRTU led, CHBright[] cHBrights)
         {
             try
             {
@@ -165,7 +243,7 @@ namespace VisionPlatform
                 }
                 for (int n = 0; n < cHBrights.Count(); n++)
                 {
-                    LEDControl.SetBrightness(n+1, 0);
+                    LEDControl.SetBrightness(led, n + 1, 0);
                 }
                 Thread.Sleep(60);
             }

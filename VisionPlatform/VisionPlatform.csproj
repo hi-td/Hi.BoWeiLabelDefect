@@ -509,12 +509,6 @@
     <Compile Include="通讯\光源控制器\CtrlLEDSet.Designer.cs">
       <DependentUpon>CtrlLEDSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="通讯\光源控制器\FormLEDCom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="通讯\光源控制器\FormLEDCom.Designer.cs">
-      <DependentUpon>FormLEDCom.cs</DependentUpon>
-    </Compile>
     <Compile Include="通讯\光源控制器\LEDControl.cs" />
     <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceTrans.cs">
       <SubType>UserControl</SubType>
@@ -1079,9 +1073,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\光源控制器\CtrlLEDSet.resx">
       <DependentUpon>CtrlLEDSet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="通讯\光源控制器\FormLEDCom.resx">
-      <DependentUpon>FormLEDCom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\ModbusTCP\FormModelBusTcpComm.en-US.resx">
       <DependentUpon>FormModelBusTcpComm.cs</DependentUpon>

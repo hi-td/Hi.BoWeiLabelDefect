@@ -40,7 +40,8 @@ namespace VisionPlatform
         {
             public List<IOSet> listIOSet = new List<IOSet>();                    //WENYU8或WENYU16-IO信号配置
             public int WENYU232_ComPort = -1;                                    //WENYU232转IO通讯端口号
-            public BaseData.LEDRTU Led = new BaseData.LEDRTU();                  //光源控制器串口配置
+            //<端口，光源控制器串口配置>
+            public Dictionary<string, BaseData.LEDRTU> dicLed = new Dictionary<string, BaseData.LEDRTU>();
         }
         public static GlobalData_COM _COMConfig = new GlobalData_COM();
         //plc串口配置

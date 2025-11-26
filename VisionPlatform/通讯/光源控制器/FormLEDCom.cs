@@ -1,15 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StaticFun;
 
 namespace VisionPlatform
 {
@@ -99,7 +92,7 @@ namespace VisionPlatform
                 param.DataBits = int.Parse(tbx_dataBit.Text);
                 param.parity = (Parity)iparity;
                 param.stopBits = (StopBits)iStopBits;
-                
+
             }
             catch (SystemException error)
             {
@@ -116,7 +109,7 @@ namespace VisionPlatform
             //UpdateRecevie(System.Text.Encoding.Default.GetString(ReDatas));                
             //UpdateReceiveCount(ReDatas.Length);
             //不接受返回数据
-           // ComDevice.DiscardInBuffer();
+            // ComDevice.DiscardInBuffer();
         }
 
         private void btn_openPort_Click(object sender, EventArgs e)
@@ -143,7 +136,7 @@ namespace VisionPlatform
                 MessageBox.Show("打开串口失败:" + ex.ToString());
                 return;
             }
-           
+
         }
 
         private void btn_closePort_Click(object sender, EventArgs e)
@@ -158,7 +151,7 @@ namespace VisionPlatform
             {
                 MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void FormLED_Load(object sender, EventArgs e)
@@ -213,7 +206,7 @@ namespace VisionPlatform
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(DataSerializer._COMConfig.Led.PortName !=null)
+            if (DataSerializer._COMConfig.Led.PortName != null)
             {
                 DialogResult dr = MessageBox.Show("是否更新光源控制器串口配置文件？", "提示：", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dr != DialogResult.OK)

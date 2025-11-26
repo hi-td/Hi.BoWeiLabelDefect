@@ -1,15 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using BaseData;
+using Newtonsoft.Json;
+using StaticFun;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StaticFun;
 
 namespace VisionPlatform
 {
@@ -52,7 +47,7 @@ namespace VisionPlatform
                 this.cbx_parityBit.Items.Add("奇校验");
                 this.cbx_parityBit.Items.Add("偶校验");
             }
-            
+
             this.cbx_parityBit.SelectedIndex = 0;
 
             //数据位
@@ -110,7 +105,7 @@ namespace VisionPlatform
                 param.DataBits = int.Parse(tbx_dataBit.Text);
                 param.parity = (Parity)iparity;
                 param.stopBits = (StopBits)iStopBits;
-                
+
             }
             catch (SystemException error)
             {
@@ -127,11 +122,12 @@ namespace VisionPlatform
             //UpdateRecevie(System.Text.Encoding.Default.GetString(ReDatas));                
             //UpdateReceiveCount(ReDatas.Length);
             //不接受返回数据
-           // ComDevice.DiscardInBuffer();
+            // ComDevice.DiscardInBuffer();
         }
 
         private void btn_openPort_Click(object sender, EventArgs e)
         {
+            LEDRTU ledRTU = InitParam();
             //刷新配置
             if (lbl_statu.Text == "已打开" || lbl_statu.Text == "Opened")
             {
@@ -144,16 +140,15 @@ namespace VisionPlatform
                 {
                     dr = MessageBox.Show("串口已打开，是否重新设置？", "提示：", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 }
-                
                 if (dr != DialogResult.OK)
                 {
                     return;
                 }
-                LEDControl.CloseLED();
+                LEDControl.CloseLED(ref ledRTU);
             }
             try
             {
-                LEDControl.OpenLedCom(InitParam());
+                LEDControl.OpenLedCom(ref ledRTU);
                 if (GlobalData.Config._language == EnumData.Language.english)
                 {
                     lbl_statu.Text = "Opened";
@@ -168,17 +163,18 @@ namespace VisionPlatform
             }
             catch (Exception ex)
             {
-                MessageFun.ShowMessage("打开串口失败:" + ex.ToString(),true, "Failed to open serial port:" + ex.ToString());
+                MessageFun.ShowMessage("打开串口失败:" + ex.ToString(), true, "Failed to open serial port:" + ex.ToString());
                 return;
             }
-           
+
         }
 
         private void btn_closePort_Click(object sender, EventArgs e)
         {
             try
             {
-                LEDControl.CloseLED();
+                LEDRTU ledRTU = InitParam();
+                LEDControl.CloseLED(ref ledRTU);
                 if (GlobalData.Config._language == EnumData.Language.english)
                 {
                     lbl_statu.Text = "Not opened";
@@ -187,7 +183,7 @@ namespace VisionPlatform
                 {
                     lbl_statu.Text = "未打开";
                 }
-                
+
                 lbl_statu.ForeColor = Color.Red;
             }
             catch (Exception ex)
@@ -200,90 +196,57 @@ namespace VisionPlatform
                 {
                     MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
-            
+
         }
 
         private void FormLED_Load(object sender, EventArgs e)
         {
-            LoadLED();
+            foreach (var led in DataSerializer._COMConfig.dicLed)
+            {
+                LoadLED(led.Key);
+                break;
+            }
         }
 
-        private void LoadLED()
+        private void LoadLED(string strPortName)
         {
             try
             {
-                if (LEDControl.isOpen)
+                if (null != DataSerializer._COMConfig.dicLed && DataSerializer._COMConfig.dicLed.ContainsKey(strPortName))
                 {
-                    if (GlobalData.Config._language == EnumData.Language.english)
+                    LEDRTU ledRTU = DataSerializer._COMConfig.dicLed[strPortName];
+                    if (ledRTU.bOpen)
                     {
-                        lbl_statu.Text = "Opened";
+                        lbl_statu.Text = (GlobalData.Config._language == EnumData.Language.english)
+                        ? "Opened" : "已打开";
+                        lbl_statu.ForeColor = Color.Green;
                     }
                     else
                     {
-                        lbl_statu.Text = "已打开";
+                        lbl_statu.Text = (GlobalData.Config._language == EnumData.Language.english) ? "Not opened" : "未打开";
+                        lbl_statu.ForeColor = Color.Red;
                     }
-                    lbl_statu.ForeColor = Color.Green;
-                }
-                else
-                {
-                    if (GlobalData.Config._language == EnumData.Language.english)
+                    BaseData.LEDRTU LedRTU = DataSerializer._COMConfig.dicLed[strPortName];
+                    cbx_baudRate.Text = LedRTU.BaudRate.ToString();
+                    cbx_portName.Text = LedRTU.PortName;
+                    tbx_dataBit.Text = LedRTU.DataBits.ToString();
+                    switch (LedRTU.parity)
                     {
-                        lbl_statu.Text = "Not opened";
+                        case Parity.None:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "None Parity" : "无校验";
+                            break;
+                        case Parity.Odd:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "Odd Parity" : "奇校验";
+                            break;
+                        case Parity.Even:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "Even Parity" : "偶校验";
+                            break;
+                        default:
+                            break;
                     }
-                    else
-                    {
-                        lbl_statu.Text = "未打开";
-                    }
-                    
-                    lbl_statu.ForeColor = Color.Red;
-                }
-                BaseData.LEDRTU LedRTU = DataSerializer._COMConfig.Led;
-                cbx_baudRate.Text = LedRTU.BaudRate.ToString();
-                cbx_portName.Text = LedRTU.PortName;
-                tbx_dataBit.Text = LedRTU.DataBits.ToString();
-                if (Parity.None == LedRTU.parity)
-                {
-                    if (GlobalData.Config._language == EnumData.Language.english)
-                    {
-                        cbx_parityBit.Text = "None Parity";
-                    }
-                    else
-                    {
-                        cbx_parityBit.Text = "无校验";
-                    }
-                    
-                }
-                else if (Parity.Odd == LedRTU.parity)
-                {
-                    if (GlobalData.Config._language == EnumData.Language.english)
-                    {
-                        cbx_parityBit.Text = "Odd Parity";
-                    }
-                    else
-                    {
-                        cbx_parityBit.Text = "奇校验";
-                    }
-                }
-                else if (Parity.Even == LedRTU.parity)
-                {
-                    if (GlobalData.Config._language == EnumData.Language.english)
-                    {
-                        cbx_parityBit.Text = "Even Parity";
-                    }
-                    else
-                    {
-                        cbx_parityBit.Text = "偶校验";
-                    }
-                }
-                if (StopBits.One == LedRTU.stopBits)
-                {
-                    cbx_stopBit.Text = "1";
-                }
-                else if (StopBits.Two == LedRTU.stopBits)
-                {
-                    cbx_stopBit.Text = "2";
+                    cbx_stopBit.Text = (StopBits.One == LedRTU.stopBits) ? "1" : "2";
                 }
             }
             catch (Exception)
@@ -294,7 +257,9 @@ namespace VisionPlatform
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(DataSerializer._COMConfig.Led.PortName !=null)
+            String strPortName = cbx_portName.Text;
+            BaseData.LEDRTU ledRTU = InitParam();
+            if (null != DataSerializer._COMConfig.dicLed && DataSerializer._COMConfig.dicLed.ContainsKey(strPortName))
             {
                 DialogResult dr = DialogResult.OK;
                 if (GlobalData.Config._language == EnumData.Language.english)
@@ -303,18 +268,50 @@ namespace VisionPlatform
                 }
                 else
                 {
-                    dr = MessageBox.Show("是否更新光源控制器串口配置文件？", "提示：", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    dr = MessageBox.Show($"是否更新光源控制器{strPortName}的配置文件？", "提示：", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 }
                 if (dr != DialogResult.OK)
                 {
                     return;
                 }
+                DataSerializer._COMConfig.dicLed[strPortName] = ledRTU;
             }
-            DataSerializer._COMConfig.Led = InitParam();
+            else
+            {
+                DataSerializer._COMConfig.dicLed.Add(strPortName, ledRTU);
+            }
             var json = JsonConvert.SerializeObject(DataSerializer._COMConfig);
             System.IO.File.WriteAllText(GlobalPath.SavePath.IOPath, json);
-            MessageFun.ShowMessage("更新并保存成功！", strEnglish: "Updated and saved successfully!");
             MessageFun.ShowMessage("光源控制器串口配置数据保存成功！", strEnglish: "The serial port configuration data of the light source controller has been successfully saved!");
+        }
+
+        private void cbx_portName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string strPortName = cbx_portName.Text;
+            foreach (var port in DataSerializer._COMConfig.dicLed.Keys)
+            {
+                if (port == strPortName)
+                {
+                    LEDRTU ledData = DataSerializer._COMConfig.dicLed[port];
+                    cbx_baudRate.Text = ledData.BaudRate.ToString();
+                    tbx_dataBit.Text = ledData.DataBits.ToString();
+                    switch (ledData.parity)
+                    {
+                        case Parity.None:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "None Parity" : "无校验";
+                            break;
+                        case Parity.Odd:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "Odd Parity" : "奇校验";
+                            break;
+                        case Parity.Even:
+                            cbx_parityBit.Text = (GlobalData.Config._language == EnumData.Language.english) ? "Even Parity" : "偶校验";
+                            break;
+                        default:
+                            break;
+                    }
+                    cbx_stopBit.Text = (StopBits.One == ledData.stopBits) ? "1" : "2";
+                }
+            }
         }
     }
 }

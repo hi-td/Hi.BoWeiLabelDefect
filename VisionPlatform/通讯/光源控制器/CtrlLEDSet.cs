@@ -1,19 +1,14 @@
 ﻿using BaseData;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThridLibray;
 
 namespace VisionPlatform
 {
     public partial class CtrlLEDSet : UserControl
     {
+        public string myPort;
+        public BaseData.LEDRTU myLed = new LEDRTU();
         public int nCH;
         bool bLoad = false;
         private event TrackBarValueChangedEventHandler _valueChanged;
@@ -23,6 +18,15 @@ namespace VisionPlatform
             this.Visible = true;
             this.Dock = DockStyle.Top;
             this.Margin = new Padding(1);
+        }
+        public void SetPort(string strPortName)
+        {
+            this.myPort = strPortName;
+            if (null != DataSerializer._COMConfig.dicLed &&
+                DataSerializer._COMConfig.dicLed.ContainsKey(myPort))
+            {
+                this.myLed = DataSerializer._COMConfig.dicLed[myPort];
+            }
         }
         public event TrackBarValueChangedEventHandler ValueChanged
         {
@@ -37,7 +41,7 @@ namespace VisionPlatform
                 param.bOpen = checkBox_bSel.Checked;
                 param.nBrightness = (int)numUpD_Brightness.Value;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StaticFun.MessageFun.ShowMessage(ex);
             }
@@ -55,9 +59,10 @@ namespace VisionPlatform
                 numUpD_Brightness.Enabled = cHBright.bOpen;
                 trackBar_Brightness.Value = cHBright.nBrightness;
                 numUpD_Brightness.Value = cHBright.nBrightness;
-                if (cHBright.bOpen)
+                if (cHBright.bOpen && DataSerializer._COMConfig.dicLed.ContainsKey(myPort))
                 {
-                    LEDControl.SetBrightness(nCH, cHBright.nBrightness);
+
+                    LEDControl.SetBrightness(this.myLed, nCH, cHBright.nBrightness);
                 }
             }
             catch (Exception ex)
@@ -92,7 +97,7 @@ namespace VisionPlatform
                     trackBar_Brightness.Enabled = cb.Checked;
                     numUpD_Brightness.Enabled = cb.Checked;
                 }
-                LEDControl.SetBrightness(nCH, (int)numUpD_Brightness.Value);
+                LEDControl.SetBrightness(this.myLed, nCH, (int)numUpD_Brightness.Value);
                 _valueChanged?.Invoke(sender, e);
             }
             catch (Exception ex)
