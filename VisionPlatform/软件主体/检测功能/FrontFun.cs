@@ -65,7 +65,7 @@ namespace VisionPlatform
                     }
                     outData.strPNCode = strPNCode;
                 }
-                if (!DefectAI(param.Defect, ho_PhotometricImg))
+                if (!DefectAI(param.Defect, inspectItem, ho_PhotometricImg))
                 {
                     bResult = false;
                 }
@@ -1045,7 +1045,7 @@ namespace VisionPlatform
         #endregion
 
         #region 外观检测
-        public bool DefectAI(InspectData.DefectParam param, HObject ho_BrokenImg)
+        public bool DefectAI(InspectData.DefectParam param, InspectItem inspectItem, HObject ho_BrokenImg)
         {
             bool bResult = true;
             HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
@@ -1058,7 +1058,21 @@ namespace VisionPlatform
             {
                 Mat mat = fun.HObjectToMat(ho_BrokenImg);
                 //光度立体预处理图
-                ResultAi AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                ResultAi AIResult_broken = new ResultAi();
+                switch (inspectItem)
+                {
+                    case InspectItem.Front:
+                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                        break;
+                    case InspectItem.LeftSide:
+                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                        break;
+                    case InspectItem.RightSide:
+                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                        break;
+                    default:
+                        break;
+                }
                 int nNum = AIResult_broken.scores.Count;
                 if (nNum != 0)
                 {

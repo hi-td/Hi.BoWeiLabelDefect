@@ -31,6 +31,8 @@ namespace VisionPlatform
                     this.cbx_portName.Items.Add(item);
                     CheckBox cb = new CheckBox();
                     cb.Text = item;
+                    cb.Enabled = false;
+                    cb.Padding = new Padding(3);
                     flowLayoutPanel.Controls.Add(cb);
                     dicCheckBox.Add(item, cb);
                 }
@@ -159,20 +161,23 @@ namespace VisionPlatform
             }
             try
             {
-                LEDControl.OpenLedCom(ref ledRTU);
-                if (GlobalData.Config._language == EnumData.Language.english)
+                if (LEDControl.OpenLedCom(ref ledRTU))
                 {
-                    lbl_statu.Text = "Opened";
+                    if (GlobalData.Config._language == EnumData.Language.english)
+                    {
+                        lbl_statu.Text = "Opened";
+                        MessageBox.Show("Reset and open serial port successfully!");
+                    }
+                    else
+                    {
+                        lbl_statu.Text = "已打开";
+                        MessageBox.Show("重新设置并打开串口成功！");
+                    }
+                    lbl_statu.ForeColor = Color.Green;
                     dicCheckBox[ledRTU.PortName].Checked = true;
-                    dicCheckBox[ledRTU.PortName].BackColor = Color.LightGreen;
-                    MessageBox.Show("Reset and open serial port successfully!");
+                    dicCheckBox[ledRTU.PortName].BackColor = Color.Green;
                 }
-                else
-                {
-                    lbl_statu.Text = "已打开";
-                    MessageBox.Show("重新设置并打开串口成功！");
-                }
-                lbl_statu.ForeColor = Color.Green;
+
             }
             catch (Exception ex)
             {

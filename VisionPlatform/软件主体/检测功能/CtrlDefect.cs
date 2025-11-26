@@ -76,7 +76,7 @@ namespace VisionPlatform
 
         private void but_Test_Click(object sender, EventArgs e)
         {
-            myCtrlHome.Fun.myFrontFun.DefectAI(InitParam(), myCtrlHome.Fun.m_hImage);
+            myCtrlHome.Fun.myFrontFun.DefectAI(InitParam(), myCtrlHome.myCamItem.item, myCtrlHome.Fun.m_hImage);
         }
 
         private void but_SetBrokenROI_Click(object sender, EventArgs e)

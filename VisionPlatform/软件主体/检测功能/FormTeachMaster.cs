@@ -21,7 +21,6 @@ namespace VisionPlatform
         ToolStripComboBox cb_IO = new ToolStripComboBox();  //IO点位
         ToolStripMenuItem item_IOIn = new ToolStripMenuItem("I/O输入点");
         ToolStripMenuItem item_IOOut = new ToolStripMenuItem("I/O输出点");
-        //ToolStripMenuItem item_light = new ToolStripMenuItem("光源控制");
         ToolStripComboBox cb_light = new ToolStripComboBox(); //光源通道
         ToolStripItem del = new ToolStripMenuItem("删除");
         public static Panel m_panelWindow;
@@ -464,18 +463,6 @@ namespace VisionPlatform
                             contextMenuStrip2.Items.Add(item_IOIn);
                             contextMenuStrip2.Items.Add(item_IOOut);
                         }
-                        if (_InitConfig.initConfig.bDigitLight)
-                        {
-                            if (GlobalData.Config._language == EnumData.Language.english)
-                            {
-                                contextMenuStrip2.Items.Add("Light source control");
-                            }
-                            else
-                            {
-                                contextMenuStrip2.Items.Add("光源控制");
-                            }
-
-                        }
                         CurrentNode.ContextMenuStrip = contextMenuStrip2;
                         treeViewFun.SelectedNode = CurrentNode;
                         m_SelNode_z = CurrentNode.Text;
@@ -597,28 +584,7 @@ namespace VisionPlatform
                 }
 
             }
-            else if ("光源控制" == strItem || "Light source control" == strItem)
-            {
-                if (null == formLightCH || formLightCH.IsDisposed)
-                {
-                    //CamInspectItem camItem = new CamInspectItem()
-                    //{
-                    //    cam = m_cam * 10 + sub_cam,
-                    //    item = m_item
-                    //};
-                    //formLightCH = new FormLightCH(camItem)
-                    //{
-                    //    TopMost = true,
-                    //    Top = Control.MousePosition.Y,
-                    //    Left = Control.MousePosition.X
-                    //};
-                    //formLightCH.Show();
-                }
-                else
-                {
-                    formLightCH.TopMost = true;
-                }
-            }
+            
         }
 
     }
