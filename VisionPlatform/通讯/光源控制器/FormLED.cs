@@ -230,7 +230,6 @@ namespace VisionPlatform
             foreach (var led in DataSerializer._COMConfig.dicLed)
             {
                 LoadLED(led.Key);
-                break;
             }
         }
 
@@ -246,6 +245,8 @@ namespace VisionPlatform
                         lbl_statu.Text = (GlobalData.Config._language == EnumData.Language.english)
                         ? "Opened" : "已打开";
                         lbl_statu.ForeColor = Color.Green;
+                        dicCheckBox[ledRTU.PortName].Checked = true;
+                        dicCheckBox[ledRTU.PortName].BackColor = Color.Green;
                     }
                     else
                     {
