@@ -207,8 +207,11 @@ namespace VisionPlatform
                 {
                     lbl_statu.Text = "未打开";
                 }
-
                 lbl_statu.ForeColor = Color.Red;
+                if (DataSerializer._COMConfig.dicLed.ContainsKey(ledRTU.PortName))
+                {
+                    DataSerializer._COMConfig.dicLed.Remove(ledRTU.PortName);
+                }
             }
             catch (Exception ex)
             {
