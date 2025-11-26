@@ -13,9 +13,7 @@ namespace VisionPlatform
 {
     public class LEDControl
     {
-        //public static bool isOpen = false;      //监听光源控制器串口是否打开
-        //private static SerialPort ComDevice = new SerialPort();
-        //int[] nSetLed = new int[6];
+        private static Dictionary<string, SerialPort> dicComDevice = new Dictionary<string, SerialPort>();
         public static bool OpenLedCom(ref BaseData.LEDRTU led)
         {
             try
@@ -36,6 +34,14 @@ namespace VisionPlatform
                     ComDevice.Close();
                 }
                 ComDevice.Open();
+                if (null != dicComDevice && dicComDevice.ContainsKey(led.PortName))
+                {
+                    dicComDevice[led.PortName] = ComDevice;
+                }
+                else
+                {
+                    dicComDevice.Add(led.PortName, ComDevice);
+                }
                 led.bOpen = true;
                 MessageFun.ShowMessage($"光源控制器串口{led.PortName}打开成功!", true, "The serial port of the light source controller has been successfully opened!");
                 Thread.Sleep(2);
@@ -51,13 +57,10 @@ namespace VisionPlatform
         public static void CloseLED(ref BaseData.LEDRTU ledRTU)
         {
             ledRTU.bOpen = false;
-            SerialPort comDevice = new SerialPort();
-            comDevice.PortName = ledRTU.PortName;
-            comDevice.BaudRate = ledRTU.BaudRate;
-            comDevice.Parity = ledRTU.parity;
-            comDevice.DataBits = ledRTU.DataBits;
-            comDevice.StopBits = ledRTU.stopBits;
-            comDevice.Close();
+            if (null != dicComDevice && dicComDevice.ContainsKey(ledRTU.PortName))
+            {
+                dicComDevice[ledRTU.PortName].Close();
+            }
         }
         public static bool OpenAllLedCom(ref Dictionary<string, BaseData.LEDRTU> dicLed)
         {
@@ -65,6 +68,7 @@ namespace VisionPlatform
             string strPortName = "";
             try
             {
+                dicComDevice = new Dictionary<string, SerialPort>();
                 foreach (var led in dicLed)
                 {
                     strPortName = led.Key;
@@ -81,6 +85,14 @@ namespace VisionPlatform
                         comDevice.Close();
                     }
                     comDevice.Open();
+                    if (null != dicComDevice && dicComDevice.ContainsKey(strPortName))
+                    {
+                        dicComDevice[strPortName] = comDevice;
+                    }
+                    else
+                    {
+                        dicComDevice.Add(strPortName, comDevice);
+                    }
                     ledRTU.bOpen = true;
                     dicLed[led.Key] = ledRTU;
                     MessageFun.ShowMessage($"光源控制器{led.Key}打开成功!", true, $"The serial port {led.Key}of the light source controller has been successfully opened!");
@@ -108,13 +120,10 @@ namespace VisionPlatform
                 {
                     LEDRTU ledRTU = led.Value;
                     ledRTU.bOpen = false;
-                    SerialPort comDevice = new SerialPort();
-                    comDevice.PortName = led.Key;
-                    comDevice.BaudRate = ledRTU.BaudRate;
-                    comDevice.Parity = ledRTU.parity;
-                    comDevice.DataBits = ledRTU.DataBits;
-                    comDevice.StopBits = ledRTU.stopBits;
-                    comDevice.Close();
+                    if (null != dicComDevice && dicComDevice.ContainsKey(led.Key))
+                    {
+                        dicComDevice[led.Key].Close();
+                    }
                     DataSerializer._COMConfig.dicLed[led.Key] = ledRTU;
                 }
             }
@@ -138,12 +147,6 @@ namespace VisionPlatform
                 {
                     return false;
                 }
-                SerialPort comDevice = new SerialPort();
-                comDevice.PortName = led.PortName;
-                comDevice.BaudRate = led.BaudRate;
-                comDevice.Parity = led.parity;
-                comDevice.DataBits = led.DataBits;
-                comDevice.StopBits = led.stopBits;
                 int length = brightness.ToString().Length;
                 if (length == 1)
                 {
@@ -186,7 +189,7 @@ namespace VisionPlatform
                 {
                     byte[] SendBytes = null;
                     SendBytes = Encoding.Default.GetBytes(SendData);
-                    comDevice.Write(SendBytes, 0, SendBytes.Length);//发送数据
+                    dicComDevice[led.PortName].Write(SendBytes, 0, SendBytes.Length);//发送数据
                 }
                 else
                 {
