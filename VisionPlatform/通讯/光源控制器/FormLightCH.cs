@@ -125,6 +125,24 @@ namespace VisionPlatform
                 StaticFun.MessageFun.ShowMessage($"光源配置保存失败:{ex}", true);
             }
         }
+
+        private void cmbBox_PortName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                myPort = cmbBox_PortName.Text;
+                ctrlLEDSet1.SetPort(myPort);
+                ctrlLEDSet2.SetPort(myPort);
+                ctrlLEDSet3.SetPort(myPort);
+                ctrlLEDSet4.SetPort(myPort);
+                ctrlLEDSet5.SetPort(myPort);
+                ctrlLEDSet6.SetPort(myPort);
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
     }
 
 }
