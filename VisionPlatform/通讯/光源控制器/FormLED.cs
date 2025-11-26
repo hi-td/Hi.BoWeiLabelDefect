@@ -33,6 +33,7 @@ namespace VisionPlatform
                     cb.Text = item;
                     cb.Enabled = false;
                     cb.Padding = new Padding(3);
+                    //cb.Dock = DockStyle.Left;
                     flowLayoutPanel.Controls.Add(cb);
                     dicCheckBox.Add(item, cb);
                 }
@@ -207,8 +208,11 @@ namespace VisionPlatform
                 {
                     lbl_statu.Text = "未打开";
                 }
-
                 lbl_statu.ForeColor = Color.Red;
+                if (DataSerializer._COMConfig.dicLed.ContainsKey(ledRTU.PortName))
+                {
+                    DataSerializer._COMConfig.dicLed.Remove(ledRTU.PortName);
+                }
             }
             catch (Exception ex)
             {

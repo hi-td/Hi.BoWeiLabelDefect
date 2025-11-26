@@ -521,23 +521,31 @@ namespace VisionPlatform
         #region 工具函数
         public void DispRegion(HObject obj, string strColor = "green", string draw = "margin", int lineWidth = 1)
         {
-            if (null == obj || obj.CountObj() == 0) return;
-            var run = Task.Run(() =>
+            try
             {
-                try
+                if (null == obj || obj.CountObj() == 0) return;
+            }
+            catch (HalconException ex)
+            {
+                return;
+            }
+            var run = Task.Run(() =>
                 {
-                    //HOperatorSet.RegionFeatures(obj, "area", out HTuple hv_area);
-                    //if (hv_area.TupleLength() == 0) return;
-                    m_hWnd.SetColor(strColor);
-                    m_hWnd.SetDraw(draw);
-                    m_hWnd.SetLineWidth(lineWidth);
-                    m_hWnd.DispObj(obj);
-                }
-                catch (Exception ex)
-                {
-                }
-            });
+                    try
+                    {
+                        //HOperatorSet.RegionFeatures(obj, "area", out HTuple hv_area);
+                        //if (hv_area.TupleLength() == 0) return;
+                        m_hWnd.SetColor(strColor);
+                        m_hWnd.SetDraw(draw);
+                        m_hWnd.SetLineWidth(lineWidth);
+                        m_hWnd.DispObj(obj);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                });
             run.Wait();
+
             m_hWnd.SetColor("green");
             m_hWnd.SetDraw("margin");
             m_hWnd.SetLineWidth(1);
@@ -5459,6 +5467,7 @@ namespace VisionPlatform
         {
             PhotometricStereoImage ho_ResultImages = new PhotometricStereoImage();
             HOperatorSet.GenEmptyObj(out HObject ho_Images);
+            HOperatorSet.GenEmptyObj(out HObject ho_GrayImage);
             HOperatorSet.GenEmptyObj(out HObject ho_HeightField);
             HOperatorSet.GenEmptyObj(out HObject ho_Gradient);
             HOperatorSet.GenEmptyObj(out HObject ho_Albedo);
@@ -5480,7 +5489,10 @@ namespace VisionPlatform
                 HTuple hv_arraySlants = new HTuple(31.4, 32.6, 31.7, 30.9);
                 foreach (HObject img in listOrgImages)
                 {
-                    HOperatorSet.ConcatObj(ho_Images, img, out ho_Images);
+                    ho_GrayImage.Dispose();
+                    HOperatorSet.Rgb1ToGray(img, out ho_GrayImage);
+                    HOperatorSet.ConcatObj(ho_Images, ho_GrayImage, out ho_Images);
+
                 }
                 ho_HeightField.Dispose();
                 ho_NormalField.Dispose();
