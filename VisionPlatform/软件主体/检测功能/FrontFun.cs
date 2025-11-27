@@ -70,10 +70,10 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
-                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
-                {
-                    bResult = false;
-                }
+                //if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
+                //{
+                //    bResult = false;
+                //}
             }
             catch (HalconException ex)
             {
@@ -87,12 +87,12 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public void FrontResultShow(int cam, InspectData.FrontParam inData, ref FrontResult result)
+        public void FrontResultShow(CamInspectItem camItem, InspectData.FrontParam inData, ref FrontResult result)
         {
             bool bResult = true;
             try
             {
-                FontShowParam fontParam = StaticFun.MessageFun.ReadFontParam(cam, InspectItem.Front);
+                FontShowParam fontParam = StaticFun.MessageFun.ReadFontParam(camItem.cam, camItem.item);
                 int nColStart = 50;
                 int nRowSite = fontParam.nRowStartPos;
                 int nColSite = fontParam.nColStartPos;

@@ -193,6 +193,92 @@ namespace VisionPlatform
             }
         }
 
+        public void SavePhotometricImages(int cam, string strCheckItem, List<HObject> listOrgImages, PhotometricStereoImage photometricStereoImage)
+        {
+            try
+            {
+                string strDate = DateTime.Now.ToString("yyyy-MM-dd") + "\\" + DateTime.Now.Hour.ToString() + "\\";
+                //保存原始图
+                string orgImageFath = SavePath.ImageFold + $"\\相机{cam}\\原始图像\\{strCheckItem}\\{strDate}";
+
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(orgImageFath))
+                        return;
+                    var folder = System.IO.Path.GetDirectoryName(orgImageFath);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+
+                    for (int i = 1; i <= listOrgImages.Count; i++)
+                    {
+                        if (null != listOrgImages[i])
+                        {
+                            string str = orgImageFath + i.ToString();
+                            str = str.Replace("\\", "/");
+                            HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str);
+                        }
+                    }
+                }
+                catch (HalconException error)
+                {
+                    MessageFun.ShowMessage(error.ToString());
+                    return;
+                }
+                //保存光度立体图
+                string resImageFath = SavePath.ImageFold + $"\\相机{cam}\\光度立体图像\\{strCheckItem}\\{strDate}";
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(resImageFath))
+                        return;
+                    var folder = System.IO.Path.GetDirectoryName(resImageFath);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+                    string str = resImageFath;
+                    str = str.Replace("\\", "/");
+                    if (null != photometricStereoImage.NormalField)
+                    {
+                        str = resImageFath + "NormalField";
+                        str = str.Replace("\\", "/");
+                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str);
+                    }
+                    if (null != photometricStereoImage.Albedo)
+                    {
+                        str = resImageFath + "Albedo";
+                        str = str.Replace("\\", "/");
+                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str);
+                    }
+                    if (null != photometricStereoImage.Gradient)
+                    {
+                        str = resImageFath + "Gradient";
+                        str = str.Replace("\\", "/");
+                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str);
+                    }
+                    if (null != photometricStereoImage.Curvature)
+                    {
+                        str = resImageFath + "Curvature";
+                        str = str.Replace("\\", "/");
+                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str);
+                    }
+                    if (null != photometricStereoImage.HeightField)
+                    {
+                        str = resImageFath + "HeightField";
+                        str = str.Replace("\\", "/");
+                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str);
+                    }
+                }
+                catch (HalconException error)
+                {
+                    MessageFun.ShowMessage(error.ToString());
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageFun.ShowMessage($"OK图像保存出错：{ex}", true, strEnglish: $"OK Image Save Error:{ex}");
+                return;
+            }
+        }
+
         public void SaveOKImage(int cam, string strCheckItem, string sCode = "")
         {
             try
@@ -371,14 +457,7 @@ namespace VisionPlatform
                     return;
                 }
                 m_hImage = image.Clone();
-                if (mirrorLoR)
-                {
-                    HOperatorSet.MirrorImage(m_hImage, out m_hImage, "column");
-                }
-                if (mirrorUoD)
-                {
-                    HOperatorSet.MirrorImage(m_hImage, out m_hImage, "row");
-                }
+                MirrorImage(ref m_hImage);
                 HOperatorSet.Rgb1ToGray(m_hImage, out m_GrayImage);
                 if (m_bShowCross)
                 {

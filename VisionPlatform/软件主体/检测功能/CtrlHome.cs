@@ -89,7 +89,7 @@ namespace VisionPlatform
                     bResult = false;
                 }
                 TimeSpan ts_check = new TimeSpan(DateTime.Now.Ticks);
-                Fun.myFrontFun.FrontResultShow(myCamItem.cam, param, ref outRes);
+                Fun.myFrontFun.FrontResultShow(myCamItem, param, ref outRes);
 
                 TimeSpan ts_show = new TimeSpan(DateTime.Now.Ticks);
                 string span1 = ((ts_check.Subtract(ts).Duration().TotalSeconds) * 1000).ToString("F0");
