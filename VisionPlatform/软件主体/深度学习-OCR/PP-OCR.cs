@@ -29,7 +29,7 @@ namespace PP_OCR
 
         public PP_OCRv4()
         {
-            CreateOCRPredictor();
+            //CreateOCRPredictor();
         }
         private void CreateOCRPredictor()
         {

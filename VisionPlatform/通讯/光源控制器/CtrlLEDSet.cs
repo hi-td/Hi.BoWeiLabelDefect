@@ -98,6 +98,7 @@ namespace VisionPlatform
                     trackBar_Brightness.Enabled = cb.Checked;
                     numUpD_Brightness.Enabled = cb.Checked;
                 }
+                trackBar_Brightness.Value = (int)numUpD_Brightness.Value;
                 LEDControl.SetBrightness(this.myLed, nCH, (int)numUpD_Brightness.Value);
                 _valueChanged?.Invoke(sender, e);
             }

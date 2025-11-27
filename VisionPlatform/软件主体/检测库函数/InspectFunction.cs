@@ -821,6 +821,8 @@ namespace VisionPlatform
                             {
                                 bLock = true;
                                 bCheckOut = true;
+                                LEDControl.AllLEDOff();
+                                Thread.Sleep(50);
                                 //复位信号
                                 var Receiveindex = keys[0].Index;
                                 var address = new Address(SoftType.M, Receiveindex, DataType.Bit);
@@ -829,11 +831,11 @@ namespace VisionPlatform
                                 ts = new TimeSpan(DateTime.Now.Ticks);
                                 if (Receiveindex == 0)
                                 {
-                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.LeftSide);
+                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.RightSide);
                                     InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                     Thread.Sleep(10);
-                                    camItem = new CamInspectItem(20, InspectItem.RightSide);
+                                    camItem = new CamInspectItem(20, InspectItem.LeftSide);
                                     inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                 }
