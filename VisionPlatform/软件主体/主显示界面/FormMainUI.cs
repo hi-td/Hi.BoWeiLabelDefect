@@ -195,7 +195,6 @@ namespace VisionPlatform
                         if (OpenRes != 0)
                         {
                             progressTips = "与PLC通讯测试失败，请检查相关参数配置...";
-                            //MessageBox.Show("与PLC通讯测试失败，请检查相关参数配置...", "通讯异常提示");
                         }
                         else
                         {
