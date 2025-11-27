@@ -1237,6 +1237,8 @@ namespace VisionPlatform
                 string strInspectItem = GetStrCheckItem(inspectItem.camItem.item);
                 int camID = inspectItem.camItem.cam;
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
+                
+                CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 //拍照总用时
@@ -1546,7 +1548,6 @@ namespace VisionPlatform
             try
             {
                 ClearObjShow();
-                CamCommon.OpenCam(strCamSer, this);
                 CHBright[] cHBrights = new CHBright[4];
                 cHBrights[0] = new CHBright();
                 for (int i = 0; i < 4; i++)

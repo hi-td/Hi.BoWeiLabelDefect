@@ -371,14 +371,7 @@ namespace VisionPlatform
                     return;
                 }
                 m_hImage = image.Clone();
-                if (mirrorLoR)
-                {
-                    HOperatorSet.MirrorImage(m_hImage, out m_hImage, "column");
-                }
-                if (mirrorUoD)
-                {
-                    HOperatorSet.MirrorImage(m_hImage, out m_hImage, "row");
-                }
+                MirrorImage(ref m_hImage);
                 HOperatorSet.Rgb1ToGray(m_hImage, out m_GrayImage);
                 if (m_bShowCross)
                 {
