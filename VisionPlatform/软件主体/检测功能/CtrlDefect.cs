@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseData;
+using System;
 using System.Windows.Forms;
 
 namespace VisionPlatform
@@ -8,7 +9,7 @@ namespace VisionPlatform
         CtrlHome myCtrlHome;
         InspectFunction Fun;
         BaseData.Arbitrary myArbitrary = new BaseData.Arbitrary();
-        FormPhotometricStereo myPhotometricStereo;
+        PhotometricStereoImage myPhotometricStereoImages;
         bool bLoad = false;
         public CtrlDefect(CtrlHome ctrlHome)
         {
@@ -17,7 +18,6 @@ namespace VisionPlatform
             this.Visible = true;
             this.Dock = DockStyle.Fill;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.myPhotometricStereo = FormMainUI.m_dicCtrlCamShow[ctrlHome.camID].formPhotometricStereo;
             InitUI();
         }
         /// <summary>
@@ -75,7 +75,6 @@ namespace VisionPlatform
             bLoad = false;
         }
 
-
         private void but_Test_Click(object sender, EventArgs e)
         {
             myCtrlHome.Fun.myFrontFun.DefectAI(InitParam(), myCtrlHome.myCamItem.item, myCtrlHome.Fun.myFrontFun.ho_AIImage);
@@ -97,9 +96,41 @@ namespace VisionPlatform
             myCtrlHome.Fun.ShowArbitrary(myArbitrary);
         }
 
-        private void but_SaveParam_Click(object sender, EventArgs e)
+        private void cmbBox_ImageSel_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (null == FormMainUI.m_dicCtrlCamShow[myCtrlHome.camID].formPhotometricStereo)
+                {
+                    return;
+                }
+                this.myPhotometricStereoImages = FormMainUI.m_dicCtrlCamShow[myCtrlHome.camID].formPhotometricStereo.photometricStereoImage;
+                switch (cmbBox_ImageSel.Text)
+                {
+                    case "法向量图":
+                        myCtrlHome.Fun.DispRegion(this.myPhotometricStereoImages.NormalField);
+                        myCtrlHome.Fun.myFrontFun.ho_AIImage = this.myPhotometricStereoImages.NormalField.Clone();
+                        break;
+                    case "反照率信息图":
+                        myCtrlHome.Fun.DispRegion(this.myPhotometricStereoImages.Albedo);
+                        myCtrlHome.Fun.myFrontFun.ho_AIImage = this.myPhotometricStereoImages.Albedo.Clone();
+                        break;
+                    case "梯度信息图":
+                        myCtrlHome.Fun.DispRegion(this.myPhotometricStereoImages.Gradient);
+                        myCtrlHome.Fun.myFrontFun.ho_AIImage = this.myPhotometricStereoImages.Gradient.Clone();
+                        break;
+                    case "曲率图":
+                        myCtrlHome.Fun.DispRegion(this.myPhotometricStereoImages.Curvature);
+                        myCtrlHome.Fun.myFrontFun.ho_AIImage = this.myPhotometricStereoImages.Curvature.Clone();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
         }
     }
 }

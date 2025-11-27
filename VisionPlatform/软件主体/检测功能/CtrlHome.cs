@@ -67,6 +67,7 @@ namespace VisionPlatform
                 ctrlDefect = new CtrlDefect(this);
                 tabPage_Fold.Controls.Clear();
                 tabPage_Fold.Controls.Add(ctrlDefect);
+
             }
             catch (Exception ex)
             {
@@ -90,7 +91,6 @@ namespace VisionPlatform
                 }
                 TimeSpan ts_check = new TimeSpan(DateTime.Now.Ticks);
                 Fun.myFrontFun.FrontResultShow(myCamItem, param, ref outRes);
-
                 TimeSpan ts_show = new TimeSpan(DateTime.Now.Ticks);
                 string span1 = ((ts_check.Subtract(ts).Duration().TotalSeconds) * 1000).ToString("F0");
                 StaticFun.MessageFun.ShowMessage("算法检测用时：" + span1);
@@ -115,6 +115,9 @@ namespace VisionPlatform
                 //周期码
                 param.bPNCode = checkBox_PNCode.Checked;
                 param.PNCode = ctrlPNCode.InitParam();
+                //褶皱鼓包检测
+                param.Defect = ctrlDefect.InitParam();
+                param.LabelMove = ctrlLabelMove.InitParam();
             }
             catch (Exception ex)
             {
@@ -127,6 +130,7 @@ namespace VisionPlatform
         {
             try
             {
+
                 bLoad = true;
                 if (null != DataSerializer._globalData.dic_FrontParam && DataSerializer._globalData.dic_FrontParam.ContainsKey(camID))
                 {
@@ -142,13 +146,24 @@ namespace VisionPlatform
                     checkBox_PNCode.Checked = param.bPNCode;
                     ctrlPNCode?.LoadParam(param.PNCode);
                     tabPage_PNCode.Parent = param.bPNCode ? tabCtrl : null;
-
+                    //褶皱鼓包
+                    checkBox_Fold.Checked = true;
+                    ctrlDefect?.LoadParam(param.Defect);
+                    tabPage_Fold.Parent = tabCtrl;
+                    //标签偏移
+                    checkBox_LabelMove.Checked = true;
+                    ctrlLabelMove.LoadParam(param.LabelMove);
+                    tabPage_LabelMove.Parent = tabCtrl;
+                    checkBox_Item_CheckedChanged(checkBox_LabelMove, null);
                 }
                 else
                 {
                     tabPage_BarCode.Parent = null;
                     tabPage_PNCode.Parent = null;
-                    tabPage_Fold.Parent = null;
+                    checkBox_Fold.Checked = true;
+                    checkBox_LabelMove.Checked = true;
+                    tabPage_Fold.Parent = tabCtrl;
+                    tabPage_LabelMove.Parent = tabCtrl;
                 }
             }
             catch (SystemException ex)
@@ -176,9 +191,6 @@ namespace VisionPlatform
                 {
                     DataSerializer._globalData.dic_FrontParam.Add(camID, InitParam());
                 }
-                // Fun.SaveModelImage(camID, "插壳模板图像");
-                //string strSend = "相机" + camInspect.cam + "-插壳检测参数保存完成！";
-                // StaticFun.MessageFun.ShowMessage(strSend);
                 MessageBox.Show($"相机{camID.ToString()[0]}-{camID.ToString()[1]}正面检测参数保存完成！");
 
             }
