@@ -70,10 +70,10 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
-                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
-                {
-                    bResult = false;
-                }
+                //if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
+                //{
+                //    bResult = false;
+                //}
             }
             catch (HalconException ex)
             {
@@ -144,7 +144,7 @@ namespace VisionPlatform
 
                 string strOK = "OK";
                 strColor = "green";
-                if (bResult == false)
+                if (bResult == false || result.bFrontResult == false)
                 {
                     result.bFrontResult = false;
                     strOK = "NG";

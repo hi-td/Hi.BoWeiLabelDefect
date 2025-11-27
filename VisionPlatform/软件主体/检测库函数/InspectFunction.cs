@@ -846,7 +846,7 @@ namespace VisionPlatform
                                     PhotometricInspect(inspectItem);
                                 }
                                 #region 发送当前拍照完成信号
-                                    var index = keys[1].Index;
+                                var index = keys[1].Index;
                                 var addr = new Address(SoftType.M, index, DataType.Bit);
                                 addr.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr);
@@ -1243,54 +1243,20 @@ namespace VisionPlatform
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
                 PhotometricStereoImage proImages = PhotometricStereo(listImages);
                 inspectItem.fun.DispRegion(proImages.Gradient);
-                switch (inspectItem.camItem.item)
+                inspectItem.fun.myFrontFun.ho_AIImage = proImages.Gradient.Clone();
+                if (!inspectItem.fun.myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], inspectItem.camItem.item, false, out frontResult, inspectItem.fun.myFrontFun.ho_AIImage))
                 {
-                    case InspectItem.Front:
-                        if (!myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], InspectItem.Front, false, out frontResult, proImages.Curvature))
-                        {
-                            bResult = false;
-                        }
-                        break;
-                    case InspectItem.LeftSide:
-                        if (!myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], InspectItem.LeftSide, false, out frontResult, proImages.Curvature))
-                        {
-                            bResult = false;
-                        }
-                        break;
-                    case InspectItem.RightSide:
-                        if (!myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], InspectItem.RightSide, false, out frontResult, proImages.Curvature))
-                        {
-                            bResult = false;
-                        }
-                        break;
-                    default:
-                        break;
+                    bResult = false;
                 }
                 //检测时间
                 ts_check = new TimeSpan(DateTime.Now.Ticks);
                 result.InspectTime = Math.Round((ts_check.Subtract(ts_grab).Duration().TotalSeconds) * 1000, 1);
 
                 //显示检测结果
-                switch (inspectItem.camItem.item)
-                {
-                    case InspectItem.Front:
-                        myFrontFun.FrontResultShow(camID, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
-                        if (!frontResult.bFrontResult) bResult = false;
-                        Variable.m_Result10 = frontResult;
-                        break;
-                    case InspectItem.LeftSide:
-                        //mySidePinFun.SidePinResultShow(camID, DataSerializer._globalData.dic_SidePinParam[camID], ref sidePinResult1);
-                        //if (!sidePinResult1.bSidePinResult) bResult = false;
-                        //Variable.m_Result20 = sidePinResult1;
-                        break;
-                    case InspectItem.RightSide:
-                        //mySidePinFun.SidePinResultShow(camID, DataSerializer._globalData.dic_SidePinParam[camID], ref sidePinResult2);
-                        //if (!sidePinResult2.bSidePinResult) bResult = false;
-                        //Variable.m_Result21 = sidePinResult2;
-                        break;
-                    default:
-                        break;
-                }
+                frontResult.bFrontResult = bResult;
+                inspectItem.fun.myFrontFun.FrontResultShow(camID, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
+                if (!frontResult.bFrontResult) bResult = false;
+                
                 result.outcome.Add(strInspectItem, bResult ? "OK" : "NG");
                 //保存图像
                 SaveRunImage(bResult, inspectItem.camItem.cam, strInspectItem, Variable.m_Result10.strQRCode);
