@@ -144,7 +144,7 @@ namespace VisionPlatform
 
                 string strOK = "OK";
                 strColor = "green";
-                if (bResult == false)
+                if (bResult == false || result.bFrontResult == false)
                 {
                     result.bFrontResult = false;
                     strOK = "NG";
@@ -1057,7 +1057,7 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out HObject ho_LinesRegion);
             try
             {
-                fun.DispRegion(fun.m_hImage);
+                fun.DispRegion(ho_BrokenImg);
                 Mat mat = fun.HObjectToMat(ho_BrokenImg);
                 List<Arbitrary> listArbitrary = new List<Arbitrary>() { param.arbitrary };
                 ho_ROI.Dispose();

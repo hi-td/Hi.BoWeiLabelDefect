@@ -22,7 +22,7 @@ namespace yolov8_Obb_Onnx
 
         public Yolov8_Obb(int cam)
         {
-            Creat_models(cam);
+            //Creat_models(cam);
         }
 
         private void Creat_models(int cam)
