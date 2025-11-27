@@ -74,13 +74,7 @@ namespace VisionPlatform
         public static TimeSpan dCountTime = new TimeSpan(DateTime.Now.Ticks);
         public static bool bLogoShow = false;
         public static bool bLogoClose = false;
-        //public static Address M802 = new Address(SoftType.M, 802, DataType.Bit);//NG
-        //public static Address M801 = new Address(SoftType.M, 801, DataType.Bit);//OK
-        // public static Address M826 = new Address(SoftType.M, 826, DataType.Bit);//NG停止信号
-        //public static Address M800 = new Address(SoftType.M, 800, DataType.Bit);//触发拍照
-        //public static Address M1 = new Address(SoftType.M, 1, DataType.Bit);//启动
         public static Address M13 = new Address(SoftType.M, 13, DataType.Bit);//PLC运行标志点
-        //public static List<Address> addresses = [M800];
         public static List<Address> addressesPlc = [M13];
         public FormMainUI(string title = null)
         {

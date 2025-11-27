@@ -5,7 +5,6 @@ using DAL;
 using HalconDotNet;
 using Hi.Ltd;
 using Hi.Ltd.Enumerations;
-using Hi.Ltd.SqlServer;
 using StaticFun;
 using System;
 using System.Collections.Generic;
@@ -828,7 +827,7 @@ namespace VisionPlatform
                                 address.Value = 0;
                                 FormMainUI._plc.WriteDevice(address);
                                 ts = new TimeSpan(DateTime.Now.Ticks);
-                                if(Receiveindex == 0)
+                                if (Receiveindex == 0)
                                 {
                                     CamInspectItem camItem = new CamInspectItem(10, InspectItem.LeftSide);
                                     InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
@@ -858,7 +857,7 @@ namespace VisionPlatform
                                     WriteStringtoImage(20, 40, 20, "检测超时！", "red", strEnglish: "Capture timeout!");
                                     break;
                                 }
-                                
+
                             }
                             else if (nRead == 0)
                             {
@@ -1239,8 +1238,8 @@ namespace VisionPlatform
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
-                ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 //拍照总用时
+                ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
                 PhotometricStereoImage proImages = PhotometricStereo(listImages);
                 inspectItem.fun.DispRegion(proImages.Gradient);
@@ -1252,14 +1251,13 @@ namespace VisionPlatform
                 //检测时间
                 ts_check = new TimeSpan(DateTime.Now.Ticks);
                 result.InspectTime = Math.Round((ts_check.Subtract(ts_grab).Duration().TotalSeconds) * 1000, 1);
-
-                //显示检测结果
                 frontResult.bFrontResult = bResult;
-                inspectItem.fun.myFrontFun.FrontResultShow(camID, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
+                //显示检测结果
+                inspectItem.fun.myFrontFun.FrontResultShow(inspectItem.camItem, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
                 if (!frontResult.bFrontResult) bResult = false;
                 result.outcome.Add(strInspectItem, bResult ? "OK" : "NG");
                 //保存图像
-                SaveRunImage(bResult, inspectItem.camItem.cam, strInspectItem, Variable.m_Result10.strQRCode);
+                SavePhotometricImages(inspectItem.camItem.cam, strInspectItem, listImages, proImages);
                 //显示结果到ListView
                 FormMainUI.formShowResult.ShowResult(result);
             }

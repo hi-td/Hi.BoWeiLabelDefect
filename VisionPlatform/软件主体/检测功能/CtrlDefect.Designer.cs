@@ -30,10 +30,9 @@
         {
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbBox_ImageSel = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.but_Test = new System.Windows.Forms.Button();
-            this.but_SaveParam = new System.Windows.Forms.Button();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.tLPanel_Broken = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +59,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cmbBox_ImageSel, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -83,39 +82,36 @@
             this.label3.Text = "图像选择";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cmbBox_ImageSel
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "法向量",
+            this.cmbBox_ImageSel.FormattingEnabled = true;
+            this.cmbBox_ImageSel.Items.AddRange(new object[] {
+            "法向量图",
             "反照率信息图",
             "梯度信息图",
-            "曲率",
-            "高度信息图"});
-            this.comboBox1.Location = new System.Drawing.Point(70, 1);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(127, 20);
-            this.comboBox1.TabIndex = 20;
+            "曲率图"});
+            this.cmbBox_ImageSel.Location = new System.Drawing.Point(70, 1);
+            this.cmbBox_ImageSel.Margin = new System.Windows.Forms.Padding(1);
+            this.cmbBox_ImageSel.Name = "cmbBox_ImageSel";
+            this.cmbBox_ImageSel.Size = new System.Drawing.Size(127, 20);
+            this.cmbBox_ImageSel.TabIndex = 20;
+            this.cmbBox_ImageSel.SelectedIndexChanged += new System.EventHandler(this.cmbBox_ImageSel_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoScroll = true;
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.43915F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.69312F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.86773F));
-            this.tableLayoutPanel2.Controls.Add(this.but_Test, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.but_SaveParam, 3, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 478);
+            this.tableLayoutPanel2.Controls.Add(this.but_Test, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 103);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(389, 33);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(389, 53);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
             // but_Test
@@ -124,29 +120,14 @@
             this.but_Test.Dock = System.Windows.Forms.DockStyle.Fill;
             this.but_Test.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but_Test.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.but_Test.Location = new System.Drawing.Point(199, 2);
-            this.but_Test.Margin = new System.Windows.Forms.Padding(2);
+            this.but_Test.Location = new System.Drawing.Point(1, 21);
+            this.but_Test.Margin = new System.Windows.Forms.Padding(1);
             this.but_Test.Name = "but_Test";
-            this.but_Test.Size = new System.Drawing.Size(76, 29);
+            this.but_Test.Size = new System.Drawing.Size(387, 31);
             this.but_Test.TabIndex = 0;
             this.but_Test.Text = "测试";
             this.but_Test.UseVisualStyleBackColor = false;
             this.but_Test.Click += new System.EventHandler(this.but_Test_Click);
-            // 
-            // but_SaveParam
-            // 
-            this.but_SaveParam.BackColor = System.Drawing.SystemColors.Control;
-            this.but_SaveParam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.but_SaveParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.but_SaveParam.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.but_SaveParam.Location = new System.Drawing.Point(299, 2);
-            this.but_SaveParam.Margin = new System.Windows.Forms.Padding(2);
-            this.but_SaveParam.Name = "but_SaveParam";
-            this.but_SaveParam.Size = new System.Drawing.Size(88, 29);
-            this.but_SaveParam.TabIndex = 1;
-            this.but_SaveParam.Text = "保存设置";
-            this.but_SaveParam.UseVisualStyleBackColor = false;
-            this.but_SaveParam.Click += new System.EventHandler(this.but_SaveParam_Click);
             // 
             // tableLayoutPanel10
             // 
@@ -336,8 +317,8 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.Controls.Add(this.tableLayoutPanel10);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanel10);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Name = "CtrlDefect";
             this.Size = new System.Drawing.Size(389, 511);
@@ -356,10 +337,9 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbBox_ImageSel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button but_Test;
-        private System.Windows.Forms.Button but_SaveParam;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TableLayoutPanel tLPanel_Broken;

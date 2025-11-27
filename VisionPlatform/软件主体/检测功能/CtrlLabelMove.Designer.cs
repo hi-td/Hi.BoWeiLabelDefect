@@ -35,19 +35,21 @@
             this.Clear = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.but_Test = new System.Windows.Forms.Button();
-            this.but_SaveParam = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ctrlNccModel = new VisionPlatform.CtrlNccModel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Item = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.tLPanel_Box = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.ctrlFitLine_Box = new VisionPlatform.CtrlFitLine();
             this.tLPanel_Label = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.ctrlFitLine_Label = new VisionPlatform.CtrlFitLine();
             this.label_Name = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView_Item = new System.Windows.Forms.ListView();
@@ -59,10 +61,7 @@
             this.模板中心到点的矢量 = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ctrlFitLine_Box = new VisionPlatform.CtrlFitLine();
-            this.ctrlFitLine_Label = new VisionPlatform.CtrlFitLine();
             this.AngleValueRange = new VisionPlatform.CtrlValueRange();
-            this.ctrlNccModel = new VisionPlatform.CtrlNccModel();
             this.ctrlNccModel1 = new VisionPlatform.CtrlNccModel();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -103,13 +102,10 @@
             // 
             this.tableLayoutPanel2.AutoScroll = true;
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.43915F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.69312F));
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.86773F));
-            this.tableLayoutPanel2.Controls.Add(this.but_Test, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.but_SaveParam, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.but_Test, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 545);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
@@ -125,29 +121,14 @@
             this.but_Test.Dock = System.Windows.Forms.DockStyle.Fill;
             this.but_Test.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but_Test.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.but_Test.Location = new System.Drawing.Point(266, 2);
+            this.but_Test.Location = new System.Drawing.Point(2, 2);
             this.but_Test.Margin = new System.Windows.Forms.Padding(2);
             this.but_Test.Name = "but_Test";
-            this.but_Test.Size = new System.Drawing.Size(103, 30);
+            this.but_Test.Size = new System.Drawing.Size(511, 30);
             this.but_Test.TabIndex = 0;
             this.but_Test.Text = "测试";
             this.but_Test.UseVisualStyleBackColor = false;
             this.but_Test.Click += new System.EventHandler(this.Inspect);
-            // 
-            // but_SaveParam
-            // 
-            this.but_SaveParam.BackColor = System.Drawing.SystemColors.Control;
-            this.but_SaveParam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.but_SaveParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.but_SaveParam.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.but_SaveParam.Location = new System.Drawing.Point(393, 2);
-            this.but_SaveParam.Margin = new System.Windows.Forms.Padding(2);
-            this.but_SaveParam.Name = "but_SaveParam";
-            this.but_SaveParam.Size = new System.Drawing.Size(120, 30);
-            this.but_SaveParam.TabIndex = 1;
-            this.but_SaveParam.Text = "保存设置";
-            this.but_SaveParam.UseVisualStyleBackColor = false;
-            this.but_SaveParam.Click += new System.EventHandler(this.but_SaveParam_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -212,6 +193,15 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 20;
             // 
+            // ctrlNccModel
+            // 
+            this.ctrlNccModel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlNccModel.Location = new System.Drawing.Point(67, 25);
+            this.ctrlNccModel.Margin = new System.Windows.Forms.Padding(0);
+            this.ctrlNccModel.Name = "ctrlNccModel";
+            this.ctrlNccModel.Size = new System.Drawing.Size(447, 28);
+            this.ctrlNccModel.TabIndex = 25;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Control;
@@ -227,7 +217,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 426F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 444F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(515, 445);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
@@ -301,6 +291,16 @@
             this.label5.Text = "盒体边线";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ctrlFitLine_Box
+            // 
+            this.ctrlFitLine_Box.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlFitLine_Box.Font = new System.Drawing.Font("宋体", 10F);
+            this.ctrlFitLine_Box.Location = new System.Drawing.Point(1, 22);
+            this.ctrlFitLine_Box.Margin = new System.Windows.Forms.Padding(1);
+            this.ctrlFitLine_Box.Name = "ctrlFitLine_Box";
+            this.ctrlFitLine_Box.Size = new System.Drawing.Size(429, 77);
+            this.ctrlFitLine_Box.TabIndex = 3;
+            // 
             // tLPanel_Label
             // 
             this.tLPanel_Label.BackColor = System.Drawing.SystemColors.Control;
@@ -328,6 +328,16 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "标签边线";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlFitLine_Label
+            // 
+            this.ctrlFitLine_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlFitLine_Label.Font = new System.Drawing.Font("宋体", 10F);
+            this.ctrlFitLine_Label.Location = new System.Drawing.Point(1, 22);
+            this.ctrlFitLine_Label.Margin = new System.Windows.Forms.Padding(1);
+            this.ctrlFitLine_Label.Name = "ctrlFitLine_Label";
+            this.ctrlFitLine_Label.Size = new System.Drawing.Size(429, 77);
+            this.ctrlFitLine_Label.TabIndex = 3;
             // 
             // label_Name
             // 
@@ -441,26 +451,6 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "参数设置";
             // 
-            // ctrlFitLine_Box
-            // 
-            this.ctrlFitLine_Box.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlFitLine_Box.Font = new System.Drawing.Font("宋体", 10F);
-            this.ctrlFitLine_Box.Location = new System.Drawing.Point(1, 22);
-            this.ctrlFitLine_Box.Margin = new System.Windows.Forms.Padding(1);
-            this.ctrlFitLine_Box.Name = "ctrlFitLine_Box";
-            this.ctrlFitLine_Box.Size = new System.Drawing.Size(429, 77);
-            this.ctrlFitLine_Box.TabIndex = 3;
-            // 
-            // ctrlFitLine_Label
-            // 
-            this.ctrlFitLine_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlFitLine_Label.Font = new System.Drawing.Font("宋体", 10F);
-            this.ctrlFitLine_Label.Location = new System.Drawing.Point(1, 22);
-            this.ctrlFitLine_Label.Margin = new System.Windows.Forms.Padding(1);
-            this.ctrlFitLine_Label.Name = "ctrlFitLine_Label";
-            this.ctrlFitLine_Label.Size = new System.Drawing.Size(429, 77);
-            this.ctrlFitLine_Label.TabIndex = 3;
-            // 
             // AngleValueRange
             // 
             this.AngleValueRange.BackColor = System.Drawing.SystemColors.Control;
@@ -470,15 +460,6 @@
             this.AngleValueRange.Name = "AngleValueRange";
             this.AngleValueRange.Size = new System.Drawing.Size(515, 26);
             this.AngleValueRange.TabIndex = 25;
-            // 
-            // ctrlNccModel
-            // 
-            this.ctrlNccModel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlNccModel.Location = new System.Drawing.Point(67, 25);
-            this.ctrlNccModel.Margin = new System.Windows.Forms.Padding(0);
-            this.ctrlNccModel.Name = "ctrlNccModel";
-            this.ctrlNccModel.Size = new System.Drawing.Size(447, 28);
-            this.ctrlNccModel.TabIndex = 25;
             // 
             // ctrlNccModel1
             // 
@@ -529,7 +510,6 @@
         private System.Windows.Forms.ToolStripMenuItem Clear;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button but_Test;
-        private System.Windows.Forms.Button but_SaveParam;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
