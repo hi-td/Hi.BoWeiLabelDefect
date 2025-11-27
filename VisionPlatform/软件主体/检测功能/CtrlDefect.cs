@@ -8,6 +8,7 @@ namespace VisionPlatform
         CtrlHome myCtrlHome;
         InspectFunction Fun;
         BaseData.Arbitrary myArbitrary = new BaseData.Arbitrary();
+        FormPhotometricStereo myPhotometricStereo;
         bool bLoad = false;
         public CtrlDefect(CtrlHome ctrlHome)
         {
@@ -16,6 +17,7 @@ namespace VisionPlatform
             this.Visible = true;
             this.Dock = DockStyle.Fill;
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.myPhotometricStereo = FormMainUI.m_dicCtrlCamShow[ctrlHome.camID].formPhotometricStereo;
             InitUI();
         }
         /// <summary>
@@ -76,7 +78,7 @@ namespace VisionPlatform
 
         private void but_Test_Click(object sender, EventArgs e)
         {
-            myCtrlHome.Fun.myFrontFun.DefectAI(InitParam(), myCtrlHome.myCamItem.item, myCtrlHome.Fun.m_hImage);
+            myCtrlHome.Fun.myFrontFun.DefectAI(InitParam(), myCtrlHome.myCamItem.item, myCtrlHome.Fun.myFrontFun.ho_AIImage);
         }
 
         private void but_SetBrokenROI_Click(object sender, EventArgs e)

@@ -22,7 +22,7 @@ namespace yolov8_Seg_Onnx
         InferRequest infer_request;
         public Yolov8_Seg(int cam)
         {
-            Create_models(cam);
+            //Create_models(cam);
         }
 
         private void Create_models(int cam)

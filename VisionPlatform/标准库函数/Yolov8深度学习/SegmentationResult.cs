@@ -2,6 +2,7 @@
 using OpenCvSharp.Dnn;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ResultSharp
 {
@@ -181,6 +182,101 @@ namespace ResultSharp
             {
                 int index = indexes[i];
                 re_result.add(confidences[index], position_boxes[index], this.class_names[class_ids[index]]);
+            }
+            return re_result;
+        }
+
+        public ResultAi process_result2(float[] detect, int a, int b, bool bMaxScore = false)
+        {
+            ResultAi re_result = new ResultAi(); // 输出结果类
+            try
+            {
+                //转置为8400x12
+                Mat result_data = Mat.FromPixelData(a, b, MatType.CV_32F, detect);
+                result_data = result_data.T();
+                List<Rect> position_boxes = new List<Rect>();
+                List<int> class_ids = new List<int>();
+                List<float> confidences = new List<float>();
+                OpenCvSharp.Point max_classId_point, min_classId_point;
+                double max_score, min_score;
+                Mat classes_scores;
+                // Preprocessing output results
+                for (int i = 0; i < result_data.Rows; i++)
+                {
+                    classes_scores = new Mat(result_data, new Rect(4, i, class_names.Length, 1));
+                    // Obtain the maximum value and its position in a set of data
+                    Cv2.MinMaxLoc(classes_scores, out min_score, out max_score, out min_classId_point, out max_classId_point);
+                    // Confidence level between 0 ~ 1
+                    // Obtain identification box information
+                    Rect box = new Rect();
+                    float cx, cy, ow, oh;
+                    int x, y, width, height;
+                    if (max_score > 0.25)
+                    {
+                        cx = result_data.At<float>(i, 0);
+                        cy = result_data.At<float>(i, 1);
+                        ow = result_data.At<float>(i, 2);
+                        oh = result_data.At<float>(i, 3);
+                        x = (int)((cx - 0.5 * ow) * scales);
+                        y = (int)((cy - 0.5 * oh) * scales);
+                        width = (int)(ow * scales);
+                        height = (int)(oh * scales);
+                        box = new Rect();
+                        box.X = x;
+                        box.Y = y;
+                        box.Width = width;
+                        box.Height = height;
+                        position_boxes.Add(box);
+                        class_ids.Add(max_classId_point.X);
+                        confidences.Add((float)max_score);
+                    }
+                }
+                // 修改NMS部分（取消注释并正确接收out参数）
+                CvDnn.NMSBoxes(position_boxes, confidences, this.score_threshold, this.nms_threshold, out int[] indexes);
+                // 遍历NMS筛选后的索引
+                int index;
+                for (int i = 0; i < indexes.Length; i++)
+                {
+                    index = indexes[i]; // 正确的索引
+                    re_result.add(confidences[index], position_boxes[index], this.class_names[class_ids[index]]);
+                }
+                if (bMaxScore)
+                {
+                    // 1. 创建索引序列
+                    var indices = Enumerable.Range(0, re_result.classes.Count);
+                    //// 或者转换为列表
+                    //List<int> indices = Enumerable.Range(0, re_result.classes.Count).ToList();
+
+                    // 2. 组合所有属性到匿名对象，这个匿名对象将每个索引对应的四个值组合在一起，使得我们可以通过一个对象来访问这四个值。select就是根据索引创建对象
+                    var combinedItems = indices.Select(index => new
+                    {
+                        Index = index,
+                        Class = re_result.classes[index],
+                        Score = re_result.scores[index],
+                        Rects = re_result.rects[index],
+                    });
+
+                    // 3. 分组并选择每组最高分项
+                    var bestItems = combinedItems
+                        .GroupBy(item => item.Class)
+                        .Select(group => group
+                            .OrderByDescending(item => item.Score)
+                            .First()
+                        )
+                        .ToList();
+
+                    re_result = new ResultAi();
+                    for (int i = 0; i < bestItems.Count; i++)
+                    {
+                        re_result.classes.Add(bestItems[i].Class);
+                        re_result.scores.Add(bestItems[i].Score);
+                        re_result.rects.Add(bestItems[i].Rects);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage($"ResultAi:{ex}", true);
             }
             return re_result;
         }

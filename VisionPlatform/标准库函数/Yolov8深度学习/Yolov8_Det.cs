@@ -78,7 +78,6 @@ namespace yolov8_Det_Onnx
                 Rect roi = new Rect(0, 0, image.Cols, image.Rows);
                 image.CopyTo(new Mat(max_image, roi));
                 float factor = (float)(max_image_length / 640.0);
-                // 将图片转为RGB通道
 
                 // 加载推理数据
                 Shape input_shape = input_tensor.get_shape();
@@ -105,7 +104,8 @@ namespace yolov8_Det_Onnx
                 //float[] result_proto = output_tensor_1.get_data<float>((int)output_tensor_1.get_size());
                 result_pro = new SegmentationResult(class_names, factor, score_threshold, nms_threshold);
                 //re_result = result_pro.process_result(output_data, num_classes, num_anchors, bMaxScore);
-                re_result = result_pro.process_result(output_data);
+                //re_result = result_pro.process_result(output_data, num_classes, num_anchors);
+                re_result = result_pro.process_result2(output_data, num_classes, num_anchors);
                 stopWatch1.Stop();
                 MessageFun.ShowMessage(stopWatch1.ElapsedMilliseconds);
             }

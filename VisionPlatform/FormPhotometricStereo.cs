@@ -11,7 +11,7 @@ namespace VisionPlatform
         string strCamSer;
         List<HalconDotNet.HWindowControl> myListWndCtrl = new List<HalconDotNet.HWindowControl>();
         List<HalconDotNet.HObject> myListImages = new List<HalconDotNet.HObject>();
-        PhotometricStereoImage photometricStereoImage = new PhotometricStereoImage();
+        public PhotometricStereoImage photometricStereoImage = new PhotometricStereoImage();
         public FormPhotometricStereo(CtrlCamShow ctrlCamShow)
         {
             InitializeComponent();
@@ -35,6 +35,7 @@ namespace VisionPlatform
         {
             myCtrl.Fun.ShowImageToHWnd(photometricStereoImage.NormalField, hWndCtrl);
             myCtrl.Fun.DispRegion(photometricStereoImage.NormalField);
+
         }
 
         private void Lbl_Albedo_Click(object sender, System.EventArgs e)
@@ -47,18 +48,21 @@ namespace VisionPlatform
         {
             myCtrl.Fun.ShowImageToHWnd(photometricStereoImage.Gradient, hWndCtrl);
             myCtrl.Fun.DispRegion(photometricStereoImage.Gradient);
+            myCtrl.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Gradient.Clone();
         }
 
         private void Lbl_Curvature_Click(object sender, System.EventArgs e)
         {
             myCtrl.Fun.ShowImageToHWnd(photometricStereoImage.Curvature, hWndCtrl);
             myCtrl.Fun.DispRegion(photometricStereoImage.Curvature);
+            myCtrl.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Curvature.Clone();
         }
 
         private void Lbl_HeightField_Click(object sender, System.EventArgs e)
         {
             myCtrl.Fun.ShowImageToHWnd(photometricStereoImage.HeightField, hWndCtrl);
             myCtrl.Fun.DispRegion(photometricStereoImage.HeightField);
+            //myCtrl.Fun.m_hImage = photometricStereoImage.HeightField.Clone();
         }
 
         private void tSBut_Load_Click(object sender, System.EventArgs e)

@@ -735,7 +735,7 @@ namespace VisionPlatform
                 Fun.FitImageToWindow(ref Fun.dReslutRow0, ref Fun.dReslutCol0, ref Fun.dReslutRow1, ref Fun.dReslutCol1);
             }
         }
-        FormPhotometricStereo formPhotometricStereo;
+        public FormPhotometricStereo formPhotometricStereo;
         private void but_PhotometricsStereo_Click(object sender, EventArgs e)
         {
             try

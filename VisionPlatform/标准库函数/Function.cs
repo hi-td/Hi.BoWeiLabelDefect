@@ -104,7 +104,9 @@ namespace VisionPlatform
                     IntPtr intPtr = IntPtr.Zero;
                     HOperatorSet.GetImagePointer1(ho_Img, out hv_Pointer, out hv_type, out hv_width, out hv_height);
                     intPtr = hv_Pointer;
-                    dst = Mat.FromPixelData(hv_width, hv_height, MatType.CV_8UC1, intPtr);
+                    Mat image_gray = Mat.FromPixelData(hv_height, hv_width, MatType.CV_8UC1, intPtr);
+                    // 将图片转为3通道
+                    Cv2.CvtColor(image_gray, dst, ColorConversionCodes.GRAY2BGR);
                 }
                 else if (hv_Channels[0].I == 3)
                 {
@@ -1014,40 +1016,36 @@ namespace VisionPlatform
             }
 
         }
-        public void GenArbitrary(List<Arbitrary> arbitrary)
+        public HObject GenArbitrary(List<Arbitrary> arbitrary)
         {
-            HObject ho_Contour = null, ho_bitrary = null;
             HTuple hv_row = new HTuple(), hv_column = new HTuple();
 
-            HOperatorSet.GenEmptyObj(out ho_Contour);
-            HOperatorSet.GenEmptyObj(out ho_bitrary);
+            HOperatorSet.GenEmptyObj(out HObject ho_Contour);
+            HOperatorSet.GenEmptyObj(out HObject ho_bitrary);
 
             try
             {
                 foreach (var item in arbitrary)
                 {
+                    if (null == item.dListRow)
+                        continue;
                     hv_row = item.dListRow.ToArray();
                     hv_column = item.dListCol.ToArray();
-
                     HOperatorSet.GenRegionPolygonFilled(out ho_Contour, hv_row, hv_column);
                     HOperatorSet.ConcatObj(ho_bitrary, ho_Contour, out ho_bitrary);
                 }
-                ClearObjShow();
-                m_hWnd.SetDraw("margin");
-                m_hWnd.DispObj(m_hImage);
+                //ClearObjShow();
                 DispRegion(ho_bitrary, "green");
             }
             catch (HalconException ex)
             {
                 MessageFun.ShowMessage(ex.ToString());
-                return;
             }
             finally
             {
                 ho_Contour?.Dispose();
-                ho_bitrary?.Dispose();
             }
-
+            return ho_bitrary;
         }
         #endregion
         //画直线

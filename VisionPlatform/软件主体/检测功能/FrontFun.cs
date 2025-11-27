@@ -19,6 +19,7 @@ namespace VisionPlatform
     public class FrontFun
     {
         public Function fun;
+        public HObject ho_AIImage = null;
         public static Yolov8_Det yolov8_Broken = new Yolov8_Det(SavePath.AIFlod + @"\broken.onnx", SavePath.AIFlod + @"\broken.txt");
         public static Yolov8_Det yolov8_Dirty = new Yolov8_Det(SavePath.AIFlod + @"\dirty.onnx", SavePath.AIFlod + @"\dirty.txt");
         public void InitFunction(Function fun)
@@ -1056,7 +1057,11 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out HObject ho_LinesRegion);
             try
             {
+                fun.DispRegion(fun.m_hImage);
                 Mat mat = fun.HObjectToMat(ho_BrokenImg);
+                List<Arbitrary> listArbitrary = new List<Arbitrary>() { param.arbitrary };
+                ho_ROI.Dispose();
+                ho_ROI = fun.GenArbitrary(listArbitrary);
                 //光度立体预处理图
                 ResultAi AIResult_broken = new ResultAi();
                 switch (inspectItem)
@@ -1073,34 +1078,16 @@ namespace VisionPlatform
                     default:
                         break;
                 }
-                int nNum = AIResult_broken.scores.Count;
-                if (nNum != 0)
+                if (!ShowAIResult(AIResult_broken, ho_ROI))
                 {
-                    List<int> listR1 = new List<int>();
-                    List<int> listC1 = new List<int>();
-                    List<int> listR2 = new List<int>();
-                    List<int> listC2 = new List<int>();
-                    for (int i = 0; i < nNum; i++)
-                    {
-                        listR1.Add(AIResult_broken.rects[i].Y);
-                        listC1.Add(AIResult_broken.rects[i].X);
-                        listR2.Add(AIResult_broken.rects[i].Y + AIResult_broken.rects[i].Height);
-                        listC2.Add(AIResult_broken.rects[i].X + AIResult_broken.rects[i].Width);
-                        ho_Rect1.Dispose();
-                        HOperatorSet.GenRectangle1(out ho_Rect1, listR1[i], listC1[i], listR2[i], listC2[i]);
-                        ho_Region.Dispose();
-                        HOperatorSet.Intersection(ho_Rect1, ho_ROI, out ho_Region);
-                        HOperatorSet.RegionFeatures(ho_Region, "area", out HTuple hv_area);
-                        if (0 != hv_area.TupleLength() && hv_area[0].D > 10)
-                        {
-                            bResult = false;
-                            fun.WriteStringtoImage(15, AIResult_broken.rects[i].Y, AIResult_broken.rects[i].X + 10, AIResult_broken.scores[i].ToString("F2"), "red");
-                            fun.DispRegion(ho_Region, "red");
-                        }
-                    }
+                    bResult = false;
                 }
                 //原彩色图
                 ResultAi AIResult_dirty = yolov8_Dirty.Inference(fun.AIimage, (float)param.dDirtyScore, 0.5f);
+                if (!ShowAIResult(AIResult_dirty, ho_ROI))
+                {
+                    bResult = false;
+                }
             }
             catch (Exception ex)
             {
@@ -1118,6 +1105,57 @@ namespace VisionPlatform
             return bResult;
         }
 
+        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI = null)
+        {
+            bool bResult = true;
+            HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
+            HOperatorSet.GenEmptyObj(out HObject ho_Region);
+            try
+            {
+                if (null == ho_ROI || ho_ROI.CountObj() == 0)
+                {
+                    HOperatorSet.GenRectangle1(out ho_ROI, 1, 1, Function.imageHeight, Function.imageWidth);
+                }
+                int nNum = aiResult.scores.Count;
+                if (nNum != 0)
+                {
+                    List<int> listR1 = new List<int>();
+                    List<int> listC1 = new List<int>();
+                    List<int> listR2 = new List<int>();
+                    List<int> listC2 = new List<int>();
+                    for (int i = 0; i < nNum; i++)
+                    {
+                        listR1.Add(aiResult.rects[i].Y);
+                        listC1.Add(aiResult.rects[i].X);
+                        listR2.Add(aiResult.rects[i].Y + aiResult.rects[i].Height);
+                        listC2.Add(aiResult.rects[i].X + aiResult.rects[i].Width);
+                        ho_Rect1.Dispose();
+                        HOperatorSet.GenRectangle1(out ho_Rect1, listR1[i], listC1[i], listR2[i], listC2[i]);
+                        //fun.DispRegion(ho_Rect1, "red");
+                        ho_Region.Dispose();
+                        HOperatorSet.Intersection(ho_Rect1, ho_ROI, out ho_Region);
+                        HOperatorSet.RegionFeatures(ho_Region, "area", out HTuple hv_area);
+                        if (0 != hv_area.TupleLength() && hv_area[0].D > 10)
+                        {
+                            bResult = false;
+                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + 10, aiResult.scores[i].ToString("F2"), "red");
+                            fun.DispRegion(ho_Region, "red");
+                        }
+                    }
+                }
+            }
+            catch (HalconException ex)
+            {
+                bResult = false;
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+            finally
+            {
+                ho_Rect1?.Dispose();
+                ho_Region?.Dispose();
+            }
+            return bResult;
+        }
         #endregion
     }
 }
