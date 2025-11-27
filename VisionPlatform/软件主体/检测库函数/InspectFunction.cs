@@ -1236,9 +1236,8 @@ namespace VisionPlatform
             {
                 string strInspectItem = GetStrCheckItem(inspectItem.camItem.item);
                 int camID = inspectItem.camItem.cam;
-                TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
-                
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
+                TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 //拍照总用时
@@ -1258,7 +1257,6 @@ namespace VisionPlatform
                 frontResult.bFrontResult = bResult;
                 inspectItem.fun.myFrontFun.FrontResultShow(camID, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
                 if (!frontResult.bFrontResult) bResult = false;
-                
                 result.outcome.Add(strInspectItem, bResult ? "OK" : "NG");
                 //保存图像
                 SaveRunImage(bResult, inspectItem.camItem.cam, strInspectItem, Variable.m_Result10.strQRCode);
