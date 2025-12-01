@@ -1,4 +1,4 @@
-﻿#define DOG
+﻿//#define DOG
 using CamSDK;
 using Hi.Ltd;
 using Hi.Ltd.SqlServer;
@@ -274,7 +274,7 @@ namespace VisionPlatform
                         }
                     }
 #endif
-                    //Application.Run(main);
+                    Application.Run(main);
                 }
                 else
                 {
