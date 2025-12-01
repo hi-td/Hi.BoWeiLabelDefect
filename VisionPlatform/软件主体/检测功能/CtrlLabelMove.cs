@@ -13,7 +13,7 @@ namespace VisionPlatform
         CtrlHome myCtrlHome;
         InspectFunction Fun;
         bool bLoad;
-        private event CopperRingEventHandler _valueChanged;
+        private event CtrlLabelEventHandler _valueChanged;
         public CtrlLabelMove(CtrlHome ctrlHome)
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace VisionPlatform
             }
         }
 
-        public event CopperRingEventHandler ValueChanged
+        public event CtrlLabelEventHandler ValueChanged
         {
             add { _valueChanged += value; }
             remove { _valueChanged -= value; }

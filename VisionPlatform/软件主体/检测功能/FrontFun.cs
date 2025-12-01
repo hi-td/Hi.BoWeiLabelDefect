@@ -12,7 +12,6 @@ using System.Drawing;
 using System.Linq;
 using yolov8_Det_Onnx;
 using static VisionPlatform.InspectData;
-using static VisionPlatform.InspectData.SingleStripLength;
 using Mat = OpenCvSharp.Mat;
 
 namespace VisionPlatform
@@ -253,8 +252,9 @@ namespace VisionPlatform
                 inParam.bScale = false;
                 inParam.dScore = param.nccLocate.dScore;
                 fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
-                fun.ShowRect2(rect2);
-                double dAngle =(rect2.dPhi - param.nccLocate.rect2.dPhi);
+                fun.ShowRect2(rect2, "blue");
+                double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
+                fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°");
                 //foreach (BaseData.Rect2 rect2 in param.listRect2s)
                 //{
                 //    ho_Rect2.Dispose();
