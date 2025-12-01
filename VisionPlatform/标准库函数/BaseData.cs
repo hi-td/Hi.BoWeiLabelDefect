@@ -725,6 +725,7 @@ namespace BaseData
         public double dScore;             //匹配分数
         [JsonIgnore]
         public object nModelID;           //ncc模板ID
+        public string strName;            //模板名称
         public Rect2 rect2;               //用于建立模板的区域
         public Rect2 limitRect2;          //限定检测区域      
     }

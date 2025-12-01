@@ -15,6 +15,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static VisionPlatform.InspectData.SingleStripLength;
 using Circle = BaseData.Circle;
 using Ellipse = BaseData.Ellipse;
 using Line = BaseData.Line;
@@ -3986,7 +3987,7 @@ namespace VisionPlatform
             }
         }
 
-        public HObject NccLocate(LocateInParams inParam, int nModelID, Rect2 modelRect2, out Rect2 outRect2, HObject ho_Image = null)
+        public HObject NccLocate(LocateInParams inParam, object nModelID, Rect2 modelRect2, out Rect2 outRect2, HObject ho_Image = null)
         {
             outRect2 = new Rect2(0, 0, 0, 0, 0);
             HOperatorSet.GenEmptyObj(out HObject ho_LocateRegion);

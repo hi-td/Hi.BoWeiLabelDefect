@@ -198,6 +198,7 @@ namespace VisionPlatform
         public struct LabelMoveParam
         {
             public BaseData.NccLocateParam nccLocate;
+            public BaseData.ValueRange AngleValue;
         }
         public struct LabelMoveResult
         {

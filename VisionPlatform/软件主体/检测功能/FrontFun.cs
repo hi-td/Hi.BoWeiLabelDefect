@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using yolov8_Det_Onnx;
 using static VisionPlatform.InspectData;
+using static VisionPlatform.InspectData.SingleStripLength;
 using Mat = OpenCvSharp.Mat;
 
 namespace VisionPlatform
@@ -70,10 +71,10 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
-                //if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
-                //{
-                //    bResult = false;
-                //}
+                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
+                {
+                    bResult = false;
+                }
             }
             catch (HalconException ex)
             {
@@ -244,6 +245,16 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out HObject ho_arrayRect2s);
             try
             {
+                LocateInParams inParam = new LocateInParams();
+                inParam.modelType = ModelType.ncc;
+                inParam.dAngleStart = -45;
+                inParam.dAngleEnd = 180;
+                inParam.strModelName = param.nccLocate.strName;
+                inParam.bScale = false;
+                inParam.dScore = param.nccLocate.dScore;
+                fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
+                fun.ShowRect2(rect2);
+                double dAngle =(rect2.dPhi - param.nccLocate.rect2.dPhi);
                 //foreach (BaseData.Rect2 rect2 in param.listRect2s)
                 //{
                 //    ho_Rect2.Dispose();
@@ -1078,13 +1089,13 @@ namespace VisionPlatform
                     default:
                         break;
                 }
-                if (!ShowAIResult(AIResult_broken, ho_ROI,"red"))
+                if (!ShowAIResult(AIResult_broken, ho_ROI, param.nBrokenMinArea, "red"))
                 {
                     bResult = false;
                 }
                 //原彩色图
                 ResultAi AIResult_dirty = yolov8_Dirty.Inference(fun.AIimage, (float)param.dDirtyScore, 0.5f);
-                if (!ShowAIResult(AIResult_dirty, ho_ROI, "green"))
+                if (!ShowAIResult(AIResult_dirty, ho_ROI, param.nBrokenMinArea, "green"))
                 {
                     bResult = false;
                 }
@@ -1105,7 +1116,7 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI = null, string strColor = "")
+        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI = null, int nMinArea = 10, string strColor = "")
         {
             bool bResult = true;
             HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
@@ -1138,7 +1149,7 @@ namespace VisionPlatform
                         if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea)
                         {
                             bResult = false;
-                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height/2-10, aiResult.scores[i].ToString("F2"), strColor);
+                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height / 2 - 10, aiResult.scores[i].ToString("F2"), strColor);
                             fun.DispRegion(ho_Region, strColor);
                         }
                     }

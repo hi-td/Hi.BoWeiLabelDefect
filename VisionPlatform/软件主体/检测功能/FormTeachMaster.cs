@@ -321,7 +321,7 @@ namespace VisionPlatform
                 selCamID = int.Parse(Regex.Replace(label_SelCam.Text, "[^0-9]", ""));
                 RefreshUI(selCamID);
             }
-            StaticFun.UIConfig.MoveCamPos(selCamID);
+            //StaticFun.UIConfig.MoveCamPos(selCamID);
             InspectItem selItem = InspectFunction.GetEnumCheckItem(strSel);
             this.panel.Controls.Clear();
             Control form = new Control();
