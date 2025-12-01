@@ -829,11 +829,11 @@ namespace VisionPlatform
                                 ts = new TimeSpan(DateTime.Now.Ticks);
                                 if (Receiveindex == 0)
                                 {
-                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.LeftSide);
+                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.RightSide);
                                     InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                     Thread.Sleep(10);
-                                    camItem = new CamInspectItem(20, InspectItem.RightSide);
+                                    camItem = new CamInspectItem(20, InspectItem.LeftSide);
                                     inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                 }
@@ -1237,7 +1237,7 @@ namespace VisionPlatform
                 int camID = inspectItem.camItem.cam;
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
-                
+
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
                 //拍照总用时

@@ -1173,7 +1173,6 @@
     <Content Include="resources\勾选.png" />
     <Content Include="resources\暂停.png" />
     <Content Include="resources\运行中.png" />
-    <Content Include="yixing.ico" />
     <Content Include="相机SDK\迈德威视\MVSDK.dll" />
   </ItemGroup>
   <ItemGroup>

@@ -1078,13 +1078,13 @@ namespace VisionPlatform
                     default:
                         break;
                 }
-                if (!ShowAIResult(AIResult_broken, ho_ROI))
+                if (!ShowAIResult(AIResult_broken, param.nBrokenMinArea, ho_ROI))
                 {
                     bResult = false;
                 }
                 //原彩色图
                 ResultAi AIResult_dirty = yolov8_Dirty.Inference(fun.AIimage, (float)param.dDirtyScore, 0.5f);
-                if (!ShowAIResult(AIResult_dirty, ho_ROI))
+                if (!ShowAIResult(AIResult_dirty, param.nDirtyMinArea, ho_ROI))
                 {
                     bResult = false;
                 }
@@ -1105,7 +1105,7 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI = null)
+        public bool ShowAIResult(ResultAi aiResult, int nMinArea, HObject ho_ROI = null)
         {
             bool bResult = true;
             HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
@@ -1135,7 +1135,7 @@ namespace VisionPlatform
                         ho_Region.Dispose();
                         HOperatorSet.Intersection(ho_Rect1, ho_ROI, out ho_Region);
                         HOperatorSet.RegionFeatures(ho_Region, "area", out HTuple hv_area);
-                        if (0 != hv_area.TupleLength() && hv_area[0].D > 10)
+                        if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea)
                         {
                             bResult = false;
                             fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + 10, aiResult.scores[i].ToString("F2"), "red");
