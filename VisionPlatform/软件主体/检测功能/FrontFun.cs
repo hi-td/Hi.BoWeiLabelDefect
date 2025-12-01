@@ -254,7 +254,13 @@ namespace VisionPlatform
                 fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
                 fun.ShowRect2(rect2, "blue");
                 double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
-                fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°");
+                string strColor = "green";
+                if (param.AngleValue.bFlag && dAngle > param.AngleValue.dMax)
+                {
+                    bResult = false;
+                    strColor = "red";
+                }
+                fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
                 //foreach (BaseData.Rect2 rect2 in param.listRect2s)
                 //{
                 //    ho_Rect2.Dispose();
