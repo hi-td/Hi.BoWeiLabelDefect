@@ -254,9 +254,6 @@ namespace VisionPlatform
                 inParam.dScore = param.nccLocate.dScore;
                 fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
                 fun.ShowRect2(rect2,"blue");
-                double dAngle = Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg());
-                fun.WriteStringtoImage(15, rect2.dRect2Row, rect2.dRect2Col, dAngle.ToString("F2"), "blue");
-                
                 fun.ShowRect2(rect2, "blue");
                 double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
                 string strColor = "green";
