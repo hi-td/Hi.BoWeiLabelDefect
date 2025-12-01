@@ -208,14 +208,16 @@ namespace VisionPlatform
                     var folder = System.IO.Path.GetDirectoryName(orgImageFath);
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
-
-                    for (int i = 1; i <= listOrgImages.Count; i++)
+                    string str = orgImageFath + DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + "\\";
+                    folder = System.IO.Path.GetDirectoryName(str);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+                    str = str.Replace("\\", "/");
+                    for (int i = 0; i < listOrgImages.Count; i++)
                     {
                         if (null != listOrgImages[i])
                         {
-                            string str = orgImageFath + i.ToString();
-                            str = str.Replace("\\", "/");
-                            HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str);
+                            HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str + (i + 1).ToString());
                         }
                     }
                 }
@@ -233,37 +235,30 @@ namespace VisionPlatform
                     var folder = System.IO.Path.GetDirectoryName(resImageFath);
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
-                    string str = resImageFath;
+                    string str = resImageFath+ DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + "\\";
+                    folder = System.IO.Path.GetDirectoryName(str);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
                     str = str.Replace("\\", "/");
                     if (null != photometricStereoImage.NormalField)
                     {
-                        str = resImageFath + "NormalField";
-                        str = str.Replace("\\", "/");
-                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str);
+                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str+ "NormalField");
                     }
                     if (null != photometricStereoImage.Albedo)
                     {
-                        str = resImageFath + "Albedo";
-                        str = str.Replace("\\", "/");
-                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str);
+                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str + "Albedo");
                     }
                     if (null != photometricStereoImage.Gradient)
                     {
-                        str = resImageFath + "Gradient";
-                        str = str.Replace("\\", "/");
-                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str);
+                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str + "Gradient");
                     }
                     if (null != photometricStereoImage.Curvature)
                     {
-                        str = resImageFath + "Curvature";
-                        str = str.Replace("\\", "/");
-                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str);
+                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str + "Curvature");
                     }
                     if (null != photometricStereoImage.HeightField)
                     {
-                        str = resImageFath + "HeightField";
-                        str = str.Replace("\\", "/");
-                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str);
+                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str + "HeightField");
                     }
                 }
                 catch (HalconException error)

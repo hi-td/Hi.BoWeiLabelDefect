@@ -821,6 +821,8 @@ namespace VisionPlatform
                             {
                                 bLock = true;
                                 bCheckOut = true;
+                                LEDControl.AllLEDOff();
+                                Thread.Sleep(50);
                                 //复位信号
                                 var Receiveindex = keys[0].Index;
                                 var address = new Address(SoftType.M, Receiveindex, DataType.Bit);
@@ -1244,8 +1246,8 @@ namespace VisionPlatform
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
                 PhotometricStereoImage proImages = PhotometricStereo(listImages);
-                inspectItem.fun.DispRegion(proImages.Gradient);
-                inspectItem.fun.myFrontFun.ho_AIImage = proImages.Gradient.Clone();
+                inspectItem.fun.DispRegion(proImages.Curvature);
+                inspectItem.fun.myFrontFun.ho_AIImage = proImages.Curvature.Clone();
                 if (!inspectItem.fun.myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], inspectItem.camItem.item, false, out frontResult, inspectItem.fun.myFrontFun.ho_AIImage))
                 {
                     bResult = false;
