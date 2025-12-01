@@ -82,6 +82,7 @@ namespace CamSDK
                     CamCommon.m_listCamSer.Add(strFriendName,i);
                     MvApi.CameraGrabber_SetRGBCallback(m_Grabber, m_FrameCallback, IntPtr.Zero);
                     MvApi.CameraSetAeState(m_hCamera,0);
+                    MvApi.CameraSetMirror(m_hCamera, 1, 1);
                     // 黑白相机设置ISP输出灰度图像
                     // 彩色相机ISP默认会输出BGR24图像
                     tSdkCameraCapbility cap;
