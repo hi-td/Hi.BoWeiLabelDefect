@@ -42,7 +42,7 @@
             this.ctrlNccModel = new VisionPlatform.CtrlNccModel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Item = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tLPanel_Point = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.tLPanel_Box = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel_Item.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
+            this.tLPanel_Point.SuspendLayout();
             this.tLPanel_Box.SuspendLayout();
             this.tLPanel_Label.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -225,7 +225,7 @@
             // 
             this.panel_Item.AutoScroll = true;
             this.panel_Item.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel_Item.Controls.Add(this.tableLayoutPanel6);
+            this.panel_Item.Controls.Add(this.tLPanel_Point);
             this.panel_Item.Controls.Add(this.tLPanel_Box);
             this.panel_Item.Controls.Add(this.tLPanel_Label);
             this.panel_Item.Controls.Add(this.label_Name);
@@ -236,20 +236,20 @@
             this.panel_Item.Size = new System.Drawing.Size(431, 443);
             this.panel_Item.TabIndex = 1;
             // 
-            // tableLayoutPanel6
+            // tLPanel_Point
             // 
-            this.tableLayoutPanel6.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 219);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(431, 100);
-            this.tableLayoutPanel6.TabIndex = 4;
+            this.tLPanel_Point.BackColor = System.Drawing.SystemColors.Control;
+            this.tLPanel_Point.ColumnCount = 1;
+            this.tLPanel_Point.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tLPanel_Point.Controls.Add(this.label6, 0, 0);
+            this.tLPanel_Point.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tLPanel_Point.Location = new System.Drawing.Point(0, 219);
+            this.tLPanel_Point.Name = "tLPanel_Point";
+            this.tLPanel_Point.RowCount = 2;
+            this.tLPanel_Point.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.tLPanel_Point.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79F));
+            this.tLPanel_Point.Size = new System.Drawing.Size(431, 100);
+            this.tLPanel_Point.TabIndex = 4;
             // 
             // label6
             // 
@@ -414,6 +414,7 @@
             this.DropDownBut_Add.Size = new System.Drawing.Size(57, 37);
             this.DropDownBut_Add.Text = "新增项";
             this.DropDownBut_Add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DropDownBut_Add.Click += new System.EventHandler(this.DropDownBut_Add_Click);
             // 
             // 模板中心到边缘线的距离
             // 
@@ -490,8 +491,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel_Item.ResumeLayout(false);
             this.panel_Item.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
+            this.tLPanel_Point.ResumeLayout(false);
+            this.tLPanel_Point.PerformLayout();
             this.tLPanel_Box.ResumeLayout(false);
             this.tLPanel_Box.PerformLayout();
             this.tLPanel_Label.ResumeLayout(false);
@@ -534,7 +535,7 @@
         private System.Windows.Forms.Label label5;
         private CtrlFitLine ctrlFitLine_Box;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tLPanel_Point;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.ToolTip toolTip1;

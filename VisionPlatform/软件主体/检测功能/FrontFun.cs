@@ -262,7 +262,24 @@ namespace VisionPlatform
                     strColor = "red";
                 }
                 fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
-                //foreach (BaseData.Rect2 rect2 in param.listRect2s)
+                foreach (var item in param.dicLabelMoveItems.Values)
+                {
+                    HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
+                        rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, out HTuple homMat2D);
+                    HOperatorSet.HomMat2dIdentity(out HTuple hv_homMat2DIdentity);
+                    HOperatorSet.AffineTransPoint2d(homMat2D, item.arrayROILine[0].rect2.dRect2Row, item.arrayROILine[0].rect2.dRect2Col, out HTuple hv_x, out HTuple hv_y);
+                    Rect2 rect2temp = new Rect2(hv_x, hv_y, item.arrayROILine[0].rect2.dPhi, item.arrayROILine[0].rect2.dLength1, item.arrayROILine[0].rect2.dLength2);
+                    fun.ShowRect2(rect2temp);
+                    fun.GetRect2CornerPoint(rect2temp, out PointF[] points);
+                    item.arrayROILine[0].lineParam.lineIn = new Line((points[0].X + points[3].X) / 2.0,
+                                                                     (points[0].Y + points[3].Y) / 2.0,
+                                                                     (points[1].X + points[2].X) / 2.0,
+                                                                     (points[1].Y + points[2].Y) / 2.0);
+                    fun.FitLine(item.arrayROILine[0].lineParam, out Line lineOut, out _);
+                    fun.HWnd.DispLine(lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol);
+                    HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol, out HTuple hv_DistPl);
+                    fun.WriteStringtoImage(20, 250, 50, $"模板到线的距离：{Math.Round(hv_DistPl.D, 2)}", strColor);
+                }
                 //{
                 //    ho_Rect2.Dispose();
                 //    HOperatorSet.GenRectangle2(out ho_Rect2, rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, rect2.dLength1, rect2.dLength2);
