@@ -173,45 +173,44 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="模板中心到边缘线的距离.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAS1JREFUWEfN
-        ljFqAkEUhv8D5AbeIGX69NaCJ/AA1kKKYEo7wSJNwE5ygLR7CUt7+9SC4YkDw8dMZnd2ZvCDJ8x7s/P9
-        CzKsVJe5pG82W2Hy672ah/DlVrZuxkPJD9xQE8pd7bmxBpS/Szp6608+UJKQ3HhGiC2eK0JM7mCIDeaj
-        oLxviA/Ms6D8TdKpZwjOBkP58t5/kXROhGBvMJTzknmV9PtPiFFQHgsxlXSR9CNpglk2lIfWPjNJT+hl
-        E5PF+kVJSVLzUfDwmIT7OM8idCjXqf3Z8LBFpE+Jm7M/CEpWiTllXA+Ch1vZ9Wk3WGhf0e88yu1LJhWi
-        GJS7w78SIYrhB+Cb7VqGoNxhHxHVA6RY15R3gaoFPTeX/fh/QituKlUhT3DQqh43QC3o6f4A2CkZZlQU
-        YN4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAASJJREFUWEfN
+        ljEKAjEQRT2AN/AGlvb21oIn8ADWgoVoaSdY2Ah24gFsvYSlvb21oH/QgeGTuOrOBB+8Jdld8v8SWNII
+        ZgD3z2F5JPz+sngJGy7KvBh/Fb6DxeBwdQvD4fApPJn5GoaRChfa0JZYQndy4QqXWEA3cnteVWIOa8Ph
+        E3g283cl+NnXcPgICh14gXo/VcI9XOaWLrzCXIla5PacS/TgDR5gS254kPpynlv6sPkc1icXVlXChaqQ
+        0BK8eC4kpERqUZ5bXEvwYkMofFrCNXwMLZ+U+BleXJTfp/zBLPqe6zmPw+Uko+NcCTc4XBffwHcl3LAF
+        +MtWsFgJDlfkEBFeoIoZDAs/JowimSUX3WeVX/IylZN8UMr/LRAF5TSOD9gpGWanvvk5AAAAAElFTkSu
+        QmCC
 </value>
   </data>
   <data name="标签与边缘线的间距.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAK9JREFUWEft
-        kMEJwlAQRKcGwUNa8GoVFmALgjV4sQmbsAmbSD/KQDYsY9jID1EP82DJ3/l/Z4cAxhhj/oQngKOKK3Ia
-        do6wuWYBwEb6JagXd5UBdgB6AI+ktUIPetEzKAPEch1qZcqvDMCH7OfqluZ51vupojcpA8Qlv1Xt0zzP
-        eq9Fz4vsGMkBSDy4J60VetDrnLTZACSSL4V/5yDaRwHW5C3ANjdfolPBGGPMT3gBJbNIRMg1wgoAAAAA
-        SUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAALNJREFUWEft
+        kMENwjAMRTMDEgdW4MoUDMAKlZiBC0uwBEuwRPcBvySOqhC5VQuFg5/0Zbt1v78aHMdxnH/hKTqldhU6
+        ETcLDNfUFja5foLai1tmgL2oFz3itAw88MJTMQPo8fqjubT8zAAsMo/pJlLoWzu18AYzgL6kWjqIFPrW
+        zlB4XkSgc2EYAHThHqdl4IHXOU6J0QDAXD+bA3/nmNrCpADf5C3ANtc12eXqOI7j/JIQXiWzSESjUK+E
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="模板中心到点的矢量.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAKpJREFUWEft
-        l6ENQlEQBKcCPI5SPnVgUAg8iiYwCBQVUAMJjeBpArLikpfNt/cxO8m5TW6ypw5gAs7AG3gAOxbmCnxt
-        Nh7q5DMjcPdQJ6rdBU4e6kQ3dwHNyoOd6Oaq/fZPieIwCLwiEYlIDESiiEQRiSISRSSKSBSRKEYJzRbY
-        A2sPduISGr2CRw92cpmReHqoE9XuAmphMXRzLRwF9JUvim6u2vUQ6yuffmefd3SemrGRAAAAAElFTkSu
-        QmCC
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAKJJREFUWEft
+        l6ENAgEQBL8CPI5SnjowqBd4FE1gEK+ogBpIvhE8TcCs2ORzBdybnWT0Te7UDTDiDT/4whO28sBf8YBt
+        fLEGPLENrb0GXLEN3bwGyB22oZtr7TNuFmEmdMCCiUhEIkwiTCJMIkwiTCJMIkwizDpCHvGMe2yjRki9
+        ghds44414o1taO01QFtoQzfXwHWAvvJWdHOtXQ8xX/kw/gFnn3d02jWRZQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="DropDownBut_Add.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHCSURBVFhH7ZQxS8QwFMfvE6hNio7XvB4ObuIg4uLqroNf
-        QRBEkPblEA4cHBQFHRwcHByEAxe/gJuDiwruTn4OJWdT0tf02rvkdNAfvKV5L/9fU5pW66/AQe6ros9/
-        BA7Y5yA/vwv7dH2iFMMrJELobtkbm1Ug8KGwoQGP8I32q2IgT4wmeUcbRqz3QqraU8jzQGCPdXDBJlEQ
-        UG+gHk6B/OBCbvN2sjZKTbeTqBBunKZdgnwCLTDsKJti+5S5BMjXUrjCl4At3JSYFThHZwb4EBgWrgXo
-        TI6rQF04j+UhnSngIlAXziJ5RGdKjCtQGw54TGesjCNQF84FntGZSkYVqA0HvDD7Q5HOz4B8qtx/FIG6
-        cCbwsjSjLqxsna4NaCpQF84Br+iMwp+AwF45NCuRXtN+jbNAdo2q492wSTCQN3TGxF0A5IHeIAC5rm61
-        PFzIW9pP8SCAL+YbB4CrmcQp7bXhJBDE6YoZriuM0yXaW4WTgPqn82AhHwPR3VP/Ne0bhpOAPuqwkyzS
-        taY4CfjgX6CxAIPkma75gInuZiMBfQq+S+9dKcAg3TWbJlYRvtHsHBbjDjX3WQzSexalyzT31/kCKqxi
-        Vjp42B4AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHLSURBVFhH7ZYxS8QwGIbvF6hNi47XpIeDmziIuLi66+Bf
+        EAQRpE2KIDg4KAo6ODg4OAgHLv4BNwcXFdyd/B2a1Lf1ek2b9lIPQR/44C59k+9peu2182dwmdhVha/j
+        xWW8L5t/fBXvY3g85JuXSHgs3tAH65VD+T2WKuD6/FU3hzBxjIgKiVtdqEG9YakMl4ozKbZPenxOJ5ET
+        UGegBieYeJcTN91uuNKkJruhj6USBndTLzF0CVKBqq2si+5SZhJMvBSaK9oSqPodKYlpymcQzdOGQFVz
+        VUoA0SK2AqbmbiAOENVjI2BqTnxxiGg5owoYmzN+hGg1owgYt53yU0TNNBUwNmf8HNEEj0azU0w8lq7f
+        RMC47ZRfIJqRPLBwHEN56grUOPNLRHO0JyDv5e9mQ0WjK8QKWAvgMaq2d00nIf9YrhHVYi/AxF66gMPE
+        qsxlEoSKG8RKaUGAP6cLJDnGlyFxgkglVgJOEC2lkwfLC6IFRIxYCah7Op0s3xUeHBrvqPsah2thtwPY
+        aq8XzmOoMda/AVv+BWoLEBY+YahVCI3XawmoUp/brnTtUgHCou3B0I+VfDVHyyIk4Fs6+7ZKnuQd8aNF
+        tPstdDqfKqxiVk8jXRkAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

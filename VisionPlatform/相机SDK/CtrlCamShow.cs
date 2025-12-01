@@ -200,7 +200,6 @@ namespace VisionPlatform
             if (!FormMainUI.bRun)
             {
                 StaticFun.UIConfig.CreateFormTeachMaster(camID);
-                StaticFun.UIConfig.MoveCamPos(camID);
             }
             else
             {

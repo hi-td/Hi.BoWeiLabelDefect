@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using yolov8_Det_Onnx;
 using static VisionPlatform.InspectData;
+using static VisionPlatform.InspectData.SingleStripLength;
 using Mat = OpenCvSharp.Mat;
 
 namespace VisionPlatform
@@ -70,10 +71,10 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
-                //if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
-                //{
-                //    bResult = false;
-                //}
+                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
+                {
+                    bResult = false;
+                }
             }
             catch (HalconException ex)
             {
@@ -244,6 +245,16 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out HObject ho_arrayRect2s);
             try
             {
+                LocateInParams inParam = new LocateInParams();
+                inParam.modelType = ModelType.ncc;
+                inParam.dAngleStart = -45;
+                inParam.dAngleEnd = 180;
+                inParam.strModelName = param.nccLocate.strName;
+                inParam.bScale = false;
+                inParam.dScore = param.nccLocate.dScore;
+                fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
+                fun.ShowRect2(rect2);
+                double dAngle =(rect2.dPhi - param.nccLocate.rect2.dPhi);
                 //foreach (BaseData.Rect2 rect2 in param.listRect2s)
                 //{
                 //    ho_Rect2.Dispose();
@@ -1084,7 +1095,7 @@ namespace VisionPlatform
                 }
                 //原彩色图
                 ResultAi AIResult_dirty = yolov8_Dirty.Inference(fun.AIimage, (float)param.dDirtyScore, 0.5f);
-                if (!ShowAIResult(AIResult_dirty, ho_ROI, param.nDirtyMinArea, "green"))
+                if (!ShowAIResult(AIResult_dirty, ho_ROI, param.nBrokenMinArea, "green"))
                 {
                     bResult = false;
                 }

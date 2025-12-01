@@ -64,7 +64,8 @@ namespace VisionPlatform
             LabelMoveParam param = new LabelMoveParam();
             try
             {
-
+                param.nccLocate = ctrlNccModel.InitParam();
+                param.AngleValue = AngleValueRange.InitParam();
             }
             catch (Exception ex)
             {
@@ -78,6 +79,8 @@ namespace VisionPlatform
             try
             {
                 bLoad = true;
+                ctrlNccModel.LoadParam(param.nccLocate);
+                AngleValueRange.LoadParam(param.AngleValue);
             }
             catch (SystemException ex)
             {

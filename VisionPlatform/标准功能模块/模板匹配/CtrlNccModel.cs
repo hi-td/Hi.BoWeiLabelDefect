@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using VisionPlatform.Auxiliary;
 
 namespace VisionPlatform
 {
@@ -51,7 +52,7 @@ namespace VisionPlatform
                 myInParam.dScore = (double)numUpD_Score.Value;
                 if (Fun.CreateNccModel(myInParam, out nModelID, out List<LocateOutParams> listOutData))
                 {
-                    Fun.NccLocate(myInParam, (int)nModelID, m_rect2, out _);
+                    Fun.NccLocate(myInParam, nModelID, m_rect2, out _);
                     if (Fun.WriteModel(myCamID, myInParam.strModelName, myInParam.modelType, nModelID))
                     {
                         MessageBox.Show("模板创建成功");
@@ -71,9 +72,17 @@ namespace VisionPlatform
 
         private void but_TestNccModel_Click(object sender, EventArgs e)
         {
-            Fun.ClearObjShow();
-            Fun.DispRegion(Fun.HImage);
-            Fun.NccLocate(myInParam, (int)nModelID, m_rect2, out _);
+            try
+            {
+                Fun.ClearObjShow();
+                Fun.DispRegion(Fun.HImage);
+                Fun.NccLocate(myInParam, nModelID, m_rect2, out _);
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show($"模板匹配失败:{ex}");
+                return;
+            }
         }
 
         public BaseData.NccLocateParam InitParam()
