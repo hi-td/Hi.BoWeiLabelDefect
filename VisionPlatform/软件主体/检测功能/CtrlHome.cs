@@ -61,6 +61,7 @@ namespace VisionPlatform
                 tabPage_PNCode.Controls.Add(ctrlPNCode);
                 //标签偏移
                 ctrlLabelMove = new CtrlLabelMove(this);
+                ctrlLabelMove.ValueChanged += Inspect;
                 tabPage_LabelMove.Controls.Clear();
                 tabPage_LabelMove.Controls.Add(ctrlLabelMove);
                 //褶皱气泡

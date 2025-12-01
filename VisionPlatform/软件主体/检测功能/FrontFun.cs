@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using yolov8_Det_Onnx;
+using static Aardvark.Base.MultimethodTest;
 using static VisionPlatform.InspectData;
 using Mat = OpenCvSharp.Mat;
 
@@ -252,6 +253,7 @@ namespace VisionPlatform
                 inParam.bScale = false;
                 inParam.dScore = param.nccLocate.dScore;
                 fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
+                fun.ShowRect2(rect2,"blue");
                 fun.ShowRect2(rect2, "blue");
                 double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
                 string strColor = "green";
