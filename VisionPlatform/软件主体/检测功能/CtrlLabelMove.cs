@@ -1,5 +1,4 @@
-﻿using BaseData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -46,6 +45,8 @@ namespace VisionPlatform
         {
             try
             {
+                ctrlFitLine_Label.ValueChanged += Inspect;
+                ctrlFitLine_Box.ValueChanged += Inspect;
                 AngleValueRange.SetValue(true, "角度偏移范围", -45, 45, 1, 0);
                 AngleValueRange.ValueChanged += Inspect;
                 ctrlNccModel.ValueChanged += Inspect;
@@ -66,6 +67,7 @@ namespace VisionPlatform
             {
                 param.nccLocate = ctrlNccModel.InitParam();
                 param.AngleValue = AngleValueRange.InitParam();
+                param.dicLabelMoveItems = dicLabelMoveItems;
             }
             catch (Exception ex)
             {
@@ -81,6 +83,10 @@ namespace VisionPlatform
                 bLoad = true;
                 ctrlNccModel.LoadParam(param.nccLocate);
                 AngleValueRange.LoadParam(param.AngleValue);
+                foreach (var item in param.dicLabelMoveItems)
+                {
+
+                }
             }
             catch (SystemException ex)
             {
@@ -94,6 +100,21 @@ namespace VisionPlatform
             try
             {
                 if (bLoad) { return; }
+                if (null != dicLabelMoveItems && dicLabelMoveItems.ContainsKey(strSelName))
+                {
+                    LabelMoveItem item = dicLabelMoveItems[strSelName];
+                    ROILine roiLine = new ROILine()
+                    {
+                        rect2 = Fun.m_rect2,
+                        lineParam = new BaseData.LineParam()
+                        {
+                            lineIn = new BaseData.Line(),
+                            measure = ctrlFitLine_Box.InitParam()
+                        }
+                    };
+                    item.arrayROILine = new ROILine[1] { roiLine };
+                    dicLabelMoveItems[strSelName] = item;
+                }
                 InitParam();
                 _valueChanged?.Invoke(sender, e);
             }
@@ -104,30 +125,42 @@ namespace VisionPlatform
         }
         #region 标签与边缘线的间距
         bool bAdd = false;
-
-        List<LineParam[]> listLineGapParams = new List<LineParam[]>();
+        string strSelName = "";
+        Dictionary<string, LabelMoveItem> dicLabelMoveItems = new Dictionary<string, LabelMoveItem>();
         private void but_AddItem_Click(object sender, EventArgs e)
         {
             try
             {
                 if (bLoad) return;
                 ToolStripMenuItem item = sender as ToolStripMenuItem;
+                InspectData.MoveType myType = MoveType.point_line;
                 switch (item.Text)
                 {
                     case "模板中心到边缘线的距离":
+                        myType = MoveType.point_line;
+                        tLPanel_Label.Visible = false;
+                        tLPanel_Box.Visible = true;
+                        tLPanel_Point.Visible = false;
                         break;
                     case "标签与边缘线的间距":
+                        myType = MoveType.line_line;
+                        tLPanel_Label.Visible = true;
+                        tLPanel_Box.Visible = true;
+                        tLPanel_Point.Visible = false;
                         break;
                     case "模板中心到点的矢量":
+                        myType = MoveType.point_point;
+                        tLPanel_Label.Visible = false;
+                        tLPanel_Box.Visible = false;
+                        tLPanel_Point.Visible = true;
                         break;
                     default:
                         break;
                 }
-
-
                 //添加到左边tree_view
                 int n = listView_Item.Items.Count;
                 string strName = $"检测项{n + 1}";
+                strSelName = strName;
                 ListViewItem addItem = new ListViewItem();
                 addItem.ToolTipText = item.Text;
                 addItem.Text = strName;
@@ -143,8 +176,11 @@ namespace VisionPlatform
                 }
                 listView_Item.Text = "检测项" + (n + 1).ToString() + "参数设置";
                 //添加list
-                LineParam[] arrayLineParams = new LineParam[2];
-                listLineGapParams.Add(arrayLineParams);
+                LabelMoveItem labelMoveItem = new LabelMoveItem()
+                {
+                    type = myType,
+                };
+                dicLabelMoveItems.Add(strName, labelMoveItem);
                 bAdd = false;
             }
             catch (Exception ex)
@@ -189,7 +225,7 @@ namespace VisionPlatform
         private void Clear_Click(object sender, EventArgs e)
         {
             listView_Item.Items.Clear();
-            listLineGapParams.Clear();
+            dicLabelMoveItems.Clear();
         }
 
         private void listView_Item_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,6 +251,11 @@ namespace VisionPlatform
         #endregion
 
         private void but_SaveParam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DropDownBut_Add_Click(object sender, EventArgs e)
         {
 
         }

@@ -194,11 +194,35 @@ namespace VisionPlatform
             point_line,
             point_point,
         }
+        public struct ROILine
+        {
+            public Rect2 rect2;
+            public LineParam lineParam;
 
+        }
+        public struct LabelMoveItem
+        {
+            public LabelMoveItem()
+            {
+                if (type == MoveType.line_line)
+                {
+                    arrayROILine = new ROILine[2];
+                }
+                else if (type == MoveType.point_line)
+                {
+                    arrayROILine = new ROILine[1];
+                }
+            }
+            public MoveType type;
+            public ROILine[] arrayROILine;
+            public PointF point;
+
+        }
         public struct LabelMoveParam
         {
             public BaseData.NccLocateParam nccLocate;
             public BaseData.ValueRange AngleValue;
+            public Dictionary<string, LabelMoveItem> dicLabelMoveItems;
         }
         public struct LabelMoveResult
         {
