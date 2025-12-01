@@ -4167,7 +4167,7 @@ namespace VisionPlatform
 
             try
             {
-
+                if (null == nModelID) return false;
                 if (inParam.modelType == ModelType.contour || inParam.modelType == ModelType.region)
                 {
                     HOperatorSet.FindShapeModel(ho_Image, (HTuple)nModelID, new HTuple(inParam.dAngleStart).TupleRad(), new HTuple(inParam.dAngleEnd).TupleRad(), inParam.dScore, 1, 0.5,
