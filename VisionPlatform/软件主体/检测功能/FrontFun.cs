@@ -13,7 +13,6 @@ using System.Linq;
 using yolov8_Det_Onnx;
 using static Aardvark.Base.MultimethodTest;
 using static VisionPlatform.InspectData;
-using static VisionPlatform.InspectData.SingleStripLength;
 using Mat = OpenCvSharp.Mat;
 
 namespace VisionPlatform
@@ -258,6 +257,15 @@ namespace VisionPlatform
                 double dAngle = Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg());
                 fun.WriteStringtoImage(15, rect2.dRect2Row, rect2.dRect2Col, dAngle.ToString("F2"), "blue");
                 
+                fun.ShowRect2(rect2, "blue");
+                double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
+                string strColor = "green";
+                if (param.AngleValue.bFlag && dAngle > param.AngleValue.dMax)
+                {
+                    bResult = false;
+                    strColor = "red";
+                }
+                fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
                 //foreach (BaseData.Rect2 rect2 in param.listRect2s)
                 //{
                 //    ho_Rect2.Dispose();

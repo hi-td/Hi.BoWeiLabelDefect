@@ -20,11 +20,10 @@ namespace VisionPlatform
 
     //正面检测
     public delegate void PNCodeEventHandler(object sender, EventArgs e);
-    public delegate void CopperRingEventHandler(object sender, EventArgs e);
+    public delegate void CtrlLabelEventHandler(object sender, EventArgs e);
     public delegate void TorsionExistEventHandler(object sender, EventArgs e);
     public delegate void PasterExistEventHandler(object sender, EventArgs e);
     public delegate void PlugInExistEventHandler(object sender, EventArgs e);
-    public delegate void FitlinRelevanceEventHandler(object sender, EventArgs e);
 
     public static class MyEvents
     {
