@@ -15,21 +15,13 @@
 ***********************************************************/
 using EnumData;
 using MVSDK;
+using StaticFun;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using CameraHandle = System.Int32;
 using VisionPlatform;
-using MvCamCtrl.NET;
-using Newtonsoft.Json.Linq;
-using StaticFun;
-using static System.Windows.Forms.AxHost;
+using CameraHandle = System.Int32;
 
 namespace CamSDK
 {
@@ -41,7 +33,7 @@ namespace CamSDK
         private static List<IntPtr> CamIntPtr = new List<IntPtr>();//相机指针
         private static List<string> CamID = new List<string>();//相机序列号
         private static CameraHandle m_hCamera = 0;
-        public static  Dictionary<IntPtr, CameraHandle> CamHandle = new Dictionary<IntPtr, CameraHandle>();    //相机句柄
+        public static Dictionary<IntPtr, CameraHandle> CamHandle = new Dictionary<IntPtr, CameraHandle>();    //相机句柄
         protected static pfnCameraGrabberFrameCallback m_FrameCallback;
         //protected static pfnCameraGrabberSaveImageComplete m_SaveImageComplete;
         public static Dictionary<CameraHandle, Function> Cam_Fun = new Dictionary<CameraHandle, Function>();    //相机句柄
@@ -76,10 +68,10 @@ namespace CamSDK
                     MvApi.CameraGrabber_GetCameraHandle(m_Grabber, out m_hCamera);
                     string strFriendName = Encoding.Default.GetString(DevList[i].acSn, 0, 12);
                     CamHandle1.Add(m_hCamera);
-                    CamHandle.Add(m_Grabber,m_hCamera);
+                    CamHandle.Add(m_Grabber, m_hCamera);
                     CamID.Add(strFriendName);
                     CamIntPtr.Add(m_Grabber);
-                    CamCommon.m_listCamSer.Add(strFriendName,i);
+                    CamCommon.m_listCamSer.Add(strFriendName, i);
                     MvApi.CameraGrabber_SetRGBCallback(m_Grabber, m_FrameCallback, IntPtr.Zero);
                     MvApi.CameraSetAeState(m_hCamera,0);
                     MvApi.CameraSetMirror(m_hCamera, 1, 1);
@@ -124,7 +116,7 @@ namespace CamSDK
                 // 功能描述 : 设置触发模式下的触发帧数。对软件触发和硬件触发
                 //        模式都有效。默认为1帧，即一次触发信号采集一帧图像。
                 MvApi.CameraSetTriggerCount(CamHandle1[i], 1);
-                
+
                 //MvApi.CameraGrabber_StartLive(CamIntPtr[i]);
             }
             catch (SystemException ex)
@@ -182,7 +174,7 @@ namespace CamSDK
             {
                 int mode = 0;
                 MvApi.CameraGetTriggerMode(CamHandle1[i], ref mode);
-                if (mode== 1)
+                if (mode == 1)
                 {
                     // 只触发模式下调用软触发指令
                     MvApi.CameraSoftTrigger(CamHandle1[i]);
@@ -229,7 +221,7 @@ namespace CamSDK
                 }
             }
         }
-        
+
         //停止所有相机的实时模式：改为触发模式
         public static void StopLiveAll()
         {
@@ -361,7 +353,7 @@ namespace CamSDK
             }
             catch (Exception ex)
             {
-                string strErrorInfo ="错误描述信息为：" + ex.Message;
+                string strErrorInfo = "错误描述信息为：" + ex.Message;
                 MessageBox.Show(strErrorInfo);
             }
         }
@@ -404,7 +396,7 @@ namespace CamSDK
             }
             catch (Exception ex)
             {
-                string strErrorInfo ="错误描述信息为：" + ex.Message;
+                string strErrorInfo = "错误描述信息为：" + ex.Message;
                 MessageBox.Show(strErrorInfo);
             }
         }

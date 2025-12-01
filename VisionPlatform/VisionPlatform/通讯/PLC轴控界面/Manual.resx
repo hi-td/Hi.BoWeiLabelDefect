@@ -1,0 +1,1821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Name" xml:space="preserve">
+    <value>textBox4</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;textBox4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>517, 112</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>当前位置</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 55</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 35</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>相机二平移轴(mm)</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 55</value>
+  </data>
+  <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="textBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Name" xml:space="preserve">
+    <value>textBox4</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;textBox4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 35</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>相机一升降轴(mm)</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 25pt, style=Bold</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 5</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 45</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>主页面</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="&gt;&gt;hButton6.Name" xml:space="preserve">
+    <value>hButton6</value>
+  </data>
+  <data name="&gt;&gt;hButton6.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton6.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Name" xml:space="preserve">
+    <value>hButton4</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Name" xml:space="preserve">
+    <value>hButton5</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Name" xml:space="preserve">
+    <value>hButton2</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Name" xml:space="preserve">
+    <value>hButton3</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Name" xml:space="preserve">
+    <value>hButton1</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 169</value>
+  </data>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 313</value>
+  </data>
+  <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>相机1升降伺服</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="hButton6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 157</value>
+  </data>
+  <data name="hButton6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 30</value>
+  </data>
+  <data name="hButton6.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="hButton6.Text" xml:space="preserve">
+    <value>拍照位置2保存</value>
+  </data>
+  <data name="&gt;&gt;hButton6.Name" xml:space="preserve">
+    <value>hButton6</value>
+  </data>
+  <data name="&gt;&gt;hButton6.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton6.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonAppearance18.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance18.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance18.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="hButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 61</value>
+  </data>
+  <data name="hButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 35</value>
+  </data>
+  <data name="hButton4.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="hButton4.Text" xml:space="preserve">
+    <value>拍照位置1保存</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Name" xml:space="preserve">
+    <value>hButton4</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton4.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance17.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance17.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance17.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 218</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 132</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="hButton5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAnhJREFUeF7t2T9oU2EUBfAurg5OHRXBQXDSSRBEB3EQHJzERXBxEDfdikMX3XQQ
+        UUQUxYKigogilFIqFRUURFC0hpiG2mpbabCtaamRM3Q5xyTvfe9+XwK5ww/Cee/df1tpX6PR6OtlEvQa
+        CayMVZf2Hno0OWIBtbi+FQmsYOhNl780LPgB/AB+AD8A17cigRU/gB/AD+AH4EVC+QH8AH4APwDXtyKB
+        FT+AH8AP4AfgRUL5AfwAfgA/ANe3IoEVP4AfwA/gB+BFQvkB/AB+gM4e4NzL2fP8P/sseJFQXDcLzMx7
+        /I8EzRx7OvWQB+tWmJXnb0aCVnYPlT9ws26DGXnuViRopbywsqX/ykSdm3YLzIYZee5WJGhnuLJ4gBt3
+        C8zG87YjQRZX3/86xc07DTPxnFlIkNXZsZ+XeIhOwSw8X1YS5HHkcfUZD5MaZuC58pAgj5W1vxt23i5P
+        8FCpoDdm4LnykCCvT/P17TxYKujN8+QlQYgnpd+HebjY0JPnCCFBqItv58/wkLGgF/cPJUERp0dmrvGw
+        1tCD+xYhQVGWfwQx1OZ+RUlQVK2+tnHHrVKFhy8KNVGb+xUlgYV3P/7s4gWKQk3uY0ECK/c+147yEqFQ
+        i+tbkcDShTdzA7xMXqjBdS1JYO3k8PRNXiorfMv1rEkQw8EHky94uXbwDdeJQYIYZhZX+7fd+DrNSzaD
+        d/EN14lBgljGp5b38KLN4F3+PhYJYrrzceE4L8vwDn8XkwSxDb6aHeSl1+EZvx+bBCmceP79Li+PjN9L
+        QYJU9t2vvF5fHr/5eSoSpPKttrp56/XSHOA3P09FgpRGq0v7gfOUJOg1EvSaf/PViJpQnV2WAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="hButton5.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 190</value>
+  </data>
+  <data name="hButton5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 67</value>
+  </data>
+  <data name="hButton5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton5.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Name" xml:space="preserve">
+    <value>hButton5</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton5.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonAppearance5.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAnhJREFUeF7t2T9oU2EUBfAurg5OHRXBQXDSSRBEB3EQHJzERXBxEDfdikMX3XQQ
+        UUQUxYKigogilFIqFRUURFC0hpiG2mpbabCtaamRM3Q5xyTvfe9+XwK5ww/Cee/df1tpX6PR6OtlEvQa
+        CayMVZf2Hno0OWIBtbi+FQmsYOhNl780LPgB/AB+AD8A17cigRU/gB/AD+AH4EVC+QH8AH4APwDXtyKB
+        FT+AH8AP4AfgRUL5AfwAfgA/ANe3IoEVP4AfwA/gB+BFQvkB/AB+gM4e4NzL2fP8P/sseJFQXDcLzMx7
+        /I8EzRx7OvWQB+tWmJXnb0aCVnYPlT9ws26DGXnuViRopbywsqX/ykSdm3YLzIYZee5WJGhnuLJ4gBt3
+        C8zG87YjQRZX3/86xc07DTPxnFlIkNXZsZ+XeIhOwSw8X1YS5HHkcfUZD5MaZuC58pAgj5W1vxt23i5P
+        8FCpoDdm4LnykCCvT/P17TxYKujN8+QlQYgnpd+HebjY0JPnCCFBqItv58/wkLGgF/cPJUERp0dmrvGw
+        1tCD+xYhQVGWfwQx1OZ+RUlQVK2+tnHHrVKFhy8KNVGb+xUlgYV3P/7s4gWKQk3uY0ECK/c+147yEqFQ
+        i+tbkcDShTdzA7xMXqjBdS1JYO3k8PRNXiorfMv1rEkQw8EHky94uXbwDdeJQYIYZhZX+7fd+DrNSzaD
+        d/EN14lBgljGp5b38KLN4F3+PhYJYrrzceE4L8vwDn8XkwSxDb6aHeSl1+EZvx+bBCmceP79Li+PjN9L
+        QYJU9t2vvF5fHr/5eSoSpPKttrp56/XSHOA3P09FgpRGq0v7gfOUJOg1EvSaf/PViJpQnV2WAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="buttonAppearance5.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance5.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance6.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAm5JREFUeF7t2T+ojXEcBvC7WM0yiPEqGShJ6kpRUpQs1yBKKbGQDJjOQEpSd8Ig
+        A9M1GBjUHS75k0GxqLu49w4kC9N9/+oZ7vI8zjnv+3u/v985db7Dp07P+77ff9vtTtV1PTXJJJg0Elh5
+        W36YOZGfXrCAWlzfigRWMPTmbLq24AfwA/gB/ABc34oEVvwAfgA/gB+AFwnlB/AD+AH8AFzfigRW/AB+
+        AD+AH4AXCeUH8AP4AfwAXN+KBFb8AH4AP4AfgBcJ5QfwA/gBRnuAXnHnNv/PvgleJBTXbQIz8x7/I0E/
+        Z/MLz3mwcYVZef5+JBjkQH70KzcbN5iR5x5EgkG+VyvbtqztWOOm4wKzYUaeexAJhlkoFw9z43GB2Xje
+        YSRo4lHx5CI3HzXMxHM2IUFT18vefR5iVDALz9eUBG3M5ude8TCpYQaeqw0J2sjqfMPe/NASD5UKemMG
+        nqsNCdr6Vi9t58FSQW+epy0JQrysXh/n4WJDT54jhASh5sqHV3nIWNCL+4eSoIsrxY0HPKw19OC+XUjQ
+        leUfQQy1uV9XEnT1p/67cVc2s8zDd4WaqM39upLAwufqy25eoCvU5D4WJLAyX76Y5SVCoRbXtyKBpbvl
+        3E1epi3U4LqWJLB2qbj2mJdqCt9yPWsSxHCsOPWGlxsG33CdGCSI4Wf1a9PObN8PXrIfvItvuE4MEsTy
+        vvq0nxftB+/y97FIENOzcv4ML8vwDn8XkwSx3Sru9XjpdXjG78cmQQrni8tPeXlk/F4KEqRyJDv5cX15
+        /ObnqUiQynK9unU62/Mb8JufpyJBSovVu4PAeUoSTBoJJs0/4847fcx0FfsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance6.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance6.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance6.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="hButton2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA15JREFUeF7l2D9I1HEcxvG2toaGqCWICGpoKIgoGiQIgiiipaGhhiCCaIhoKSqI
+        oAKHBgMjkwgyCESIhCIy+kOhIRX2B/yvXUfp6aV5alkXn+Ea3h/P+93d8/t55w0v0Mf7fZ/ne4jILUqn
+        04vUll7rTIeBPQouUOBwFfYouECBw1XYo+AChd1Ngy1hYI+CCyqNCyqNCxQutQ6fz7jcljjH75kFxR4F
+        Fyjwj5cKexRcoMDhKuxRcIECh6uwR8EFCs+/pKrCwB4FF1QaF1QaFyjwPzgV9ii4QIF/vFTYo+ACBQ5X
+        YY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUOV2GP
+        ggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4IL
+        FDhchT0K/794NzS1YXND/0eWLjR2R7urewNMa3xyy8bbfd18aKGwu9kdZ/0NyHgRS1Wtu9Ub48Plzu5k
+        d+N93RtgHvdP7Fxd15PgIeXK7mJ34j2zvgHmQc/43hXXu1I8rNzYHewuvF/ON8A0do7v54Hlxu7AewV+
+        A0zD57GDPLRc2Hbeh1wwm/qO5BEeXupsM+8xGxdkU/s+eZwlpcq2cn82LpjL1faRUywrNbaRu+figlyu
+        tCXOsrRU2DbuzcUFQVx4PXyR5fPNNnFnEC4I6szLoWqOmC+2hfuCckE+Tj79XsMxUbMN3JUPF+Tr2JP4
+        TY6KinVzT75cUIjDj+INHBc26+SOQrigEFMzfxcfaI41cWRYrMs6uaMQLijU2PSfJfvuxx5yrJp1WBf7
+        C+WCYgylZpbtahx8xtEqdrZ1sLcYLijW4NjvldvvDbRxfLHsTDubfcVygUJ38tearXf7OniJQtlZdiZ7
+        FFyg8iExvV7x+aKdYWfxfBUXKLV/m9y0tr7nKy8VlD1rZ/BcJReovYpPblt1o2uUl8vFnrFneZ6aC8LQ
+        MjCxY3lt1xQvmY291p7hOWFwQViae3/u4UWzsdfy+bC4IExBPmTN9SGmmgvCdufTj0O8dIb9jK8Pmwui
+        UNeRPMrLW8bXRcEFUal5O3oic3n7mj+PiguiVP1m5LRhHqV/7HH6W/x9eR0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="hButton2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 263</value>
+  </data>
+  <data name="hButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 50</value>
+  </data>
+  <data name="hButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton2.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Name" xml:space="preserve">
+    <value>hButton2</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton2.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonAppearance7.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA15JREFUeF7l2D9I1HEcxvG2toaGqCWICGpoKIgoGiQIgiiipaGhhiCCaIhoKSqI
+        oAKHBgMjkwgyCESIhCIy+kOhIRX2B/yvXUfp6aV5alkXn+Ea3h/P+93d8/t55w0v0Mf7fZ/ne4jILUqn
+        04vUll7rTIeBPQouUOBwFfYouECBw1XYo+AChd1Ngy1hYI+CCyqNCyqNCxQutQ6fz7jcljjH75kFxR4F
+        Fyjwj5cKexRcoMDhKuxRcIECh6uwR8EFCs+/pKrCwB4FF1QaF1QaFyjwPzgV9ii4QIF/vFTYo+ACBQ5X
+        YY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUOV2GP
+        ggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4IL
+        FDhchT0K/794NzS1YXND/0eWLjR2R7urewNMa3xyy8bbfd18aKGwu9kdZ/0NyHgRS1Wtu9Ub48Plzu5k
+        d+N93RtgHvdP7Fxd15PgIeXK7mJ34j2zvgHmQc/43hXXu1I8rNzYHewuvF/ON8A0do7v54Hlxu7AewV+
+        A0zD57GDPLRc2Hbeh1wwm/qO5BEeXupsM+8xGxdkU/s+eZwlpcq2cn82LpjL1faRUywrNbaRu+figlyu
+        tCXOsrRU2DbuzcUFQVx4PXyR5fPNNnFnEC4I6szLoWqOmC+2hfuCckE+Tj79XsMxUbMN3JUPF+Tr2JP4
+        TY6KinVzT75cUIjDj+INHBc26+SOQrigEFMzfxcfaI41cWRYrMs6uaMQLijU2PSfJfvuxx5yrJp1WBf7
+        C+WCYgylZpbtahx8xtEqdrZ1sLcYLijW4NjvldvvDbRxfLHsTDubfcVygUJ38tearXf7OniJQtlZdiZ7
+        FFyg8iExvV7x+aKdYWfxfBUXKLV/m9y0tr7nKy8VlD1rZ/BcJReovYpPblt1o2uUl8vFnrFneZ6aC8LQ
+        MjCxY3lt1xQvmY291p7hOWFwQViae3/u4UWzsdfy+bC4IExBPmTN9SGmmgvCdufTj0O8dIb9jK8Pmwui
+        UNeRPMrLW8bXRcEFUal5O3oic3n7mj+PiguiVP1m5LRhHqV/7HH6W/x9eR0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance7.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance7.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance8.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA1hJREFUeF7l2E9oz3Ecx3E3N0cHB3KQdpDtsLSSzWEiEkmSwyiFlEQpFEspykis
+        qEU4DAfsQitNaGqhFZocyIFdtBQlv+93n99X78PP4fneb79/r+93v992eNS89vt+Xq/Pt7W0eUmSzFNb
+        FDUlaWCPggsUOFyFPQouUOBwFfYouEBhW9z1LA3sUXDBXOOCucYFChcmr3QX9ISrp/lvZuVij4ILFPjL
+        S4U9Ci5Q4HAV9ii4QIHDVdij4AKF4TDSkQb2KLhgrnHBXOMCBf4PToU9Ci5Q4C8vFfYouECBw1XYo+AC
+        BQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUO
+        V2GPggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldh
+        j8L/L97nx1ra441jLJ1t7I52V/cCzJsw2tYWr/vMh2YLu5vdccqfgIJX+ZGO5rj9Ox9udHYnuxvv616A
+        GQov1zdFqyZ4SKOyu9ideM+iL8A8CU+3LI1a/vCwRmN3sLvwfiVfgBnIP97BAxuN3YH3KvsFmPvhYRcP
+        bRS2nfchF0zldri7j4fXO9vMe0zFBcX0hTuHWFKvbCv3F+OC6fSGvmMsqze2kbun44JSLk72nmJpvbBt
+        3FuKC8pxLlw6y/KZZpu4sxwuKFf35PkejpgptoX7yuWCShyPz/RyTNZsA3dVwgWVOhyfuMFRWbFu7qmU
+        C6qxPzraz3Fps07uqIYLqpFLcvP3xAcfcWRarMs6uaMaLqjWr+T3gp3x3kGOVbMO62J/tVxQix/JxMKt
+        0a4XHK1iZ1sHe2vhglp9y48v3hBtf83xtbIz7Wz21coFCl+Sr8vWxps+8BLVsrPsTPYouEDlY/7Tirao
+        s+a/L9oZdhbPV3GB0mj+XWtztGaclyqXPWtn8FwlF6iN5N+uXp5r/cnLlWLP2LM8T80FaXgehjuX5Fb+
+        5SWLsc/aMzwnDS5Iy2AY2syLFmOf5fNpcUGaBkLpP7LaZ/hcmlyQtnvhwW5eusC+x8+nzQVZuBX6D/Dy
+        lvFzWXBBVq6Hm0cKl7ev+f2suCBLl8O1k4Z5lv4B3DZceNxgCmMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance8.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance8.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance8.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="hButton3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqNJREFUeF7t
+        mC1sFFEURutwZOctPw6HRCAQJIiaJlUEVwmOYBAVGJKCQTYhZd8bamprsVUktbVNk747I1tH6hoc5G4g
+        KWem0N3e3b2z7EmO2NmZ932f2WxmaWmG9GP1VuX1/4KQZD0k+fHLdX4/1xSlvLowfqhe431zST/mFxz/
+        W/2O988VIVZrHN0wVmt8bi7oJXnaGHuJei+f7zRhkFeKJN859DKH9w7yCs/pJMV2/SREOePIfxrlTJ/l
+        eZ2iH48fhZRPG+OubD7VM3huJyi26wchSd0cNbK1nsXzXXP7c30/JDlsGTOuh3omc1xSfKzvhSgHLSOu
+        Z5QDPZt5rrhbVndCyvuN8mbmfc1grgvCltwMSfaapc3d0yzmz5YtuVFE+dJSdiJqlmayxswIKe+y5OTN
+        u+wxE0LKO81y0zLvsM9UKaLEZqnpqh3YayqEJJssM0M32W+iFEk+tJSYqdqJPSdCSLLBcEdusK8pRcxv
+        WkJdqR3Z24R+Wb1mmFe1K/tfiyLmlwzxrnbmjrHop+o5D++K2p17RuJKLzG9O+5L1n46fhZSdd44sHNW
+        57qF+/5KiNVqKOVb87COqltitcqdrdwqZTkkOWkc0n1PdBv3/kEYyGOj93herXUjdw/plfIwJDlqeWje
+        PNKt3G9KS6iJzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kc
+        t7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHFLkeTrJGTOggVO
+        6X2S5UnIHLfwx8tK5riFxa1kjltY3ErmuCXE4/cjW8q7obx24TNzFixwCv/BWckct/DHy0rmuIXFrWSO
+        W1jcSuZY8BO+BFPpedYSwgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="hButton3.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 51</value>
+  </data>
+  <data name="hButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 45</value>
+  </data>
+  <data name="hButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Name" xml:space="preserve">
+    <value>hButton3</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton3.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonAppearance1.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqNJREFUeF7t
+        mC1sFFEURutwZOctPw6HRCAQJIiaJlUEVwmOYBAVGJKCQTYhZd8bamprsVUktbVNk747I1tH6hoc5G4g
+        KWem0N3e3b2z7EmO2NmZ932f2WxmaWmG9GP1VuX1/4KQZD0k+fHLdX4/1xSlvLowfqhe431zST/mFxz/
+        W/2O988VIVZrHN0wVmt8bi7oJXnaGHuJei+f7zRhkFeKJN859DKH9w7yCs/pJMV2/SREOePIfxrlTJ/l
+        eZ2iH48fhZRPG+OubD7VM3huJyi26wchSd0cNbK1nsXzXXP7c30/JDlsGTOuh3omc1xSfKzvhSgHLSOu
+        Z5QDPZt5rrhbVndCyvuN8mbmfc1grgvCltwMSfaapc3d0yzmz5YtuVFE+dJSdiJqlmayxswIKe+y5OTN
+        u+wxE0LKO81y0zLvsM9UKaLEZqnpqh3YayqEJJssM0M32W+iFEk+tJSYqdqJPSdCSLLBcEdusK8pRcxv
+        WkJdqR3Z24R+Wb1mmFe1K/tfiyLmlwzxrnbmjrHop+o5D++K2p17RuJKLzG9O+5L1n46fhZSdd44sHNW
+        57qF+/5KiNVqKOVb87COqltitcqdrdwqZTkkOWkc0n1PdBv3/kEYyGOj93herXUjdw/plfIwJDlqeWje
+        PNKt3G9KS6iJzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kc
+        t7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHFLkeTrJGTOggVO
+        6X2S5UnIHLfwx8tK5riFxa1kjltY3ErmuCXE4/cjW8q7obx24TNzFixwCv/BWckct/DHy0rmuIXFrWSO
+        W1jcSuZY8BO+BFPpedYSwgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAppearance1.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance1.Text" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="buttonAppearance2.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAArNJREFUeF7t
+        mC1MHFEUhXF1FRUte2dTtW3enU1JKiqaVGCaVBEcElyDQSAwTWhNJRKLxWJRTbBYgqsER3Aw7z2SaS5J
+        fzhv+Fn2zs6d6X7Jl8DC3HPOCkJ2ZqZBsshfRHz9vyCLbp0Cl6J8jT/vNFng1d/j/7wJgVfx9zpJFtwK
+        jv/7JrgV/P1OQZ6XcHSi5yV8rhNQMVxIxt5mMVzA51sNFfyRAhfJ0Nst5Bm800oo5h8o8HnFyPs8l2fx
+        XquYDa/fkefTinEP0/Op3MC7raDv3ZvMu5/JqBGVG3IL75umX/IrCnyEY8bwSG5ijknoMn9JgQ8rRozr
+        odzGPFO8KOeeU+CDivJaHkgG5prgWTl4Sp73K0rr6nlfsjC/UQbl4Al53kvK1qXnPcnEHo1BnneTknXr
+        eRd7NAJ5t5OUm5Te7WCfiUKBt5NSk3cbe02EXsi3Kso0onTBfrWSRfcdSzStdMKetUDebWK4Gb3bxL6q
+        UOSNJNSakTewtwoU8rUkzKz5GvYfi15wn9MQ20pn3PEosuCW8XhblO64ZyTo6gEfYlr36pEfspLnRYp8
+        kRxsm7LB8yLuu5NeMfxEkc+SY2018plswp2V9KObp8gnyZG2G/lEtuHeG2QX7n0W8rE/x7OqbJONuPsa
+        CvlbCnyMD3XQY9mK+1WpCFURc8yCxbXEHLNgcS0xxyxYXEvMMQsW1xJzzILFtcQcs2BxLTHHLFhcS8wx
+        CxbXEnPMgsW1xByzYHEtMccsWFxLzDELFtcSc8yCxbXEHLNgcS0xxyxYXEvMMQsW1xJzzILFtcQcs2Bx
+        LTHHLL3AP+oQc6ZMMcrspZuvQ8wxC/7x0hJzzILFtcQcs2BxLTHHLOTdt5GN7uu1+No/32POlClGwf/g
+        tMQcs+AfLy0xxyxYXEvMMQsW1xJzNPgFM2yfGVQYBycAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance2.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance2.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance2.Text" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="hButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAflJREFUeF7t
+        mb9Lw2AQhl1ctfmi4KhrZ1eh4NDV2a1/gKtjJxfXlt4X6eTU0bWbS6fiWEFyqUKnLv4BnZSjiPAmYk3z
+        40u8Bx4Qk9y9927izo6ilIYfzM9F/P2/oGHfjo3ld1F+xue1x1A0NcQfa6MpPq81hsLR9/FfhiN8r5Z4
+        NryJH79WnuH7tcJQ2MGj44Yd/K4WePR6Fj82WXkXv680h4PnIzPgJR76owNeyjc4p7IYG01iR/6mjSY4
+        p5J4xPex4zZUvsV5lcIQd/GoFHZxbiXwKLxMOCaVMgvnO81BMD/FI7ZVZuIeJzE93jPECzwgAxcyG/c5
+        h0f8mBA+E2U27nMKQzzE0Dk4xL1O4A3C64SwuSi7cH+p+BRdYMi8lZ2YoxRMwE0MV5gBNzFPsdw97frE
+        USxYQcpuyYCxCsMQjzFUCY4xVyF4FPUSwpSiZMF8ueJTeIUhylYyYc5cMJbbuNwZLbcxb6bs919OjOVV
+        bLErWl5JRsydGYZ4FlvqnjPMnQke8UPCMieVrJh/K3wb3cofIn8Vg6UV526iZMY7CqXR5xYeklaZhfOd
+        RwvQArQALQAPSasWoAVoAVoAznceLUAL0AK0ADwkrVqAFqAFaAE433m0AC1AC9AC8JC0agFagBagBeB8
+        59ECtAAtoIX/s09rJQtQKsInGaF488beiGIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="hButton1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 102</value>
+  </data>
+  <data name="hButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 67</value>
+  </data>
+  <data name="hButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton1.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Name" xml:space="preserve">
+    <value>hButton1</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton1.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;hButton1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonAppearance3.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAflJREFUeF7t
+        mb9Lw2AQhl1ctfmi4KhrZ1eh4NDV2a1/gKtjJxfXlt4X6eTU0bWbS6fiWEFyqUKnLv4BnZSjiPAmYk3z
+        40u8Bx4Qk9y9927izo6ilIYfzM9F/P2/oGHfjo3ld1F+xue1x1A0NcQfa6MpPq81hsLR9/FfhiN8r5Z4
+        NryJH79WnuH7tcJQ2MGj44Yd/K4WePR6Fj82WXkXv680h4PnIzPgJR76owNeyjc4p7IYG01iR/6mjSY4
+        p5J4xPex4zZUvsV5lcIQd/GoFHZxbiXwKLxMOCaVMgvnO81BMD/FI7ZVZuIeJzE93jPECzwgAxcyG/c5
+        h0f8mBA+E2U27nMKQzzE0Dk4xL1O4A3C64SwuSi7cH+p+BRdYMi8lZ2YoxRMwE0MV5gBNzFPsdw97frE
+        USxYQcpuyYCxCsMQjzFUCY4xVyF4FPUSwpSiZMF8ueJTeIUhylYyYc5cMJbbuNwZLbcxb6bs919OjOVV
+        bLErWl5JRsydGYZ4FlvqnjPMnQke8UPCMieVrJh/K3wb3cofIn8Vg6UV526iZMY7CqXR5xYeklaZhfOd
+        RwvQArQALQAPSasWoAVoAVoAznceLUAL0AK0ADwkrVqAFqAFaAE433m0AC1AC9AC8JC0agFagBagBeB8
+        59ECtAAtoIX/s09rJQtQKsInGaF488beiGIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance3.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance3.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance4.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance4.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAftJREFUeF7t
+        mSFPA0EQhTFYBAmhNzWQkLCzSLAkTRBYNI4fgEWiMFhsFaoSi8Og0JVVVTU4Erq7TY4MCQl5eyFw7d3t
+        HfMlX9L0ejNvniOsrSlKY/SDPRHx+39BLzc7FPhVlM/4vPP0vX0hz7kon/F5pyHPo6/jvznC33WSzPFN
+        wfGfyjP8facgby/w6Fh7ge91gizY4/jYYuW3+H6r2XqzPfI8w0N/cCbv4JzWQsE+Fxz5s8E+45xWknm+
+        j477pfIuzmsVFMw1HvVng7nGua2AnDmPjimrM+c4P2kyv38UHbGkMhP3JMlmvrdBjqd4wNI6nsps3Jcc
+        meenKPyKlNm4LynI8xBDV+AQ9yYBBb4qCFuNga9wf6PQgs+ikFW74DPM0Qi9/MBG4WpSdmOeeskP18nz
+        BIPV6EQyYKzaoGAfC0LVa7CPmKsWaGHvojBNubB3mK9SaG4uoxBNOzeXmLMSsrk5jZYnomTDvCtl+31/
+        lzw7XJyQTjJi7pVBnscFS1NzjLlXAjl+KFiWpo4fMP9SkONb+UPkr0bBSopzf6NkxjtqpfduBnhIWWUW
+        zk8eLUAL0AK0ADykrFqAFqAFaAE4P3m0AC1AC9AC8JCyagFagBagBeD85NECtAAtQAvAQ8qqBWgBWoAW
+        gPOTRwvQArSAAf7PvqytLEBpCR+pIRJsZU0okwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAppearance4.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance4.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance4.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hButton8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAflJREFUeF7t
+        mb9Lw2AQhl1ctfmi4KhrZ1eh4NDV2a1/gKtjJxfXlt4X6eTU0bWbS6fiWEFyqUKnLv4BnZSjiPAmYk3z
+        40u8Bx4Qk9y9927izo6ilIYfzM9F/P2/oGHfjo3ld1F+xue1x1A0NcQfa6MpPq81hsLR9/FfhiN8r5Z4
+        NryJH79WnuH7tcJQ2MGj44Yd/K4WePR6Fj82WXkXv680h4PnIzPgJR76owNeyjc4p7IYG01iR/6mjSY4
+        p5J4xPex4zZUvsV5lcIQd/GoFHZxbiXwKLxMOCaVMgvnO81BMD/FI7ZVZuIeJzE93jPECzwgAxcyG/c5
+        h0f8mBA+E2U27nMKQzzE0Dk4xL1O4A3C64SwuSi7cH+p+BRdYMi8lZ2YoxRMwE0MV5gBNzFPsdw97frE
+        USxYQcpuyYCxCsMQjzFUCY4xVyF4FPUSwpSiZMF8ueJTeIUhylYyYc5cMJbbuNwZLbcxb6bs919OjOVV
+        bLErWl5JRsydGYZ4FlvqnjPMnQke8UPCMieVrJh/K3wb3cofIn8Vg6UV526iZMY7CqXR5xYeklaZhfOd
+        RwvQArQALQAPSasWoAVoAVoAznceLUAL0AK0ADwkrVqAFqAFaAE433m0AC1AC9AC8JC0agFagBagBeB8
+        59ECtAAtoIX/s09rJQtQKsInGaF488beiGIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="hButton8.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 102</value>
+  </data>
+  <data name="hButton8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 67</value>
+  </data>
+  <data name="hButton8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;hButton8.Name" xml:space="preserve">
+    <value>hButton8</value>
+  </data>
+  <data name="&gt;&gt;hButton8.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton8.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="hButton13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 157</value>
+  </data>
+  <data name="hButton13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 30</value>
+  </data>
+  <data name="hButton13.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="hButton13.Text" xml:space="preserve">
+    <value>拍照位置2保存</value>
+  </data>
+  <data name="&gt;&gt;hButton13.Name" xml:space="preserve">
+    <value>hButton13</value>
+  </data>
+  <data name="&gt;&gt;hButton13.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton13.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton13.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance9.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance9.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqNJREFUeF7t
+        mC1sFFEURutwZOctPw6HRCAQJIiaJlUEVwmOYBAVGJKCQTYhZd8bamprsVUktbVNk747I1tH6hoc5G4g
+        KWem0N3e3b2z7EmO2NmZ932f2WxmaWmG9GP1VuX1/4KQZD0k+fHLdX4/1xSlvLowfqhe431zST/mFxz/
+        W/2O988VIVZrHN0wVmt8bi7oJXnaGHuJei+f7zRhkFeKJN859DKH9w7yCs/pJMV2/SREOePIfxrlTJ/l
+        eZ2iH48fhZRPG+OubD7VM3huJyi26wchSd0cNbK1nsXzXXP7c30/JDlsGTOuh3omc1xSfKzvhSgHLSOu
+        Z5QDPZt5rrhbVndCyvuN8mbmfc1grgvCltwMSfaapc3d0yzmz5YtuVFE+dJSdiJqlmayxswIKe+y5OTN
+        u+wxE0LKO81y0zLvsM9UKaLEZqnpqh3YayqEJJssM0M32W+iFEk+tJSYqdqJPSdCSLLBcEdusK8pRcxv
+        WkJdqR3Z24R+Wb1mmFe1K/tfiyLmlwzxrnbmjrHop+o5D++K2p17RuJKLzG9O+5L1n46fhZSdd44sHNW
+        57qF+/5KiNVqKOVb87COqltitcqdrdwqZTkkOWkc0n1PdBv3/kEYyGOj93herXUjdw/plfIwJDlqeWje
+        PNKt3G9KS6iJzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kc
+        t7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHFLkeTrJGTOggVO
+        6X2S5UnIHLfwx8tK5riFxa1kjltY3ErmuCXE4/cjW8q7obx24TNzFixwCv/BWckct/DHy0rmuIXFrWSO
+        W1jcSuZY8BO+BFPpedYSwgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAppearance9.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance10.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance10.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAArNJREFUeF7t
+        mC1MHFEUhXF1FRUte2dTtW3enU1JKiqaVGCaVBEcElyDQSAwTWhNJRKLxWJRTbBYgqsER3Aw7z2SaS5J
+        fzhv+Fn2zs6d6X7Jl8DC3HPOCkJ2ZqZBsshfRHz9vyCLbp0Cl6J8jT/vNFng1d/j/7wJgVfx9zpJFtwK
+        jv/7JrgV/P1OQZ6XcHSi5yV8rhNQMVxIxt5mMVzA51sNFfyRAhfJ0Nst5Bm800oo5h8o8HnFyPs8l2fx
+        XquYDa/fkefTinEP0/Op3MC7raDv3ZvMu5/JqBGVG3IL75umX/IrCnyEY8bwSG5ijknoMn9JgQ8rRozr
+        odzGPFO8KOeeU+CDivJaHkgG5prgWTl4Sp73K0rr6nlfsjC/UQbl4Al53kvK1qXnPcnEHo1BnneTknXr
+        eRd7NAJ5t5OUm5Te7WCfiUKBt5NSk3cbe02EXsi3Kso0onTBfrWSRfcdSzStdMKetUDebWK4Gb3bxL6q
+        UOSNJNSakTewtwoU8rUkzKz5GvYfi15wn9MQ20pn3PEosuCW8XhblO64ZyTo6gEfYlr36pEfspLnRYp8
+        kRxsm7LB8yLuu5NeMfxEkc+SY2018plswp2V9KObp8gnyZG2G/lEtuHeG2QX7n0W8rE/x7OqbJONuPsa
+        CvlbCnyMD3XQY9mK+1WpCFURc8yCxbXEHLNgcS0xxyxYXEvMMQsW1xJzzILFtcQcs2BxLTHHLFhcS8wx
+        CxbXEnPMgsW1xByzYHEtMccsWFxLzDELFtcSc8yCxbXEHLNgcS0xxyxYXEvMMQsW1xJzzILFtcQcs2Bx
+        LTHHLL3AP+oQc6ZMMcrspZuvQ8wxC/7x0hJzzILFtcQcs2BxLTHHLOTdt5GN7uu1+No/32POlClGwf/g
+        tMQcs+AfLy0xxyxYXEvMMQsW1xJzNPgFM2yfGVQYBycAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance10.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance10.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="hButton9.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqNJREFUeF7t
+        mC1sFFEURutwZOctPw6HRCAQJIiaJlUEVwmOYBAVGJKCQTYhZd8bamprsVUktbVNk747I1tH6hoc5G4g
+        KWem0N3e3b2z7EmO2NmZ932f2WxmaWmG9GP1VuX1/4KQZD0k+fHLdX4/1xSlvLowfqhe431zST/mFxz/
+        W/2O988VIVZrHN0wVmt8bi7oJXnaGHuJei+f7zRhkFeKJN859DKH9w7yCs/pJMV2/SREOePIfxrlTJ/l
+        eZ2iH48fhZRPG+OubD7VM3huJyi26wchSd0cNbK1nsXzXXP7c30/JDlsGTOuh3omc1xSfKzvhSgHLSOu
+        Z5QDPZt5rrhbVndCyvuN8mbmfc1grgvCltwMSfaapc3d0yzmz5YtuVFE+dJSdiJqlmayxswIKe+y5OTN
+        u+wxE0LKO81y0zLvsM9UKaLEZqnpqh3YayqEJJssM0M32W+iFEk+tJSYqdqJPSdCSLLBcEdusK8pRcxv
+        WkJdqR3Z24R+Wb1mmFe1K/tfiyLmlwzxrnbmjrHop+o5D++K2p17RuJKLzG9O+5L1n46fhZSdd44sHNW
+        57qF+/5KiNVqKOVb87COqltitcqdrdwqZTkkOWkc0n1PdBv3/kEYyGOj93herXUjdw/plfIwJDlqeWje
+        PNKt3G9KS6iJzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kc
+        t7C4lcxxC4tbyRy3sLiVzHELi1vJHLewuJXMcQuLW8kct7C4lcxxC4tbyRy3sLiVzHFLkeTrJGTOggVO
+        6X2S5UnIHLfwx8tK5riFxa1kjltY3ErmuCXE4/cjW8q7obx24TNzFixwCv/BWckct/DHy0rmuIXFrWSO
+        W1jcSuZY8BO+BFPpedYSwgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="hButton9.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 51</value>
+  </data>
+  <data name="hButton9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 45</value>
+  </data>
+  <data name="hButton9.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton9.Text" xml:space="preserve">
+    <value>
+
+
+
+
+
+
+
+
+
+12
+</value>
+  </data>
+  <data name="&gt;&gt;hButton9.Name" xml:space="preserve">
+    <value>hButton9</value>
+  </data>
+  <data name="&gt;&gt;hButton9.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton9.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton9.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="hButton12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 61</value>
+  </data>
+  <data name="hButton12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 35</value>
+  </data>
+  <data name="hButton12.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="hButton12.Text" xml:space="preserve">
+    <value>拍照位置1保存</value>
+  </data>
+  <data name="&gt;&gt;hButton12.Name" xml:space="preserve">
+    <value>hButton12</value>
+  </data>
+  <data name="&gt;&gt;hButton12.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton12.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="hButton10.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA15JREFUeF7l2D9I1HEcxvG2toaGqCWICGpoKIgoGiQIgiiipaGhhiCCaIhoKSqI
+        oAKHBgMjkwgyCESIhCIy+kOhIRX2B/yvXUfp6aV5alkXn+Ea3h/P+93d8/t55w0v0Mf7fZ/ne4jILUqn
+        04vUll7rTIeBPQouUOBwFfYouECBw1XYo+AChd1Ngy1hYI+CCyqNCyqNCxQutQ6fz7jcljjH75kFxR4F
+        Fyjwj5cKexRcoMDhKuxRcIECh6uwR8EFCs+/pKrCwB4FF1QaF1QaFyjwPzgV9ii4QIF/vFTYo+ACBQ5X
+        YY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUOV2GP
+        ggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4IL
+        FDhchT0K/794NzS1YXND/0eWLjR2R7urewNMa3xyy8bbfd18aKGwu9kdZ/0NyHgRS1Wtu9Ub48Plzu5k
+        d+N93RtgHvdP7Fxd15PgIeXK7mJ34j2zvgHmQc/43hXXu1I8rNzYHewuvF/ON8A0do7v54Hlxu7AewV+
+        A0zD57GDPLRc2Hbeh1wwm/qO5BEeXupsM+8xGxdkU/s+eZwlpcq2cn82LpjL1faRUywrNbaRu+figlyu
+        tCXOsrRU2DbuzcUFQVx4PXyR5fPNNnFnEC4I6szLoWqOmC+2hfuCckE+Tj79XsMxUbMN3JUPF+Tr2JP4
+        TY6KinVzT75cUIjDj+INHBc26+SOQrigEFMzfxcfaI41cWRYrMs6uaMQLijU2PSfJfvuxx5yrJp1WBf7
+        C+WCYgylZpbtahx8xtEqdrZ1sLcYLijW4NjvldvvDbRxfLHsTDubfcVygUJ38tearXf7OniJQtlZdiZ7
+        FFyg8iExvV7x+aKdYWfxfBUXKLV/m9y0tr7nKy8VlD1rZ/BcJReovYpPblt1o2uUl8vFnrFneZ6aC8LQ
+        MjCxY3lt1xQvmY291p7hOWFwQViae3/u4UWzsdfy+bC4IExBPmTN9SGmmgvCdufTj0O8dIb9jK8Pmwui
+        UNeRPMrLW8bXRcEFUal5O3oic3n7mj+PiguiVP1m5LRhHqV/7HH6W/x9eR0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="hButton10.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 263</value>
+  </data>
+  <data name="hButton10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 50</value>
+  </data>
+  <data name="hButton10.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton10.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="&gt;&gt;hButton10.Name" xml:space="preserve">
+    <value>hButton10</value>
+  </data>
+  <data name="&gt;&gt;hButton10.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton10.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton10.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 218</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="hButton11.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAnhJREFUeF7t2T9oU2EUBfAurg5OHRXBQXDSSRBEB3EQHJzERXBxEDfdikMX3XQQ
+        UUQUxYKigogilFIqFRUURFC0hpiG2mpbabCtaamRM3Q5xyTvfe9+XwK5ww/Cee/df1tpX6PR6OtlEvQa
+        CayMVZf2Hno0OWIBtbi+FQmsYOhNl780LPgB/AB+AD8A17cigRU/gB/AD+AH4EVC+QH8AH4APwDXtyKB
+        FT+AH8AP4AfgRUL5AfwAfgA/ANe3IoEVP4AfwA/gB+BFQvkB/AB+gM4e4NzL2fP8P/sseJFQXDcLzMx7
+        /I8EzRx7OvWQB+tWmJXnb0aCVnYPlT9ws26DGXnuViRopbywsqX/ykSdm3YLzIYZee5WJGhnuLJ4gBt3
+        C8zG87YjQRZX3/86xc07DTPxnFlIkNXZsZ+XeIhOwSw8X1YS5HHkcfUZD5MaZuC58pAgj5W1vxt23i5P
+        8FCpoDdm4LnykCCvT/P17TxYKujN8+QlQYgnpd+HebjY0JPnCCFBqItv58/wkLGgF/cPJUERp0dmrvGw
+        1tCD+xYhQVGWfwQx1OZ+RUlQVK2+tnHHrVKFhy8KNVGb+xUlgYV3P/7s4gWKQk3uY0ECK/c+147yEqFQ
+        i+tbkcDShTdzA7xMXqjBdS1JYO3k8PRNXiorfMv1rEkQw8EHky94uXbwDdeJQYIYZhZX+7fd+DrNSzaD
+        d/EN14lBgljGp5b38KLN4F3+PhYJYrrzceE4L8vwDn8XkwSxDb6aHeSl1+EZvx+bBCmceP79Li+PjN9L
+        QYJU9t2vvF5fHr/5eSoSpPKttrp56/XSHOA3P09FgpRGq0v7gfOUJOg1EvSaf/PViJpQnV2WAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="hButton11.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="hButton11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="hButton11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 190</value>
+  </data>
+  <data name="hButton11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 67</value>
+  </data>
+  <data name="hButton11.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hButton11.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="&gt;&gt;hButton11.Name" xml:space="preserve">
+    <value>hButton11</value>
+  </data>
+  <data name="&gt;&gt;hButton11.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Forms.HButton, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hButton11.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;hButton11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 132</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 169</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 313</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>相机二平移伺服</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance11.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance11.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAflJREFUeF7t
+        mb9Lw2AQhl1ctfmi4KhrZ1eh4NDV2a1/gKtjJxfXlt4X6eTU0bWbS6fiWEFyqUKnLv4BnZSjiPAmYk3z
+        40u8Bx4Qk9y9927izo6ilIYfzM9F/P2/oGHfjo3ld1F+xue1x1A0NcQfa6MpPq81hsLR9/FfhiN8r5Z4
+        NryJH79WnuH7tcJQ2MGj44Yd/K4WePR6Fj82WXkXv680h4PnIzPgJR76owNeyjc4p7IYG01iR/6mjSY4
+        p5J4xPex4zZUvsV5lcIQd/GoFHZxbiXwKLxMOCaVMgvnO81BMD/FI7ZVZuIeJzE93jPECzwgAxcyG/c5
+        h0f8mBA+E2U27nMKQzzE0Dk4xL1O4A3C64SwuSi7cH+p+BRdYMi8lZ2YoxRMwE0MV5gBNzFPsdw97frE
+        USxYQcpuyYCxCsMQjzFUCY4xVyF4FPUSwpSiZMF8ueJTeIUhylYyYc5cMJbbuNwZLbcxb6bs919OjOVV
+        bLErWl5JRsydGYZ4FlvqnjPMnQke8UPCMieVrJh/K3wb3cofIn8Vg6UV526iZMY7CqXR5xYeklaZhfOd
+        RwvQArQALQAPSasWoAVoAVoAznceLUAL0AK0ADwkrVqAFqAFaAE433m0AC1AC9AC8JC0agFagBagBeB8
+        59ECtAAtoIX/s09rJQtQKsInGaF488beiGIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance11.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance11.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance12.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance12.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAftJREFUeF7t
+        mSFPA0EQhTFYBAmhNzWQkLCzSLAkTRBYNI4fgEWiMFhsFaoSi8Og0JVVVTU4Erq7TY4MCQl5eyFw7d3t
+        HfMlX9L0ejNvniOsrSlKY/SDPRHx+39BLzc7FPhVlM/4vPP0vX0hz7kon/F5pyHPo6/jvznC33WSzPFN
+        wfGfyjP8facgby/w6Fh7ge91gizY4/jYYuW3+H6r2XqzPfI8w0N/cCbv4JzWQsE+Fxz5s8E+45xWknm+
+        j477pfIuzmsVFMw1HvVng7nGua2AnDmPjimrM+c4P2kyv38UHbGkMhP3JMlmvrdBjqd4wNI6nsps3Jcc
+        meenKPyKlNm4LynI8xBDV+AQ9yYBBb4qCFuNga9wf6PQgs+ikFW74DPM0Qi9/MBG4WpSdmOeeskP18nz
+        BIPV6EQyYKzaoGAfC0LVa7CPmKsWaGHvojBNubB3mK9SaG4uoxBNOzeXmLMSsrk5jZYnomTDvCtl+31/
+        lzw7XJyQTjJi7pVBnscFS1NzjLlXAjl+KFiWpo4fMP9SkONb+UPkr0bBSopzf6NkxjtqpfduBnhIWWUW
+        zk8eLUAL0AK0ADykrFqAFqAFaAE4P3m0AC1AC9AC8JCyagFagBagBeD85NECtAAtQAvAQ8qqBWgBWoAW
+        gPOTRwvQArSAAf7PvqytLEBpCR+pIRJsZU0okwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAppearance12.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance12.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance12.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance20.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance20.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance20.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance19.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance19.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance19.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance15.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance15.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA15JREFUeF7l2D9I1HEcxvG2toaGqCWICGpoKIgoGiQIgiiipaGhhiCCaIhoKSqI
+        oAKHBgMjkwgyCESIhCIy+kOhIRX2B/yvXUfp6aV5alkXn+Ea3h/P+93d8/t55w0v0Mf7fZ/ne4jILUqn
+        04vUll7rTIeBPQouUOBwFfYouECBw1XYo+AChd1Ngy1hYI+CCyqNCyqNCxQutQ6fz7jcljjH75kFxR4F
+        Fyjwj5cKexRcoMDhKuxRcIECh6uwR8EFCs+/pKrCwB4FF1QaF1QaFyjwPzgV9ii4QIF/vFTYo+ACBQ5X
+        YY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUOV2GP
+        ggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4IL
+        FDhchT0K/794NzS1YXND/0eWLjR2R7urewNMa3xyy8bbfd18aKGwu9kdZ/0NyHgRS1Wtu9Ub48Plzu5k
+        d+N93RtgHvdP7Fxd15PgIeXK7mJ34j2zvgHmQc/43hXXu1I8rNzYHewuvF/ON8A0do7v54Hlxu7AewV+
+        A0zD57GDPLRc2Hbeh1wwm/qO5BEeXupsM+8xGxdkU/s+eZwlpcq2cn82LpjL1faRUywrNbaRu+figlyu
+        tCXOsrRU2DbuzcUFQVx4PXyR5fPNNnFnEC4I6szLoWqOmC+2hfuCckE+Tj79XsMxUbMN3JUPF+Tr2JP4
+        TY6KinVzT75cUIjDj+INHBc26+SOQrigEFMzfxcfaI41cWRYrMs6uaMQLijU2PSfJfvuxx5yrJp1WBf7
+        C+WCYgylZpbtahx8xtEqdrZ1sLcYLijW4NjvldvvDbRxfLHsTDubfcVygUJ38tearXf7OniJQtlZdiZ7
+        FFyg8iExvV7x+aKdYWfxfBUXKLV/m9y0tr7nKy8VlD1rZ/BcJReovYpPblt1o2uUl8vFnrFneZ6aC8LQ
+        MjCxY3lt1xQvmY291p7hOWFwQViae3/u4UWzsdfy+bC4IExBPmTN9SGmmgvCdufTj0O8dIb9jK8Pmwui
+        UNeRPMrLW8bXRcEFUal5O3oic3n7mj+PiguiVP1m5LRhHqV/7HH6W/x9eR0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance15.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance15.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance16.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance16.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAA1hJREFUeF7l2E9oz3Ecx3E3N0cHB3KQdpDtsLSSzWEiEkmSwyiFlEQpFEspykis
+        qEU4DAfsQitNaGqhFZocyIFdtBQlv+93n99X78PP4fneb79/r+93v992eNS89vt+Xq/Pt7W0eUmSzFNb
+        FDUlaWCPggsUOFyFPQouUOBwFfYouEBhW9z1LA3sUXDBXOOCucYFChcmr3QX9ISrp/lvZuVij4ILFPjL
+        S4U9Ci5Q4HAV9ii4QIHDVdij4AKF4TDSkQb2KLhgrnHBXOMCBf4PToU9Ci5Q4C8vFfYouECBw1XYo+AC
+        BQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldhj4ILFDhchT0KLlDgcBX2KLhAgcNV2KPgAgUO
+        V2GPggsUOFyFPQouUOBwFfYouECBw1XYo+ACBQ5XYY+CCxQ4XIU9Ci5Q4HAV9ii4QIHDVdij4AIFDldh
+        j8L/L97nx1ra441jLJ1t7I52V/cCzJsw2tYWr/vMh2YLu5vdccqfgIJX+ZGO5rj9Ox9udHYnuxvv616A
+        GQov1zdFqyZ4SKOyu9ideM+iL8A8CU+3LI1a/vCwRmN3sLvwfiVfgBnIP97BAxuN3YH3KvsFmPvhYRcP
+        bRS2nfchF0zldri7j4fXO9vMe0zFBcX0hTuHWFKvbCv3F+OC6fSGvmMsqze2kbun44JSLk72nmJpvbBt
+        3FuKC8pxLlw6y/KZZpu4sxwuKFf35PkejpgptoX7yuWCShyPz/RyTNZsA3dVwgWVOhyfuMFRWbFu7qmU
+        C6qxPzraz3Fps07uqIYLqpFLcvP3xAcfcWRarMs6uaMaLqjWr+T3gp3x3kGOVbMO62J/tVxQix/JxMKt
+        0a4XHK1iZ1sHe2vhglp9y48v3hBtf83xtbIz7Wz21coFCl+Sr8vWxps+8BLVsrPsTPYouEDlY/7Tirao
+        s+a/L9oZdhbPV3GB0mj+XWtztGaclyqXPWtn8FwlF6iN5N+uXp5r/cnLlWLP2LM8T80FaXgehjuX5Fb+
+        5SWLsc/aMzwnDS5Iy2AY2syLFmOf5fNpcUGaBkLpP7LaZ/hcmlyQtnvhwW5eusC+x8+nzQVZuBX6D/Dy
+        lvFzWXBBVq6Hm0cKl7ev+f2suCBLl8O1k4Z5lv4B3DZceNxgCmMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance16.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance16.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance16.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance13.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance13.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAnhJREFUeF7t2T9oU2EUBfAurg5OHRXBQXDSSRBEB3EQHJzERXBxEDfdikMX3XQQ
+        UUQUxYKigogilFIqFRUURFC0hpiG2mpbabCtaamRM3Q5xyTvfe9+XwK5ww/Cee/df1tpX6PR6OtlEvQa
+        CayMVZf2Hno0OWIBtbi+FQmsYOhNl780LPgB/AB+AD8A17cigRU/gB/AD+AH4EVC+QH8AH4APwDXtyKB
+        FT+AH8AP4AfgRUL5AfwAfgA/ANe3IoEVP4AfwA/gB+BFQvkB/AB+gM4e4NzL2fP8P/sseJFQXDcLzMx7
+        /I8EzRx7OvWQB+tWmJXnb0aCVnYPlT9ws26DGXnuViRopbywsqX/ykSdm3YLzIYZee5WJGhnuLJ4gBt3
+        C8zG87YjQRZX3/86xc07DTPxnFlIkNXZsZ+XeIhOwSw8X1YS5HHkcfUZD5MaZuC58pAgj5W1vxt23i5P
+        8FCpoDdm4LnykCCvT/P17TxYKujN8+QlQYgnpd+HebjY0JPnCCFBqItv58/wkLGgF/cPJUERp0dmrvGw
+        1tCD+xYhQVGWfwQx1OZ+RUlQVK2+tnHHrVKFhy8KNVGb+xUlgYV3P/7s4gWKQk3uY0ECK/c+147yEqFQ
+        i+tbkcDShTdzA7xMXqjBdS1JYO3k8PRNXiorfMv1rEkQw8EHky94uXbwDdeJQYIYZhZX+7fd+DrNSzaD
+        d/EN14lBgljGp5b38KLN4F3+PhYJYrrzceE4L8vwDn8XkwSxDb6aHeSl1+EZvx+bBCmceP79Li+PjN9L
+        QYJU9t2vvF5fHr/5eSoSpPKttrp56/XSHOA3P09FgpRGq0v7gfOUJOg1EvSaf/PViJpQnV2WAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="buttonAppearance13.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance13.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="buttonAppearance14.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>Control</value>
+  </data>
+  <data name="buttonAppearance14.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAm5JREFUeF7t2T+ojXEcBvC7WM0yiPEqGShJ6kpRUpQs1yBKKbGQDJjOQEpSd8Ig
+        A9M1GBjUHS75k0GxqLu49w4kC9N9/+oZ7vI8zjnv+3u/v985db7Dp07P+77ff9vtTtV1PTXJJJg0Elh5
+        W36YOZGfXrCAWlzfigRWMPTmbLq24AfwA/gB/ABc34oEVvwAfgA/gB+AFwnlB/AD+AH8AFzfigRW/AB+
+        AD+AH4AXCeUH8AP4AfwAXN+KBFb8AH4AP4AfgBcJ5QfwA/gBRnuAXnHnNv/PvgleJBTXbQIz8x7/I0E/
+        Z/MLz3mwcYVZef5+JBjkQH70KzcbN5iR5x5EgkG+VyvbtqztWOOm4wKzYUaeexAJhlkoFw9z43GB2Xje
+        YSRo4lHx5CI3HzXMxHM2IUFT18vefR5iVDALz9eUBG3M5ude8TCpYQaeqw0J2sjqfMPe/NASD5UKemMG
+        nqsNCdr6Vi9t58FSQW+epy0JQrysXh/n4WJDT54jhASh5sqHV3nIWNCL+4eSoIsrxY0HPKw19OC+XUjQ
+        leUfQQy1uV9XEnT1p/67cVc2s8zDd4WaqM39upLAwufqy25eoCvU5D4WJLAyX76Y5SVCoRbXtyKBpbvl
+        3E1epi3U4LqWJLB2qbj2mJdqCt9yPWsSxHCsOPWGlxsG33CdGCSI4Wf1a9PObN8PXrIfvItvuE4MEsTy
+        vvq0nxftB+/y97FIENOzcv4ML8vwDn8XkwSx3Sru9XjpdXjG78cmQQrni8tPeXlk/F4KEqRyJDv5cX15
+        /ObnqUiQynK9unU62/Mb8JufpyJBSovVu4PAeUoSTBoJJs0/4847fcx0FfsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonAppearance14.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>ControlText</value>
+  </data>
+  <data name="buttonAppearance14.State" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAppearance14.Text" xml:space="preserve">
+    <value>ButtonAppearance</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 106</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 57</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 98</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 57</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>526, 514</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance18.Name" xml:space="preserve">
+    <value>buttonAppearance18</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance18.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance17.Name" xml:space="preserve">
+    <value>buttonAppearance17</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance17.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance5.Name" xml:space="preserve">
+    <value>buttonAppearance5</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance5.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance6.Name" xml:space="preserve">
+    <value>buttonAppearance6</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance6.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance7.Name" xml:space="preserve">
+    <value>buttonAppearance7</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance7.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance8.Name" xml:space="preserve">
+    <value>buttonAppearance8</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance8.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance1.Name" xml:space="preserve">
+    <value>buttonAppearance1</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance1.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance2.Name" xml:space="preserve">
+    <value>buttonAppearance2</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance2.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance3.Name" xml:space="preserve">
+    <value>buttonAppearance3</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance3.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance4.Name" xml:space="preserve">
+    <value>buttonAppearance4</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance4.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance11.Name" xml:space="preserve">
+    <value>buttonAppearance11</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance11.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance12.Name" xml:space="preserve">
+    <value>buttonAppearance12</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance12.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance20.Name" xml:space="preserve">
+    <value>buttonAppearance20</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance20.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance9.Name" xml:space="preserve">
+    <value>buttonAppearance9</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance9.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance10.Name" xml:space="preserve">
+    <value>buttonAppearance10</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance10.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance19.Name" xml:space="preserve">
+    <value>buttonAppearance19</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance19.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance15.Name" xml:space="preserve">
+    <value>buttonAppearance15</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance15.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance16.Name" xml:space="preserve">
+    <value>buttonAppearance16</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance16.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance13.Name" xml:space="preserve">
+    <value>buttonAppearance13</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance13.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance14.Name" xml:space="preserve">
+    <value>buttonAppearance14</value>
+  </data>
+  <data name="&gt;&gt;buttonAppearance14.Type" xml:space="preserve">
+    <value>Hi.Ltd.Windows.Components.ButtonAppearance, Hi.Ltd.Windows, Version=2025.5.27.942, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

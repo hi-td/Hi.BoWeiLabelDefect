@@ -36,6 +36,10 @@ namespace VisionPlatform
         {
             try
             {
+                ValueChange_BrokenArea.ValueChanged += but_Test_Click;
+                ValueChange_BrokenArea.SetValueRange(0, 999999);
+                ValueChange_DirtyArea.ValueChanged += but_Test_Click;
+                ValueChange_DirtyArea.SetValueRange(0, 999999);
             }
             catch (Exception ex)
             {
@@ -50,7 +54,9 @@ namespace VisionPlatform
             {
                 param.arbitrary = myArbitrary;
                 param.dBrokenScore = (double)numUpD_BrokenScore.Value;
+                param.nBrokenMinArea = ValueChange_BrokenArea.GetValue();
                 param.dDirtyScore = (double)(numUpD_DirtyScore.Value);
+                param.nDirtyMinArea = ValueChange_DirtyArea.GetValue();
             }
             catch (Exception ex)
             {
@@ -66,7 +72,9 @@ namespace VisionPlatform
                 bLoad = true;
                 myArbitrary = param.arbitrary;
                 numUpD_BrokenScore.Value = (decimal)param.dBrokenScore;
+                ValueChange_BrokenArea.SetValue(param.nBrokenMinArea);
                 numUpD_DirtyScore.Value = (decimal)param.dDirtyScore;
+                ValueChange_DirtyArea.SetValue(param.nDirtyMinArea);
             }
             catch (SystemException ex)
             {

@@ -1239,6 +1239,8 @@ namespace VisionPlatform
                 int camID = inspectItem.camItem.cam;
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
+
+                CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
                 //拍照总用时
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);

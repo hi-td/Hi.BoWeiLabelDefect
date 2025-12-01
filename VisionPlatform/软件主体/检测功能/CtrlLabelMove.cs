@@ -21,6 +21,7 @@ namespace VisionPlatform
             this.Visible = true;
             this.Dock = DockStyle.Fill;
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.Fun = ctrlHome.Fun;
             InitUI();
         }
         /// <summary>
@@ -48,6 +49,9 @@ namespace VisionPlatform
                 AngleValueRange.SetValue(true, "角度偏移范围", -45, 45, 1, 0);
                 AngleValueRange.ValueChanged += Inspect;
                 ctrlNccModel.ValueChanged += Inspect;
+                CamInspectItem camItem = myCtrlHome.myCamItem;
+                string strItem = InspectFunction.GetStrCheckItem(camItem.item);
+                ctrlNccModel.UpdateFun(this.Fun, myCtrlHome.camID, strItem);
             }
             catch (Exception ex)
             {

@@ -1135,7 +1135,7 @@ namespace VisionPlatform
                         ho_Region.Dispose();
                         HOperatorSet.Intersection(ho_Rect1, ho_ROI, out ho_Region);
                         HOperatorSet.RegionFeatures(ho_Region, "area", out HTuple hv_area);
-                        if (0 != hv_area.TupleLength() && hv_area[0].D > 10)
+                        if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea)
                         {
                             bResult = false;
                             fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height/2-10, aiResult.scores[i].ToString("F2"), strColor);

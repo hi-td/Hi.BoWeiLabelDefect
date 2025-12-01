@@ -207,7 +207,9 @@ namespace VisionPlatform
         {
             public BaseData.Arbitrary arbitrary;
             public double dBrokenScore;
+            public int nBrokenMinArea;
             public double dDirtyScore;
+            public int nDirtyMinArea;
         }
         public struct DefectResult
         {
