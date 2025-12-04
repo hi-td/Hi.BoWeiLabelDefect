@@ -37,9 +37,9 @@ namespace VisionPlatform
             try
             {
                 ValueChange_BrokenArea.ValueChanged += but_Test_Click;
-                ValueChange_BrokenArea.SetValueRange(0, 999999);
+                ValueChange_BrokenArea.SetValueRange(0, 99999);
                 ValueChange_DirtyArea.ValueChanged += but_Test_Click;
-                ValueChange_DirtyArea.SetValueRange(0, 999999);
+                ValueChange_DirtyArea.SetValueRange(0, 99999);
             }
             catch (Exception ex)
             {

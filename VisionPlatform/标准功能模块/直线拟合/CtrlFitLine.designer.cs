@@ -56,7 +56,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.comboBox_Direction, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 78);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(445, 78);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // comboBox_Direction
@@ -84,11 +84,13 @@
             this.comboBox_Direction.FormattingEnabled = true;
             this.comboBox_Direction.Items.AddRange(new object[] {
             "从上往下",
-            "从下往上"});
+            "从下往上",
+            "从左往右",
+            "从右往左"});
             this.comboBox_Direction.Location = new System.Drawing.Point(68, 2);
             this.comboBox_Direction.Margin = new System.Windows.Forms.Padding(1);
             this.comboBox_Direction.Name = "comboBox_Direction";
-            this.comboBox_Direction.Size = new System.Drawing.Size(68, 21);
+            this.comboBox_Direction.Size = new System.Drawing.Size(73, 21);
             this.comboBox_Direction.TabIndex = 10;
             // 
             // label5
@@ -118,10 +120,10 @@
             // trackBar_Len2
             // 
             this.trackBar_Len2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar_Len2.Location = new System.Drawing.Point(141, 29);
+            this.trackBar_Len2.Location = new System.Drawing.Point(146, 29);
             this.trackBar_Len2.Maximum = 100;
             this.trackBar_Len2.Name = "trackBar_Len2";
-            this.trackBar_Len2.Size = new System.Drawing.Size(291, 18);
+            this.trackBar_Len2.Size = new System.Drawing.Size(295, 18);
             this.trackBar_Len2.TabIndex = 7;
             this.trackBar_Len2.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar_Len2.Value = 25;
@@ -138,7 +140,7 @@
             0,
             0});
             this.numUpD_Thd.Name = "numUpD_Thd";
-            this.numUpD_Thd.Size = new System.Drawing.Size(68, 23);
+            this.numUpD_Thd.Size = new System.Drawing.Size(73, 23);
             this.numUpD_Thd.TabIndex = 6;
             this.numUpD_Thd.Value = new decimal(new int[] {
             10,
@@ -150,10 +152,10 @@
             // trackBar_Thd
             // 
             this.trackBar_Thd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar_Thd.Location = new System.Drawing.Point(141, 54);
+            this.trackBar_Thd.Location = new System.Drawing.Point(146, 54);
             this.trackBar_Thd.Maximum = 255;
             this.trackBar_Thd.Name = "trackBar_Thd";
-            this.trackBar_Thd.Size = new System.Drawing.Size(291, 20);
+            this.trackBar_Thd.Size = new System.Drawing.Size(295, 20);
             this.trackBar_Thd.TabIndex = 8;
             this.trackBar_Thd.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar_Thd.Value = 10;
@@ -163,9 +165,9 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.comBox_EdgePoint, 3, 0);
@@ -173,19 +175,19 @@
             this.tableLayoutPanel2.Controls.Add(this.comBox_Trans, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(138, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(143, 1);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(297, 24);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(301, 24);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(140, 0);
+            this.label4.Location = new System.Drawing.Point(143, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 24);
@@ -200,10 +202,10 @@
             this.comBox_EdgePoint.Items.AddRange(new object[] {
             "第一个点",
             "最后一个点"});
-            this.comBox_EdgePoint.Location = new System.Drawing.Point(201, 1);
+            this.comBox_EdgePoint.Location = new System.Drawing.Point(204, 1);
             this.comBox_EdgePoint.Margin = new System.Windows.Forms.Padding(1);
             this.comBox_EdgePoint.Name = "comBox_EdgePoint";
-            this.comBox_EdgePoint.Size = new System.Drawing.Size(68, 21);
+            this.comBox_EdgePoint.Size = new System.Drawing.Size(73, 21);
             this.comBox_EdgePoint.TabIndex = 5;
             this.comBox_EdgePoint.SelectedIndexChanged += new System.EventHandler(this.Inspect);
             // 
@@ -211,7 +213,7 @@
             // 
             this.checkBox_show.AutoSize = true;
             this.checkBox_show.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkBox_show.Location = new System.Drawing.Point(279, 3);
+            this.checkBox_show.Location = new System.Drawing.Point(283, 3);
             this.checkBox_show.Name = "checkBox_show";
             this.checkBox_show.Size = new System.Drawing.Size(15, 18);
             this.checkBox_show.TabIndex = 7;
@@ -228,7 +230,7 @@
             this.comBox_Trans.Location = new System.Drawing.Point(66, 1);
             this.comBox_Trans.Margin = new System.Windows.Forms.Padding(1);
             this.comBox_Trans.Name = "comBox_Trans";
-            this.comBox_Trans.Size = new System.Drawing.Size(73, 21);
+            this.comBox_Trans.Size = new System.Drawing.Size(76, 21);
             this.comBox_Trans.TabIndex = 4;
             this.comBox_Trans.SelectedIndexChanged += new System.EventHandler(this.Inspect);
             // 
@@ -262,7 +264,7 @@
             this.numUpD_Len2.Location = new System.Drawing.Point(68, 27);
             this.numUpD_Len2.Margin = new System.Windows.Forms.Padding(1);
             this.numUpD_Len2.Name = "numUpD_Len2";
-            this.numUpD_Len2.Size = new System.Drawing.Size(68, 23);
+            this.numUpD_Len2.Size = new System.Drawing.Size(73, 23);
             this.numUpD_Len2.TabIndex = 5;
             this.numUpD_Len2.Value = new decimal(new int[] {
             25,
@@ -277,7 +279,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("宋体", 10F);
             this.Name = "CtrlFitLine";
-            this.Size = new System.Drawing.Size(436, 78);
+            this.Size = new System.Drawing.Size(445, 78);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Len2)).EndInit();

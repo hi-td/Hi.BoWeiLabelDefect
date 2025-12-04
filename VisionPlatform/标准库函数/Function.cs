@@ -15,7 +15,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static VisionPlatform.InspectData.SingleStripLength;
 using Circle = BaseData.Circle;
 using Ellipse = BaseData.Ellipse;
 using Line = BaseData.Line;
@@ -236,14 +235,14 @@ namespace VisionPlatform
                     var folder = System.IO.Path.GetDirectoryName(resImageFath);
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
-                    string str = resImageFath+ DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + "\\";
+                    string str = resImageFath + DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + "\\";
                     folder = System.IO.Path.GetDirectoryName(str);
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
                     str = str.Replace("\\", "/");
                     if (null != photometricStereoImage.NormalField)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str+ "NormalField");
+                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str + "NormalField");
                     }
                     if (null != photometricStereoImage.Albedo)
                     {
@@ -4007,6 +4006,8 @@ namespace VisionPlatform
                     ho_LocateRegion?.Dispose();
                     HOperatorSet.GenRectangle2(out ho_LocateRegion, outRect2.dRect2Row, outRect2.dRect2Col, outRect2.dPhi, outRect2.dLength1, outRect2.dLength2);
                     DispRegion(ho_LocateRegion);
+                    HOperatorSet.GenCrossContourXld(out HObject ho_Cross, outRect2.dRect2Row, outRect2.dRect2Col, 50, outRect2.dPhi);
+                    DispRegion(ho_Cross, "blue", lineWidth: 2);
                 }
             }
             catch (HalconException ex)

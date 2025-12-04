@@ -128,7 +128,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        CAAAAk1TRnQBSQFMAgEBAwEAAcABAAHAAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CAAAAk1TRnQBSQFMAgEBAwEAAbgBAAG4AQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -173,17 +173,6 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="模板中心到边缘线的距离.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAASJJREFUWEfN
-        ljEKAjEQRT2AN/AGlvb21oIn8ADWgoVoaSdY2Ah24gFsvYSlvb21oH/QgeGTuOrOBB+8Jdld8v8SWNII
-        ZgD3z2F5JPz+sngJGy7KvBh/Fb6DxeBwdQvD4fApPJn5GoaRChfa0JZYQndy4QqXWEA3cnteVWIOa8Ph
-        E3g283cl+NnXcPgICh14gXo/VcI9XOaWLrzCXIla5PacS/TgDR5gS254kPpynlv6sPkc1icXVlXChaqQ
-        0BK8eC4kpERqUZ5bXEvwYkMofFrCNXwMLZ+U+BleXJTfp/zBLPqe6zmPw+Uko+NcCTc4XBffwHcl3LAF
-        +MtWsFgJDlfkEBFeoIoZDAs/JowimSUX3WeVX/IylZN8UMr/LRAF5TSOD9gpGWanvvk5AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="标签与边缘线的间距.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAALNJREFUWEft
         kMENwjAMRTMDEgdW4MoUDMAKlZiBC0uwBEuwRPcBvySOqhC5VQuFg5/0Zbt1v78aHMdxnH/hKTqldhU6
         ETcLDNfUFja5foLai1tmgL2oFz3itAw88MJTMQPo8fqjubT8zAAsMo/pJlLoWzu18AYzgL6kWjqIFPrW
@@ -211,6 +200,20 @@
         qsxlEoSKG8RKaUGAP6cLJDnGlyFxgkglVgJOEC2lkwfLC6IFRIxYCah7Op0s3xUeHBrvqPsah2thtwPY
         aq8XzmOoMda/AVv+BWoLEBY+YahVCI3XawmoUp/brnTtUgHCou3B0I+VfDVHyyIk4Fs6+7ZKnuQd8aNF
         tPstdDqfKqxiVk8jXRkAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="DropDownBut_Add.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHCSURBVFhH7ZQxS8QwFMfvE6hNio7XvB4ObuIg4uLqroNf
+        QRBEkPblEA4cHBQFHRwcHByEAxe/gJuDiwruTn4OJWdT0tf02rvkdNAfvKV5L/9fU5pW66/AQe6ros9/
+        BA7Y5yA/vwv7dH2iFMMrJELobtkbm1Ug8KGwoQGP8I32q2IgT4wmeUcbRqz3QqraU8jzQGCPdXDBJlEQ
+        UG+gHk6B/OBCbvN2sjZKTbeTqBBunKZdgnwCLTDsKJti+5S5BMjXUrjCl4At3JSYFThHZwb4EBgWrgXo
+        TI6rQF04j+UhnSngIlAXziJ5RGdKjCtQGw54TGesjCNQF84FntGZSkYVqA0HvDD7Q5HOz4B8qtx/FIG6
+        cCbwsjSjLqxsna4NaCpQF84Br+iMwp+AwF45NCuRXtN+jbNAdo2q492wSTCQN3TGxF0A5IHeIAC5rm61
+        PFzIW9pP8SCAL+YbB4CrmcQp7bXhJBDE6YoZriuM0yXaW4WTgPqn82AhHwPR3VP/Ne0bhpOAPuqwkyzS
+        taY4CfjgX6CxAIPkma75gInuZiMBfQq+S+9dKcAg3TWbJlYRvtHsHBbjDjX3WQzSexalyzT31/kCKqxi
+        Vjp42B4AAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
