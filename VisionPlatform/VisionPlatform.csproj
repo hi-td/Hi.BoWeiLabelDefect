@@ -266,16 +266,10 @@
     <Compile Include="软件主体\检测功能\CtrlDefect.Designer.cs">
       <DependentUpon>CtrlDefect.cs</DependentUpon>
     </Compile>
-    <Compile Include="CtrlLine_Line.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CtrlLine_Line.Designer.cs">
-      <DependentUpon>CtrlLine_Line.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPhotometricStereo.cs">
+    <Compile Include="相机SDK\FormPhotometricStereo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPhotometricStereo.Designer.cs">
+    <Compile Include="相机SDK\FormPhotometricStereo.Designer.cs">
       <DependentUpon>FormPhotometricStereo.cs</DependentUpon>
     </Compile>
     <Compile Include="标准功能模块\模板匹配\CtrlNccModel.cs">
@@ -799,10 +793,7 @@
     <EmbeddedResource Include="软件主体\检测功能\CtrlDefect.resx">
       <DependentUpon>CtrlDefect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CtrlLine_Line.resx">
-      <DependentUpon>CtrlLine_Line.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPhotometricStereo.resx">
+    <EmbeddedResource Include="相机SDK\FormPhotometricStereo.resx">
       <DependentUpon>FormPhotometricStereo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="标准功能模块\模板匹配\CtrlNccModel.resx">

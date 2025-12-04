@@ -94,7 +94,7 @@ namespace VisionPlatform
                 Fun.myFrontFun.FrontResultShow(myCamItem, param, ref outRes);
                 TimeSpan ts_show = new TimeSpan(DateTime.Now.Ticks);
                 string span1 = ((ts_check.Subtract(ts).Duration().TotalSeconds) * 1000).ToString("F0");
-                StaticFun.MessageFun.ShowMessage("算法检测用时：" + span1);
+                StaticFun.MessageFun.ShowMessage("检测用时：" + span1);
                 string span2 = ((ts_show.Subtract(ts_check).Duration().TotalSeconds) * 1000).ToString("F0");
                 StaticFun.MessageFun.ShowMessage("显示用时：" + span2);
 

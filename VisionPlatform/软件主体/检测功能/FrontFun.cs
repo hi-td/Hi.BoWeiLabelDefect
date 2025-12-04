@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using yolov8_Det_Onnx;
-using static Aardvark.Base.MultimethodTest;
 using static VisionPlatform.InspectData;
 using Mat = OpenCvSharp.Mat;
 
@@ -235,25 +234,10 @@ namespace VisionPlatform
         public bool LabelMoveInspect(LabelMoveParam param, bool bShow, out LabelMoveResult res)
         {
             bool bResult = true;
-            HOperatorSet.GenEmptyObj(out HObject ho_Rect2);
-            HOperatorSet.GenEmptyObj(out HObject ho_RegionUnions);
-            HOperatorSet.GenEmptyObj(out HObject ho_Region);
-            HOperatorSet.GenEmptyObj(out HObject ho_RegionInter);
-            HOperatorSet.GenEmptyObj(out HObject ho_ImageReduced);
-            HOperatorSet.GenEmptyObj(out HObject ho_SelRegion);
-            HOperatorSet.GenEmptyObj(out HObject ho_Connections);
-            HOperatorSet.GenEmptyObj(out HObject ho_arrayRect2s);
+            res = new LabelMoveResult();
             try
             {
-                LocateInParams inParam = new LocateInParams();
-                inParam.modelType = ModelType.ncc;
-                inParam.dAngleStart = -45;
-                inParam.dAngleEnd = 180;
-                inParam.strModelName = param.nccLocate.strName;
-                inParam.bScale = false;
-                inParam.dScore = param.nccLocate.dScore;
-                fun.NccLocate(inParam, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
-                fun.ShowRect2(rect2,"blue");
+                fun.NccLocate(param.nccLocate.modelData, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
                 fun.ShowRect2(rect2, "blue");
                 double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
                 string strColor = "green";
@@ -263,85 +247,105 @@ namespace VisionPlatform
                     strColor = "red";
                 }
                 fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
-                foreach (var item in param.dicLabelMoveItems.Values)
+                foreach (var item in param.dicLabelMoveItems)
                 {
+                    if (item.Key == "") continue;
+                    //仿射变换
                     HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
                         rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, out HTuple homMat2D);
-                    HOperatorSet.HomMat2dIdentity(out HTuple hv_homMat2DIdentity);
-                    HOperatorSet.AffineTransPoint2d(homMat2D, item.arrayROILine[0].rect2.dRect2Row, item.arrayROILine[0].rect2.dRect2Col, out HTuple hv_x, out HTuple hv_y);
-                    Rect2 rect2temp = new Rect2(hv_x, hv_y, item.arrayROILine[0].rect2.dPhi, item.arrayROILine[0].rect2.dLength1, item.arrayROILine[0].rect2.dLength2);
-                    fun.ShowRect2(rect2temp);
-                    fun.GetRect2CornerPoint(rect2temp, out PointF[] points);
-                    item.arrayROILine[0].lineParam.lineIn = new Line((points[0].X + points[3].X) / 2.0,
-                                                                     (points[0].Y + points[3].Y) / 2.0,
-                                                                     (points[1].X + points[2].X) / 2.0,
-                                                                     (points[1].Y + points[2].Y) / 2.0);
-                    fun.FitLine(item.arrayROILine[0].lineParam, out Line lineOut, out _);
-                    fun.HWnd.DispLine(lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol);
-                    HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol, out HTuple hv_DistPl);
-                    fun.WriteStringtoImage(20, 250, 50, $"模板到线的距离：{Math.Round(hv_DistPl.D, 2)}", strColor);
+                    double dDist = 0;
+                    switch (item.Value.type)
+                    {
+                        case MoveType.point_line:
+                            Line boxLine = AffineTransLine(item.Value.boxLine, homMat2D);
+                            HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_Dist);
+                            dDist = Math.Round(hv_Dist.D, 2);
+                            break;
+                        case MoveType.line_line:
+                            dDist = DistLineLine(item.Value.labelLine, item.Value.boxLine, homMat2D);
+                            break;
+                        case MoveType.point_point:
+                            break;
+                    }
+                    fun.WriteStringtoImage(20, 350, 50, $"{item.Key}距离：{dDist}");
+                    res.dicLabelMoveValues.Add(item.Key, dDist);
                 }
-                //{
-                //    ho_Rect2.Dispose();
-                //    HOperatorSet.GenRectangle2(out ho_Rect2, rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, rect2.dLength1, rect2.dLength2);
-                //    ho_arrayRect2s = ho_arrayRect2s.ConcatObj(ho_Rect2);
-                //}
-                //ho_RegionUnions.Dispose();
-                //HOperatorSet.Union1(ho_arrayRect2s, out ho_RegionUnions);
-                //ho_Region.Dispose();
-                //ho_Region = fun.StaticThd(param.thdParam, fun.m_GrayImage, ho_RegionUnions);
-                ////fun.DispRegion(ho_Region);
-                //ho_RegionInter.Dispose();
-                //HOperatorSet.Intersection(ho_arrayRect2s, ho_Region, out ho_RegionInter);
-                //HOperatorSet.RegionFeatures(ho_RegionInter, "area", out HTuple hv_Areas);
-                //bool bOK = true;
-                //PlugResult preResult = new PlugResult();
-                //for (int n = 0; n < hv_Areas.TupleLength(); n++)
-                //{
-                //    ho_SelRegion.Dispose();
-                //    HOperatorSet.SelectObj(ho_RegionInter, out ho_SelRegion, n + 1);
-                //    ho_Connections.Dispose();
-                //    HOperatorSet.Connection(ho_SelRegion, out ho_Connections);
-                //    ho_SelRegion.Dispose();
-                //    HOperatorSet.SelectShapeStd(ho_Connections, out ho_SelRegion, "max_area", 70);
-                //    HOperatorSet.ClosingCircle(ho_SelRegion, out ho_SelRegion, 5);
-                //    fun.DispRegion(ho_SelRegion);
-                //    HOperatorSet.RegionFeatures(ho_SelRegion, "area", out HTuple hv_Area);
-                //    preResult.dArea = hv_Area.D;
-                //    if (preResult.dArea > param.ValArea.dMax || preResult.dArea < param.ValArea.dMin)
-                //    {
-                //        bOK = false;
-                //        fun.DispRegion(ho_SelRegion, "red", draw: "fill");
-                //        preResult.bFalg = false;
-                //        listResult.Add(preResult);
-                //        continue;
-                //    }
-                //    //白色插件存在的情况下，检测有无
-                //    HOperatorSet.ShapeTrans(ho_SelRegion, out ho_Region, "convex");
-                //    //fun.DispRegion(ho_Region, "green");
-                //    ho_ImageReduced.Dispose();
-                //    HOperatorSet.ReduceDomain(fun.m_GrayImage, ho_Region, out ho_ImageReduced);
-                //    preResult.bFront_Back = fun.FindModel(ho_ImageReduced, param.modelID, param.locateInParams, out List<LocateOutParams> listLocateResults);
-                //    if (!preResult.bFront_Back)
-                //    {
-                //        fun.DispRegion(ho_SelRegion, "red", lineWidth: 5);
-                //        bOK = false;
-                //    }
-                //    preResult.bFalg = bOK;
-                //    listResult.Add(preResult);
-                //}
             }
             catch (HalconException ex)
             {
                 bResult = false;
                 StaticFun.MessageFun.ShowMessage(ex, true);
             }
-            finally
-            {
-            }
             return bResult;
         }
 
+        public Line AffineTransLine(ROILine roiLine, HTuple homMat2D)
+        {
+            Line lineOut = new Line();
+            try
+            {
+                HOperatorSet.AffineTransPoint2d(homMat2D, roiLine.rect2.dRect2Row, roiLine.rect2.dRect2Col, out HTuple hv_x, out HTuple hv_y);
+                Rect2 rect2 = new Rect2(hv_x, hv_y, roiLine.rect2.dPhi, roiLine.rect2.dLength1, roiLine.rect2.dLength2);
+                fun.ShowRect2(rect2);
+                fun.GetRect2CornerPoint(rect2, out PointF[] points);
+                Line line = new Line();
+                switch (roiLine.lineParam.measure.direct)
+                {
+                    case MesDirect.UpDown:
+                        line = new Line((points[0].X + points[3].X) / 2.0,
+                                        (points[0].Y + points[3].Y) / 2.0,
+                                        (points[1].X + points[2].X) / 2.0,
+                                        (points[1].Y + points[2].Y) / 2.0);
+                        break;
+                    case MesDirect.DownUp:
+                        line = new Line((points[1].X + points[2].X) / 2.0,
+                                        (points[1].Y + points[2].Y) / 2.0,
+                                        (points[0].X + points[3].X) / 2.0,
+                                        (points[0].Y + points[3].Y) / 2.0);
+                        break;
+                    case MesDirect.LeftRight:
+                        line = new Line((points[2].X + points[3].X) / 2.0,
+                                       (points[2].Y + points[3].Y) / 2.0,
+                                       (points[0].X + points[1].X) / 2.0,
+                                       (points[0].Y + points[1].Y) / 2.0);
+                        break;
+                    case MesDirect.RightLeft:
+                        line = new Line((points[0].X + points[1].X) / 2.0,
+                                       (points[0].Y + points[1].Y) / 2.0,
+                                       (points[2].X + points[3].X) / 2.0,
+                                       (points[2].Y + points[3].Y) / 2.0);
+                        break;
+                    default:
+                        break;
+                }
+                roiLine.lineParam.lineIn = line;
+                fun.FitLine(roiLine.lineParam, out lineOut, out _);
+                fun.HWnd.DispLine(lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol);
+            }
+            catch (HalconException ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex, true);
+            }
+            return lineOut;
+        }
+
+        public double DistLineLine(ROILine label, ROILine box, HTuple homMat2D)
+        {
+            double dDist = 0;
+            try
+            {
+                Line labelLine = AffineTransLine(label, homMat2D);
+                Line boxLine = AffineTransLine(box, homMat2D);
+                HOperatorSet.DistanceSl(labelLine.dStartRow, labelLine.dStartCol, labelLine.dEndRow, labelLine.dEndCol,
+                                        boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_DistMin, out HTuple hv_DistMax);
+                dDist = Math.Round(hv_DistMax.D, 2);
+            }
+            catch (HalconException ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex, true);
+            }
+            return dDist;
+        }
         public bool DividRubberRect2(PointF center, double dPhi, ROIParam roi, bool[] arrayDelTM, out List<Rect2> listRect2, out HObject ho_Rect2Regions)
         {
             bool bResult = true;
@@ -1085,35 +1089,29 @@ namespace VisionPlatform
         public bool DefectAI(InspectData.DefectParam param, InspectItem inspectItem, HObject ho_BrokenImg)
         {
             bool bResult = true;
-            HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
             HOperatorSet.GenEmptyObj(out HObject ho_ROI);
-            HOperatorSet.GenEmptyObj(out HObject ho_ImageReduced);
-            HOperatorSet.GenEmptyObj(out HObject ho_Region);
-            HOperatorSet.GenEmptyObj(out HObject ho_RegionTrans);
-            HOperatorSet.GenEmptyObj(out HObject ho_LinesRegion);
             try
             {
-                fun.DispRegion(fun.m_hImage);
-                Mat mat = fun.HObjectToMat(ho_BrokenImg);
+                Mat mat = null == ho_BrokenImg ? fun.AIimage.Clone() : fun.HObjectToMat(ho_BrokenImg);
                 List<Arbitrary> listArbitrary = new List<Arbitrary>() { param.arbitrary };
                 ho_ROI.Dispose();
                 ho_ROI = fun.GenArbitrary(listArbitrary);
                 //光度立体预处理图
-                ResultAi AIResult_broken = new ResultAi();
-                switch (inspectItem)
-                {
-                    case InspectItem.Front:
-                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
-                        break;
-                    case InspectItem.LeftSide:
-                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
-                        break;
-                    case InspectItem.RightSide:
-                        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
-                        break;
-                    default:
-                        break;
-                }
+                ResultAi AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                //switch (inspectItem)
+                //{
+                //    case InspectItem.Front:
+                //        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                //        break;
+                //    case InspectItem.LeftSide:
+                //        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                //        break;
+                //    case InspectItem.RightSide:
+                //        AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
+                //        break;
+                //    default:
+                //        break;
+                //}
                 if (!ShowAIResult(AIResult_broken, ho_ROI, param.nBrokenMinArea, "red"))
                 {
                     bResult = false;
@@ -1132,11 +1130,7 @@ namespace VisionPlatform
             }
             finally
             {
-                ho_Rect1?.Dispose();
-                ho_ImageReduced?.Dispose();
-                ho_Region?.Dispose();
-                ho_RegionTrans?.Dispose();
-                ho_LinesRegion?.Dispose();
+                ho_ROI?.Dispose();
             }
             return bResult;
         }

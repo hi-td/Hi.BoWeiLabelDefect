@@ -305,7 +305,7 @@ namespace StaticFun
                         foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
                         {
                             CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
-                            if (camID == 10 || camID==30)
+                            if (camID == 10 || camID == 30)
                             {
                                 //只给主相机开线程
                                 new Task(() => { ctrlCamShow.Fun.RunTcp(FormMainUI.m_dicCtrlCamShow); }, TaskCreationOptions.LongRunning).Start();
@@ -1106,7 +1106,7 @@ namespace StaticFun
                 foreach (FileInfo NextFile1 in files) //遍历文件
                 {
                     string strFile = theFolder11 + NextFile1.ToString();
-                    if (NextFile1.Name.Contains("插件模板") || NextFile1.Name.Contains("正面模板") || NextFile1.Name.Contains("Shell insertion template"))
+                    if (NextFile1.Name.Contains("右侧检测") || NextFile1.Name.Contains("左侧检测") || NextFile1.Name.Contains("正面检测"))
                     {
                         object nID = new object();
                         if (NextFile1.Name.Contains("ncm"))
@@ -1118,10 +1118,9 @@ namespace StaticFun
                             Function.ReadModelFromFile(BaseData.ModelType.contour, strFile, out nID);
                         }
                         FrontParam arrayItem = DataSerializer._globalData.dic_FrontParam[camID];
-                        if (NextFile1.Name.Contains("正面模板"))
-                        {
-                            arrayItem.modelID = nID;
-                        }
+                        LabelMoveParam labelParam = arrayItem.LabelMove;
+                        labelParam.nccLocate.nModelID = nID;
+                        arrayItem.LabelMove = labelParam;
                         DataSerializer._globalData.dic_FrontParam[camID] = arrayItem;
                         CopyModelFile(strFile, cam, sub_cam);
                     }
@@ -1141,14 +1140,6 @@ namespace StaticFun
                 //    //ReadColorID(ref dic_lineColor.listColorData, list_LineColorModel);
                 //    DataSerializer._globalData.dic_LineColor[cam2] = dic_lineColor;
                 //}
-                //插壳线序模板
-                //if (DataSerializer._globalData.dic_RubberParam.ContainsKey(cam2))
-                //{
-                //    var dic_rubberParam = DataSerializer._globalData.dic_RubberParam[cam2];
-                //    //ReadColorID(ref dic_rubberParam.lineColor.listColorID, list_RubberLineColorModel);
-                //    DataSerializer._globalData.dic_RubberParam[cam2] = dic_rubberParam;
-                //}  DataSerializer._globalData.dic_StripLenParam[cam2] = dic_stripLen;
-
             }
             catch (Exception ex)
             {

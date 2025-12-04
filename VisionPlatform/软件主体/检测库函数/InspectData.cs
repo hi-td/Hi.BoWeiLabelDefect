@@ -165,11 +165,11 @@ namespace VisionPlatform
         {
             public FrontResult()
             {
-
             }
             public string strQRCode;
             public string strPNCode;
             public bool bFrontResult = true;
+            public LabelMoveResult labelMoveResult;
         }
 
         public struct QRCodeParam
@@ -204,19 +204,12 @@ namespace VisionPlatform
         {
             public LabelMoveItem()
             {
-                if (type == MoveType.line_line)
-                {
-                    arrayROILine = new ROILine[2];
-                }
-                else if (type == MoveType.point_line)
-                {
-                    arrayROILine = new ROILine[1];
-                }
             }
             public MoveType type;
-            public ROILine[] arrayROILine;
-            public PointF point;
-
+            public ROILine labelLine;
+            public ROILine boxLine;
+            public PointF boxPoint;
+            public ValueRange dist;
         }
         public struct LabelMoveParam
         {
@@ -226,6 +219,11 @@ namespace VisionPlatform
         }
         public struct LabelMoveResult
         {
+            public LabelMoveResult()
+            {
+                dicLabelMoveValues = new Dictionary<string, double>();
+            }
+            public Dictionary<string, double> dicLabelMoveValues;
         }
 
         public struct DefectParam

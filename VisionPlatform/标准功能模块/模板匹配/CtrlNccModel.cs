@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using VisionPlatform.Auxiliary;
 
 namespace VisionPlatform
 {
@@ -10,7 +9,6 @@ namespace VisionPlatform
     {
         Rect2 m_rect2;
         Function Fun;
-        LocateInParams myInParam = new LocateInParams();
         public object nModelID = -1;
         int myCamID = -1;
         string myModelName = string.Empty;
@@ -44,16 +42,11 @@ namespace VisionPlatform
                 }
                 m_rect2 = Fun.m_rect2;
                 Fun.m_lastDraw = ObjDraw.rect2;
-                myInParam.modelType = ModelType.ncc;
-                myInParam.dAngleStart = -45;
-                myInParam.dAngleEnd = 180;
-                myInParam.strModelName = this.myModelName;
-                myInParam.bScale = false;
-                myInParam.dScore = (double)numUpD_Score.Value;
-                if (Fun.CreateNccModel(myInParam, out nModelID, out List<LocateOutParams> listOutData))
+                NccLocateParam param = InitParam();
+                if (Fun.CreateNccModel(param.modelData, out nModelID, out List<LocateOutParams> listOutData))
                 {
-                    Fun.NccLocate(myInParam, nModelID, m_rect2, out _);
-                    if (Fun.WriteModel(myCamID, myInParam.strModelName, myInParam.modelType, nModelID))
+                    Fun.NccLocate(param.modelData, nModelID, m_rect2, out _);
+                    if (Fun.WriteModel(myCamID, param.modelData.strModelName, param.modelData.modelType, nModelID))
                     {
                         MessageBox.Show("模板创建成功");
                     }
@@ -76,9 +69,9 @@ namespace VisionPlatform
             {
                 Fun.ClearObjShow();
                 Fun.DispRegion(Fun.HImage);
-                Fun.NccLocate(myInParam, nModelID, m_rect2, out _);
+                Fun.NccLocate(InitParam().modelData, nModelID, m_rect2, out _);
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show($"模板匹配失败:{ex}");
                 return;
@@ -90,7 +83,15 @@ namespace VisionPlatform
             BaseData.NccLocateParam param = new BaseData.NccLocateParam();
             try
             {
-                param.dScore = (double)numUpD_Score.Value;
+                param.modelData = new LocateInParams()
+                {
+                    modelType = ModelType.ncc,
+                    dAngleStart = -45,
+                    dAngleEnd = 180,
+                    bScale = false,
+                    strModelName = this.myModelName,
+                    dScore = (double)numUpD_Score.Value,
+                };
                 param.nModelID = nModelID;
                 param.rect2 = m_rect2;
             }
@@ -104,7 +105,7 @@ namespace VisionPlatform
         {
             try
             {
-                numUpD_Score.Value = (decimal)(param.dScore == 0 ? 0.65 : param.dScore);
+                numUpD_Score.Value = (decimal)(param.modelData.dScore == 0 ? 0.65 : param.modelData.dScore);
                 this.nModelID = param.nModelID;
                 m_rect2 = param.rect2;
             }

@@ -631,6 +631,14 @@ namespace BaseData
         public ValueRange(bool flag, double min, double max)
         {
             this.bFlag = flag;
+            if (min > max)
+            {
+                min = max;
+            }
+            if (max < min)
+            {
+                max = min;
+            }
             this.dMin = min;
             this.dMax = max;
         }
@@ -721,13 +729,12 @@ namespace BaseData
     [Serializable]
     public struct NccLocateParam
     {
-        public bool bLimitROI;
-        public double dScore;             //匹配分数
         [JsonIgnore]
         public object nModelID;           //ncc模板ID
-        public string strName;            //模板名称
         public Rect2 rect2;               //用于建立模板的区域
-        public Rect2 limitRect2;          //限定检测区域      
+        public bool bLimitROI;            //是否限定检测区域
+        public Rect2 limitRect2;          //限定检测区域
+        public LocateInParams modelData;  //模板参数
     }
 
     #region 光度立体法

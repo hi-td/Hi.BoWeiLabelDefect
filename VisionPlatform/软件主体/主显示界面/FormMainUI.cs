@@ -690,7 +690,6 @@ namespace VisionPlatform
                     }
                     return;
                 }
-
             }
             catch (Exception ex)
             {
