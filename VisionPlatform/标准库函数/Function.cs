@@ -609,8 +609,6 @@ namespace VisionPlatform
                 {
                     try
                     {
-                        //HOperatorSet.RegionFeatures(obj, "area", out HTuple hv_area);
-                        //if (hv_area.TupleLength() == 0) return;
                         m_hWnd.SetColor(strColor);
                         m_hWnd.SetDraw(draw);
                         m_hWnd.SetLineWidth(lineWidth);
@@ -621,7 +619,6 @@ namespace VisionPlatform
                     }
                 });
             run.Wait();
-
             m_hWnd.SetColor("green");
             m_hWnd.SetDraw("margin");
             m_hWnd.SetLineWidth(1);
@@ -1529,19 +1526,18 @@ namespace VisionPlatform
             HOperatorSet.ClearWindow(m_hWnd);
         }
         //显示图片
+        public static HObject ho_ShowImage = null;
         private void ShowImages(double dRow0, double dCol0, double dRow1, double dCol1)
         {
             try
             {
-                if (null != m_hImage)
+                if (null == ho_ShowImage) ho_ShowImage = m_hImage.Clone();
+                if (null != ho_ShowImage)
                 {
                     HOperatorSet.SetSystem("flush_graphic", "false");
                     HOperatorSet.ClearWindow(m_hWnd);
-                    if (m_hImage != null)
-                    {
-                        HOperatorSet.SetPart(m_hWnd, dRow0, dCol0, dRow1 - 1, dCol1 - 1);
-                        m_hWnd.DispObj(m_hImage);
-                    }
+                    HOperatorSet.SetPart(m_hWnd, dRow0, dCol0, dRow1 - 1, dCol1 - 1);
+                    m_hWnd.DispObj(ho_ShowImage);
                     if (m_bShowCross) ShowCenterCross();
                     HOperatorSet.SetSystem("flush_graphic", "true");
                     HObject emptyObject = null;
@@ -5558,9 +5554,9 @@ namespace VisionPlatform
                     return ho_ResultImages;
                 }
                 //安装角度
-                HTuple hv_arrayTilts = new HTuple(45, 135, 215.9, 315.5);
+                HTuple hv_arrayTilts = new HTuple(10, 270, 180, 90);
                 //照射角度
-                HTuple hv_arraySlants = new HTuple(31.4, 32.6, 31.7, 30.9);
+                HTuple hv_arraySlants = new HTuple(35, 45, 43, 75);
                 foreach (HObject img in listOrgImages)
                 {
                     ho_GrayImage.Dispose();
@@ -5568,13 +5564,13 @@ namespace VisionPlatform
                     HOperatorSet.ConcatObj(ho_Images, ho_GrayImage, out ho_Images);
 
                 }
+                HTuple hv_ResultType = new HTuple("gradient", "albedo");
                 ho_HeightField.Dispose();
                 ho_NormalField.Dispose();
                 ho_Gradient.Dispose();
                 ho_Albedo.Dispose();
-                //HOperatorSet.PhotometricStereo(ho_Images, out ho_HeightField, out ho_Gradient, out ho_Albedo, hv_arraySlants, hv_arrayTilts, "all", "possion", new HTuple(), new HTuple());
-                HTuple hv_ResultType = new HTuple("gradient", "albedo");
                 HOperatorSet.UncalibratedPhotometricStereo(ho_Images, out ho_NormalField, out ho_Gradient, out ho_Albedo, "all");
+                //HOperatorSet.PhotometricStereo(ho_Images, out ho_HeightField, out ho_Gradient, out ho_Albedo, hv_arraySlants, hv_arrayTilts, hv_ResultType, "poisson", new HTuple(), new HTuple());
                 ho_ResultImages.NormalField = ConvertImageGrayVal(ho_NormalField).Clone();
                 ho_ResultImages.Albedo = ConvertImageGrayVal(ho_Albedo);
                 ho_Curvature.Dispose();

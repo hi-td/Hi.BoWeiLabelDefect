@@ -31,7 +31,9 @@ namespace VisionPlatform
             this.Margin = new Padding(1);
             context = SynchronizationContext.Current;
             panel2.BackColor = Color.FromArgb(255, 0, green: 0, 0);
+            myListWndCtrl = new List<HalconDotNet.HWindowControl>() { hWndCtrl1, hWndCtrl2, hWndCtrl3, hWndCtrl4 };
             ts_Label_state.Dock = DockStyle.Right;
+
         }
         public void UpdateFun(int camID, CamShowItem camShowItem)
         {
@@ -116,10 +118,24 @@ namespace VisionPlatform
         }
         private void but_GrabImage_Click(object sender, EventArgs e)
         {
-            CamCommon.OpenCam(strCamSer, Fun);
-            Fun.ClearObjShow();
-            CamCommon.GrabImage(strCamSer);
-            ts_Label_state.Text = "当前状态：拍照";
+            try
+            {
+                CamCommon.OpenCam(strCamSer, Fun);
+                Fun.ClearObjShow();
+                if (tLPanel_Photometrics.Visible == false)
+                {
+                    CamCommon.GrabImage(strCamSer);
+                    ts_Label_state.Text = "当前状态：拍照";
+                }
+                else
+                {
+                    myListImages = this.Fun.PhotometricGrabImages(camID, strCamSer, myListWndCtrl);
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
         }
         private void but_SaveImg_Click(object sender, EventArgs e)
         {
@@ -734,26 +750,217 @@ namespace VisionPlatform
                 Fun.FitImageToWindow(ref Fun.dReslutRow0, ref Fun.dReslutCol0, ref Fun.dReslutRow1, ref Fun.dReslutCol1);
             }
         }
+        #region 光度立体法
+        List<HalconDotNet.HWindowControl> myListWndCtrl = new List<HalconDotNet.HWindowControl>();
+        List<HalconDotNet.HObject> myListImages = new List<HalconDotNet.HObject>();
         public FormPhotometricStereo formPhotometricStereo;
+        public PhotometricStereoImage photometricStereoImage = new PhotometricStereoImage();
         private void but_PhotometricsStereo_Click(object sender, EventArgs e)
+        {
+            tLPanel_Photometrics.Visible = true;
+            toolStrip_photometrics.Visible = true;
+            //try
+            //{
+            //    if (FormMainUI.bRun) return;
+            //    if (null == formPhotometricStereo || formPhotometricStereo.IsDisposed)
+            //    {
+            //        formPhotometricStereo = new FormPhotometricStereo(this);
+            //        formPhotometricStereo.Show();
+            //    }
+            //    else
+            //    {
+            //        formPhotometricStereo.Activate(); //使子窗体获得焦点
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    StaticFun.MessageFun.ShowMessage(ex, true);
+            //}
+        }
+
+        private void toolStripBtn_ClosePhotometrics_Click(object sender, EventArgs e)
+        {
+            tLPanel_Photometrics.Visible = false;
+            toolStrip_photometrics.Visible = false;
+        }
+
+        private void tSBut_Load_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog2.Description = "请选择一个文件夹";
+            if (folderBrowserDialog2.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = folderBrowserDialog2.SelectedPath;
+                string[] files = Directory.GetFiles(folderPath);
+                if (files.Length >= 4)
+                {
+                    this.Fun.ReadImageToHWnd(files[0], hWndCtrl1);
+                    this.Fun.ReadImageToHWnd(files[1], hWndCtrl2);
+                    this.Fun.ReadImageToHWnd(files[2], hWndCtrl3);
+                    this.Fun.ReadImageToHWnd(files[3], hWndCtrl4);
+                }
+                myListImages = new List<HalconDotNet.HObject>();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    this.Fun.ReadImage(files[i]);
+                    myListImages.Add(this.Fun.HImage);
+                }
+            }
+
+        }
+
+        private void tSBut_Fusion_Click(object sender, System.EventArgs e)
+        {
+            if (myListImages.Count < 3) return;
+            photometricStereoImage = this.Fun.PhotometricStereo(myListImages);
+            MessageBox.Show("图像融合完成！");
+        }
+
+        private void Lbl_NormalField_Click(object sender, System.EventArgs e)
         {
             try
             {
-                if (FormMainUI.bRun) return;
-                if (null == formPhotometricStereo || formPhotometricStereo.IsDisposed)
+                Function.ho_ShowImage = photometricStereoImage.NormalField.Clone();
+                //this.Fun.ShowImageToHWnd(photometricStereoImage.NormalField, hWndCtrl);
+                this.Fun.DispRegion(photometricStereoImage.NormalField);
+                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.NormalField.Clone();
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+
+        private void Lbl_Albedo_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Function.ho_ShowImage = photometricStereoImage.Albedo.Clone();
+                this.Fun.DispRegion(photometricStereoImage.Albedo);
+                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Albedo.Clone();
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+
+        private void Lbl_Gradient_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Function.ho_ShowImage = photometricStereoImage.Gradient.Clone();
+                this.Fun.DispRegion(photometricStereoImage.Gradient);
+                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Gradient.Clone();
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+
+        private void Lbl_Curvature_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Function.ho_ShowImage = photometricStereoImage.Curvature.Clone();
+                this.Fun.DispRegion(photometricStereoImage.Curvature);
+                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Curvature.Clone();
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+
+        private void Lbl_HeightField_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Function.ho_ShowImage = photometricStereoImage.HeightField.Clone();
+                this.Fun.DispRegion(photometricStereoImage.HeightField);
+                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.HeightField.Clone();
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+
+
+
+        private void hWndCtrl1_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                HWindowControl hCtrl = sender as HWindowControl;
+                if (null == hCtrl) return;
+                int id = -1;
+                switch (hCtrl.Name)
                 {
-                    formPhotometricStereo = new FormPhotometricStereo(this);
-                    formPhotometricStereo.Show();
+                    case "hWndCtrl1":
+                        id = 0;
+                        break;
+                    case "hWndCtrl2":
+                        id = 1;
+                        break;
+                    case "hWndCtrl3":
+                        id = 2;
+                        break;
+                    case "hWndCtrl4":
+                        id = 3;
+                        break;
+                    default:
+                        break;
                 }
-                else
+                if (id >= 0 && id <= 3 && myListImages.Count >= 4)
                 {
-                    formPhotometricStereo.Activate(); //使子窗体获得焦点
+                    this.Fun.ShowImageToHWnd(myListImages[id], hCtrl);
                 }
             }
             catch (Exception ex)
             {
-                StaticFun.MessageFun.ShowMessage(ex, true);
+                StaticFun.MessageFun.ShowMessage(ex);
             }
         }
+
+        private void hWndCtrl1_HMouseDown(object sender, HMouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    HWindowControl hCtrl = sender as HWindowControl;
+                    if (null == hCtrl) return;
+                    int id = -1;
+                    switch (hCtrl.Name)
+                    {
+                        case "hWndCtrl1":
+                            id = 0;
+                            break;
+                        case "hWndCtrl2":
+                            id = 1;
+                            break;
+                        case "hWndCtrl3":
+                            id = 2;
+                            break;
+                        case "hWndCtrl4":
+                            id = 3;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (id >= 0 && id <= 3)
+                    {
+                        this.Fun.DispRegion(myListImages[id]);
+                        Function.ho_ShowImage = myListImages[id].Clone();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
+        }
+        #endregion
     }
 }

@@ -83,8 +83,29 @@
             this.LoR = new System.Windows.Forms.ToolStripMenuItem();
             this.UoD = new System.Windows.Forms.ToolStripMenuItem();
             this.清除 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip_photometrics = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.Lbl_NormalField = new System.Windows.Forms.ToolStripLabel();
+            this.Lbl_Albedo = new System.Windows.Forms.ToolStripLabel();
+            this.Lbl_Gradient = new System.Windows.Forms.ToolStripLabel();
+            this.Lbl_Curvature = new System.Windows.Forms.ToolStripLabel();
+            this.Lbl_HeightField = new System.Windows.Forms.ToolStripLabel();
+            this.tLPanel_Photometrics = new System.Windows.Forms.TableLayoutPanel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tSBut_Load = new System.Windows.Forms.ToolStripButton();
+            this.tSBut_Fusion = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtn_ClosePhotometrics = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.hWndCtrl4 = new HalconDotNet.HWindowControl();
+            this.hWndCtrl3 = new HalconDotNet.HWindowControl();
+            this.hWndCtrl2 = new HalconDotNet.HWindowControl();
+            this.hWndCtrl1 = new HalconDotNet.HWindowControl();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.groupBox_ImageList.SuspendLayout();
@@ -93,6 +114,10 @@
             this.panel1.SuspendLayout();
             this.panel_hWnd.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.toolStrip_photometrics.SuspendLayout();
+            this.tLPanel_Photometrics.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -112,7 +137,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(705, 57);
+            this.panel2.Size = new System.Drawing.Size(765, 57);
             this.panel2.TabIndex = 2;
             // 
             // but_PhotometricsStereo
@@ -286,7 +311,7 @@
             this.label_x.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
             this.label_x.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label_x.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_x.Location = new System.Drawing.Point(594, 0);
+            this.label_x.Location = new System.Drawing.Point(654, 0);
             this.label_x.Name = "label_x";
             this.label_x.Size = new System.Drawing.Size(37, 19);
             this.label_x.TabIndex = 3;
@@ -302,7 +327,7 @@
             this.label_d.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
             this.label_d.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label_d.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_d.Location = new System.Drawing.Point(631, 0);
+            this.label_d.Location = new System.Drawing.Point(691, 0);
             this.label_d.Name = "label_d";
             this.label_d.Size = new System.Drawing.Size(37, 19);
             this.label_d.TabIndex = 2;
@@ -319,7 +344,7 @@
             this.label_Edit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.label_Edit.ForeColor = System.Drawing.Color.White;
             this.label_Edit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Edit.Location = new System.Drawing.Point(668, 0);
+            this.label_Edit.Location = new System.Drawing.Point(728, 0);
             this.label_Edit.Name = "label_Edit";
             this.label_Edit.Size = new System.Drawing.Size(37, 19);
             this.label_Edit.TabIndex = 9;
@@ -351,7 +376,7 @@
             this.toolStripLabel_gray});
             this.toolStrip2.Location = new System.Drawing.Point(0, 516);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(705, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(765, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -434,7 +459,7 @@
             this.groupBox_ImageList.Controls.Add(this.toolStrip3);
             this.groupBox_ImageList.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox_ImageList.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox_ImageList.Location = new System.Drawing.Point(705, 0);
+            this.groupBox_ImageList.Location = new System.Drawing.Point(949, 0);
             this.groupBox_ImageList.Name = "groupBox_ImageList";
             this.groupBox_ImageList.Size = new System.Drawing.Size(137, 541);
             this.groupBox_ImageList.TabIndex = 3;
@@ -570,22 +595,24 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel_hWnd);
+            this.panel1.Controls.Add(this.tLPanel_Photometrics);
             this.panel1.Controls.Add(this.groupBox_ImageList);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(842, 541);
+            this.panel1.Size = new System.Drawing.Size(1086, 541);
             this.panel1.TabIndex = 5;
             // 
             // panel_hWnd
             // 
             this.panel_hWnd.Controls.Add(this.hWndCtrl);
-            this.panel_hWnd.Controls.Add(this.panel2);
+            this.panel_hWnd.Controls.Add(this.toolStrip_photometrics);
             this.panel_hWnd.Controls.Add(this.toolStrip2);
+            this.panel_hWnd.Controls.Add(this.panel2);
             this.panel_hWnd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_hWnd.Location = new System.Drawing.Point(0, 0);
             this.panel_hWnd.Name = "panel_hWnd";
-            this.panel_hWnd.Size = new System.Drawing.Size(705, 541);
+            this.panel_hWnd.Size = new System.Drawing.Size(765, 541);
             this.panel_hWnd.TabIndex = 1;
             // 
             // hWndCtrl
@@ -597,9 +624,9 @@
             this.hWndCtrl.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
             this.hWndCtrl.Location = new System.Drawing.Point(0, 57);
             this.hWndCtrl.Name = "hWndCtrl";
-            this.hWndCtrl.Size = new System.Drawing.Size(705, 459);
+            this.hWndCtrl.Size = new System.Drawing.Size(765, 459);
             this.hWndCtrl.TabIndex = 0;
-            this.hWndCtrl.WindowSize = new System.Drawing.Size(705, 459);
+            this.hWndCtrl.WindowSize = new System.Drawing.Size(765, 459);
             this.hWndCtrl.HMouseMove += new HalconDotNet.HMouseEventHandler(this.hWndCtrl_HMouseMove);
             this.hWndCtrl.HMouseDown += new HalconDotNet.HMouseEventHandler(this.hWndCtrl_HMouseDown);
             this.hWndCtrl.HMouseWheel += new HalconDotNet.HMouseEventHandler(this.hWndCtrl_HMouseWheel);
@@ -735,6 +762,232 @@
             this.清除.Text = "清除显示图形";
             this.清除.Click += new System.EventHandler(this.清除_Click);
             // 
+            // toolStrip_photometrics
+            // 
+            this.toolStrip_photometrics.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStrip_photometrics.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStrip_photometrics.GripMargin = new System.Windows.Forms.Padding(0);
+            this.toolStrip_photometrics.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip_photometrics.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel6,
+            this.toolStripSeparator5,
+            this.Lbl_NormalField,
+            this.Lbl_Albedo,
+            this.Lbl_Gradient,
+            this.Lbl_Curvature,
+            this.Lbl_HeightField});
+            this.toolStrip_photometrics.Location = new System.Drawing.Point(0, 57);
+            this.toolStrip_photometrics.Name = "toolStrip_photometrics";
+            this.toolStrip_photometrics.Size = new System.Drawing.Size(762, 25);
+            this.toolStrip_photometrics.TabIndex = 0;
+            this.toolStrip_photometrics.Visible = false;
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripLabel6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(126, 22);
+            this.toolStripLabel6.Text = "2.5D预处理效果图";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // Lbl_NormalField
+            // 
+            this.Lbl_NormalField.Name = "Lbl_NormalField";
+            this.Lbl_NormalField.Size = new System.Drawing.Size(65, 22);
+            this.Lbl_NormalField.Text = "法向量图";
+            this.Lbl_NormalField.Click += new System.EventHandler(this.Lbl_NormalField_Click);
+            // 
+            // Lbl_Albedo
+            // 
+            this.Lbl_Albedo.Name = "Lbl_Albedo";
+            this.Lbl_Albedo.Size = new System.Drawing.Size(65, 22);
+            this.Lbl_Albedo.Text = "反照率图";
+            this.Lbl_Albedo.Click += new System.EventHandler(this.Lbl_Albedo_Click);
+            // 
+            // Lbl_Gradient
+            // 
+            this.Lbl_Gradient.Name = "Lbl_Gradient";
+            this.Lbl_Gradient.Size = new System.Drawing.Size(51, 22);
+            this.Lbl_Gradient.Text = "梯度图";
+            this.Lbl_Gradient.Click += new System.EventHandler(this.Lbl_Gradient_Click);
+            // 
+            // Lbl_Curvature
+            // 
+            this.Lbl_Curvature.Name = "Lbl_Curvature";
+            this.Lbl_Curvature.Size = new System.Drawing.Size(51, 22);
+            this.Lbl_Curvature.Text = "曲率图";
+            this.Lbl_Curvature.Click += new System.EventHandler(this.Lbl_Curvature_Click);
+            // 
+            // Lbl_HeightField
+            // 
+            this.Lbl_HeightField.Name = "Lbl_HeightField";
+            this.Lbl_HeightField.Size = new System.Drawing.Size(79, 22);
+            this.Lbl_HeightField.Text = "高度信息图";
+            this.Lbl_HeightField.Visible = false;
+            this.Lbl_HeightField.Click += new System.EventHandler(this.Lbl_HeightField_Click);
+            // 
+            // tLPanel_Photometrics
+            // 
+            this.tLPanel_Photometrics.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tLPanel_Photometrics.ColumnCount = 1;
+            this.tLPanel_Photometrics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLPanel_Photometrics.Controls.Add(this.toolStrip1, 0, 0);
+            this.tLPanel_Photometrics.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tLPanel_Photometrics.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tLPanel_Photometrics.Location = new System.Drawing.Point(765, 0);
+            this.tLPanel_Photometrics.Name = "tLPanel_Photometrics";
+            this.tLPanel_Photometrics.RowCount = 2;
+            this.tLPanel_Photometrics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tLPanel_Photometrics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLPanel_Photometrics.Size = new System.Drawing.Size(184, 541);
+            this.tLPanel_Photometrics.TabIndex = 7;
+            this.tLPanel_Photometrics.Visible = false;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel7,
+            this.toolStripSeparator4,
+            this.tSBut_Load,
+            this.tSBut_Fusion,
+            this.toolStripBtn_ClosePhotometrics});
+            this.toolStrip1.Location = new System.Drawing.Point(1, 1);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(182, 31);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripLabel7.Font = new System.Drawing.Font("微软雅黑", 9.45F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(53, 28);
+            this.toolStripLabel7.Text = "2D原图";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tSBut_Load
+            // 
+            this.tSBut_Load.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tSBut_Load.Image = ((System.Drawing.Image)(resources.GetObject("tSBut_Load.Image")));
+            this.tSBut_Load.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBut_Load.Name = "tSBut_Load";
+            this.tSBut_Load.Size = new System.Drawing.Size(23, 28);
+            this.tSBut_Load.Text = "导入图像";
+            this.tSBut_Load.Click += new System.EventHandler(this.tSBut_Load_Click);
+            // 
+            // tSBut_Fusion
+            // 
+            this.tSBut_Fusion.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tSBut_Fusion.Image = ((System.Drawing.Image)(resources.GetObject("tSBut_Fusion.Image")));
+            this.tSBut_Fusion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBut_Fusion.Name = "tSBut_Fusion";
+            this.tSBut_Fusion.Size = new System.Drawing.Size(57, 28);
+            this.tSBut_Fusion.Text = "融合";
+            this.tSBut_Fusion.Click += new System.EventHandler(this.tSBut_Fusion_Click);
+            // 
+            // toolStripBtn_ClosePhotometrics
+            // 
+            this.toolStripBtn_ClosePhotometrics.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripBtn_ClosePhotometrics.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtn_ClosePhotometrics.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtn_ClosePhotometrics.Image")));
+            this.toolStripBtn_ClosePhotometrics.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_ClosePhotometrics.Name = "toolStripBtn_ClosePhotometrics";
+            this.toolStripBtn_ClosePhotometrics.Size = new System.Drawing.Size(23, 28);
+            this.toolStripBtn_ClosePhotometrics.Text = "toolStripButton1";
+            this.toolStripBtn_ClosePhotometrics.Click += new System.EventHandler(this.toolStripBtn_ClosePhotometrics_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.hWndCtrl4, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.hWndCtrl3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.hWndCtrl2, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.hWndCtrl1, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 33);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(182, 507);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // hWndCtrl4
+            // 
+            this.hWndCtrl4.BackColor = System.Drawing.Color.Black;
+            this.hWndCtrl4.BorderColor = System.Drawing.Color.Black;
+            this.hWndCtrl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hWndCtrl4.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
+            this.hWndCtrl4.Location = new System.Drawing.Point(3, 381);
+            this.hWndCtrl4.Name = "hWndCtrl4";
+            this.hWndCtrl4.Size = new System.Drawing.Size(176, 123);
+            this.hWndCtrl4.TabIndex = 5;
+            this.hWndCtrl4.WindowSize = new System.Drawing.Size(176, 123);
+            this.hWndCtrl4.HMouseDown += new HalconDotNet.HMouseEventHandler(this.hWndCtrl1_HMouseDown);
+            this.hWndCtrl4.Resize += new System.EventHandler(this.hWndCtrl1_Resize);
+            // 
+            // hWndCtrl3
+            // 
+            this.hWndCtrl3.BackColor = System.Drawing.Color.Black;
+            this.hWndCtrl3.BorderColor = System.Drawing.Color.Black;
+            this.hWndCtrl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hWndCtrl3.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
+            this.hWndCtrl3.Location = new System.Drawing.Point(3, 255);
+            this.hWndCtrl3.Name = "hWndCtrl3";
+            this.hWndCtrl3.Size = new System.Drawing.Size(176, 120);
+            this.hWndCtrl3.TabIndex = 4;
+            this.hWndCtrl3.WindowSize = new System.Drawing.Size(176, 120);
+            this.hWndCtrl3.HMouseDown += new HalconDotNet.HMouseEventHandler(this.hWndCtrl1_HMouseDown);
+            this.hWndCtrl3.Resize += new System.EventHandler(this.hWndCtrl1_Resize);
+            // 
+            // hWndCtrl2
+            // 
+            this.hWndCtrl2.BackColor = System.Drawing.Color.Black;
+            this.hWndCtrl2.BorderColor = System.Drawing.Color.Black;
+            this.hWndCtrl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hWndCtrl2.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
+            this.hWndCtrl2.Location = new System.Drawing.Point(3, 129);
+            this.hWndCtrl2.Name = "hWndCtrl2";
+            this.hWndCtrl2.Size = new System.Drawing.Size(176, 120);
+            this.hWndCtrl2.TabIndex = 3;
+            this.hWndCtrl2.WindowSize = new System.Drawing.Size(176, 120);
+            this.hWndCtrl2.HMouseDown += new HalconDotNet.HMouseEventHandler(this.hWndCtrl1_HMouseDown);
+            this.hWndCtrl2.Resize += new System.EventHandler(this.hWndCtrl1_Resize);
+            // 
+            // hWndCtrl1
+            // 
+            this.hWndCtrl1.BackColor = System.Drawing.Color.Black;
+            this.hWndCtrl1.BorderColor = System.Drawing.Color.Black;
+            this.hWndCtrl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hWndCtrl1.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
+            this.hWndCtrl1.Location = new System.Drawing.Point(3, 3);
+            this.hWndCtrl1.Name = "hWndCtrl1";
+            this.hWndCtrl1.Size = new System.Drawing.Size(176, 120);
+            this.hWndCtrl1.TabIndex = 2;
+            this.hWndCtrl1.WindowSize = new System.Drawing.Size(176, 120);
+            this.hWndCtrl1.HMouseDown += new HalconDotNet.HMouseEventHandler(this.hWndCtrl1_HMouseDown);
+            this.hWndCtrl1.Resize += new System.EventHandler(this.hWndCtrl1_Resize);
+            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
@@ -745,7 +998,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "CtrlCamShow";
-            this.Size = new System.Drawing.Size(842, 541);
+            this.Size = new System.Drawing.Size(1086, 541);
             this.Load += new System.EventHandler(this.CtrlCamShow_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -760,6 +1013,13 @@
             this.panel_hWnd.ResumeLayout(false);
             this.panel_hWnd.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.toolStrip_photometrics.ResumeLayout(false);
+            this.toolStrip_photometrics.PerformLayout();
+            this.tLPanel_Photometrics.ResumeLayout(false);
+            this.tLPanel_Photometrics.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -821,5 +1081,26 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.CheckBox checkBox_CenterCross;
         private System.Windows.Forms.Button but_PhotometricsStereo;
+        private System.Windows.Forms.ToolStrip toolStrip_photometrics;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripLabel Lbl_NormalField;
+        private System.Windows.Forms.ToolStripLabel Lbl_Albedo;
+        private System.Windows.Forms.ToolStripLabel Lbl_Gradient;
+        private System.Windows.Forms.ToolStripLabel Lbl_Curvature;
+        private System.Windows.Forms.ToolStripLabel Lbl_HeightField;
+        private System.Windows.Forms.TableLayoutPanel tLPanel_Photometrics;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton tSBut_Load;
+        private System.Windows.Forms.ToolStripButton tSBut_Fusion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private HalconDotNet.HWindowControl hWndCtrl4;
+        private HalconDotNet.HWindowControl hWndCtrl3;
+        private HalconDotNet.HWindowControl hWndCtrl2;
+        private HalconDotNet.HWindowControl hWndCtrl1;
+        private System.Windows.Forms.ToolStripButton toolStripBtn_ClosePhotometrics;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
     }
 }
