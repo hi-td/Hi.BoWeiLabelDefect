@@ -83,10 +83,7 @@ namespace VisionPlatform
                 bLoad = true;
                 ctrlNccModel.LoadParam(param.nccLocate);
                 AngleValueRange.LoadParam(param.AngleValue);
-                foreach (var item in param.dicLabelMoveItems)
-                {
-
-                }
+                
             }
             catch (SystemException ex)
             {

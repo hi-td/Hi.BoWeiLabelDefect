@@ -71,6 +71,7 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
+
                 if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
                 {
                     bResult = false;
@@ -262,6 +263,7 @@ namespace VisionPlatform
                     strColor = "red";
                 }
                 fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
+                if (null == param.dicLabelMoveItems) return false;
                 foreach (var item in param.dicLabelMoveItems.Values)
                 {
                     HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
@@ -1092,7 +1094,7 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out HObject ho_LinesRegion);
             try
             {
-                fun.DispRegion(fun.m_hImage);
+               // fun.DispRegion(ho_BrokenImg);
                 Mat mat = fun.HObjectToMat(ho_BrokenImg);
                 List<Arbitrary> listArbitrary = new List<Arbitrary>() { param.arbitrary };
                 ho_ROI.Dispose();
