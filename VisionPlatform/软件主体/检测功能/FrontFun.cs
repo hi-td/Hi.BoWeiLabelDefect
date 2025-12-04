@@ -70,6 +70,7 @@ namespace VisionPlatform
                 {
                     bResult = false;
                 }
+
                 if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
                 {
                     bResult = false;
