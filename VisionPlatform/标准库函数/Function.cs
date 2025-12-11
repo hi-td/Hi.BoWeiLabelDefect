@@ -193,6 +193,7 @@ namespace VisionPlatform
             }
         }
 
+        //现在保存图像的格式 光度立体图-jpg;原始图像-jpg
         public void SavePhotometricImages(int cam, string strCheckItem, List<HObject> listOrgImages, PhotometricStereoImage photometricStereoImage)
         {
             try
@@ -217,7 +218,7 @@ namespace VisionPlatform
                     {
                         if (null != listOrgImages[i])
                         {
-                            HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str + (i + 1).ToString());
+                            HOperatorSet.WriteImage(listOrgImages[i], "jpg", 0, str + (i + 1).ToString());
                         }
                     }
                 }
@@ -242,23 +243,23 @@ namespace VisionPlatform
                     str = str.Replace("\\", "/");
                     if (null != photometricStereoImage.NormalField)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str + "NormalField");
+                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "jpg", 0, str + "NormalField");
                     }
                     if (null != photometricStereoImage.Albedo)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str + "Albedo");
+                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "jpg", 0, str + "Albedo");
                     }
                     if (null != photometricStereoImage.Gradient)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str + "Gradient");
+                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "jpg", 0, str + "Gradient");
                     }
                     if (null != photometricStereoImage.Curvature)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str + "Curvature");
+                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "jpg", 0, str + "Curvature");
                     }
                     if (null != photometricStereoImage.HeightField)
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str + "HeightField");
+                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "jpg", 0, str + "HeightField");
                     }
                 }
                 catch (HalconException error)
@@ -458,8 +459,7 @@ namespace VisionPlatform
                 {
                     ShowCenterCross();
                 }
-                // m_PreImage = m_hImage.Clone();   //示教使用
-                // ColorSpaceTrans();
+                Function.ho_ShowImage = m_hImage;
                 b_image = true;
                 FitImageToWindow(ref dReslutRow0, ref dReslutCol0, ref dReslutRow1, ref dReslutCol1);
                 return;
@@ -1559,6 +1559,7 @@ namespace VisionPlatform
                 if (null != m_ObjShow)
                     m_ObjShow.Dispose();
                 HOperatorSet.ReadImage(out m_hImage, strFilePath);
+                Function.ho_ShowImage = m_hImage;
                 AIimage = new Mat(strFilePath);
                 dReslutRow0 = 0;
                 dReslutCol0 = 0;

@@ -799,7 +799,7 @@ namespace VisionPlatform
                     this.Fun.ReadImageToHWnd(files[3], hWndCtrl4);
                 }
                 myListImages = new List<HalconDotNet.HObject>();
-                for (int i = 0; i < files.Length; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     this.Fun.ReadImage(files[i]);
                     myListImages.Add(this.Fun.HImage);
@@ -820,7 +820,6 @@ namespace VisionPlatform
             try
             {
                 Function.ho_ShowImage = photometricStereoImage.NormalField.Clone();
-                //this.Fun.ShowImageToHWnd(photometricStereoImage.NormalField, hWndCtrl);
                 this.Fun.DispRegion(photometricStereoImage.NormalField);
                 this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.NormalField.Clone();
             }
@@ -885,8 +884,6 @@ namespace VisionPlatform
                 StaticFun.MessageFun.ShowMessage(ex);
             }
         }
-
-
 
         private void hWndCtrl1_Resize(object sender, EventArgs e)
         {

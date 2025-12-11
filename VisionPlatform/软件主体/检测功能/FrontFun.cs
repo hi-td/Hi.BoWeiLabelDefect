@@ -248,28 +248,31 @@ namespace VisionPlatform
                     strColor = "red";
                 }
                 fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
-                foreach (var item in param.dicLabelMoveItems)
+                if (null != param.dicLabelMoveItems)
                 {
-                    if (item.Key == "") continue;
-                    //仿射变换
-                    HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
-                        rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, out HTuple homMat2D);
-                    double dDist = 0;
-                    switch (item.Value.type)
+                    foreach (var item in param.dicLabelMoveItems)
                     {
-                        case MoveType.point_line:
-                            Line boxLine = AffineTransLine(item.Value.boxLine, homMat2D);
-                            HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_Dist);
-                            dDist = Math.Round(hv_Dist.D, 2);
-                            break;
-                        case MoveType.line_line:
-                            dDist = DistLineLine(item.Value.labelLine, item.Value.boxLine, homMat2D);
-                            break;
-                        case MoveType.point_point:
-                            break;
+                        if (item.Key == "") continue;
+                        //仿射变换
+                        HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
+                            rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, out HTuple homMat2D);
+                        double dDist = 0;
+                        switch (item.Value.type)
+                        {
+                            case MoveType.point_line:
+                                Line boxLine = AffineTransLine(item.Value.boxLine, homMat2D);
+                                HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_Dist);
+                                dDist = Math.Round(hv_Dist.D, 2);
+                                break;
+                            case MoveType.line_line:
+                                dDist = DistLineLine(item.Value.labelLine, item.Value.boxLine, homMat2D);
+                                break;
+                            case MoveType.point_point:
+                                break;
+                        }
+                        fun.WriteStringtoImage(20, 350, 50, $"{item.Key}距离：{dDist}");
+                        res.dicLabelMoveValues.Add(item.Key, dDist);
                     }
-                    fun.WriteStringtoImage(20, 350, 50, $"{item.Key}距离：{dDist}");
-                    res.dicLabelMoveValues.Add(item.Key, dDist);
                 }
             }
             catch (HalconException ex)
@@ -1097,6 +1100,12 @@ namespace VisionPlatform
                 List<Arbitrary> listArbitrary = new List<Arbitrary>() { param.arbitrary };
                 ho_ROI.Dispose();
                 ho_ROI = fun.GenArbitrary(listArbitrary);
+                if (null == ho_ROI || ho_ROI.CountObj() == 0)
+                {
+                    HOperatorSet.GetImageSize(ho_BrokenImg, out HTuple hv_width, out HTuple hv_height);
+                    HOperatorSet.GenRectangle1(out ho_ROI, 1, 1, hv_height, hv_width);
+                    //fun.DispRegion(ho_ROI, "blue", lineWidth: 3);
+                }
                 //光度立体预处理图
                 ResultAi AIResult_broken = yolov8_Broken.Inference(mat, (float)param.dBrokenScore, 0.5f);
                 //switch (inspectItem)
@@ -1136,17 +1145,13 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI = null, int nMinArea = 10, string strColor = "")
+        public bool ShowAIResult(ResultAi aiResult, HObject ho_ROI, int nMinArea = 10, string strColor = "")
         {
             bool bResult = true;
             HOperatorSet.GenEmptyObj(out HObject ho_Rect1);
             HOperatorSet.GenEmptyObj(out HObject ho_Region);
             try
             {
-                if (null == ho_ROI || ho_ROI.CountObj() == 0)
-                {
-                    HOperatorSet.GenRectangle1(out ho_ROI, 1, 1, Function.imageHeight, Function.imageWidth);
-                }
                 int nNum = aiResult.scores.Count;
                 if (nNum != 0)
                 {
@@ -1164,12 +1169,24 @@ namespace VisionPlatform
                         HOperatorSet.GenRectangle1(out ho_Rect1, listR1[i], listC1[i], listR2[i], listC2[i]);
                         //fun.DispRegion(ho_Rect1, "red");
                         ho_Region.Dispose();
-                        HOperatorSet.Intersection(ho_Rect1, ho_ROI, out ho_Region);
+                        HOperatorSet.Intersection(ho_ROI, ho_Rect1, out ho_Region);
                         HOperatorSet.RegionFeatures(ho_Region, "area", out HTuple hv_area);
-                        if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea)
+                        if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea && aiResult.classes[i] == "broken")
                         {
                             bResult = false;
-                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height / 2 - 10, aiResult.scores[i].ToString("F2"), strColor);
+                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height / 2 - 10, "broken" + ":" + aiResult.scores[i].ToString("F2"), strColor);
+                            fun.DispRegion(ho_Region, strColor);
+                        }
+                        else if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea && aiResult.classes[i] == "bub")
+                        {
+                            bResult = false;
+                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height / 2 - 10, "bub" + ":" + aiResult.scores[i].ToString("F2"), strColor);
+                            fun.DispRegion(ho_Region, strColor);
+                        }
+                        else if (0 != hv_area.TupleLength() && hv_area[0].D > nMinArea && aiResult.classes[i] == "dirty")
+                        {
+                            bResult = false;
+                            fun.WriteStringtoImage(15, aiResult.rects[i].Y, aiResult.rects[i].X + aiResult.rects[i].Height / 2 - 10, "dirty" + ":" + aiResult.scores[i].ToString("F2"), strColor);
                             fun.DispRegion(ho_Region, strColor);
                         }
                     }
