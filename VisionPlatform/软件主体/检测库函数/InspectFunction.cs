@@ -1578,8 +1578,8 @@ namespace VisionPlatform
                                 listImages.Add(m_hImage.Clone());
                                 if (null != listHWndCtrl)
                                 {
-                                    listHWndCtrl[i].HalconWindow.DispObj(m_hImage);
                                     ShowImageToHWnd(m_hImage, listHWndCtrl[i]);
+                                    listHWndCtrl[i].HalconWindow.DispObj(m_hImage);
                                 }
                                 Thread.Sleep(2);
                             }
