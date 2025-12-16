@@ -25,8 +25,8 @@ namespace VisionPlatform
         {
             Default,
             Front,
-            LeftSide,
-            RightSide,
+            Back,
+            Top,
         }
 
         [Serializable]
@@ -141,6 +141,24 @@ namespace VisionPlatform
             public string[] strDataAdress;
         }
         #endregion
+        [Serializable]
+        public struct LabelInspectItem
+        {
+            public LabelInspectItem()
+            {
+                bFont = true;
+                bBack = true;
+                bTop = true;
+            }
+            public bool bFont { get; set; }
+            public bool bBack { get; set; }
+            public bool bTop { get; set; }
+            public LabelInspectItem(bool font, bool back, bool top)
+            {
+                this.bFont = font; this.bBack = back; this.bTop = top;
+            }
+        }
+
         #region 正面检测
         [Serializable]
         public struct FrontParam
@@ -152,13 +170,12 @@ namespace VisionPlatform
             public bool bPNCode;
             public bool bPlug;
             public bool bCopperRing;
-            public bool bTorsionExist;
-            public bool bPasterExist;
-            public bool bfrontPinBasePos;
+            public bool bSealedLabel;
             public QRCodeParam QRCode;
             public PNCodeParam PNCode;
             public DefectParam Defect;
             public LabelMoveParam LabelMove;
+            public SealedLabelParam SealedLabel;
         }
 
         public struct FrontResult
@@ -168,8 +185,10 @@ namespace VisionPlatform
             }
             public string strQRCode;
             public string strPNCode;
-            public bool bFrontResult = true;
+            public bool bDefect;
             public LabelMoveResult labelMoveResult;
+            public SealedLabelResult sealLabelResult;
+            public bool bFrontResult = true;
         }
 
         public struct QRCodeParam
@@ -187,6 +206,7 @@ namespace VisionPlatform
             public Rect2 rect2ROI;        //周期码识别区域
             public string strPNCode;      //周期码
         }
+        #region 标签偏移
         [Serializable]
         public enum MoveType
         {
@@ -198,7 +218,6 @@ namespace VisionPlatform
         {
             public Rect2 rect2;
             public LineParam lineParam;
-
         }
         public struct LabelMoveItem
         {
@@ -213,18 +232,65 @@ namespace VisionPlatform
         }
         public struct LabelMoveParam
         {
+            public LabelMoveParam()
+            {
+                nImageSel = 1;
+            }
             public BaseData.NccLocateParam nccLocate;
             public BaseData.ValueRange AngleValue;
+            public int nImageSel;
             public Dictionary<string, LabelMoveItem> dicLabelMoveItems;
         }
         public struct LabelMoveResult
         {
             public LabelMoveResult()
             {
+                bExist = true;
                 dicLabelMoveValues = new Dictionary<string, double>();
             }
+            public bool bExist;
+            public double dAngleRotate;                               //角度偏移
             public Dictionary<string, double> dicLabelMoveValues;
         }
+        #endregion
+
+        #region 封口标签
+        public struct ROILineItem
+        {
+            public ValueRange dist1;
+            public ValueRange dist2;
+            public ROILine roiLine;
+        }
+        public struct SealedLabelParam
+        {
+            public SealedLabelParam()
+            {
+                nImageSel = 1;
+                bTwoLabels = false;
+                listROIItems = new List<ROILineItem>();
+            }
+            public int nImageSel { get; set; }                 //选择第几张图像
+            public bool bTwoLabels;                            //是否检测两个标签
+            public BaseData.NccLocateParam nccLocate1;         //封口标签1
+            public BaseData.NccLocateParam nccLocate2;         //封口标签2
+            public List<ROILineItem> listROIItems { get; set; }//检测位置
+
+        }
+        public struct SealedLabelResult
+        {
+            public SealedLabelResult()
+            {
+                bExist1 = true;
+                bExist2 = false;
+                listDist1 = new List<double>();
+                listDist2 = new List<double>();
+            }
+            public bool bExist1 { get; set; }
+            public bool bExist2 { get; set; }
+            public List<double> listDist1 { get; set; }
+            public List<double> listDist2 { get; set; }
+        }
+        #endregion
 
         public struct DefectParam
         {

@@ -240,7 +240,7 @@ namespace StaticFun
         {
             try
             {
-                //检测光源控制器是否链接正常
+                #region 检测光源控制器是否链接正常
                 if (_InitConfig.initConfig.bDigitLight)
                 {
                     foreach (var led in DataSerializer._COMConfig.dicLed)
@@ -263,10 +263,13 @@ namespace StaticFun
                         }
                     }
                 }
+                #endregion
+
                 //检测通讯是否正常
                 switch (_InitConfig.initConfig.comMode.TYPE)
                 {
                     case EnumData.COMType.IO:
+                        #region 检查I/O板卡是否连上
                         int try_connect = 0;
                         while (!WENYU.isOpen && try_connect < 3)
                         {
@@ -279,6 +282,7 @@ namespace StaticFun
                             MessageBox.Show("板卡通讯异常！", "提示", MessageBoxButtons.OK);
                             return false;
                         }
+                        #endregion
                         InspectFunction.isAuto = true;
                         //开启检测线程
                         foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
@@ -304,222 +308,17 @@ namespace StaticFun
                         //开启检测线程
                         foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
                         {
-                            CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
-                            if (camID == 10 || camID == 30)
+                            //只给主相机开线程
+                            if (camID.ToString()[1] == 0)
                             {
-                                //只给主相机开线程
+                                CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
                                 new Task(() => { ctrlCamShow.Fun.RunTcp(FormMainUI.m_dicCtrlCamShow); }, TaskCreationOptions.LongRunning).Start();
                                 Thread.Sleep(20);
-                                break;
                             }
                         }
+                        InspectFunction.isAuto = true;
                         break;
                 }
-                Thread.Sleep(10);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                ("[FormHome]->[Run]:/t" + ex.Message + Environment.NewLine + ex.StackTrace).Log();
-                return false;
-            }
-        }
-        public void LoadRun(Modbus_RTU[] modbus_RTUs, Button but_Run)
-        {
-            try
-            {
-                Zoom();
-                if (but_Run.Text == "运行" || but_Run.Text == "Start")
-                {
-                    but_Run.Image = Resources.runing;
-                    if (CamCommon.m_listCamSer.Count != 0)
-                    {
-                        CamCommon.StopLiveAll();   //防止抓拍出来的图片不对
-                        if (Start(modbus_RTUs))
-                        {
-                            FormMainUI.bRun = true;
-                            InspectFunction.isAuto = true;
-                            FormMainUI.bCountNum = true;
-                            FormMainUI.dCountTime = new TimeSpan(DateTime.Now.Ticks);
-                            if (_language == EnumData.Language.english)
-                            {
-                                but_Run.Text = "Running...";
-                            }
-                            else
-                            {
-                                but_Run.Text = "运行中";
-                            }
-
-                            but_Run.BackColor = Color.LightGreen;
-                        }
-                        else
-                        {
-                            FormMainUI.bRun = false;
-                            InspectFunction.isAuto = false;
-                        }
-                    }
-                    else
-                    {
-                        FormMainUI.bRun = false;
-                        MessageBox.Show("相机连接异常！", "提示", MessageBoxButtons.OK);
-                    }
-                }
-                else
-                {
-                    InspectFunction.isAuto = false;
-                    FormMainUI.bRun = false;
-                    FormMainUI.bCountNum = false;
-                    Thread.Sleep(3);
-                    if (_InitConfig.initConfig.comMode.TYPE == EnumData.COMType.COM)
-                    {
-                        if (FormMainUI.m_dicCtrlCamShow.Count == 1)
-                        {
-                            modbus_RTUs[0].ClosePort();
-                        }
-                        else
-                        {
-                            modbus_RTUs[0].ClosePort();
-                            modbus_RTUs[1].ClosePort();
-                        }
-                    }
-                    but_Run.Image = Resources.stop;
-                    but_Run.Text = GlobalData.Config._language == EnumData.Language.english ? "Start" : "运行";
-                    but_Run.BackColor = default;
-                }
-            }
-            catch (SystemException error)
-            {
-                MessageFun.ShowMessage("错误：" + error.ToString());
-                FormMainUI.bCountNum = false;
-                return;
-            }
-        }
-        public bool Start(Modbus_RTU[] modbus_RTUs)
-        {
-            try
-            {
-                //检测光源控制器是否链接正常
-                if (_InitConfig.initConfig.bDigitLight)
-                {
-                    foreach (var led in DataSerializer._COMConfig.dicLed)
-                    {
-                        BaseData.LEDRTU ledRTU = led.Value;
-                        if (!ledRTU.bOpen)
-                        {
-                            int try_connect = 0;
-                            while (!led.Value.bOpen && try_connect < 3)
-                            {
-                                LEDControl.OpenLedCom(ref ledRTU);
-                                try_connect++;
-                                Thread.Sleep(20);
-                            }
-                        }
-                        if (!ledRTU.bOpen)
-                        {
-                            MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
-                            return false;
-                        }
-                    }
-                }
-                //检测IO通讯是否正常
-                if (_InitConfig.initConfig.comMode.TYPE == EnumData.COMType.IO)
-                {
-
-                    #region IO通讯
-                    int try_connect = 0;
-                    while (!WENYU.isOpen && try_connect < 3)
-                    {
-                        WENYU.OpenIO();
-                        try_connect++;
-                        Thread.Sleep(20);
-                    }
-                    if (!WENYU.isOpen)
-                    {
-                        MessageBox.Show("板卡通讯异常！", "提示", MessageBoxButtons.OK);
-                        return false;
-                    }
-                    #endregion
-
-                    InspectFunction.isAuto = true;
-                    //MessageFun.ShowMessage();
-                    foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
-                    {
-                        //ShowItems[] arrayShows = FormMainUI.m_dicCtrlCamShow[camID];
-                        //for (int sub_cam = 0; sub_cam < arrayShows.Length; sub_cam++)
-                        //{
-                        //    InspectFunction TMFun = arrayShows[sub_cam].form.fun;
-                        //    String strCamSer = arrayShows[sub_cam].form.m_strCamSer;
-                        //    new Task(() => { TMFun.RunCam_IO(cam, sub_cam, strCamSer); }, TaskCreationOptions.LongRunning).Start();
-                        //    Thread.Sleep(20);
-                        //}
-                    }
-
-                }
-                else if (_InitConfig.initConfig.comMode.TYPE == EnumData.COMType.NET)
-                {
-                    //foreach (int cam in FormMainUI.m_dicFormCamShows.Keys)
-                    //{
-                    //    ShowItems[] arrayShows = FormMainUI.m_dicFormCamShows[cam];
-                    //    for (int sub_cam = 0; sub_cam < arrayShows.Length; sub_cam++)
-                    //    {
-                    //        InspectFunction TMFun = arrayShows[sub_cam].form.fun;
-                    //        String strCamSer = arrayShows[sub_cam].form.m_strCamSer;
-                    //        new Task(() => { TMFun.RunCam_ModbusTcp(cam, sub_cam, strCamSer); }, TaskCreationOptions.LongRunning).Start();
-                    //        Thread.Sleep(20);
-                    //    }
-                    //}
-                }
-                else if (_InitConfig.initConfig.comMode.TYPE == EnumData.COMType.COM)
-                {
-
-                    InspectFunction.isAuto = true;
-                    foreach (int cam in FormMainUI.m_dicCtrlCamShow.Keys)
-                    {
-                        if (!modbus_RTUs[cam - 1].isOpen)
-                        {
-                            int try_connect = 0;
-                            while (!modbus_RTUs[cam - 1].isOpen && try_connect < 3)
-                            {
-                                modbus_RTUs[cam - 1].OpenCom(DataSerializer._PlcRTU.PlcRTU[cam - 1]);
-                                try_connect++;
-                                Thread.Sleep(20);
-                            }
-                        }
-                        if (!modbus_RTUs[cam - 1].isOpen)
-                        {
-                            MessageBox.Show("PLC-ModbusRTU连接异常，请检查！！！", "提示", MessageBoxButtons.OK);
-                            return false;
-                        }
-
-                        //ShowItems[] arrayShows = FormMainUI.m_dicFormCamShows[cam];
-                        //for (int sub_cam = 0; sub_cam < arrayShows.Length; sub_cam++)
-                        //{
-                        //    InspectFunction TMFun = arrayShows[sub_cam].form.fun;
-                        //    String strCamSer = arrayShows[sub_cam].form.m_strCamSer;
-                        //    new Task(() => { TMFun.RunCam_ModbusRTU(cam, sub_cam, strCamSer, modbus_RTUs[cam - 1]); }, TaskCreationOptions.LongRunning).Start();
-                        //    Thread.Sleep(20);
-                        //}
-                    }
-                }
-                else if (_InitConfig.initConfig.comMode.TYPE == EnumData.COMType.CamIO)
-                {
-                    InspectFunction.isAuto = true;
-                    //MessageFun.ShowMessage();
-                    //foreach (int cam in FormMainUI.m_dicFormCamShows.Keys)
-                    //{
-                    //    ShowItems[] arrayShows = FormMainUI.m_dicFormCamShows[cam];
-                    //    for (int sub_cam = 0; sub_cam < arrayShows.Length; sub_cam++)
-                    //    {
-                    //        InspectFunction TMFun = arrayShows[sub_cam].form.fun;
-                    //        //CamFunction TMcamFun = arrayShows[sub_cam].form.camFun;
-                    //        String strCamSer = arrayShows[sub_cam].form.m_strCamSer;
-                    //        new Task(() => { TMFun.RunCam_CamIO(cam, sub_cam, strCamSer); }, TaskCreationOptions.LongRunning).Start();
-                    //        Thread.Sleep(20);
-                    //    }
-                    //}
-
-                }
-
                 Thread.Sleep(10);
                 return true;
             }
@@ -697,12 +496,12 @@ namespace StaticFun
                                 addr_Front.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr_Front);
                                 break;
-                            case InspectData.InspectItem.LeftSide:
+                            case InspectData.InspectItem.Back:
                                 var addr_SidePin1 = new Hi.Ltd.Data.Address(Hi.Ltd.Enumerations.SoftType.M, 2133, Hi.Ltd.Enumerations.DataType.Bit);
                                 addr_SidePin1.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr_SidePin1);
                                 break;
-                            case InspectData.InspectItem.RightSide:
+                            case InspectData.InspectItem.Top:
                                 var addr_SidePin2 = new Hi.Ltd.Data.Address(Hi.Ltd.Enumerations.SoftType.M, 2134, Hi.Ltd.Enumerations.DataType.Bit);
                                 addr_SidePin2.Value = 1;
                                 FormMainUI._plc.WriteDevice(addr_SidePin2);

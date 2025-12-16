@@ -37,10 +37,12 @@
             this.tabPage_Fold = new System.Windows.Forms.TabPage();
             this.checkBox_Fold = new System.Windows.Forms.CheckBox();
             this.tabCtrl = new System.Windows.Forms.TabControl();
+            this.tabPage_SealedLabel = new System.Windows.Forms.TabPage();
             this.checkBox_LabelMove = new System.Windows.Forms.CheckBox();
             this.checkBox_BarCode = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox_SealLabel = new System.Windows.Forms.CheckBox();
             this.checkBox_PNCode = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3.SuspendLayout();
@@ -143,10 +145,10 @@
             // 
             this.checkBox_Fold.AutoSize = true;
             this.checkBox_Fold.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox_Fold.Location = new System.Drawing.Point(304, 0);
+            this.checkBox_Fold.Location = new System.Drawing.Point(246, 0);
             this.checkBox_Fold.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.checkBox_Fold.Name = "checkBox_Fold";
-            this.checkBox_Fold.Size = new System.Drawing.Size(90, 31);
+            this.checkBox_Fold.Size = new System.Drawing.Size(78, 31);
             this.checkBox_Fold.TabIndex = 5;
             this.checkBox_Fold.Text = "鼓包褶皱";
             this.checkBox_Fold.UseVisualStyleBackColor = true;
@@ -156,8 +158,9 @@
             // 
             this.tabCtrl.Controls.Add(this.tabPage_BarCode);
             this.tabCtrl.Controls.Add(this.tabPage_PNCode);
-            this.tabCtrl.Controls.Add(this.tabPage_LabelMove);
             this.tabCtrl.Controls.Add(this.tabPage_Fold);
+            this.tabCtrl.Controls.Add(this.tabPage_LabelMove);
+            this.tabCtrl.Controls.Add(this.tabPage_SealedLabel);
             this.tabCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCtrl.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
             this.tabCtrl.Location = new System.Drawing.Point(0, 33);
@@ -167,14 +170,24 @@
             this.tabCtrl.Size = new System.Drawing.Size(467, 524);
             this.tabCtrl.TabIndex = 12;
             // 
+            // tabPage_SealedLabel
+            // 
+            this.tabPage_SealedLabel.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPage_SealedLabel.Location = new System.Drawing.Point(4, 28);
+            this.tabPage_SealedLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage_SealedLabel.Name = "tabPage_SealedLabel";
+            this.tabPage_SealedLabel.Size = new System.Drawing.Size(459, 492);
+            this.tabPage_SealedLabel.TabIndex = 4;
+            this.tabPage_SealedLabel.Text = "封口标签";
+            // 
             // checkBox_LabelMove
             // 
             this.checkBox_LabelMove.AutoSize = true;
             this.checkBox_LabelMove.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox_LabelMove.Location = new System.Drawing.Point(212, 0);
+            this.checkBox_LabelMove.Location = new System.Drawing.Point(165, 0);
             this.checkBox_LabelMove.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.checkBox_LabelMove.Name = "checkBox_LabelMove";
-            this.checkBox_LabelMove.Size = new System.Drawing.Size(89, 31);
+            this.checkBox_LabelMove.Size = new System.Drawing.Size(78, 31);
             this.checkBox_LabelMove.TabIndex = 2;
             this.checkBox_LabelMove.Text = "标签偏移";
             this.checkBox_LabelMove.UseVisualStyleBackColor = true;
@@ -187,7 +200,7 @@
             this.checkBox_BarCode.Location = new System.Drawing.Point(3, 0);
             this.checkBox_BarCode.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.checkBox_BarCode.Name = "checkBox_BarCode";
-            this.checkBox_BarCode.Size = new System.Drawing.Size(99, 31);
+            this.checkBox_BarCode.Size = new System.Drawing.Size(78, 31);
             this.checkBox_BarCode.TabIndex = 0;
             this.checkBox_BarCode.Text = "二维码识别";
             this.checkBox_BarCode.UseVisualStyleBackColor = true;
@@ -201,39 +214,54 @@
             this.label2.Location = new System.Drawing.Point(1, 1);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 31);
+            this.label2.Size = new System.Drawing.Size(56, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "检测项";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.14213F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.15736F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.60406F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.09645F));
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.checkBox_SealLabel, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.checkBox_LabelMove, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.checkBox_PNCode, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.checkBox_BarCode, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.checkBox_Fold, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(72, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(58, 1);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(394, 31);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(408, 31);
             this.tableLayoutPanel2.TabIndex = 19;
+            // 
+            // checkBox_SealLabel
+            // 
+            this.checkBox_SealLabel.AutoSize = true;
+            this.checkBox_SealLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox_SealLabel.Location = new System.Drawing.Point(327, 0);
+            this.checkBox_SealLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.checkBox_SealLabel.Name = "checkBox_SealLabel";
+            this.checkBox_SealLabel.Size = new System.Drawing.Size(81, 31);
+            this.checkBox_SealLabel.TabIndex = 6;
+            this.checkBox_SealLabel.Text = "封口标签";
+            this.checkBox_SealLabel.UseVisualStyleBackColor = true;
+            this.checkBox_SealLabel.CheckedChanged += new System.EventHandler(this.checkBox_Item_CheckedChanged);
             // 
             // checkBox_PNCode
             // 
             this.checkBox_PNCode.AutoSize = true;
             this.checkBox_PNCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox_PNCode.Location = new System.Drawing.Point(105, 0);
+            this.checkBox_PNCode.Location = new System.Drawing.Point(84, 0);
             this.checkBox_PNCode.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.checkBox_PNCode.Name = "checkBox_PNCode";
-            this.checkBox_PNCode.Size = new System.Drawing.Size(104, 31);
+            this.checkBox_PNCode.Size = new System.Drawing.Size(78, 31);
             this.checkBox_PNCode.TabIndex = 1;
             this.checkBox_PNCode.Text = "周期码识别";
             this.checkBox_PNCode.UseVisualStyleBackColor = true;
@@ -244,7 +272,7 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
@@ -295,5 +323,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox checkBox_PNCode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox checkBox_SealLabel;
+        private System.Windows.Forms.TabPage tabPage_SealedLabel;
     }
 }

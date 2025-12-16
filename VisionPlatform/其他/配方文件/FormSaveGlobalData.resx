@@ -133,13 +133,13 @@
     <value>微软雅黑, 10.5pt, style=Bold</value>
   </data>
   <data name="but_SaveGlobalData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 1</value>
+    <value>335, 1</value>
   </data>
   <data name="but_SaveGlobalData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="but_SaveGlobalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 27</value>
+    <value>108, 27</value>
   </data>
   <data name="but_SaveGlobalData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -211,7 +211,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="textBox_SerialDataName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>182, 26</value>
   </data>
   <data name="textBox_SerialDataName.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -259,7 +259,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="but_SaveGlobalData" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBox_SerialDataName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,150,Percent,100,Absolute,107" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="but_SaveGlobalData" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBox_SerialDataName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,150,Percent,100,Absolute,108" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>

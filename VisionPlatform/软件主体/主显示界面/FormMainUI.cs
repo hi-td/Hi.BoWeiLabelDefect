@@ -49,6 +49,7 @@ namespace VisionPlatform
         public static Show6 m_Show6;                                          //6个画面
         public static FormShowResult formShowResult = new FormShowResult();   //显示消息列表及检测结果
         public static CtrlAllStates ctrlAllStates = new CtrlAllStates();      //检测数据统计
+        public static CtrlInspectItem ctrlInspectItem = new CtrlInspectItem();
         private Home home;
         //public static bool isControlCalledFromAsyncThread = false;          //判断初始化界面是否启用异步
         FormLogo logo;                                                        //logo界面

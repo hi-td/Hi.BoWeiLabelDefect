@@ -34,30 +34,30 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.but_Test = new System.Windows.Forms.Button();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.ValueChange_DirtyArea = new VisionPlatform.TrackBarValueChange();
+            this.numUpD_DirtyScore = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tLPanel_Broken = new System.Windows.Forms.TableLayoutPanel();
             this.but_SetBrokenROI = new System.Windows.Forms.Button();
             this.btn_ShowBrokenROI = new System.Windows.Forms.Button();
+            this.label_Name = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.numUpD_DirtyScore = new System.Windows.Forms.NumericUpDown();
-            this.label_Name = new System.Windows.Forms.Label();
-            this.numUpD_BrokenScore = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numUpD_BrokenScore = new System.Windows.Forms.NumericUpDown();
             this.ValueChange_BrokenArea = new VisionPlatform.TrackBarValueChange();
-            this.ValueChange_DirtyArea = new VisionPlatform.TrackBarValueChange();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpD_DirtyScore)).BeginInit();
             this.tLPanel_Broken.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpD_DirtyScore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_BrokenScore)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -161,16 +161,79 @@
             this.tableLayoutPanel10.Size = new System.Drawing.Size(389, 132);
             this.tableLayoutPanel10.TabIndex = 41;
             // 
-            // label13
+            // tableLayoutPanel3
             // 
-            this.label13.Font = new System.Drawing.Font("宋体", 10F);
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Margin = new System.Windows.Forms.Padding(0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 25);
-            this.label13.TabIndex = 40;
-            this.label13.Text = "最低分数";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.ValueChange_DirtyArea, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.numUpD_DirtyScore, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(68, 81);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(320, 50);
+            this.tableLayoutPanel3.TabIndex = 42;
+            // 
+            // ValueChange_DirtyArea
+            // 
+            this.ValueChange_DirtyArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ValueChange_DirtyArea.Location = new System.Drawing.Point(65, 25);
+            this.ValueChange_DirtyArea.Margin = new System.Windows.Forms.Padding(0);
+            this.ValueChange_DirtyArea.Name = "ValueChange_DirtyArea";
+            this.ValueChange_DirtyArea.Size = new System.Drawing.Size(255, 25);
+            this.ValueChange_DirtyArea.TabIndex = 44;
+            // 
+            // numUpD_DirtyScore
+            // 
+            this.numUpD_DirtyScore.DecimalPlaces = 2;
+            this.numUpD_DirtyScore.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numUpD_DirtyScore.Location = new System.Drawing.Point(66, 1);
+            this.numUpD_DirtyScore.Margin = new System.Windows.Forms.Padding(1);
+            this.numUpD_DirtyScore.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpD_DirtyScore.Name = "numUpD_DirtyScore";
+            this.numUpD_DirtyScore.Size = new System.Drawing.Size(71, 23);
+            this.numUpD_DirtyScore.TabIndex = 42;
+            this.numUpD_DirtyScore.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("宋体", 10F);
+            this.label4.Location = new System.Drawing.Point(0, 25);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 25);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "最小面积";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("宋体", 10F);
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 25);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "最低分数";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tLPanel_Broken
             // 
@@ -219,6 +282,30 @@
             this.btn_ShowBrokenROI.UseVisualStyleBackColor = false;
             this.btn_ShowBrokenROI.Click += new System.EventHandler(this.btn_ShowBrokenROI_Click);
             // 
+            // label_Name
+            // 
+            this.label_Name.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_Name.Font = new System.Drawing.Font("宋体", 10F);
+            this.label_Name.Location = new System.Drawing.Point(1, 30);
+            this.label_Name.Margin = new System.Windows.Forms.Padding(0);
+            this.label_Name.Name = "label_Name";
+            this.label_Name.Size = new System.Drawing.Size(66, 50);
+            this.label_Name.TabIndex = 2;
+            this.label_Name.Text = "鼓包褶皱";
+            this.label_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("宋体", 10F);
+            this.label1.Location = new System.Drawing.Point(1, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 50);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "脏污";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -250,41 +337,27 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 50);
             this.tableLayoutPanel1.TabIndex = 41;
             // 
-            // numUpD_DirtyScore
+            // label2
             // 
-            this.numUpD_DirtyScore.DecimalPlaces = 2;
-            this.numUpD_DirtyScore.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numUpD_DirtyScore.Location = new System.Drawing.Point(66, 1);
-            this.numUpD_DirtyScore.Margin = new System.Windows.Forms.Padding(1);
-            this.numUpD_DirtyScore.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpD_DirtyScore.Name = "numUpD_DirtyScore";
-            this.numUpD_DirtyScore.Size = new System.Drawing.Size(63, 23);
-            this.numUpD_DirtyScore.TabIndex = 42;
-            this.numUpD_DirtyScore.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
+            this.label2.Font = new System.Drawing.Font("宋体", 10F);
+            this.label2.Location = new System.Drawing.Point(0, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "最小面积";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_Name
+            // label13
             // 
-            this.label_Name.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_Name.Font = new System.Drawing.Font("宋体", 10F);
-            this.label_Name.Location = new System.Drawing.Point(1, 30);
-            this.label_Name.Margin = new System.Windows.Forms.Padding(0);
-            this.label_Name.Name = "label_Name";
-            this.label_Name.Size = new System.Drawing.Size(66, 50);
-            this.label_Name.TabIndex = 2;
-            this.label_Name.Text = "鼓包褶皱";
-            this.label_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Font = new System.Drawing.Font("宋体", 10F);
+            this.label13.Location = new System.Drawing.Point(0, 0);
+            this.label13.Margin = new System.Windows.Forms.Padding(0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 25);
+            this.label13.TabIndex = 40;
+            this.label13.Text = "最低分数";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numUpD_BrokenScore
             // 
@@ -302,77 +375,13 @@
             0,
             0});
             this.numUpD_BrokenScore.Name = "numUpD_BrokenScore";
-            this.numUpD_BrokenScore.Size = new System.Drawing.Size(63, 23);
+            this.numUpD_BrokenScore.Size = new System.Drawing.Size(71, 23);
             this.numUpD_BrokenScore.TabIndex = 41;
             this.numUpD_BrokenScore.Value = new decimal(new int[] {
             25,
             0,
             0,
             131072});
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("宋体", 10F);
-            this.label1.Location = new System.Drawing.Point(1, 81);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 50);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "脏污";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("宋体", 10F);
-            this.label2.Location = new System.Drawing.Point(0, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 25);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "最小面积";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.ValueChange_DirtyArea, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.numUpD_DirtyScore, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(68, 81);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(320, 50);
-            this.tableLayoutPanel3.TabIndex = 42;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("宋体", 10F);
-            this.label4.Location = new System.Drawing.Point(0, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 25);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "最小面积";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("宋体", 10F);
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 25);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "最低分数";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ValueChange_BrokenArea
             // 
@@ -382,15 +391,6 @@
             this.ValueChange_BrokenArea.Name = "ValueChange_BrokenArea";
             this.ValueChange_BrokenArea.Size = new System.Drawing.Size(255, 25);
             this.ValueChange_BrokenArea.TabIndex = 43;
-            // 
-            // ValueChange_DirtyArea
-            // 
-            this.ValueChange_DirtyArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ValueChange_DirtyArea.Location = new System.Drawing.Point(65, 25);
-            this.ValueChange_DirtyArea.Margin = new System.Windows.Forms.Padding(0);
-            this.ValueChange_DirtyArea.Name = "ValueChange_DirtyArea";
-            this.ValueChange_DirtyArea.Size = new System.Drawing.Size(255, 25);
-            this.ValueChange_DirtyArea.TabIndex = 44;
             // 
             // CtrlDefect
             // 
@@ -404,11 +404,11 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numUpD_DirtyScore)).EndInit();
             this.tLPanel_Broken.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numUpD_DirtyScore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_BrokenScore)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

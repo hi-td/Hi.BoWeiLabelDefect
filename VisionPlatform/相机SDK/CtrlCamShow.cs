@@ -752,8 +752,8 @@ namespace VisionPlatform
         }
         #region 光度立体法
         List<HalconDotNet.HWindowControl> myListWndCtrl = new List<HalconDotNet.HWindowControl>();
-        List<HalconDotNet.HObject> myListImages = new List<HalconDotNet.HObject>();
-        public FormPhotometricStereo formPhotometricStereo;
+        public List<HalconDotNet.HObject> myListImages = new List<HalconDotNet.HObject>();
+        //public FormPhotometricStereo formPhotometricStereo;
         public PhotometricStereoImage photometricStereoImage = new PhotometricStereoImage();
         private void but_PhotometricsStereo_Click(object sender, EventArgs e)
         {
@@ -799,7 +799,7 @@ namespace VisionPlatform
                     this.Fun.ReadImageToHWnd(files[3], hWndCtrl4);
                 }
                 myListImages = new List<HalconDotNet.HObject>();
-                for (int i = 0; i < files.Length; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     this.Fun.ReadImage(files[i]);
                     myListImages.Add(this.Fun.HImage);
@@ -810,83 +810,47 @@ namespace VisionPlatform
 
         private void tSBut_Fusion_Click(object sender, System.EventArgs e)
         {
-            if (myListImages.Count < 3) return;
+            if (myListImages.Count < 4) return;
             photometricStereoImage = this.Fun.PhotometricStereo(myListImages);
             MessageBox.Show("图像融合完成！");
         }
 
         private void Lbl_NormalField_Click(object sender, System.EventArgs e)
         {
+            ToolStripLabel lblNormal = new ToolStripLabel();
             try
             {
-                Function.ho_ShowImage = photometricStereoImage.NormalField.Clone();
-                //this.Fun.ShowImageToHWnd(photometricStereoImage.NormalField, hWndCtrl);
-                this.Fun.DispRegion(photometricStereoImage.NormalField);
-                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.NormalField.Clone();
+                ToolStripLabel lbl = sender as ToolStripLabel;
+                if (null == lbl) return;
+                HOperatorSet.GenEmptyObj(out HObject ho_Image);
+                switch (lbl.Text)
+                {
+                    case "法向量图":
+                        ho_Image = photometricStereoImage.NormalField.Clone();
+                        break;
+                    case "反照率图":
+                        ho_Image = photometricStereoImage.Albedo.Clone();
+                        break;
+                    case "梯度图":
+                        ho_Image = photometricStereoImage.Gradient.Clone();
+                        break;
+                    case "曲率图":
+                        ho_Image = photometricStereoImage.Curvature.Clone();
+                        break;
+                    case "高度信息图":
+                        ho_Image = photometricStereoImage.HeightField.Clone();
+                        break;
+                    default:
+                        break;
+                }
+                Function.ho_ShowImage = ho_Image;
+                this.Fun.DispRegion(ho_Image);
             }
             catch (Exception ex)
             {
                 StaticFun.MessageFun.ShowMessage(ex);
             }
         }
-
-        private void Lbl_Albedo_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Function.ho_ShowImage = photometricStereoImage.Albedo.Clone();
-                this.Fun.DispRegion(photometricStereoImage.Albedo);
-                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Albedo.Clone();
-            }
-            catch (Exception ex)
-            {
-                StaticFun.MessageFun.ShowMessage(ex);
-            }
-        }
-
-        private void Lbl_Gradient_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Function.ho_ShowImage = photometricStereoImage.Gradient.Clone();
-                this.Fun.DispRegion(photometricStereoImage.Gradient);
-                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Gradient.Clone();
-            }
-            catch (Exception ex)
-            {
-                StaticFun.MessageFun.ShowMessage(ex);
-            }
-        }
-
-        private void Lbl_Curvature_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Function.ho_ShowImage = photometricStereoImage.Curvature.Clone();
-                this.Fun.DispRegion(photometricStereoImage.Curvature);
-                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.Curvature.Clone();
-            }
-            catch (Exception ex)
-            {
-                StaticFun.MessageFun.ShowMessage(ex);
-            }
-        }
-
-        private void Lbl_HeightField_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Function.ho_ShowImage = photometricStereoImage.HeightField.Clone();
-                this.Fun.DispRegion(photometricStereoImage.HeightField);
-                this.Fun.myFrontFun.ho_AIImage = photometricStereoImage.HeightField.Clone();
-            }
-            catch (Exception ex)
-            {
-                StaticFun.MessageFun.ShowMessage(ex);
-            }
-        }
-
-
 
         private void hWndCtrl1_Resize(object sender, EventArgs e)
         {

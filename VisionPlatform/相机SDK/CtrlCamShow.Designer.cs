@@ -778,7 +778,7 @@
             this.Lbl_HeightField});
             this.toolStrip_photometrics.Location = new System.Drawing.Point(0, 57);
             this.toolStrip_photometrics.Name = "toolStrip_photometrics";
-            this.toolStrip_photometrics.Size = new System.Drawing.Size(762, 25);
+            this.toolStrip_photometrics.Size = new System.Drawing.Size(765, 25);
             this.toolStrip_photometrics.TabIndex = 0;
             this.toolStrip_photometrics.Visible = false;
             // 
@@ -807,21 +807,21 @@
             this.Lbl_Albedo.Name = "Lbl_Albedo";
             this.Lbl_Albedo.Size = new System.Drawing.Size(65, 22);
             this.Lbl_Albedo.Text = "反照率图";
-            this.Lbl_Albedo.Click += new System.EventHandler(this.Lbl_Albedo_Click);
+            this.Lbl_Albedo.Click += new System.EventHandler(this.Lbl_NormalField_Click);
             // 
             // Lbl_Gradient
             // 
             this.Lbl_Gradient.Name = "Lbl_Gradient";
             this.Lbl_Gradient.Size = new System.Drawing.Size(51, 22);
             this.Lbl_Gradient.Text = "梯度图";
-            this.Lbl_Gradient.Click += new System.EventHandler(this.Lbl_Gradient_Click);
+            this.Lbl_Gradient.Click += new System.EventHandler(this.Lbl_NormalField_Click);
             // 
             // Lbl_Curvature
             // 
             this.Lbl_Curvature.Name = "Lbl_Curvature";
             this.Lbl_Curvature.Size = new System.Drawing.Size(51, 22);
             this.Lbl_Curvature.Text = "曲率图";
-            this.Lbl_Curvature.Click += new System.EventHandler(this.Lbl_Curvature_Click);
+            this.Lbl_Curvature.Click += new System.EventHandler(this.Lbl_NormalField_Click);
             // 
             // Lbl_HeightField
             // 
@@ -829,7 +829,7 @@
             this.Lbl_HeightField.Size = new System.Drawing.Size(79, 22);
             this.Lbl_HeightField.Text = "高度信息图";
             this.Lbl_HeightField.Visible = false;
-            this.Lbl_HeightField.Click += new System.EventHandler(this.Lbl_HeightField_Click);
+            this.Lbl_HeightField.Click += new System.EventHandler(this.Lbl_NormalField_Click);
             // 
             // tLPanel_Photometrics
             // 

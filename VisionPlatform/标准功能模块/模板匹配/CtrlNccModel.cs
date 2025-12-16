@@ -7,7 +7,7 @@ namespace VisionPlatform
 {
     public partial class CtrlNccModel : UserControl
     {
-        Rect2 m_rect2;
+        Rect2 m_rect2, m_limitROI;
         Function Fun;
         public object nModelID = -1;
         int myCamID = -1;
@@ -35,7 +35,7 @@ namespace VisionPlatform
         {
             try
             {
-                if (0 == Fun.m_rect2.dLength1 && 0 == Fun.m_rect2.dLength2)
+                if (Fun.m_rect2.isEmpty())
                 {
                     MessageBox.Show("请先在图像窗口-鼠标右键-绘制，选择【矩形2】绘制模板区域");
                     return;
@@ -45,7 +45,8 @@ namespace VisionPlatform
                 NccLocateParam param = InitParam();
                 if (Fun.CreateNccModel(param.modelData, out nModelID, out List<LocateOutParams> listOutData))
                 {
-                    Fun.NccLocate(param.modelData, nModelID, m_rect2, out _);
+                    param.nModelID = nModelID;
+                    Fun.NccLocate(param, out _);
                     if (Fun.WriteModel(myCamID, param.modelData.strModelName, param.modelData.modelType, nModelID))
                     {
                         MessageBox.Show("模板创建成功");
@@ -69,7 +70,13 @@ namespace VisionPlatform
             {
                 Fun.ClearObjShow();
                 Fun.DispRegion(Fun.HImage);
-                Fun.NccLocate(InitParam().modelData, nModelID, m_rect2, out _);
+                if (checkBox_LimitROI.Checked && m_limitROI.isEmpty())
+                {
+                    MessageBox.Show("请先设置匹配区域。");
+                    return;
+                }
+                Fun.ShowRect2(m_limitROI);
+                Fun.NccLocate(InitParam(), out _);
             }
             catch (SystemException ex)
             {
@@ -94,6 +101,8 @@ namespace VisionPlatform
                 };
                 param.nModelID = nModelID;
                 param.rect2 = m_rect2;
+                param.bLimitROI = checkBox_LimitROI.Checked;
+                param.limitRect2 = m_limitROI;
             }
             catch (Exception ex)
             {
@@ -108,11 +117,31 @@ namespace VisionPlatform
                 numUpD_Score.Value = (decimal)(param.modelData.dScore == 0 ? 0.65 : param.modelData.dScore);
                 this.nModelID = param.nModelID;
                 m_rect2 = param.rect2;
+                checkBox_LimitROI.Checked = param.bLimitROI;
+                m_limitROI = param.limitRect2;
+                but_ROI.Visible = checkBox_LimitROI.Checked;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"LoadParam:{ex}");
             }
+        }
+
+        private void checkBox_LimitROI_CheckedChanged(object sender, EventArgs e)
+        {
+            but_ROI.Visible = checkBox_LimitROI.Checked;
+        }
+
+        private void but_ROI_Click(object sender, EventArgs e)
+        {
+            if (Fun.m_rect2.isEmpty())
+            {
+                MessageBox.Show("请先在图像窗口-鼠标右键-绘制，选择【矩形2】绘制模板区域");
+                return;
+            }
+            m_limitROI = Fun.m_rect2;
+            Fun.ShowRect2(m_limitROI);
+            MessageBox.Show("匹配区域设置成功！");
         }
     }
 }

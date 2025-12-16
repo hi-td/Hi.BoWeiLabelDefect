@@ -26,6 +26,7 @@ namespace VisionPlatform
             public List<ColorID> listColorID = new List<ColorID>();          //颜色模板ID
             //PLC
             public SlmpPara SlmpPara = new SlmpPara();
+            public LabelInspectItem labelInspect = new LabelInspectItem();
         }
         public static GlobalData _globalData = new GlobalData();
         //标定

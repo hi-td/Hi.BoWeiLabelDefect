@@ -9,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using VisionPlatform.Auxiliary;
-using static Aardvark.Base.MultimethodTest;
 
 namespace VisionPlatform
 {
@@ -237,7 +235,6 @@ namespace VisionPlatform
             {
                 MessageFun.ShowMessage($"设置光源亮度错误：{ex}", true, strEnglish: $"Error while setting LED brightness:{ex}");
             }
-
         }
 
         public void LEDAllOff(BaseData.LEDRTU led, CHBright[] cHBrights)
@@ -273,29 +270,24 @@ namespace VisionPlatform
                 {
                     LEDRTU ledRTU = led.Value;
                     CHBright[] cHBrights = new CHBright[4];
-                    foreach(var img in DataSerializer._globalData.dicImageing)
+                    foreach (var img in DataSerializer._globalData.dicImageing)
                     {
                         string strPort = img.Value.strPort;
-                        if(strPort == led.Key)
+                        if (strPort == led.Key)
                         {
                             for (int n = 0; n < cHBrights.Count(); n++)
                             {
                                 LEDControl.SetBrightness(ledRTU, n + 1, 0);
                             }
-                            //ledRTU.bOpen = false;
                         }
                     }
-                    
                 }
-               
-                
-                Thread.Sleep(60);
             }
             catch (Exception ex)
             {
                 MessageFun.ShowMessage($"光源亮度设置0错误：{ex}", true, $"LED brightness setting 0 error:{ex}");
             }
-
+            Thread.Sleep(60);
         }
     }
 }

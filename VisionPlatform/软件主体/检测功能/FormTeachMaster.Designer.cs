@@ -43,8 +43,8 @@ namespace VisionPlatform
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.正面检测 = new System.Windows.Forms.ToolStripMenuItem();
-            this.侧面pin针检测1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.侧面Pin针检测2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.背面检测 = new System.Windows.Forms.ToolStripMenuItem();
+            this.顶面检测 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ts_But_close = new System.Windows.Forms.ToolStripButton();
             this.ts_Label_cam = new System.Windows.Forms.ToolStripLabel();
@@ -67,7 +67,7 @@ namespace VisionPlatform
             this.panel.Location = new System.Drawing.Point(0, 20);
             this.panel.Margin = new System.Windows.Forms.Padding(0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(217, 395);
+            this.panel.Size = new System.Drawing.Size(237, 395);
             this.panel.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -79,13 +79,13 @@ namespace VisionPlatform
             this.tableLayoutPanel1.Controls.Add(this.panel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label_SelCam, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(150, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(130, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 415);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(237, 415);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label_SelCam
@@ -98,7 +98,7 @@ namespace VisionPlatform
             this.label_SelCam.Location = new System.Drawing.Point(0, 0);
             this.label_SelCam.Margin = new System.Windows.Forms.Padding(0);
             this.label_SelCam.Name = "label_SelCam";
-            this.label_SelCam.Size = new System.Drawing.Size(217, 20);
+            this.label_SelCam.Size = new System.Drawing.Size(237, 20);
             this.label_SelCam.TabIndex = 3;
             this.label_SelCam.Text = "相机";
             this.label_SelCam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -151,7 +151,7 @@ namespace VisionPlatform
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.treeViewFun, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 1, 0);
@@ -173,7 +173,7 @@ namespace VisionPlatform
             this.treeViewFun.Location = new System.Drawing.Point(0, 0);
             this.treeViewFun.Margin = new System.Windows.Forms.Padding(0);
             this.treeViewFun.Name = "treeViewFun";
-            this.treeViewFun.Size = new System.Drawing.Size(150, 415);
+            this.treeViewFun.Size = new System.Drawing.Size(130, 415);
             this.treeViewFun.TabIndex = 1;
             this.treeViewFun.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewFun_AfterSelect);
             this.treeViewFun.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewFun_MouseDown);
@@ -193,16 +193,16 @@ namespace VisionPlatform
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_Add});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // toolStripMenuItem_Add
             // 
             this.toolStripMenuItem_Add.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.正面检测,
-            this.侧面pin针检测1,
-            this.侧面Pin针检测2});
+            this.背面检测,
+            this.顶面检测});
             this.toolStripMenuItem_Add.Name = "toolStripMenuItem_Add";
-            this.toolStripMenuItem_Add.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItem_Add.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem_Add.Text = "添加";
             // 
             // 正面检测
@@ -212,19 +212,19 @@ namespace VisionPlatform
             this.正面检测.Text = "正面检测";
             this.正面检测.Click += new System.EventHandler(this.AddCheckItem);
             // 
-            // 侧面pin针检测1
+            // 背面检测
             // 
-            this.侧面pin针检测1.Name = "侧面pin针检测1";
-            this.侧面pin针检测1.Size = new System.Drawing.Size(180, 22);
-            this.侧面pin针检测1.Text = "左侧检测";
-            this.侧面pin针检测1.Click += new System.EventHandler(this.AddCheckItem);
+            this.背面检测.Name = "背面检测";
+            this.背面检测.Size = new System.Drawing.Size(180, 22);
+            this.背面检测.Text = "背面检测";
+            this.背面检测.Click += new System.EventHandler(this.AddCheckItem);
             // 
-            // 侧面Pin针检测2
+            // 顶面检测
             // 
-            this.侧面Pin针检测2.Name = "侧面Pin针检测2";
-            this.侧面Pin针检测2.Size = new System.Drawing.Size(180, 22);
-            this.侧面Pin针检测2.Text = "右侧检测";
-            this.侧面Pin针检测2.Click += new System.EventHandler(this.AddCheckItem);
+            this.顶面检测.Name = "顶面检测";
+            this.顶面检测.Size = new System.Drawing.Size(180, 22);
+            this.顶面检测.Text = "顶面检测";
+            this.顶面检测.Click += new System.EventHandler(this.AddCheckItem);
             // 
             // toolStrip1
             // 
@@ -310,7 +310,7 @@ namespace VisionPlatform
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ToolStripMenuItem 正面检测;
-        private System.Windows.Forms.ToolStripMenuItem 侧面pin针检测1;
-        private System.Windows.Forms.ToolStripMenuItem 侧面Pin针检测2;
+        private System.Windows.Forms.ToolStripMenuItem 背面检测;
+        private System.Windows.Forms.ToolStripMenuItem 顶面检测;
     }
 }

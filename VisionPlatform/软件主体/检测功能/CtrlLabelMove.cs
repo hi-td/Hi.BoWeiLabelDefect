@@ -14,6 +14,7 @@ namespace VisionPlatform
         InspectFunction Fun;
         bool bLoad;
         Rect2 labelRect2, boxRect2;
+        public List<HalconDotNet.HObject> myListImages = new List<HalconDotNet.HObject>();
         private event CtrlLabelEventHandler _valueChanged;
         public CtrlLabelMove(CtrlHome ctrlHome)
         {
@@ -69,8 +70,36 @@ namespace VisionPlatform
             LabelMoveParam param = new LabelMoveParam();
             try
             {
+                param.nImageSel = cmbBox_ImageSel.SelectedIndex + 1;
                 param.nccLocate = ctrlNccModel.InitParam();
                 param.AngleValue = AngleValueRange.InitParam();
+                string str = label_Name.Text;
+                if (null != dicLabelMoveItems && dicLabelMoveItems.ContainsKey(str))
+                {
+                    LabelMoveItem item = dicLabelMoveItems[str];
+                    item.dist = MoveValueRange.InitParam();
+                    ROILine boxLine = new ROILine()
+                    {
+                        rect2 = boxRect2,
+                        lineParam = new BaseData.LineParam()
+                        {
+                            lineIn = new BaseData.Line(),
+                            measure = ctrlFitLine_Box.InitParam()
+                        }
+                    };
+                    item.boxLine = boxLine;
+                    ROILine labelLine = new ROILine()
+                    {
+                        rect2 = labelRect2,
+                        lineParam = new BaseData.LineParam()
+                        {
+                            lineIn = new BaseData.Line(),
+                            measure = ctrlFitLine_Label.InitParam()
+                        }
+                    };
+                    item.labelLine = labelLine;
+                    dicLabelMoveItems[str] = item;
+                }
                 param.dicLabelMoveItems = dicLabelMoveItems;
             }
             catch (Exception ex)
@@ -85,6 +114,7 @@ namespace VisionPlatform
             try
             {
                 bLoad = true;
+                cmbBox_ImageSel.SelectedIndex = 0 == param.nImageSel ? 3 : param.nImageSel - 1;
                 ctrlNccModel.LoadParam(param.nccLocate);
                 AngleValueRange.LoadParam(param.AngleValue);
                 if (null == param.dicLabelMoveItems)
@@ -129,38 +159,29 @@ namespace VisionPlatform
         }
         private void Inspect(object sender, EventArgs e)
         {
+            bool bResult = true;
             try
             {
                 if (bLoad) { return; }
-                if (null != dicLabelMoveItems && dicLabelMoveItems.ContainsKey(strSelName))
+                LabelMoveParam param = InitParam();
+                TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
+                if (null != myListImages && myListImages.Count > param.nImageSel - 1)
                 {
-                    LabelMoveItem item = dicLabelMoveItems[strSelName];
-                    item.dist = MoveValueRange.InitParam();
-                    ROILine boxLine = new ROILine()
+                    if (!myCtrlHome.Fun.myFrontFun.LabelMoveInspect(param, true, out LabelMoveResult result, myListImages[param.nImageSel - 1]))
                     {
-                        rect2 = boxRect2,
-                        lineParam = new BaseData.LineParam()
-                        {
-                            lineIn = new BaseData.Line(),
-                            measure = ctrlFitLine_Box.InitParam()
-                        }
-                    };
-                    item.boxLine = boxLine;
-
-                    ROILine labelLine = new ROILine()
-                    {
-                        rect2 = labelRect2,
-                        lineParam = new BaseData.LineParam()
-                        {
-                            lineIn = new BaseData.Line(),
-                            measure = ctrlFitLine_Label.InitParam()
-                        }
-                    };
-                    item.labelLine = labelLine;
-                    dicLabelMoveItems[strSelName] = item;
+                        bResult = false;
+                    }
                 }
-                InitParam();
-                _valueChanged?.Invoke(sender, e);
+                else
+                {
+                    if (!myCtrlHome.Fun.myFrontFun.LabelMoveInspect(param, true, out LabelMoveResult result))
+                    {
+                        bResult = false;
+                    }
+                }
+                TimeSpan ts_check = new TimeSpan(DateTime.Now.Ticks);
+                string span = ((ts_check.Subtract(ts).Duration().TotalSeconds) * 1000).ToString("F0");
+                StaticFun.MessageFun.ShowMessage("标签偏移检测用时：" + span);
             }
             catch (Exception ex)
             {
@@ -245,10 +266,12 @@ namespace VisionPlatform
                 {
                     //选中点击那一行的第一列的值，索引值必须是0，而且无论点这一行的第几列，选中的都是这一行第一列的值 ，如果想获取这一行除第一列外的值，则用subitems获取，[]中为索引，从1开始。
                     string str = listView_Item.SelectedItems[0].ToString();
+                    string result = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
+                    str = $"检测项{result}";
                     if (null != dicLabelMoveItems && dicLabelMoveItems.ContainsKey(str))
                     {
                         dicLabelMoveItems.Remove(str);
-                        listView_Item.Items.RemoveAt(0);
+                        listView_Item.Items.RemoveAt(int.Parse(result) - 1);
                     }
                     tLPanel_Label.Visible = false;
                     tLPanel_Box.Visible = false;
@@ -308,7 +331,8 @@ namespace VisionPlatform
                     string result = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
                     int row = int.Parse(result);
                     string stsr = $"检测项{row}";
-                    but_Test.Text = "检测项" + (row) + "测试";
+                    label_Name.Text = "检测项" + result;
+                    but_Test.Text = label_Name.Text + "测试";
                     //加载检测项的参数
                     if (null != dicLabelMoveItems && dicLabelMoveItems.ContainsKey(stsr))
                     {
@@ -381,6 +405,26 @@ namespace VisionPlatform
                 return;
             }
             boxRect2 = this.Fun.m_rect2;
+        }
+
+        private void cmbBox_ImageSel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (null == FormMainUI.m_dicCtrlCamShow[myCtrlHome.camID])
+                {
+                    return;
+                }
+                this.myListImages = FormMainUI.m_dicCtrlCamShow[myCtrlHome.camID].myListImages;
+                if (this.myListImages.Count > cmbBox_ImageSel.SelectedIndex)
+                {
+                    myCtrlHome.Fun.DispRegion(this.myListImages[cmbBox_ImageSel.SelectedIndex]);
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex);
+            }
         }
 
         private void btn_ShowBoxLine_Click(object sender, EventArgs e)

@@ -36,6 +36,7 @@ namespace VisionPlatform
             this.panel_Message = new System.Windows.Forms.Panel();
             this.but_run = new VisionPlatform.but_run();
             this.ctrlImageSave = new VisionPlatform.CtrlImageSave();
+            this.tLPanel_ItemSel = new System.Windows.Forms.TableLayoutPanel();
             this.ctrlOK_NG = new VisionPlatform.CtrlOK_NG();
             this.tLPanel_CamShow = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,7 +46,9 @@ namespace VisionPlatform
             this.panel3 = new System.Windows.Forms.Panel();
             this.ctrlCamShow3 = new VisionPlatform.CtrlCamShow();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.tLPanel1.SuspendLayout();
+            this.tLPanel_ItemSel.SuspendLayout();
             this.tLPanel_CamShow.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,7 +68,7 @@ namespace VisionPlatform
             this.tLPanel1.Controls.Add(this.panel_Message, 3, 0);
             this.tLPanel1.Controls.Add(this.but_run, 0, 0);
             this.tLPanel1.Controls.Add(this.ctrlImageSave, 4, 0);
-            this.tLPanel1.Controls.Add(this.ctrlOK_NG, 2, 0);
+            this.tLPanel1.Controls.Add(this.tLPanel_ItemSel, 2, 0);
             this.tLPanel1.Name = "tLPanel1";
             // 
             // panel_Message
@@ -83,6 +86,13 @@ namespace VisionPlatform
             this.ctrlImageSave.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.ctrlImageSave, "ctrlImageSave");
             this.ctrlImageSave.Name = "ctrlImageSave";
+            // 
+            // tLPanel_ItemSel
+            // 
+            resources.ApplyResources(this.tLPanel_ItemSel, "tLPanel_ItemSel");
+            this.tLPanel_ItemSel.Controls.Add(this.ctrlOK_NG, 0, 2);
+            this.tLPanel_ItemSel.Controls.Add(this.label1, 0, 1);
+            this.tLPanel_ItemSel.Name = "tLPanel_ItemSel";
             // 
             // ctrlOK_NG
             // 
@@ -140,6 +150,12 @@ namespace VisionPlatform
             this.tableLayoutPanel1.Controls.Add(this.tLPanel1, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Name = "label1";
+            // 
             // Show3
             // 
             resources.ApplyResources(this, "$this");
@@ -150,6 +166,8 @@ namespace VisionPlatform
             this.Name = "Show3";
             this.Load += new System.EventHandler(this.Show3_Load);
             this.tLPanel1.ResumeLayout(false);
+            this.tLPanel_ItemSel.ResumeLayout(false);
+            this.tLPanel_ItemSel.PerformLayout();
             this.tLPanel_CamShow.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -174,5 +192,7 @@ namespace VisionPlatform
         public CtrlCamShow ctrlCamShow3;
         private CtrlImageSave ctrlImageSave;
         private CtrlOK_NG ctrlOK_NG;
+        private System.Windows.Forms.TableLayoutPanel tLPanel_ItemSel;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -92,6 +92,7 @@
             this.comboBox_Direction.Name = "comboBox_Direction";
             this.comboBox_Direction.Size = new System.Drawing.Size(73, 21);
             this.comboBox_Direction.TabIndex = 10;
+            this.comboBox_Direction.SelectedIndexChanged += new System.EventHandler(this.Inspect);
             // 
             // label5
             // 
@@ -219,6 +220,7 @@
             this.checkBox_show.TabIndex = 7;
             this.checkBox_show.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox_show.UseVisualStyleBackColor = true;
+            this.checkBox_show.CheckedChanged += new System.EventHandler(this.Inspect);
             // 
             // comBox_Trans
             // 

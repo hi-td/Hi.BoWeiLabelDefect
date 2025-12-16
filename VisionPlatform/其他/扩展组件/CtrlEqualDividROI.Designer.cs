@@ -141,7 +141,7 @@
             0,
             0});
             this.numUpD_Gap.Name = "numUpD_Gap";
-            this.numUpD_Gap.Size = new System.Drawing.Size(72, 25);
+            this.numUpD_Gap.Size = new System.Drawing.Size(72, 21);
             this.numUpD_Gap.TabIndex = 14;
             // 
             // numUpD_ROIWidth
@@ -156,7 +156,7 @@
             0,
             0});
             this.numUpD_ROIWidth.Name = "numUpD_ROIWidth";
-            this.numUpD_ROIWidth.Size = new System.Drawing.Size(72, 25);
+            this.numUpD_ROIWidth.Size = new System.Drawing.Size(72, 21);
             this.numUpD_ROIWidth.TabIndex = 14;
             // 
             // label49
@@ -208,7 +208,7 @@
             0,
             0});
             this.numUpD_ROIHeight.Name = "numUpD_ROIHeight";
-            this.numUpD_ROIHeight.Size = new System.Drawing.Size(72, 25);
+            this.numUpD_ROIHeight.Size = new System.Drawing.Size(72, 21);
             this.numUpD_ROIHeight.TabIndex = 17;
             // 
             // trackBar_ROIHeight
@@ -265,7 +265,7 @@
             0,
             -2147483648});
             this.numUpD_MoveY.Name = "numUpD_MoveY";
-            this.numUpD_MoveY.Size = new System.Drawing.Size(72, 25);
+            this.numUpD_MoveY.Size = new System.Drawing.Size(72, 21);
             this.numUpD_MoveY.TabIndex = 14;
             // 
             // numUpD_MoveX
@@ -285,7 +285,7 @@
             0,
             -2147483648});
             this.numUpD_MoveX.Name = "numUpD_MoveX";
-            this.numUpD_MoveX.Size = new System.Drawing.Size(72, 25);
+            this.numUpD_MoveX.Size = new System.Drawing.Size(72, 21);
             this.numUpD_MoveX.TabIndex = 11;
             // 
             // trackBar_MoveX
@@ -302,7 +302,7 @@
             // 
             // CtrlEqualDividROI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel6);
             this.Font = new System.Drawing.Font("宋体", 10F);

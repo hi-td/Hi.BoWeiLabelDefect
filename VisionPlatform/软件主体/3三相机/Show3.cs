@@ -36,6 +36,7 @@ namespace VisionPlatform
             try
             {
                 FormMainUI.ctrlAllStates.SetRowCol(1, 3);
+                this.tLPanel_ItemSel.Controls.Add(FormMainUI.ctrlInspectItem, 0, 0);
                 this.tLPanel1.Controls.Add(FormMainUI.ctrlAllStates, 1, 0);
                 //图像保存
                 InspectFunction.myCtrlImageSave = this.ctrlImageSave;

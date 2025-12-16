@@ -57,11 +57,11 @@ namespace VisionPlatform
                     case InspectItem.Front:
                         str = GlobalData.Config._language == EnumData.Language.english ? "Front Insepct" : "正面检测";
                         break;
-                    case InspectItem.LeftSide:
-                        str = GlobalData.Config._language == EnumData.Language.english ? "LeftSide Insepct" : "左侧检测";
+                    case InspectItem.Back:
+                        str = GlobalData.Config._language == EnumData.Language.english ? "LeftSide Insepct" : "背面检测";
                         break;
-                    case InspectItem.RightSide:
-                        str = GlobalData.Config._language == EnumData.Language.english ? "RightSide Insepct" : "右侧检测";
+                    case InspectItem.Top:
+                        str = GlobalData.Config._language == EnumData.Language.english ? "RightSide Insepct" : "顶面检测";
                         break;
                     default:
                         str = "";
@@ -85,20 +85,20 @@ namespace VisionPlatform
                     case "正面检测":
                         item = InspectItem.Front;
                         break;
-                    case "左侧检测":
-                        item = InspectItem.LeftSide;
+                    case "背面检测":
+                        item = InspectItem.Back;
                         break;
-                    case "右侧检测":
-                        item = InspectItem.RightSide;
+                    case "顶面检测":
+                        item = InspectItem.Top;
                         break;
                     case "Front Inspect":
                         item = InspectItem.Front;
                         break;
-                    case "LeftSide Inspect":
-                        item = InspectItem.LeftSide;
+                    case "Back Inspect":
+                        item = InspectItem.Back;
                         break;
-                    case "RightSide Inspect":
-                        item = InspectItem.RightSide;
+                    case "Top Inspect":
+                        item = InspectItem.Top;
                         break;
                     default:
                         item = InspectItem.Default;
@@ -811,8 +811,7 @@ namespace VisionPlatform
                     //一直和PLC保持通讯读取信号的状态
                     rRes = FormMainUI._plc.ReadDeviceRandom(Variable.addresses, out var datas);
                     if (rRes == 0)
-                    {
-                        //检测信号
+                    {//检测信号
                         foreach (Address[] keys in dicInspectItems.Keys)
                         {
                             InspectItems inspectItems = dicInspectItems[keys];
@@ -823,7 +822,7 @@ namespace VisionPlatform
                                 bCheckOut = true;
                                 LEDControl.AllLEDOff();
                                 Thread.Sleep(50);
-                                //复位信号
+                                //接收信号
                                 var Receiveindex = keys[0].Index;
                                 var address = new Address(SoftType.M, Receiveindex, DataType.Bit);
                                 address.Value = 0;
@@ -831,17 +830,20 @@ namespace VisionPlatform
                                 ts = new TimeSpan(DateTime.Now.Ticks);
                                 if (Receiveindex == 0)
                                 {
-                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.RightSide);
+                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.Front);
                                     InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                     Thread.Sleep(10);
-                                    camItem = new CamInspectItem(20, InspectItem.LeftSide);
-                                    inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
+                                }
+                                else if (Receiveindex == 1)
+                                {
+                                    CamInspectItem camItem = new CamInspectItem(20, InspectItem.Back);
+                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
                                     PhotometricInspect(inspectItem);
                                 }
                                 else
                                 {
-                                    CamInspectItem camItem = new CamInspectItem(30, InspectItem.Front);
+                                    CamInspectItem camItem = new CamInspectItem(30, InspectItem.Top);
                                     InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[30].strCamSer, FormMainUI.m_dicCtrlCamShow[30].Fun, camItem);
                                     inspectItems.camItem = new CamInspectItem(30, InspectItem.Front);
                                     PhotometricInspect(inspectItem);
@@ -859,7 +861,6 @@ namespace VisionPlatform
                                     WriteStringtoImage(20, 40, 20, "检测超时！", "red", strEnglish: "Capture timeout!");
                                     break;
                                 }
-
                             }
                             else if (nRead == 0)
                             {
@@ -1239,16 +1240,15 @@ namespace VisionPlatform
                 int camID = inspectItem.camItem.cam;
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
-
-                CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
                 //拍照总用时
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
                 PhotometricStereoImage proImages = PhotometricStereo(listImages);
-                inspectItem.fun.DispRegion(proImages.NormalField);
-                inspectItem.fun.myFrontFun.ho_AIImage = proImages.NormalField.Clone();
-                if (!inspectItem.fun.myFrontFun.FrontInspect(DataSerializer._globalData.dic_FrontParam[camID], inspectItem.camItem.item, false, out frontResult, inspectItem.fun.myFrontFun.ho_AIImage))
+                //inspectItem.fun.DispRegion(proImages.NormalField);
+                //inspectItem.fun.myFrontFun.ho_AIImage = proImages.NormalField.Clone();
+                InspectData.FrontParam param = DataSerializer._globalData.dic_FrontParam[camID];
+                if (!inspectItem.fun.myFrontFun.FrontInspect(param, inspectItem.camItem.item, false, out frontResult, proImages, listImages))
                 {
                     bResult = false;
                 }
@@ -1257,11 +1257,11 @@ namespace VisionPlatform
                 result.InspectTime = Math.Round((ts_check.Subtract(ts_grab).Duration().TotalSeconds) * 1000, 1);
                 frontResult.bFrontResult = bResult;
                 //显示检测结果
-                inspectItem.fun.myFrontFun.FrontResultShow(inspectItem.camItem, DataSerializer._globalData.dic_FrontParam[camID], ref frontResult);
+                inspectItem.fun.myFrontFun.FrontResultShow(inspectItem.camItem, param, ref frontResult);
                 if (!frontResult.bFrontResult) bResult = false;
                 result.outcome.Add(strInspectItem, bResult ? "OK" : "NG");
                 //保存图像
-                SavePhotometricImages(inspectItem.camItem.cam, strInspectItem, listImages, proImages);
+                SavePhotometricImages(bResult, inspectItem.camItem.cam, strInspectItem, listImages, proImages);
                 //显示结果到ListView
                 FormMainUI.formShowResult.ShowResult(result);
             }

@@ -70,19 +70,7 @@ namespace VisionPlatform
                 InspectItem strCheck = DataSerializer._globalData.dicInspectList[camID][0];
                 this.panel.Controls.Clear();
                 Control form = new Control();
-                switch (strCheck)
-                {
-                    case InspectItem.Front:
-                        form = new CtrlHome(camID, InspectItem.Front);
-                        break;
-                    case InspectItem.LeftSide:
-                        form = new CtrlHome(camID, InspectItem.LeftSide);
-                        break;
-                    case InspectItem.RightSide:
-                        form = new CtrlHome(camID, InspectItem.RightSide);
-                        break;
-                    default: break;
-                }
+                form = new CtrlHome(camID, strCheck);
                 this.panel.Controls.Add(form);
             }
         }
@@ -267,12 +255,8 @@ namespace VisionPlatform
             {
                 ex.ToString();
             }
-            RefreshStats();
         }
-        private void RefreshStats()
-        {
 
-        }
         private void toolStripMenuItem_Delete_Click(object sender, EventArgs e)
         {
             try
@@ -305,11 +289,12 @@ namespace VisionPlatform
         }
         private void TreeViewFun_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (bMouseRight) return;
             int selCamID = -1;
             string strSel = treeViewFun.SelectedNode.Text;
             if (null != treeViewFun.SelectedNode.Parent)
             {
-                label_SelCam.Text = treeViewFun.SelectedNode.Parent.Text;
+                label_SelCam.Text = treeViewFun.SelectedNode.Parent.Text + $":{strSel}";
                 if (GlobalData.Config._language == EnumData.Language.english)
                 {
                     ts_Label_cam.Text = "Edit:" + treeViewFun.SelectedNode.Parent.Text;
@@ -321,32 +306,22 @@ namespace VisionPlatform
                 selCamID = int.Parse(Regex.Replace(label_SelCam.Text, "[^0-9]", ""));
                 RefreshUI(selCamID);
             }
-            //StaticFun.UIConfig.MoveCamPos(selCamID);
+            if (selCamID == -1) return;
             InspectItem selItem = InspectFunction.GetEnumCheckItem(strSel);
             this.panel.Controls.Clear();
             Control form = new Control();
-            switch (selItem)
-            {
-                case InspectItem.Front:
-                    form = new CtrlHome(selCamID, InspectItem.Front);
-                    break;
-                case InspectItem.LeftSide:
-                    form = new CtrlHome(selCamID, InspectItem.LeftSide);
-                    break;
-                case InspectItem.RightSide:
-                    form = new CtrlHome(selCamID, InspectItem.RightSide);
-                    break;
-                default: break;
-            }
+            form = new CtrlHome(selCamID, selItem);
             this.panel.Controls.Add(form);
-
         }
+        bool bMouseRight = false;
         private void treeViewFun_MouseDown(object sender, MouseEventArgs e)
         {
             try
             {
+                bMouseRight = false;
                 if (e.Button == MouseButtons.Right)//判断点的是不是右键
                 {
+                    bMouseRight = true;
                     System.Drawing.Point ClickPoint = new System.Drawing.Point(e.X, e.Y);
                     CurrentNode = treeViewFun.GetNodeAt(ClickPoint);
                     if (CurrentNode != null && CurrentNode.Parent == null)//判断点的是不是一个节点
@@ -584,7 +559,7 @@ namespace VisionPlatform
                 }
 
             }
-            
+
         }
 
     }

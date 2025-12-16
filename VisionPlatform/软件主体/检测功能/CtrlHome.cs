@@ -17,6 +17,7 @@ namespace VisionPlatform
         CtrlQRCode ctrlQRCode;                              //二维码识别
         CtrlPNCode ctrlPNCode;                              //周期码识别
         CtrlLabelMove ctrlLabelMove;                        //标签偏移
+        CtrlSealedLabel ctrlSealedLabel;                    //封口标签
         CtrlDefect ctrlDefect;                              //缺陷检测
         #endregion
         List<TabPage> listTabPages = new List<TabPage>();
@@ -30,7 +31,7 @@ namespace VisionPlatform
             Fun = UIConfig.RefreshFun(camID, out str_CamSer);
             InitUI();
             //给checkBox_Item_CheckedChanged用
-            listTabPages = new List<TabPage> { tabPage_BarCode, tabPage_PNCode, tabPage_Fold, tabPage_LabelMove };
+            listTabPages = new List<TabPage> { tabPage_BarCode, tabPage_PNCode, tabPage_Fold, tabPage_LabelMove, tabPage_SealedLabel };
             LoadParam();
         }
 
@@ -68,7 +69,11 @@ namespace VisionPlatform
                 ctrlDefect = new CtrlDefect(this);
                 tabPage_Fold.Controls.Clear();
                 tabPage_Fold.Controls.Add(ctrlDefect);
-
+                //封口标签偏移
+                ctrlSealedLabel = new CtrlSealedLabel(this);
+                //ctrlSealedLabel.ValueChanged += Inspect;
+                tabPage_SealedLabel.Controls.Clear();
+                tabPage_SealedLabel.Controls.Add(ctrlSealedLabel);
             }
             catch (Exception ex)
             {
@@ -86,7 +91,7 @@ namespace VisionPlatform
                 Fun.ClearObjShow();
                 Fun.DispRegion(Fun.HImage);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
-                if (!Fun.myFrontFun.FrontInspect(param, myCamItem.item, true, out FrontResult outRes))
+                if (!Fun.myFrontFun.FrontInspect(param, myCamItem.item, true, out FrontResult outRes, FormMainUI.m_dicCtrlCamShow[camID].photometricStereoImage, FormMainUI.m_dicCtrlCamShow[camID].myListImages))
                 {
                     bResult = false;
                 }
@@ -119,6 +124,7 @@ namespace VisionPlatform
                 //褶皱鼓包检测
                 param.Defect = ctrlDefect.InitParam();
                 param.LabelMove = ctrlLabelMove.InitParam();
+                param.SealedLabel = ctrlSealedLabel.InitParam();
             }
             catch (Exception ex)
             {
@@ -131,14 +137,10 @@ namespace VisionPlatform
         {
             try
             {
-
                 bLoad = true;
                 if (null != DataSerializer._globalData.dic_FrontParam && DataSerializer._globalData.dic_FrontParam.ContainsKey(camID))
                 {
                     InspectData.FrontParam param = DataSerializer._globalData.dic_FrontParam[camID];
-                    //m_ModelID = param.modelID;
-                    //locateParam = param.locateInParams;
-                    //myModelPoint = param.modelPoint;
                     //二维码
                     checkBox_BarCode.Checked = param.bQRCode;
                     ctrlQRCode?.LoadParam(param.QRCode);
@@ -163,9 +165,11 @@ namespace VisionPlatform
                     tabPage_PNCode.Parent = null;
                     checkBox_Fold.Checked = true;
                     checkBox_LabelMove.Checked = true;
-                    tabPage_Fold.Parent = tabCtrl;
-                    tabPage_LabelMove.Parent = tabCtrl;
+                    checkBox_SealLabel.Checked = true;
                 }
+                tabPage_Fold.Parent = checkBox_Fold.Checked ? tabCtrl : null;
+                tabPage_LabelMove.Parent = checkBox_LabelMove.Checked ? tabCtrl : null;
+                tabPage_SealedLabel.Parent = checkBox_SealLabel.Checked ? tabCtrl : null;
             }
             catch (SystemException ex)
             {

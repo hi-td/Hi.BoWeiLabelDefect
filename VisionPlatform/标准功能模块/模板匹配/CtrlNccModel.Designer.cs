@@ -28,35 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.but_ROI = new System.Windows.Forms.Button();
             this.numUpD_Score = new System.Windows.Forms.NumericUpDown();
             this.but_TestNccModel = new System.Windows.Forms.Button();
             this.but_CreateNCCModel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkBox_LimitROI = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_Score)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel18
             // 
-            this.tableLayoutPanel18.ColumnCount = 5;
+            this.tableLayoutPanel18.ColumnCount = 6;
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Controls.Add(this.but_ROI, 4, 0);
             this.tableLayoutPanel18.Controls.Add(this.numUpD_Score, 1, 0);
             this.tableLayoutPanel18.Controls.Add(this.but_TestNccModel, 3, 0);
             this.tableLayoutPanel18.Controls.Add(this.but_CreateNCCModel, 2, 0);
             this.tableLayoutPanel18.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.checkBox_LimitROI, 5, 0);
             this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel18.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(273, 26);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(338, 26);
             this.tableLayoutPanel18.TabIndex = 17;
+            // 
+            // but_ROI
+            // 
+            this.but_ROI.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.but_ROI.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.but_ROI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.but_ROI.Location = new System.Drawing.Point(241, 1);
+            this.but_ROI.Margin = new System.Windows.Forms.Padding(1);
+            this.but_ROI.Name = "but_ROI";
+            this.but_ROI.Size = new System.Drawing.Size(63, 24);
+            this.but_ROI.TabIndex = 14;
+            this.but_ROI.Text = "限定区域";
+            this.but_ROI.UseVisualStyleBackColor = false;
+            this.but_ROI.Click += new System.EventHandler(this.but_ROI_Click);
             // 
             // numUpD_Score
             // 
@@ -123,6 +144,19 @@
             this.label5.Text = "匹配分数";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // checkBox_LimitROI
+            // 
+            this.checkBox_LimitROI.AutoSize = true;
+            this.checkBox_LimitROI.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkBox_LimitROI.Location = new System.Drawing.Point(322, 1);
+            this.checkBox_LimitROI.Margin = new System.Windows.Forms.Padding(1);
+            this.checkBox_LimitROI.Name = "checkBox_LimitROI";
+            this.checkBox_LimitROI.Size = new System.Drawing.Size(15, 24);
+            this.checkBox_LimitROI.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.checkBox_LimitROI, "是否限定匹配区域");
+            this.checkBox_LimitROI.UseVisualStyleBackColor = true;
+            this.checkBox_LimitROI.CheckedChanged += new System.EventHandler(this.checkBox_LimitROI_CheckedChanged);
+            // 
             // CtrlNccModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -130,7 +164,7 @@
             this.Controls.Add(this.tableLayoutPanel18);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CtrlNccModel";
-            this.Size = new System.Drawing.Size(273, 26);
+            this.Size = new System.Drawing.Size(338, 26);
             this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_Score)).EndInit();
@@ -145,5 +179,8 @@
         private System.Windows.Forms.Button but_TestNccModel;
         private System.Windows.Forms.Button but_CreateNCCModel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button but_ROI;
+        private System.Windows.Forms.CheckBox checkBox_LimitROI;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

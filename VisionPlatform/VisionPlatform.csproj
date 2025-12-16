@@ -260,6 +260,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="软件主体\检测功能\CtrlSealedLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlSealedLabel.Designer.cs">
+      <DependentUpon>CtrlSealedLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlInspectItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="软件主体\检测功能\CtrlInspectItem.Designer.cs">
+      <DependentUpon>CtrlInspectItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="软件主体\检测功能\CtrlDefect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,10 +298,10 @@
     <Compile Include="软件主体\检测功能\CtrlHome.Designer.cs">
       <DependentUpon>CtrlHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="CtrlTcpAdress.cs">
+    <Compile Include="通讯\ModbusTCP\CtrlTcpAdress.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CtrlTcpAdress.Designer.cs">
+    <Compile Include="通讯\ModbusTCP\CtrlTcpAdress.Designer.cs">
       <DependentUpon>CtrlTcpAdress.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase\BarcodeScannerHelper.cs" />
@@ -790,6 +802,12 @@
     <Compile Include="通讯\相机IO\FormMindVisionCamIO.Designer.cs">
       <DependentUpon>FormMindVisionCamIO.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlSealedLabel.resx">
+      <DependentUpon>CtrlSealedLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件主体\检测功能\CtrlInspectItem.resx">
+      <DependentUpon>CtrlInspectItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="软件主体\检测功能\CtrlDefect.resx">
       <DependentUpon>CtrlDefect.cs</DependentUpon>
     </EmbeddedResource>
@@ -802,7 +820,7 @@
     <EmbeddedResource Include="软件主体\检测功能\CtrlHome.resx">
       <DependentUpon>CtrlHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CtrlTcpAdress.resx">
+    <EmbeddedResource Include="通讯\ModbusTCP\CtrlTcpAdress.resx">
       <DependentUpon>CtrlTcpAdress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="其他\历史记录\History.resx">

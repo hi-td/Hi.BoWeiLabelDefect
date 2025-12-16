@@ -19,7 +19,6 @@ namespace VisionPlatform
     public class FrontFun
     {
         public Function fun;
-        public HObject ho_AIImage = null;
         public static Yolov8_Det yolov8_Broken = new Yolov8_Det(SavePath.AIFlod + @"\broken.onnx", SavePath.AIFlod + @"\broken.txt");
         public static Yolov8_Det yolov8_Dirty = new Yolov8_Det(SavePath.AIFlod + @"\dirty.onnx", SavePath.AIFlod + @"\dirty.txt");
         public void InitFunction(Function fun)
@@ -27,7 +26,7 @@ namespace VisionPlatform
             this.fun = fun;
         }
         //自动运行时使用
-        public bool FrontInspect(InspectData.FrontParam param, InspectItem inspectItem, bool bShow, out FrontResult outData, HObject ho_PhotometricImg = null)
+        public bool FrontInspect(InspectData.FrontParam param, InspectItem inspectItem, bool bShow, out FrontResult outData, PhotometricStereoImage photometricImages, List<HObject> listOrgImages)
         {
             bool bResult = true;
             outData = new FrontResult();
@@ -66,14 +65,22 @@ namespace VisionPlatform
                     }
                     outData.strPNCode = strPNCode;
                 }
-                if (!DefectAI(param.Defect, inspectItem, ho_PhotometricImg))
+                if (!DefectAI(param.Defect, inspectItem, photometricImages.NormalField))
                 {
                     bResult = false;
                 }
-
-                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult))
+                if (!LabelMoveInspect(param.LabelMove, bShow, out LabelMoveResult labelMoveResult, photometricImages.Albedo))
                 {
                     bResult = false;
+                }
+                outData.labelMoveResult = labelMoveResult;
+                if (param.bSealedLabel)
+                {
+                    if (!SealedLabelInspect(param.SealedLabel, bShow, out SealedLabelResult sealedLabelResult, photometricImages.Albedo))
+                    {
+                        bResult = false;
+                    }
+                    outData.sealLabelResult = sealedLabelResult;
                 }
             }
             catch (HalconException ex)
@@ -142,18 +149,72 @@ namespace VisionPlatform
                     nRowSite += fontParam.nRowGap;
                 }
                 #endregion
-
-                string strOK = "OK";
+                #region 标签有无及角度
+                fun.WriteStringtoImage(nFrontSize, nRowSite, nColStart, "标签有无", "green");
                 strColor = "green";
-                if (bResult == false || result.bFrontResult == false)
+                string strExist = "有标签";
+                if (!result.labelMoveResult.bExist)
                 {
-                    result.bFrontResult = false;
-                    strOK = "NG";
                     strColor = "red";
+                    strExist = "无标签";
+                    bResult = false;
                 }
                 else
                 {
-                    result.bFrontResult = true;
+                    strExist = strExist + $",角度偏移：{result.labelMoveResult.dAngleRotate}°";
+                    if (result.labelMoveResult.dAngleRotate > inData.LabelMove.AngleValue.dMax ||
+                        result.labelMoveResult.dAngleRotate < inData.LabelMove.AngleValue.dMin)
+                    {
+                        strColor = "red";
+                        bResult = false;
+                    }
+                }
+                fun.WriteStringtoImage(nFrontSize, nRowSite, nColSite, strExist, strColor);
+                nRowSite += fontParam.nRowGap;
+                #endregion
+
+                #region 标签偏移
+                fun.WriteStringtoImage(nFrontSize, nRowSite, nColStart, "标签偏移", "green");
+                strColor = "green";
+                if (null != result.labelMoveResult.dicLabelMoveValues)
+                {
+                    foreach (var label in result.labelMoveResult.dicLabelMoveValues)
+                    {
+                        if (null != inData.LabelMove.dicLabelMoveItems && inData.LabelMove.dicLabelMoveItems.ContainsKey(label.Key))
+                        {
+                            LabelMoveItem itemParam = inData.LabelMove.dicLabelMoveItems[label.Key];
+                            if (label.Value > itemParam.dist.dMax || label.Value < itemParam.dist.dMin)
+                            {
+                                strColor = "red";
+                                bResult = false;
+                            }
+                            fun.WriteStringtoImage(nFrontSize, nRowSite, nColSite, label.Value.ToString(), strColor);
+                            nColSite = nColSite + fontParam.nColGap;
+                        }
+                    }
+                }
+                nRowSite += fontParam.nRowGap;
+                #endregion
+
+                #region 鼓包褶皱脏污
+                nColSite = fontParam.nColStartPos;
+                fun.WriteStringtoImage(nFrontSize, nRowSite, nColStart, "鼓包褶皱脏污", "green");
+                strColor = "green";
+                if (!result.bDefect)
+                {
+                    strColor = "red";
+                    bResult = false;
+                }
+                fun.WriteStringtoImage(nFrontSize, nRowSite, nColSite, result.bDefect.ToString(), strColor);
+                nRowSite += fontParam.nRowGap;
+                #endregion
+
+                string strOK = "OK";
+                strColor = "green";
+                if (bResult == false)
+                {
+                    strOK = "NG";
+                    strColor = "red";
                 }
                 fun.WriteStringtoImage(fontParam.nOKSize, fontParam.nOKRow, fontParam.nOKCol, strOK, strColor);
             }
@@ -232,22 +293,31 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public bool LabelMoveInspect(LabelMoveParam param, bool bShow, out LabelMoveResult res)
+        public bool LabelMoveInspect(LabelMoveParam param, bool bShow, out LabelMoveResult res, HObject ho_LabelImage = null)
         {
             bool bResult = true;
             res = new LabelMoveResult();
             try
             {
-                fun.NccLocate(param.nccLocate.modelData, param.nccLocate.nModelID, param.nccLocate.rect2, out Rect2 rect2);
+                if (null == ho_LabelImage || !ho_LabelImage.IsInitialized())
+                {
+                    ho_LabelImage = fun.m_GrayImage.Clone();
+                }
+                fun.DispRegion(ho_LabelImage);
+                if (!fun.NccLocate(param.nccLocate, out Rect2 rect2, ho_LabelImage))
+                {
+                    res.bExist = false;
+                    return false;
+                }
                 fun.ShowRect2(rect2, "blue");
                 double dAngle = Math.Round(Math.Abs(new HTuple(rect2.dPhi - param.nccLocate.rect2.dPhi).TupleDeg().D), 0);
+                res.dAngleRotate = dAngle;
                 string strColor = "green";
                 if (param.AngleValue.bFlag && dAngle > param.AngleValue.dMax)
                 {
                     bResult = false;
                     strColor = "red";
                 }
-                fun.WriteStringtoImage(20, 50, 50, $"角度偏移：{dAngle}°", strColor);
                 foreach (var item in param.dicLabelMoveItems)
                 {
                     if (item.Key == "") continue;
@@ -255,20 +325,24 @@ namespace VisionPlatform
                     HOperatorSet.VectorAngleToRigid(param.nccLocate.rect2.dRect2Row, param.nccLocate.rect2.dRect2Col, 0,
                         rect2.dRect2Row, rect2.dRect2Col, rect2.dPhi, out HTuple homMat2D);
                     double dDist = 0;
+                    Line boxLine = new Line();
                     switch (item.Value.type)
                     {
                         case MoveType.point_line:
-                            Line boxLine = AffineTransLine(item.Value.boxLine, homMat2D);
+                            boxLine = AffineTransLine(item.Value.boxLine, homMat2D, ho_LabelImage);
                             HOperatorSet.DistancePl(rect2.dRect2Row, rect2.dRect2Col, boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_Dist);
                             dDist = Math.Round(hv_Dist.D, 2);
                             break;
                         case MoveType.line_line:
-                            dDist = DistLineLine(item.Value.labelLine, item.Value.boxLine, homMat2D);
+                            Line labelLine = AffineTransLine(item.Value.labelLine, homMat2D, ho_LabelImage);
+                            boxLine = AffineTransLine(item.Value.boxLine, homMat2D, ho_LabelImage);
+                            HOperatorSet.DistanceSl(labelLine.dStartRow, labelLine.dStartCol, labelLine.dEndRow, labelLine.dEndCol,
+                                                    boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_DistMin, out HTuple hv_DistMax);
+                            dDist = Math.Round(hv_DistMax.D, 2);
                             break;
                         case MoveType.point_point:
                             break;
                     }
-                    fun.WriteStringtoImage(20, 350, 50, $"{item.Key}距离：{dDist}");
                     res.dicLabelMoveValues.Add(item.Key, dDist);
                 }
             }
@@ -280,7 +354,72 @@ namespace VisionPlatform
             return bResult;
         }
 
-        public Line AffineTransLine(ROILine roiLine, HTuple homMat2D)
+        public bool SealedLabelInspect(SealedLabelParam param, bool bShow, out SealedLabelResult res, HObject ho_LabelImage = null)
+        {
+            bool bResult = true;
+            res = new SealedLabelResult();
+            Rect2 rect22 = new Rect2();
+            try
+            {
+                if (null != ho_LabelImage) fun.DispRegion(ho_LabelImage);
+                if (!fun.NccLocate(param.nccLocate1, out Rect2 rect21, ho_LabelImage))
+                {
+                    res.bExist1 = false;
+                }
+                else
+                {
+                    fun.ShowRect2(rect21, "blue");
+                }
+                if (param.bTwoLabels)
+                {
+                    if (fun.NccLocate(param.nccLocate2, out rect22, ho_LabelImage))
+                    {
+                        res.bExist2 = true;
+                        fun.ShowRect2(rect22, "blue");
+                    }
+                }
+                if (!res.bExist1 && !res.bExist2)
+                {
+                    bResult = false;
+                    return bResult;
+                }
+                foreach (var item in param.listROIItems)
+                {
+                    //仿射变换
+                    double dDist1 = 0, dDist2 = 0;
+                    HTuple hv_homMat2D = new HTuple();
+                    if (res.bExist1)
+                    {
+                        HOperatorSet.VectorAngleToRigid(param.nccLocate1.rect2.dRect2Row, param.nccLocate1.rect2.dRect2Col, 0, rect21.dRect2Row, rect21.dRect2Col, rect21.dPhi, out hv_homMat2D);
+                    }
+                    if (!res.bExist1 && res.bExist2)
+                    {
+                        HOperatorSet.VectorAngleToRigid(param.nccLocate2.rect2.dRect2Row, param.nccLocate2.rect2.dRect2Col, 0, rect22.dRect2Row, rect22.dRect2Col, rect22.dPhi, out hv_homMat2D);
+                    }
+                    Line line = AffineTransLine(item.roiLine, hv_homMat2D, ho_LabelImage);
+                    if (res.bExist1)
+                    {
+                        HOperatorSet.DistancePl(rect21.dRect2Row, rect21.dRect2Col, line.dStartRow, line.dStartCol, line.dEndRow, line.dEndCol, out HTuple hv_Dist);
+                        dDist1 = Math.Round(hv_Dist.D, 2);
+                    }
+                    if (res.bExist2)
+                    {
+                        HOperatorSet.DistancePl(rect22.dRect2Row, rect22.dRect2Col, line.dStartRow, line.dStartCol, line.dEndRow, line.dEndCol, out HTuple hv_Dist);
+                        dDist2 = Math.Round(hv_Dist.D, 2);
+                    }
+                    res.listDist1.Add(dDist1);
+                    res.listDist2.Add(dDist2);
+                }
+            }
+            catch (HalconException ex)
+            {
+                bResult = false;
+                StaticFun.MessageFun.ShowMessage(ex, true);
+            }
+            return bResult;
+        }
+
+        public Line AffineTransLine(ROILine roiLine, HTuple homMat2D, HObject ho_Image)
         {
             Line lineOut = new Line();
             try
@@ -320,7 +459,7 @@ namespace VisionPlatform
                         break;
                 }
                 roiLine.lineParam.lineIn = line;
-                fun.FitLine(roiLine.lineParam, out lineOut, out _);
+                fun.FitLine(roiLine.lineParam, out lineOut, out _, ho_Image);
                 fun.HWnd.DispLine(lineOut.dStartRow, lineOut.dStartCol, lineOut.dEndRow, lineOut.dEndCol);
             }
             catch (HalconException ex)
@@ -330,23 +469,6 @@ namespace VisionPlatform
             return lineOut;
         }
 
-        public double DistLineLine(ROILine label, ROILine box, HTuple homMat2D)
-        {
-            double dDist = 0;
-            try
-            {
-                Line labelLine = AffineTransLine(label, homMat2D);
-                Line boxLine = AffineTransLine(box, homMat2D);
-                HOperatorSet.DistanceSl(labelLine.dStartRow, labelLine.dStartCol, labelLine.dEndRow, labelLine.dEndCol,
-                                        boxLine.dStartRow, boxLine.dStartCol, boxLine.dEndRow, boxLine.dEndCol, out HTuple hv_DistMin, out HTuple hv_DistMax);
-                dDist = Math.Round(hv_DistMax.D, 2);
-            }
-            catch (HalconException ex)
-            {
-                StaticFun.MessageFun.ShowMessage(ex, true);
-            }
-            return dDist;
-        }
         public bool DividRubberRect2(PointF center, double dPhi, ROIParam roi, bool[] arrayDelTM, out List<Rect2> listRect2, out HObject ho_Rect2Regions)
         {
             bool bResult = true;

@@ -128,9 +128,6 @@
   <data name="&gt;&gt;label48.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;trackBar_BaseLineWidth.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="trackBar_BaseLineHeight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -165,11 +162,14 @@
   <data name="&gt;&gt;label50.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="numUpD_BaseLineHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>变化点</value>
   </data>
-  <data name="&gt;&gt;Panel_RubberAdd.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="trackBar_BaseLineThd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 18</value>
   </data>
   <data name="label29.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -177,17 +177,14 @@
   <data name="comboBox_Direction.Items" xml:space="preserve">
     <value>从左往右</value>
   </data>
-  <data name="label48.Text" xml:space="preserve">
-    <value>扫描方向</value>
-  </data>
   <data name="trackBar_BaseLineThd.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
   <data name="&gt;&gt;trackBar_BaseLineMoveX.Parent" xml:space="preserve">
     <value>tableLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;trackBar_BaseLineMoveY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboBox_Transition.Name" xml:space="preserve">
+    <value>comboBox_Transition</value>
   </data>
   <data name="trackBar_BaseLineMoveY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -210,38 +207,20 @@
   <data name="Panel_RubberAdd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="Panel_RubberAdd.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="comboBox_Direction" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox_TransPoint" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox_Transition" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label50" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel28" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label72" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label53" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel16" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label29" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label30" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label54" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel4" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel18" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel19" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,15.76227,Percent,84.23772" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,23,Absolute,20,Absolute,21,Absolute,22" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="&gt;&gt;label53.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="trackBar_BaseLineMoveY.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 3</value>
   </data>
-  <data name="&gt;&gt;trackBar_BaseLineMoveX.Name" xml:space="preserve">
-    <value>trackBar_BaseLineMoveX</value>
-  </data>
   <data name="numUpD_BaseLineHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
-  </data>
-  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineHeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 22</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel19.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;numUpD_BaseLineMoveY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label30.Text" xml:space="preserve">
-    <value>检测框宽</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 1</value>
@@ -255,14 +234,26 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="tableLayoutPanel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="tableLayoutPanel18.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numUpD_BaseLineWidth" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="trackBar_BaseLineWidth" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="comboBox_Transition.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 70</value>
+  </data>
   <data name="Panel_RubberAdd.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
+  </data>
+  <data name="numUpD_BaseLineThd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>检测框高</value>
+  </data>
+  <data name="&gt;&gt;trackBar_BaseLineThd.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>388, 185</value>
@@ -270,14 +261,17 @@
   <data name="label48.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="comboBox_TransPoint.Items1" xml:space="preserve">
+    <value>最后一个点</value>
+  </data>
   <data name="label53.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 47</value>
   </data>
   <data name="tableLayoutPanel19.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="tableLayoutPanel18.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numUpD_BaseLineWidth" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="trackBar_BaseLineWidth" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>Panel_RubberAdd</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel18.Name" xml:space="preserve">
     <value>tableLayoutPanel18</value>
@@ -297,8 +291,8 @@
   <data name="&gt;&gt;label53.Name" xml:space="preserve">
     <value>label53</value>
   </data>
-  <data name="numUpD_BaseLineMoveY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 21</value>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel16.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
@@ -318,8 +312,11 @@
   <data name="label53.Text" xml:space="preserve">
     <value>水平平移</value>
   </data>
-  <data name="tableLayoutPanel18.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="Panel_RubberAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
+  </data>
+  <data name="numUpD_BaseLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="tableLayoutPanel19.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="trackBar_BaseLineMoveY" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numUpD_BaseLineMoveY" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -327,11 +324,11 @@
   <data name="&gt;&gt;label72.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tableLayoutPanel18.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
   <data name="trackBar_BaseLineMoveY.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 16</value>
+  </data>
+  <data name="comboBox_TransPoint.Items" xml:space="preserve">
+    <value>第一个点</value>
   </data>
   <data name="trackBar_BaseLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -339,20 +336,14 @@
   <data name="label29.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="label50.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="trackBar_BaseLineHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 3</value>
-  </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 93</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="&gt;&gt;label54.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>Panel_RubberAdd</value>
   </data>
   <data name="&gt;&gt;label30.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -363,23 +354,29 @@
   <data name="&gt;&gt;label48.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
   </data>
+  <data name="label53.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
   <data name="&gt;&gt;numUpD_BaseLineMoveY.Parent" xml:space="preserve">
     <value>tableLayoutPanel19</value>
-  </data>
-  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
-    <value>Panel_RubberAdd</value>
   </data>
   <data name="numUpD_BaseLineMoveY.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="comboBox_Transition.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;comboBox_TransPoint.Parent" xml:space="preserve">
+    <value>Panel_RubberAdd</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel18.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel16.Name" xml:space="preserve">
     <value>tableLayoutPanel16</value>
+  </data>
+  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 21</value>
@@ -414,6 +411,15 @@
   <data name="numUpD_BaseLineThd.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
+  <data name="label48.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label48.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label50.Name" xml:space="preserve">
+    <value>label50</value>
+  </data>
   <data name="label72.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
@@ -429,9 +435,6 @@
   <data name="&gt;&gt;numUpD_BaseLineMoveY.Name" xml:space="preserve">
     <value>numUpD_BaseLineMoveY</value>
   </data>
-  <data name="comboBox_Direction.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
   <data name="label29.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -443,9 +446,6 @@
   </data>
   <data name="trackBar_BaseLineMoveX.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 16</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>Panel_RubberAdd</value>
   </data>
   <data name="tableLayoutPanel19.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -459,8 +459,8 @@
   <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="comboBox_Transition.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="comboBox_TransPoint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="label72.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -471,17 +471,11 @@
   <data name="trackBar_BaseLineMoveX.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 3</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
   <data name="&gt;&gt;Panel_RubberAdd.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;numUpD_BaseLineThd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numUpD_BaseLineHeight.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="numUpD_BaseLineHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineWidth.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -513,14 +507,20 @@
   <data name="&gt;&gt;trackBar_BaseLineWidth.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="numUpD_BaseLineWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
   <data name="&gt;&gt;tableLayoutPanel18.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="tableLayoutPanel28.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 160</value>
   </data>
-  <data name="comboBox_Direction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="&gt;&gt;numUpD_BaseLineMoveY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Panel_RubberAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -536,9 +536,6 @@
   </data>
   <data name="tableLayoutPanel18.Size" type="System.Drawing.Size, System.Drawing">
     <value>325, 22</value>
-  </data>
-  <data name="&gt;&gt;numUpD_BaseLineMoveX.Name" xml:space="preserve">
-    <value>numUpD_BaseLineMoveX</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -558,29 +555,29 @@
   <data name="&gt;&gt;label48.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="&gt;&gt;label50.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
   </data>
   <data name="comboBox_Transition.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 118</value>
   </data>
-  <data name="&gt;&gt;trackBar_BaseLineThd.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;label54.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="trackBar_BaseLineWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 70</value>
+  <data name="&gt;&gt;trackBar_BaseLineWidth.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="trackBar_BaseLineMoveY.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
   <data name="&gt;&gt;trackBar_BaseLineThd.Parent" xml:space="preserve">
     <value>tableLayoutPanel28</value>
+  </data>
+  <data name="label54.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;label72.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
@@ -600,8 +597,8 @@
   <data name="tableLayoutPanel18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>Panel_RubberAdd</value>
+  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label54.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -618,17 +615,17 @@
   <data name="tableLayoutPanel16.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numUpD_BaseLineHeight" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="trackBar_BaseLineHeight" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="Panel_RubberAdd.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="comboBox_Direction" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox_TransPoint" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox_Transition" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label50" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel28" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label72" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label53" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel16" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label29" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label30" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label54" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel4" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel18" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel19" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label48" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,15.76227,Percent,84.23772" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,23,Absolute,20,Absolute,21,Absolute,22" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
   </data>
-  <data name="tableLayoutPanel28.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="trackBar_BaseLineThd" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numUpD_BaseLineThd" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;label72.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label53.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;numUpD_BaseLineHeight.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>BaseLine</value>
@@ -642,11 +639,11 @@
   <data name="label30.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
+    <value>Panel_RubberAdd</value>
   </data>
-  <data name="&gt;&gt;label72.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel19.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="trackBar_BaseLineMoveX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -720,8 +717,8 @@
   <data name="&gt;&gt;trackBar_BaseLineHeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
   </data>
   <data name="Panel_RubberAdd.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
@@ -756,8 +753,8 @@
   <data name="&gt;&gt;comboBox_TransPoint.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;comboBox_Transition.Name" xml:space="preserve">
-    <value>comboBox_Transition</value>
+  <data name="&gt;&gt;trackBar_BaseLineMoveX.Name" xml:space="preserve">
+    <value>trackBar_BaseLineMoveX</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineMoveY.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -771,13 +768,16 @@
   <data name="label50.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 117</value>
   </data>
-  <data name="label48.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;trackBar_BaseLineMoveY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel19.Name" xml:space="preserve">
     <value>tableLayoutPanel19</value>
   </data>
-  <data name="numUpD_BaseLineHeight.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label30.Text" xml:space="preserve">
+    <value>检测框宽</value>
+  </data>
+  <data name="numUpD_BaseLineMoveY.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 21</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineMoveX.ZOrder" xml:space="preserve">
@@ -789,14 +789,20 @@
   <data name="comboBox_TransPoint.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 20</value>
   </data>
-  <data name="numUpD_BaseLineHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 1</value>
+  <data name="label50.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBox_TransPoint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numUpD_BaseLineMoveX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="label54.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="numUpD_BaseLineThd.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="tableLayoutPanel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel28.Name" xml:space="preserve">
     <value>tableLayoutPanel28</value>
@@ -807,14 +813,11 @@
   <data name="&gt;&gt;comboBox_Direction.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
   </data>
-  <data name="numUpD_BaseLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tableLayoutPanel16.RowCount" type="System.Int32, mscorlib">
+  <data name="tableLayoutPanel18.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;comboBox_TransPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox_Direction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="&gt;&gt;comboBox_Direction.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -831,8 +834,8 @@
   <data name="tableLayoutPanel16.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 47</value>
   </data>
-  <data name="numUpD_BaseLineThd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;label50.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 1</value>
@@ -867,14 +870,11 @@
   <data name="tableLayoutPanel28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="comboBox_TransPoint.Items" xml:space="preserve">
-    <value>第一个点</value>
+  <data name="tableLayoutPanel16.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineHeight.Name" xml:space="preserve">
     <value>numUpD_BaseLineHeight</value>
-  </data>
-  <data name="trackBar_BaseLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 3</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -882,11 +882,11 @@
   <data name="label53.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tableLayoutPanel18.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="trackBar_BaseLineHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 3</value>
   </data>
-  <data name="numUpD_BaseLineWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numUpD_BaseLineHeight" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="trackBar_BaseLineHeight" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label29.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -894,8 +894,8 @@
   <data name="&gt;&gt;numUpD_BaseLineThd.Parent" xml:space="preserve">
     <value>tableLayoutPanel28</value>
   </data>
-  <data name="Panel_RubberAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+  <data name="label48.Text" xml:space="preserve">
+    <value>扫描方向</value>
   </data>
   <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
@@ -903,8 +903,8 @@
   <data name="label72.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 160</value>
   </data>
-  <data name="trackBar_BaseLineThd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 18</value>
+  <data name="tableLayoutPanel18.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
   <data name="numUpD_BaseLineMoveY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -912,11 +912,11 @@
   <data name="&gt;&gt;trackBar_BaseLineMoveX.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label50.Name" xml:space="preserve">
-    <value>label50</value>
+  <data name="&gt;&gt;numUpD_BaseLineMoveX.Name" xml:space="preserve">
+    <value>numUpD_BaseLineMoveX</value>
   </data>
-  <data name="numUpD_BaseLineThd.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="tableLayoutPanel28.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="trackBar_BaseLineThd" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numUpD_BaseLineThd" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,80" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="comboBox_Transition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -930,8 +930,8 @@
   <data name="&gt;&gt;label50.Parent" xml:space="preserve">
     <value>Panel_RubberAdd</value>
   </data>
-  <data name="comboBox_TransPoint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="&gt;&gt;numUpD_BaseLineThd.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -942,20 +942,20 @@
   <data name="&gt;&gt;comboBox_Direction.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBox_TransPoint.Items1" xml:space="preserve">
-    <value>最后一个点</value>
+  <data name="trackBar_BaseLineWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 3</value>
   </data>
   <data name="&gt;&gt;numUpD_BaseLineMoveX.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>检测框高</value>
+  <data name="&gt;&gt;Panel_RubberAdd.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="label48.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="comboBox_Direction.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;comboBox_TransPoint.Parent" xml:space="preserve">
-    <value>Panel_RubberAdd</value>
+  <data name="tableLayoutPanel18.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 22</value>

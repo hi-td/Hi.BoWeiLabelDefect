@@ -31,7 +31,6 @@ namespace VisionPlatform
         public HObject m_OrgImage = null;
         public HObject m_hImage = null;
         public HObject m_GrayImage = null;
-        public HObject ho_Reduceimage = null;
         public static int imageWidth;
         public static int imageHeight;
         public static RichTextBox m_richTextBox = null;
@@ -41,7 +40,7 @@ namespace VisionPlatform
         public Rect2 m_rect2 = new Rect2();
         public Ellipse m_ellipse = new Ellipse();
         public Arbitrary m_arbitrary = new Arbitrary();
-        public ObjDraw m_lastDraw = new ObjDraw();  //最后一次绘制的形状
+        public ObjDraw m_lastDraw = new ObjDraw();                     //最后一次绘制的形状
         private static HObject m_ObjShow = new HObject();              //随窗体大小变化显示Object
         public int m_nPreFontSize = 15;
         public List<int> m_listFontSize = new List<int> { 15 };        //图像窗口显示的字体大小
@@ -49,7 +48,6 @@ namespace VisionPlatform
         public List<int> m_listColSite = new List<int> { 12 };
         public List<string> m_listStrshow = new List<string> { "" };
         public List<string> m_listColorFont = new List<string> { "red" };
-        public string m_colorRegion = "red";
         private HObject m_XLDCont = new HObject();          //使用轮廓创建模板时使用
         public bool b_image = false;
         public List<Mirror> m_ListImgMirror = new List<Mirror>();
@@ -57,9 +55,7 @@ namespace VisionPlatform
         public double dReslutCol0 = 0;
         public double dReslutRow1 = 0;
         public double dReslutCol1 = 0;
-
         public Mat AIimage = new Mat();
-        public Mat MOAIimage = new Mat();
         private Mat image_gray = new Mat();
         public static PP_OCRv4 pP_OCRv4 = new PP_OCRv4();
 
@@ -76,7 +72,6 @@ namespace VisionPlatform
             catch (Exception ex)
             {
                 ex.ToString();
-                return;
             }
         }
         public Function()
@@ -193,14 +188,17 @@ namespace VisionPlatform
             }
         }
 
-        public void SavePhotometricImages(int cam, string strCheckItem, List<HObject> listOrgImages, PhotometricStereoImage photometricStereoImage)
+        public void SavePhotometricImages(bool bResult, int cam, string strCheckItem, List<HObject> listOrgImages, PhotometricStereoImage photometricStereoImage)
         {
             try
             {
+                string strOKNG = bResult ? "OK" : "NG";
                 string strDate = DateTime.Now.ToString("yyyy-MM-dd") + "\\" + DateTime.Now.Hour.ToString() + "\\";
+                string strPath = SavePath.ImageFold + $"\\相机{cam}\\{strCheckItem}\\原始图像\\{strOKNG}\\{strDate}\\";
                 //保存原始图
-                string orgImageFath = SavePath.ImageFold + $"\\相机{cam}\\原始图像\\{strCheckItem}\\{strDate}";
-
+                string orgImageFath = strPath + "原图";
+                //保存光度立体图
+                string resImageFath = strPath + "光度立体图像";
                 try
                 {
                     if (string.IsNullOrWhiteSpace(orgImageFath))
@@ -213,11 +211,15 @@ namespace VisionPlatform
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
                     str = str.Replace("\\", "/");
-                    for (int i = 0; i < listOrgImages.Count; i++)
+                    if ((GlobalData.Config._InitConfig.otherConfig.bOrgOK && bResult) ||
+                        (GlobalData.Config._InitConfig.otherConfig.bOrgNG && !bResult))
                     {
-                        if (null != listOrgImages[i])
+                        for (int i = 0; i < listOrgImages.Count; i++)
                         {
-                            HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str + (i + 1).ToString());
+                            if (null != listOrgImages[i])
+                            {
+                                HOperatorSet.WriteImage(listOrgImages[i], "bmp", 0, str + (i + 1).ToString());
+                            }
                         }
                     }
                 }
@@ -226,8 +228,6 @@ namespace VisionPlatform
                     MessageFun.ShowMessage(error.ToString());
                     return;
                 }
-                //保存光度立体图
-                string resImageFath = SavePath.ImageFold + $"\\相机{cam}\\光度立体图像\\{strCheckItem}\\{strDate}";
                 try
                 {
                     if (string.IsNullOrWhiteSpace(resImageFath))
@@ -240,36 +240,62 @@ namespace VisionPlatform
                     if (!Directory.Exists(folder))
                         Directory.CreateDirectory(folder);
                     str = str.Replace("\\", "/");
-                    if (null != photometricStereoImage.NormalField)
+                    if ((GlobalData.Config._InitConfig.otherConfig.bOrgOK && bResult) ||
+                                (GlobalData.Config._InitConfig.otherConfig.bOrgNG && !bResult))
                     {
-                        HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str + "NormalField");
-                    }
-                    if (null != photometricStereoImage.Albedo)
-                    {
-                        HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str + "Albedo");
-                    }
-                    if (null != photometricStereoImage.Gradient)
-                    {
-                        HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str + "Gradient");
-                    }
-                    if (null != photometricStereoImage.Curvature)
-                    {
-                        HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str + "Curvature");
-                    }
-                    if (null != photometricStereoImage.HeightField)
-                    {
-                        HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str + "HeightField");
+                        if (null != photometricStereoImage.NormalField)
+                        {
+                            HOperatorSet.WriteImage(photometricStereoImage.NormalField, "bmp", 0, str + "NormalField");
+                        }
+                        if (null != photometricStereoImage.Albedo)
+                        {
+                            HOperatorSet.WriteImage(photometricStereoImage.Albedo, "bmp", 0, str + "Albedo");
+                        }
+                        if (null != photometricStereoImage.Gradient)
+                        {
+                            HOperatorSet.WriteImage(photometricStereoImage.Gradient, "bmp", 0, str + "Gradient");
+                        }
+                        if (null != photometricStereoImage.Curvature)
+                        {
+                            HOperatorSet.WriteImage(photometricStereoImage.Curvature, "bmp", 0, str + "Curvature");
+                        }
+                        if (null != photometricStereoImage.HeightField)
+                        {
+                            HOperatorSet.WriteImage(photometricStereoImage.HeightField, "bmp", 0, str + "HeightField");
+                        }
                     }
                 }
                 catch (HalconException error)
                 {
                     MessageFun.ShowMessage(error.ToString());
-                    return;
+                }
+                try
+                {
+                    string strResPath = SavePath.ImageFold + $"\\相机{cam}\\{strCheckItem}\\结果图像\\{strOKNG}\\{strDate}\\";
+                    if (string.IsNullOrWhiteSpace(strResPath))
+                        return;
+                    var folder = System.IO.Path.GetDirectoryName(strResPath);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+                    string str = strResPath + DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + "\\";
+                    folder = System.IO.Path.GetDirectoryName(str);
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+                    str = str.Replace("\\", "/");
+                    if ((GlobalData.Config._InitConfig.otherConfig.bResultOK && bResult) ||
+                    (GlobalData.Config._InitConfig.otherConfig.bResultNG && !bResult))
+                    {
+                        HOperatorSet.DumpWindow(m_hWnd, "jpeg", str.ToString());
+                    }
+                }
+                catch (HalconException error)
+                {
+                    MessageFun.ShowMessage(error.ToString());
                 }
             }
             catch (Exception ex)
             {
-                MessageFun.ShowMessage($"OK图像保存出错：{ex}", true, strEnglish: $"OK Image Save Error:{ex}");
+                MessageFun.ShowMessage($"图像保存出错：{ex}", true, strEnglish: $"Image Save Error:{ex}");
                 return;
             }
         }
@@ -458,12 +484,9 @@ namespace VisionPlatform
                 {
                     ShowCenterCross();
                 }
-                // m_PreImage = m_hImage.Clone();   //示教使用
-                // ColorSpaceTrans();
+                Function.ho_ShowImage = m_hImage;
                 b_image = true;
                 FitImageToWindow(ref dReslutRow0, ref dReslutCol0, ref dReslutRow1, ref dReslutCol1);
-                return;
-
             }
             catch (System.Exception ex)
             {
@@ -902,7 +925,7 @@ namespace VisionPlatform
         {
             if (m_ObjShow.IsInitialized())
             {
-                m_hWnd.SetColor(m_colorRegion);
+                m_hWnd.SetColor("red");
                 m_hWnd.DispObj(m_ObjShow);
             }
         }
@@ -1559,6 +1582,7 @@ namespace VisionPlatform
                 if (null != m_ObjShow)
                     m_ObjShow.Dispose();
                 HOperatorSet.ReadImage(out m_hImage, strFilePath);
+                Function.ho_ShowImage = m_hImage;
                 AIimage = new Mat(strFilePath);
                 dReslutRow0 = 0;
                 dReslutCol0 = 0;
@@ -1820,7 +1844,7 @@ namespace VisionPlatform
 
         //拟合直线
 
-        public bool FitLine(LineParam lineParam, out Line lineOut, out HObject ho_ContLine)
+        public bool FitLine(LineParam lineParam, out Line lineOut, out HObject ho_ContLine, HObject ho_Image = null)
         {
             lineOut = new Line(0, 0, 0, 0);
 
@@ -1835,7 +1859,9 @@ namespace VisionPlatform
             HOperatorSet.GenEmptyObj(out ho_ContLine);
             try
             {
-                HOperatorSet.GetImageSize(m_GrayImage, out hv_Width, out hv_Height);
+                if (null == ho_Image)
+                    ho_Image = m_GrayImage.Clone();
+                HOperatorSet.GetImageSize(ho_Image, out hv_Width, out hv_Height);
                 HOperatorSet.CreateMetrologyModel(out hv_MetrologyHandle);
                 HOperatorSet.SetMetrologyModelImageSize(hv_MetrologyHandle, hv_Width, hv_Height);
                 HOperatorSet.AddMetrologyObjectLineMeasure(hv_MetrologyHandle, lineParam.lineIn.dStartRow, lineParam.lineIn.dStartCol, lineParam.lineIn.dEndRow, lineParam.lineIn.dEndCol, lineParam.measure.nLen1, lineParam.measure.dLen2, 1, lineParam.measure.nThd, new HTuple(), new HTuple(), out hv_Indices);
@@ -1850,7 +1876,7 @@ namespace VisionPlatform
                 //HOperatorSet.SetMetrologyObjectParam(hv_MetrologyHandle, hv_Indices, "measure_interpolation", "bicubic");
                 HOperatorSet.SetMetrologyObjectParam(hv_MetrologyHandle, hv_Indices, "instances_outside_measure_regions", "true");
                 //获取直线拟合结果
-                HOperatorSet.ApplyMetrologyModel(m_GrayImage, hv_MetrologyHandle);
+                HOperatorSet.ApplyMetrologyModel(ho_Image, hv_MetrologyHandle);
                 HOperatorSet.GetMetrologyObjectMeasures(out ho_MeasureLineContours, hv_MetrologyHandle, "all", "all", out hv_AllRow, out hv_AllColumn);
                 //DispRegion(ho_MeasureLineContours);
                 HOperatorSet.GenCrossContourXld(out ho_MeasureCross, hv_AllRow, hv_AllColumn, 10, 0);
@@ -3982,9 +4008,12 @@ namespace VisionPlatform
             }
         }
 
-        public HObject NccLocate(LocateInParams inParam, object nModelID, Rect2 modelRect2, out Rect2 outRect2, HObject ho_Image = null)
+        public bool NccLocate(NccLocateParam param, out Rect2 outRect2, HObject ho_Image = null)
         {
+            bool bResult = true;
             outRect2 = new Rect2(0, 0, 0, 0, 0);
+            HOperatorSet.GenEmptyObj(out HObject ho_LimitROI);
+            HOperatorSet.GenEmptyObj(out HObject ho_ImageReduced);
             HOperatorSet.GenEmptyObj(out HObject ho_LocateRegion);
             ho_LocateRegion = null;
             try
@@ -3993,11 +4022,23 @@ namespace VisionPlatform
                 {
                     ho_Image = m_GrayImage.Clone();
                 }
-                if (FindModel_Several(ho_Image, nModelID, inParam, out List<LocateOutParams> listOutData))
+                HOperatorSet.CountChannels(ho_Image, out HTuple hv_channels);
+                if (hv_channels[0].I > 1)
                 {
-                    outRect2 = new Rect2(listOutData[0].dModelRow, listOutData[0].dModelCol,
-                                       listOutData[0].dModelAngle + modelRect2.dPhi,
-                                       modelRect2.dLength1, modelRect2.dLength2);
+                    HOperatorSet.Rgb1ToGray(ho_Image, out ho_Image);
+                }
+                ho_ImageReduced.Dispose();
+                HOperatorSet.ReduceDomain(ho_Image, ho_Image, out ho_ImageReduced);
+                if (param.bLimitROI)
+                {
+                    ho_LimitROI.Dispose();
+                    HOperatorSet.GenRectangle2(out ho_LimitROI, param.limitRect2.dRect2Row, param.limitRect2.dRect2Col, param.limitRect2.dPhi, param.limitRect2.dLength1, param.limitRect2.dLength2);
+                    DispRegion(ho_LimitROI);
+                    HOperatorSet.ReduceDomain(ho_Image, ho_LimitROI, out ho_ImageReduced);
+                }
+                if (FindModel_Several(ho_ImageReduced, param.nModelID, param.modelData, out List<LocateOutParams> listOutData))
+                {
+                    outRect2 = new Rect2(listOutData[0].dModelRow, listOutData[0].dModelCol, listOutData[0].dModelAngle + param.rect2.dPhi, param.rect2.dLength1, param.rect2.dLength2);
                     Rect2Trans(ref outRect2);
                     ho_LocateRegion?.Dispose();
                     HOperatorSet.GenRectangle2(out ho_LocateRegion, outRect2.dRect2Row, outRect2.dRect2Col, outRect2.dPhi, outRect2.dLength1, outRect2.dLength2);
@@ -4005,12 +4046,22 @@ namespace VisionPlatform
                     HOperatorSet.GenCrossContourXld(out HObject ho_Cross, outRect2.dRect2Row, outRect2.dRect2Col, 50, outRect2.dPhi);
                     DispRegion(ho_Cross, "blue", lineWidth: 2);
                 }
+                else
+                {
+                    bResult = false;
+                }
             }
             catch (HalconException ex)
             {
+                bResult = false;
                 StaticFun.MessageFun.ShowMessage($"NccLocate:{ex}", true);
             }
-            return ho_LocateRegion;
+            finally
+            {
+                ho_LimitROI?.Dispose();
+                ho_ImageReduced?.Dispose();
+            }
+            return bResult;
         }
         public bool CreateShapModel(LocateInParams inParam, out object ModelID, out List<LocateOutParams> listOutData)
         {
@@ -4167,8 +4218,7 @@ namespace VisionPlatform
                 if (null == nModelID) return false;
                 if (inParam.modelType == ModelType.contour || inParam.modelType == ModelType.region)
                 {
-                    HOperatorSet.FindShapeModel(ho_Image, (HTuple)nModelID, new HTuple(inParam.dAngleStart).TupleRad(), new HTuple(inParam.dAngleEnd).TupleRad(), inParam.dScore, 1, 0.5,
-                                               "least_squares", 0, 0.9, out hv_Row, out hv_Column, out hv_Angle, out hv_Score);
+                    HOperatorSet.FindShapeModel(ho_Image, (HTuple)nModelID, new HTuple(inParam.dAngleStart).TupleRad(), new HTuple(inParam.dAngleEnd).TupleRad(), inParam.dScore, 1, 0.5, "least_squares", 0, 0.9, out hv_Row, out hv_Column, out hv_Angle, out hv_Score);
                 }
                 else
                 {
