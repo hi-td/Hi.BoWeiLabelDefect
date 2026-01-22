@@ -14,24 +14,24 @@ namespace VisionPlatform.Auxiliary
         /// <summary>
         /// 相机1、相机2触发
         /// </summary>
-        public static Address M0 = new Address(SoftType.M, 0, DataType.Bit);
+        public static Address M20 = new Address(SoftType.M, 20, DataType.Bit);
         /// <summary>
-        ///相机2触发
+        ///相机3触发
         /// </summary>
-        public static Address M2 = new Address(SoftType.M, 2, DataType.Bit);
+        public static Address M22 = new Address(SoftType.M, 22, DataType.Bit);
 
         /// <summary>
         /// 相机1、相机2反馈
         /// </summary>
-        public static Address M1 = new Address(SoftType.M, 1, DataType.Bit);
+        public static Address M21 = new Address(SoftType.M, 21, DataType.Bit);
         /// <summary>
         /// 相机3反馈
         /// </summary>
-        public static Address M3 = new Address(SoftType.M, 3, DataType.Bit);
+        public static Address M23 = new Address(SoftType.M, 23, DataType.Bit);
 
 
-        public static List<Address> addresses = [M0, M1, M2, M3];
+        public static List<Address> addresses = [M20, M21, M22, M23];
 
-        public static List<int> addressKeys = [M0.GetHashCode(), M1.GetHashCode(), M2.GetHashCode(), M3.GetHashCode()];
+        public static List<int> addressKeys = [M20.GetHashCode(), M21.GetHashCode(), M22.GetHashCode(), M23.GetHashCode()];
     }
 }

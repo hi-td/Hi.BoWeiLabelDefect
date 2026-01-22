@@ -178,7 +178,7 @@
     <value>NoControl</value>
   </data>
   <data name="Mbutton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>668, 312</value>
+    <value>662, 312</value>
   </data>
   <data name="Mbutton2.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 38</value>
@@ -238,7 +238,7 @@
     <value>NoControl</value>
   </data>
   <data name="Mbutton7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>668, 393</value>
+    <value>662, 393</value>
   </data>
   <data name="Mbutton7.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 38</value>

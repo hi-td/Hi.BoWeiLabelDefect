@@ -757,6 +757,7 @@ namespace VisionPlatform
             bool bLock = false;
             bool bCheckOut = false;
             bool bResult = true;
+
             Dictionary<InspectData.CamInspectItem, bool> dicResults = new Dictionary<CamInspectItem, bool>();
             Dictionary<InspectData.CamInspectItem, double> dicTimes = new Dictionary<CamInspectItem, double>();
             try
@@ -806,12 +807,14 @@ namespace VisionPlatform
                 Address addressTrigger = StaticFun.TCP.Deserialize(tcp.isTrigger.strAddress);
                 Address addressFinish = StaticFun.TCP.Deserialize(tcp.isFinish.strAddress);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
+                
                 while (isAuto)
                 {
                     //一直和PLC保持通讯读取信号的状态
                     rRes = FormMainUI._plc.ReadDeviceRandom(Variable.addresses, out var datas);
                     if (rRes == 0)
-                    {//检测信号
+                    {
+                        //检测信号
                         foreach (Address[] keys in dicInspectItems.Keys)
                         {
                             InspectItems inspectItems = dicInspectItems[keys];
@@ -828,18 +831,16 @@ namespace VisionPlatform
                                 address.Value = 0;
                                 FormMainUI._plc.WriteDevice(address);
                                 ts = new TimeSpan(DateTime.Now.Ticks);
-                                if (Receiveindex == 0)
+                                if (Receiveindex == 20)
                                 {
-                                    CamInspectItem camItem = new CamInspectItem(10, InspectItem.Front);
-                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem);
-                                    PhotometricInspect(inspectItem);
+                                    CamInspectItem camItem1 = new CamInspectItem(10, InspectItem.Front);
+                                    InspectItems inspectItem1 = new InspectItems(FormMainUI.m_dicCtrlCamShow[10].strCamSer, FormMainUI.m_dicCtrlCamShow[10].Fun, camItem1);
+                                    PhotometricInspect(inspectItem1);
                                     Thread.Sleep(10);
-                                }
-                                else if (Receiveindex == 1)
-                                {
-                                    CamInspectItem camItem = new CamInspectItem(20, InspectItem.Back);
-                                    InspectItems inspectItem = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem);
-                                    PhotometricInspect(inspectItem);
+
+                                    CamInspectItem camItem2 = new CamInspectItem(20, InspectItem.Back);
+                                    InspectItems inspectItem2 = new InspectItems(FormMainUI.m_dicCtrlCamShow[20].strCamSer, FormMainUI.m_dicCtrlCamShow[20].Fun, camItem2);
+                                    PhotometricInspect(inspectItem2);
                                 }
                                 else
                                 {
@@ -848,6 +849,7 @@ namespace VisionPlatform
                                     inspectItems.camItem = new CamInspectItem(30, InspectItem.Front);
                                     PhotometricInspect(inspectItem);
                                 }
+
                                 #region 发送当前拍照完成信号
                                 var index = keys[1].Index;
                                 var addr = new Address(SoftType.M, index, DataType.Bit);
@@ -872,7 +874,7 @@ namespace VisionPlatform
                             {
                                 TimeSpan ts3_z = new TimeSpan(DateTime.Now.Ticks);
                                 double spanSeconds = ts3_z.Subtract(ts).Duration().TotalMilliseconds;
-                                if (spanSeconds > 3000)
+                                if (spanSeconds > 10000)
                                 {
                                     ts = new TimeSpan(DateTime.Now.Ticks);
                                     StaticFun.MessageFun.ShowMessage("拍照信号复位超时！");

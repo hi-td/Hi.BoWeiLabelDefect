@@ -308,15 +308,15 @@ namespace StaticFun
                         //开启检测线程
                         foreach (int camID in FormMainUI.m_dicCtrlCamShow.Keys)
                         {
+                            CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
                             //只给主相机开线程
-                            if (camID.ToString()[1] == 0)
+                            if (camID == 10 || camID == 30)
                             {
-                                CtrlCamShow ctrlCamShow = FormMainUI.m_dicCtrlCamShow[camID];
                                 new Task(() => { ctrlCamShow.Fun.RunTcp(FormMainUI.m_dicCtrlCamShow); }, TaskCreationOptions.LongRunning).Start();
                                 Thread.Sleep(20);
+                                break;
                             }
                         }
-                        InspectFunction.isAuto = true;
                         break;
                 }
                 Thread.Sleep(10);
