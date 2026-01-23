@@ -38,13 +38,11 @@ namespace VisionPlatform.多线插.PLC交互窗口
         private IPlc plc;
         private SynchronizationContext context;
         private Manual manual;
-        private Axises axises;
+        private AxisT axises;
         private System.Timers.Timer timer;
         private bool isAction = false;
         private List<Address> addresses;
         private Color[] handleColor = [SystemColors.Control, Color.Lime];
-        private string[] stopStatus = ["停止中", "停止"];
-        private string[] dadianStatus = ["打点功能开启", "打点功能关闭"];
        
         private Color[] initColor = [
             SystemColors.Control,Color.Lime];
@@ -270,21 +268,21 @@ namespace VisionPlatform.多线插.PLC交互窗口
                             switchStatus[(int)AddrIndex.M4] = Convert.ToBoolean(value[hashcode].Value);
                             //button5.BackColor = switchStatus[(int)AddrIndex.M4] ? handleColor[1] : initColor[0];
                             //button5.Text = switchStatus[(int)AddrIndex.M4] ? stopStatus[0] : stopStatus[1];
-                            Address addr1;
+                            //Address addr1;
                             //上电回原关闭
-                            var index1 = Convert.ToUInt16(Sbutton9.Tag);
-                            var buttonAddr1 = addresses.FirstOrDefault(x => x.Index == index1 && x.SoftType == SoftType.M);
-                            if (buttonAddr1 != null)
-                            {
-                                hashcode = buttonAddr1.GetHashCode();
-                                if (value.TryGetValue(hashcode, out addr1))
-                                {
-                                    Sbutton9.BackColor = Convert.ToBoolean(addr1.Value) ? handleColor[1] : handleColor[0];
-                                }
-                                var LimitStatus1 = Convert.ToBoolean(addr1.Value);
-                                Sbutton9.Text = LimitStatus1 ? "上电回原开启" : "上电回原关闭";
-                                switchStatus1[0] = Convert.ToBoolean(addr1.Value);
-                            }
+                            //var index1 = Convert.ToUInt16(Sbutton9.Tag);
+                            //var buttonAddr1 = addresses.FirstOrDefault(x => x.Index == index1 && x.SoftType == SoftType.M);
+                            //if (buttonAddr1 != null)
+                            //{
+                            //    hashcode = buttonAddr1.GetHashCode();
+                            //    if (value.TryGetValue(hashcode, out addr1))
+                            //    {
+                            //        Sbutton9.BackColor = Convert.ToBoolean(addr1.Value) ? handleColor[1] : handleColor[0];
+                            //    }
+                            //    var LimitStatus1 = Convert.ToBoolean(addr1.Value);
+                            //    Sbutton9.Text = LimitStatus1 ? "上电回原开启" : "上电回原关闭";
+                            //    switchStatus1[0] = Convert.ToBoolean(addr1.Value);
+                            //}
                             
                             //hashcode = addresses[(int)AddrIndex.M1050].GetHashCode();
                             //switchStatus[(int)AddrIndex.M1050] = Convert.ToBoolean(value[hashcode].Value);
@@ -299,7 +297,6 @@ namespace VisionPlatform.多线插.PLC交互窗口
                             //hashcode = addresses[(int)AddrIndex.D10].GetHashCode();
                             foreach (var ctrl in Controls)
                             {
-
                                 if (ctrl is Button button && button.Tag != null && button.Name.Contains("M"))
                                 {
                                     ushort index = Convert.ToUInt16(button.Tag);
@@ -432,7 +429,7 @@ namespace VisionPlatform.多线插.PLC交互窗口
                             case Index.btn_Axis:
                                 if (null == axises || axises.IsDisposed)
                                 {
-                                    axises = new Axises(plc);
+                                    axises = new AxisT(plc);
                                     axises.Dock = DockStyle.Fill;
                                 }
                                 pnl_Load.Controls.Add(axises);

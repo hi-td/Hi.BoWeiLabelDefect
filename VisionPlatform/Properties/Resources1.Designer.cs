@@ -81,6 +81,46 @@ namespace VisionPlatform.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ClockWiseOff {
+            get {
+                object obj = ResourceManager.GetObject("ClockWiseOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ClockWiseOn {
+            get {
+                object obj = ResourceManager.GetObject("ClockWiseOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CounterClockWiseOff {
+            get {
+                object obj = ResourceManager.GetObject("CounterClockWiseOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CounterClockWiseOn {
+            get {
+                object obj = ResourceManager.GetObject("CounterClockWiseOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 yyyy/MM/dd HH:mm:ss 的本地化字符串。
         /// </summary>
         internal static string DATATIME_FORMAT {
@@ -90,11 +130,120 @@ namespace VisionPlatform.Properties {
         }
         
         /// <summary>
+        ///   查找类似 yyyy/MM/dd HH:mm:ss 的本地化字符串。
+        /// </summary>
+        internal static string DATATIME_FORMAT1 {
+            get {
+                return ResourceManager.GetString("DATATIME_FORMAT1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveDownOff {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveDownOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveDownOn {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveDownOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveLeftOff {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveLeftOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveLeftOff1 {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveLeftOff1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveLeftOn {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveLeftOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveRightOff {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveRightOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveRightOn {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveRightOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveUpOff {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveUpOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DotMoveUpOn {
+            get {
+                object obj = ResourceManager.GetObject("DotMoveUpOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap favicon__1_ {
             get {
                 object obj = ResourceManager.GetObject("favicon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap favicon__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("favicon (1)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,6 +274,96 @@ namespace VisionPlatform.Properties {
         internal static System.Drawing.Bitmap lime_button_on16_16 {
             get {
                 object obj = ResourceManager.GetObject("lime_button_on16_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap lime_button_on16_17 {
+            get {
+                object obj = ResourceManager.GetObject("lime_button_on16_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveDownOff {
+            get {
+                object obj = ResourceManager.GetObject("MoveDownOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveDownOn {
+            get {
+                object obj = ResourceManager.GetObject("MoveDownOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveLeftOff {
+            get {
+                object obj = ResourceManager.GetObject("MoveLeftOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveLeftOn {
+            get {
+                object obj = ResourceManager.GetObject("MoveLeftOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveRightOff {
+            get {
+                object obj = ResourceManager.GetObject("MoveRightOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveRightOn {
+            get {
+                object obj = ResourceManager.GetObject("MoveRightOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveUpOff {
+            get {
+                object obj = ResourceManager.GetObject("MoveUpOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveUpOn {
+            get {
+                object obj = ResourceManager.GetObject("MoveUpOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

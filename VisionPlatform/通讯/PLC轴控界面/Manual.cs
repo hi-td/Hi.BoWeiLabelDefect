@@ -101,7 +101,6 @@ namespace VisionPlatform.多线插.PLC交互窗口
                                 addr = new Address(SoftType.M, next, DataType.Bit);
                                 addresses.Add(addr);
                             }
-
                         }
                     }
                 }
@@ -345,5 +344,4 @@ namespace VisionPlatform.多线插.PLC交互窗口
             }
         }
     }
-
 }

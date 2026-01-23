@@ -33,28 +33,13 @@ namespace VisionPlatform.多线插.PLC交互窗口
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.btn_Axis = new System.Windows.Forms.Button();
             this.pnl_Load = new System.Windows.Forms.Panel();
-            this.Mbutton2 = new System.Windows.Forms.Button();
-            this.Mbutton6 = new System.Windows.Forms.Button();
-            this.Mbutton7 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.DtextBox1 = new System.Windows.Forms.TextBox();
-            this.Mbutton3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DtextBox2 = new System.Windows.Forms.TextBox();
-            this.Mbutton1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.DtextBox5 = new System.Windows.Forms.TextBox();
-            this.Sbutton9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.DtextBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.DtextBox6 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.DtextBox7 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Axis
@@ -71,88 +56,14 @@ namespace VisionPlatform.多线插.PLC交互窗口
             resources.ApplyResources(this.pnl_Load, "pnl_Load");
             this.pnl_Load.Name = "pnl_Load";
             // 
-            // Mbutton2
+            // button7
             // 
-            this.Mbutton2.BackColor = System.Drawing.SystemColors.Control;
-            this.Mbutton2.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.Mbutton2, "Mbutton2");
-            this.Mbutton2.Name = "Mbutton2";
-            this.Mbutton2.Tag = "920";
-            this.Mbutton2.UseVisualStyleBackColor = false;
-            // 
-            // Mbutton6
-            // 
-            this.Mbutton6.BackColor = System.Drawing.SystemColors.Control;
-            this.Mbutton6.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.Mbutton6, "Mbutton6");
-            this.Mbutton6.Name = "Mbutton6";
-            this.Mbutton6.Tag = "3";
-            this.Mbutton6.UseVisualStyleBackColor = false;
-            // 
-            // Mbutton7
-            // 
-            this.Mbutton7.BackColor = System.Drawing.SystemColors.Control;
-            this.Mbutton7.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.Mbutton7, "Mbutton7");
-            this.Mbutton7.Name = "Mbutton7";
-            this.Mbutton7.Tag = "5";
-            this.Mbutton7.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // DtextBox1
-            // 
-            resources.ApplyResources(this.DtextBox1, "DtextBox1");
-            this.DtextBox1.Name = "DtextBox1";
-            this.DtextBox1.Tag = "1100";
-            // 
-            // Mbutton3
-            // 
-            resources.ApplyResources(this.Mbutton3, "Mbutton3");
-            this.Mbutton3.Name = "Mbutton3";
-            this.Mbutton3.Tag = "800";
-            this.Mbutton3.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // DtextBox2
-            // 
-            resources.ApplyResources(this.DtextBox2, "DtextBox2");
-            this.DtextBox2.Name = "DtextBox2";
-            this.DtextBox2.Tag = "1102";
-            // 
-            // Mbutton1
-            // 
-            resources.ApplyResources(this.Mbutton1, "Mbutton1");
-            this.Mbutton1.Name = "Mbutton1";
-            this.Mbutton1.Tag = "801";
-            this.Mbutton1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // DtextBox5
-            // 
-            resources.ApplyResources(this.DtextBox5, "DtextBox5");
-            this.DtextBox5.Name = "DtextBox5";
-            this.DtextBox5.Tag = "1000";
-            // 
-            // Sbutton9
-            // 
-            this.Sbutton9.BackColor = System.Drawing.SystemColors.Control;
-            this.Sbutton9.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.Sbutton9, "Sbutton9");
-            this.Sbutton9.Name = "Sbutton9";
-            this.Sbutton9.Tag = "1050";
-            this.Sbutton9.UseVisualStyleBackColor = false;
+            this.button7.BackColor = System.Drawing.Color.Yellow;
+            this.button7.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.Tag = "5";
+            this.button7.UseVisualStyleBackColor = false;
             // 
             // btn_Home
             // 
@@ -162,84 +73,70 @@ namespace VisionPlatform.多线插.PLC交互窗口
             this.btn_Home.Name = "btn_Home";
             this.btn_Home.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // button1
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.Tag = "1";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // button2
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "813";
+            this.button2.BackColor = System.Drawing.Color.Firebrick;
+            this.button2.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Name = "button2";
+            this.button2.Tag = "4";
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // label7
+            // button3
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button3.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.ForeColor = System.Drawing.SystemColors.Control;
+            this.button3.Name = "button3";
+            this.button3.Tag = "3";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // DtextBox3
+            // button4
             // 
-            resources.ApplyResources(this.DtextBox3, "DtextBox3");
-            this.DtextBox3.Name = "DtextBox3";
-            this.DtextBox3.Tag = "1010";
+            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.Tag = "2";
+            this.button4.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // button5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // DtextBox6
-            // 
-            resources.ApplyResources(this.DtextBox6, "DtextBox6");
-            this.DtextBox6.Name = "DtextBox6";
-            this.DtextBox6.Tag = "1002";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // DtextBox7
-            // 
-            resources.ApplyResources(this.DtextBox7, "DtextBox7");
-            this.DtextBox7.Name = "DtextBox7";
-            this.DtextBox7.Tag = "1004";
+            this.button5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button5.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.Tag = "24";
+            this.button5.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Home);
-            this.Controls.Add(this.Mbutton1);
-            this.Controls.Add(this.Mbutton3);
-            this.Controls.Add(this.DtextBox3);
-            this.Controls.Add(this.DtextBox7);
-            this.Controls.Add(this.DtextBox6);
-            this.Controls.Add(this.DtextBox5);
-            this.Controls.Add(this.DtextBox2);
-            this.Controls.Add(this.DtextBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnl_Load);
-            this.Controls.Add(this.Sbutton9);
-            this.Controls.Add(this.Mbutton7);
-            this.Controls.Add(this.Mbutton6);
-            this.Controls.Add(this.Mbutton2);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.btn_Axis);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Home";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -247,26 +144,12 @@ namespace VisionPlatform.多线插.PLC交互窗口
 
         private Button btn_Axis;
         private Panel pnl_Load;
-        private Button Mbutton2;
-        private Button Mbutton6;
-        private Button Mbutton7;
-        private Label label1;
-        private TextBox DtextBox1;
-        private Button Mbutton3;
-        private Label label2;
-        private TextBox DtextBox2;
-        private Button Mbutton1;
-        private Label label3;
-        private TextBox DtextBox5;
-        private Button Sbutton9;
+        private Button button7;
         private Button btn_Home;
-        private Label label8;
-        private PictureBox pictureBox1;
-        private Label label7;
-        private TextBox DtextBox3;
-        private Label label5;
-        private TextBox DtextBox6;
-        private Label label6;
-        private TextBox DtextBox7;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
     }
 }

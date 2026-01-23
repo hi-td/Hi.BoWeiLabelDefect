@@ -75,8 +75,8 @@ namespace VisionPlatform
         public static TimeSpan dCountTime = new TimeSpan(DateTime.Now.Ticks);
         public static bool bLogoShow = false;
         public static bool bLogoClose = false;
-        public static Address M13 = new Address(SoftType.M, 13, DataType.Bit);//PLC运行标志点
-        public static List<Address> addressesPlc = [M13];
+        //public static Address M13 = new Address(SoftType.M, 13, DataType.Bit);//PLC运行标志点
+        //public static List<Address> addressesPlc = [M13];
         public FormMainUI(string title = null)
         {
             InitializeComponent();

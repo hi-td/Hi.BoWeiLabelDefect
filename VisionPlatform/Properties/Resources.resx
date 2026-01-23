@@ -157,4 +157,76 @@
   <data name="red_button_on16_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\red_button_on16_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DotMoveLeftOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveLeftOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClockWiseOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClockWiseOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClockWiseOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClockWiseOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CounterClockWiseOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CounterClockWiseOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CounterClockWiseOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CounterClockWiseOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATATIME_FORMAT1" xml:space="preserve">
+    <value>yyyy/MM/dd HH:mm:ss</value>
+  </data>
+  <data name="DotMoveDownOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveDownOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveDownOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveDownOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveLeftOff1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveLeftOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveLeftOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveLeftOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveRightOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveRightOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveRightOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveRightOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveUpOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveUpOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DotMoveUpOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DotMoveUpOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="favicon (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\favicon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lime_button_on16_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lime_button_on16_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveDownOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveDownOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveDownOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveDownOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveLeftOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveLeftOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveLeftOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveLeftOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveRightOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveRightOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveRightOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveRightOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveUpOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveUpOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveUpOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveUpOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -168,30 +168,6 @@ namespace VisionPlatform.多线插.PLC交互窗口
                             ushort index = 0;
                             int hashcode = 0;
                             Address addr;
-                            ////夹紧气缸
-                            //hashcode = M6005.GetHashCode();
-                            //if (value.TryGetValue(hashcode, out addr))
-                            //{
-                            //    button2.BackColor = Convert.ToBoolean(addr.Value) ? GenColors[1] : GenColors[0];
-                            //}
-                            ////插接气缸
-                            //hashcode = M6015.GetHashCode();
-                            //if (value.TryGetValue(hashcode, out addr))
-                            //{
-                            //    button3.BackColor = Convert.ToBoolean(addr.Value) ? GenColors[1] : GenColors[0];
-                            //}
-
-                            ////触发拍照
-                            //var M100 = addresses.FirstOrDefaultOrDefault(x => x.Index == 100 && x.SoftType == SoftType.M);
-
-                            //if (M100 != null)
-                            //{
-                            //    hashcode = M100.GetHashCode();
-                            //    if (value.TryGetValue(hashcode, out addr))
-                            //    {
-                            //        button4.BackColor = Convert.ToBoolean(addr.Value) ? GenColors[1] : GenColors[0];
-                            //    }
-                            //}
 
                             foreach (var ctrl in Controls)
                             {
@@ -291,30 +267,6 @@ namespace VisionPlatform.多线插.PLC交互窗口
                             {
                                 index = Convert.ToUInt16(textBox.Tag.ToString().Substring(1));
                                 addr = new Address(SoftType.D, index, DataType.Int32);
-                                if (index == 2100)
-                                {
-                                    if (value > 500|| value <0)
-                                    {
-                                        MessageBox.Show("JOG速度超限(设置值不可大于500或小于0)请重新设置！！！！");
-                                        return;
-                                    }
-                                }
-                                else if (index == 2174)
-                                {
-                                    if (value > 500 || value < 0)
-                                    {
-                                        MessageBox.Show("定位速度速度超限(设置值不可大于500或小于0)请重新设置！！！！");
-                                        return;
-                                    }
-                                }
-                                else if (index == 2120)
-                                {
-                                    if (value > 15000 || value < 0)
-                                    {
-                                        MessageBox.Show("加减速速度超限(设置值不可大于5000或小于0)请重新设置！！！！");
-                                        return;
-                                    }
-                                }
                                 addr.Value = value;
                             }
                             else

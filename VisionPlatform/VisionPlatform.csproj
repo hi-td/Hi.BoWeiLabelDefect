@@ -473,23 +473,11 @@
     <Compile Include="软件主体\深度学习-OCR\paddleocr\runtime_option.cs" />
     <Compile Include="软件主体\深度学习-OCR\paddleocr\utility.cs" />
     <Compile Include="软件主体\深度学习-OCR\PP-OCR.cs" />
-    <Compile Include="通讯\PLC轴控界面\Axises.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="通讯\PLC轴控界面\Axises.Designer.cs">
-      <DependentUpon>Axises.cs</DependentUpon>
-    </Compile>
     <Compile Include="通讯\PLC轴控界面\AxisT.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="通讯\PLC轴控界面\AxisT.Designer.cs">
       <DependentUpon>AxisT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="通讯\PLC轴控界面\AxisZ.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="通讯\PLC轴控界面\AxisZ.Designer.cs">
-      <DependentUpon>AxisZ.cs</DependentUpon>
     </Compile>
     <Compile Include="通讯\PLC轴控界面\Home.cs">
       <SubType>Form</SubType>
@@ -1048,20 +1036,11 @@
     <EmbeddedResource Include="软件主体\检测功能配置\Registered.resx">
       <DependentUpon>Registered.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="通讯\PLC轴控界面\Axises.resx">
-      <DependentUpon>Axises.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="通讯\PLC轴控界面\AxisT.en-US.resx">
       <DependentUpon>AxisT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\PLC轴控界面\AxisT.resx">
       <DependentUpon>AxisT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="通讯\PLC轴控界面\AxisZ.en-US.resx">
-      <DependentUpon>AxisZ.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="通讯\PLC轴控界面\AxisZ.resx">
-      <DependentUpon>AxisZ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\PLC轴控界面\Home.en-US.resx">
       <DependentUpon>Home.cs</DependentUpon>

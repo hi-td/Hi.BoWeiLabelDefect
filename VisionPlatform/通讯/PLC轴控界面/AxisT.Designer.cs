@@ -31,298 +31,241 @@ namespace VisionPlatform.多线插.PLC交互窗口
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AxisT));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Mbutton5 = new System.Windows.Forms.Button();
-            this.Mbutton4 = new System.Windows.Forms.Button();
-            this.Mbutton3 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Sbutton5 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox8.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBox8
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.Mbutton5);
-            this.groupBox1.Controls.Add(this.Mbutton4);
-            this.groupBox1.Controls.Add(this.Mbutton3);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.groupBox8.Controls.Add(this.textBox9);
+            this.groupBox8.Controls.Add(this.label9);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
             // 
-            // button5
+            // textBox9
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.Tag = "805";
-            this.button5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.textBox9, "textBox9");
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Tag = "F2400";
             // 
-            // button4
+            // label9
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.Tag = "804";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
-            // button7
+            // groupBox6
             // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.Tag = "2182";
-            this.button7.UseVisualStyleBackColor = true;
+            this.groupBox6.Controls.Add(this.textBox5);
+            this.groupBox6.Controls.Add(this.label6);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
             // 
-            // button3
+            // textBox5
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.Tag = "2181";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.Tag = "2134";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.Tag = "2133";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // textBox10
-            // 
-            resources.ApplyResources(this.textBox10, "textBox10");
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Tag = "F2146";
-            // 
-            // textBox6
-            // 
-            resources.ApplyResources(this.textBox6, "textBox6");
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Tag = "F2144";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // pictureBox3
-            // 
-            resources.ApplyResources(this.pictureBox3, "pictureBox3");
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Tag = "2121";
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "2100";
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.Tag = "2117";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Mbutton5
-            // 
-            resources.ApplyResources(this.Mbutton5, "Mbutton5");
-            this.Mbutton5.Name = "Mbutton5";
-            this.Mbutton5.Tag = "2118";
-            this.Mbutton5.UseVisualStyleBackColor = true;
-            // 
-            // Mbutton4
-            // 
-            resources.ApplyResources(this.Mbutton4, "Mbutton4");
-            this.Mbutton4.Name = "Mbutton4";
-            this.Mbutton4.Tag = "2112";
-            this.Mbutton4.UseVisualStyleBackColor = true;
-            // 
-            // Mbutton3
-            // 
-            resources.ApplyResources(this.Mbutton3, "Mbutton3");
-            this.Mbutton3.Name = "Mbutton3";
-            this.Mbutton3.Tag = "2110";
-            this.Mbutton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            resources.ApplyResources(this.textBox8, "textBox8");
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Tag = "F2116";
-            // 
-            // textBox7
-            // 
-            resources.ApplyResources(this.textBox7, "textBox7");
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Tag = "F2114";
+            resources.ApplyResources(this.textBox5, "textBox5");
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Tag = "F2500";
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // label5
+            // groupBox7
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            this.groupBox7.Controls.Add(this.textBox8);
+            this.groupBox7.Controls.Add(this.label8);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
             // 
-            // textBox5
+            // textBox8
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Tag = "F2174";
+            resources.ApplyResources(this.textBox8, "textBox8");
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Tag = "F2200";
             // 
-            // textBox1
+            // label8
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Tag = "F2100";
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
-            // groupBox3
+            // groupBox5
             // 
-            this.groupBox3.Controls.Add(this.Sbutton5);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox5);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // Sbutton5
-            // 
-            resources.ApplyResources(this.Sbutton5, "Sbutton5");
-            this.Sbutton5.Name = "Sbutton5";
-            this.Sbutton5.Tag = "1002";
-            this.Sbutton5.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Tag = "F2130";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
+            this.groupBox5.Controls.Add(this.textBox3);
+            this.groupBox5.Controls.Add(this.label4);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
             // 
             // textBox3
             // 
             resources.ApplyResources(this.textBox3, "textBox3");
             this.textBox3.Name = "textBox3";
-            this.textBox3.Tag = "F2128";
+            this.textBox3.Tag = "F2100";
             // 
-            // label13
+            // label4
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
-            // textBox4
+            // groupBox2
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Tag = "F2120";
+            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
-            // label14
+            // textBox7
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.textBox7, "textBox7");
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Tag = "F2600";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox6);
+            this.groupBox4.Controls.Add(this.label7);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // textBox6
+            // 
+            resources.ApplyResources(this.textBox6, "textBox6");
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Tag = "F2300";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label3);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Tag = "F2700";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Tag = "F2074";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Tag = "F2000";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // AxisT
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
             this.Name = "AxisT";
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -331,39 +274,33 @@ namespace VisionPlatform.多线插.PLC交互窗口
         }
 
         #endregion
-        private GroupBox groupBox1;
-        private Button Mbutton5;
-        private Button Mbutton4;
-        private Button Mbutton3;
-        private TextBox textBox1;
-        private Label label3;
-        private Label label6;
-        private Label label8;
-        private Label label7;
-        private Label label5;
-        private Label label1;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
-        private Button button1;
-        private TextBox textBox8;
-        private TextBox textBox5;
+
+        private GroupBox groupBox8;
+        private GroupBox groupBox6;
+        private GroupBox groupBox7;
+        private GroupBox groupBox5;
+        private GroupBox groupBox2;
         private TextBox textBox7;
-        private GroupBox groupBox3;
-        private Button Sbutton5;
-        private TextBox textBox2;
-        private Label label12;
-        private TextBox textBox3;
-        private Label label13;
-        private TextBox textBox4;
-        private Label label14;
-        private Button button6;
-        private TextBox textBox6;
+        private Label label5;
+        private GroupBox groupBox4;
+        private GroupBox groupBox1;
         private Label label10;
-        private Button button3;
-        private Button button5;
-        private Button button4;
-        private Button button7;
-        private Button button2;
-        private TextBox textBox10;
+        private GroupBox groupBox3;
+        private TextBox textBox4;
+        private Label label1;
+        private TextBox textBox9;
+        private Label label9;
+        private TextBox textBox5;
+        private Label label6;
+        private TextBox textBox8;
+        private Label label8;
+        private TextBox textBox3;
+        private Label label4;
+        private TextBox textBox6;
+        private Label label7;
+        private TextBox textBox2;
+        private Label label3;
+        private TextBox textBox1;
+        private Label label2;
     }
 }
