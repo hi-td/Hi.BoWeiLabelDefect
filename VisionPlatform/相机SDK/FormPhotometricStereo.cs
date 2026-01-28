@@ -21,7 +21,14 @@ namespace VisionPlatform
 
         private void tSBut_Grab_Click(object sender, System.EventArgs e)
         {
-            myListImages = myCtrl.Fun.PhotometricGrabImages(myCtrl.camID, myCtrl.strCamSer, myListWndCtrl);
+            if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+            {
+                myListImages = myCtrl.Fun.PhotometricGrabImages(myCtrl.camID, myCtrl.strCamSer, myListWndCtrl);
+            }
+            else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+            {
+                myListImages = myCtrl.Fun.PhotometricGrabImages_LAN(myCtrl.camID, myCtrl.strCamSer, myListWndCtrl);
+            }
         }
 
         private void tSBut_Fusion_Click(object sender, System.EventArgs e)

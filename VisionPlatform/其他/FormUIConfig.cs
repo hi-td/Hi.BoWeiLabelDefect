@@ -18,6 +18,7 @@ namespace VisionPlatform
     {
         GlobalData.Config.InitConfig initConfig = new GlobalData.Config.InitConfig();
         Dictionary<int, int> dic_SubCam = new Dictionary<int, int>();
+        LEDControl_LAN lEDControl_LAN = new LEDControl_LAN();
         public FormUIConfig()
         {
             InitializeComponent();
@@ -118,7 +119,7 @@ namespace VisionPlatform
                         default:
                             break;
                     }
-                    //加载光源控制
+                    //加载光源控制器类型
                     if (GlobalData.Config._InitConfig.initConfig.bDigitLight)
                     {
                         checkBox_Digit.Checked = true;
@@ -151,6 +152,16 @@ namespace VisionPlatform
                     else
                     {
                         checkBox_Autostarts.Checked = false;
+                    }
+
+                    //加载光源控制器通讯方式
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                    {
+                        checkBox_RTU.Checked = true;
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        checkBox_LAN.Checked = true;
                     }
                 }
             }
@@ -281,6 +292,23 @@ namespace VisionPlatform
                 param.bUSBCam = check_USB.Checked;
                 param.nDaySave = -(int)numUpDown_Day.Value;
                 param.bAutostarts = checkBox_Autostarts.Checked;
+
+                #region 光源控制器通讯方式
+                if (checkBox_RTU.Checked)
+                {
+                    param.ledType = LedControllerType.LEDRTU;
+                }
+                else if (checkBox_LAN.Checked)
+                {
+                    param.ledType = LedControllerType.LEDLAN;
+                }
+                else
+                {
+                    param.ledType = LedControllerType.LEDRTU;
+                    MessageBox.Show("请光源控制器的通讯方式，默认为串口通讯。", "Please specify the communication method for the light source controller, which defaults to serial communication.");
+                }
+                #endregion
+
                 #region 光源控制器
                 if (checkBox_Digit.Checked)
                 {
@@ -347,16 +375,33 @@ namespace VisionPlatform
                             }
                             if (GlobalData.Config._InitConfig.initConfig.bDigitLight)
                             {
-                                //将所有光源通道亮度值设置为0
-                                for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
+                                if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
                                 {
-                                    foreach (var led in DataSerializer._COMConfig.dicLed.Values)
+                                    //将所有光源通道亮度值设置为0
+                                    for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
                                     {
-                                        LEDControl.SetBrightness(led, ch, 0);
+                                        foreach (var led in DataSerializer._COMConfig.dicLed.Values)
+                                        {
+                                            LEDControl.SetBrightness(led, ch, 0);
+                                        }
                                     }
+                                    //关闭光源控制器串口
+                                    LEDControl.CloseAllLED();
                                 }
-                                //关闭光源控制器串口
-                                LEDControl.CloseAllLED();
+                                else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                                {
+                                    LEDControl_LAN lEDControl_LAN = new LEDControl_LAN();
+                                    //将所有光源通道亮度值设置为0
+                                    for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
+                                    {
+                                        foreach (var led in DataSerializer._COMConfig.dicLedLan.Values)
+                                        {
+                                            LEDControl_LAN.SetBrightness(led, ch, 0);
+                                        }
+                                    }
+                                    //关闭光源控制器串口
+                                    lEDControl_LAN.CloseAllLED();
+                                }
                             }
                             CamCommon.CloseAllCam();
                             Process.GetCurrentProcess().Kill();
@@ -765,7 +810,28 @@ namespace VisionPlatform
                 MessageBox.Show("修改保存失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        private void checkBox_RTU_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_RTU.Checked)
+            {
+                checkBox_LAN.Checked = false;
+            }
+            else
+            {
+                checkBox_LAN.Checked = true;
+            }
+        }
+        private void checkBox_LAN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_LAN.Checked)
+            {
+                checkBox_RTU.Checked = false;
+            }
+            else
+            {
+                checkBox_RTU.Checked = true;
+            }
+        }
         private void checkBox_Digit_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_Digit.Checked)

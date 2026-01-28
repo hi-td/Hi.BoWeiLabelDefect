@@ -91,6 +91,10 @@ namespace VisionPlatform
             this.label12 = new System.Windows.Forms.Label();
             this.checkBox_Autostarts = new System.Windows.Forms.CheckBox();
             this.But_Save = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.checkBox_LAN = new System.Windows.Forms.CheckBox();
+            this.checkBox_RTU = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Day)).BeginInit();
@@ -103,6 +107,7 @@ namespace VisionPlatform
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_SubCam)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -389,6 +394,7 @@ namespace VisionPlatform
             // tableLayoutPanel9
             // 
             resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.checkBox_Digit, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.checkBox_Analog, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.tLPanel_CH, 1, 0);
@@ -573,6 +579,35 @@ namespace VisionPlatform
             this.But_Save.UseVisualStyleBackColor = false;
             this.But_Save.Click += new System.EventHandler(this.But_Save_Click);
             // 
+            // tableLayoutPanel5
+            // 
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.checkBox_LAN, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.checkBox_RTU, 1, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // checkBox_LAN
+            // 
+            resources.ApplyResources(this.checkBox_LAN, "checkBox_LAN");
+            this.checkBox_LAN.Name = "checkBox_LAN";
+            this.checkBox_LAN.UseVisualStyleBackColor = true;
+            this.checkBox_LAN.CheckedChanged += new System.EventHandler(this.checkBox_LAN_CheckedChanged);
+            // 
+            // checkBox_RTU
+            // 
+            resources.ApplyResources(this.checkBox_RTU, "checkBox_RTU");
+            this.checkBox_RTU.Checked = true;
+            this.checkBox_RTU.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_RTU.Name = "checkBox_RTU";
+            this.checkBox_RTU.UseVisualStyleBackColor = true;
+            this.checkBox_RTU.CheckedChanged += new System.EventHandler(this.checkBox_RTU_CheckedChanged);
+            // 
             // FormUIConfig
             // 
             resources.ApplyResources(this, "$this");
@@ -604,6 +639,8 @@ namespace VisionPlatform
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpD_SubCam)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -671,5 +708,9 @@ namespace VisionPlatform
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown numUpDown_Day;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox checkBox_LAN;
+        private System.Windows.Forms.CheckBox checkBox_RTU;
     }
 }

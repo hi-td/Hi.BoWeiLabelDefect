@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using VisionPlatform.Auxiliary;
 using VisionPlatform.多线插.PLC交互窗口;
 using VisionPlatform.多线插.历史记录;
+using VisionPlatform.通讯.光源控制器;
 using WENYU_IO;
 using static VisionPlatform.Auxiliary.Dog;
 using static VisionPlatform.Auxiliary.Variable;
@@ -37,6 +38,8 @@ namespace VisionPlatform
         static FormSaveGlobalData formSaveGlobalData;
         static FormReadGlobalData formReadGlobalData;
         private FormLED formLED = new FormLED();
+        private FormLED_LAN formLED_LAN = new FormLED_LAN();
+        private LEDControl_LAN ledControl_LAN = new LEDControl_LAN();         //光源网口通讯类不能静态调用其中的一些方法，需要先初始化类库再调用
         public FormModelBusTcpComm modbusTcp;
         public History m_history;
         public DatabaseSetting m_databaseSetting;
@@ -479,7 +482,14 @@ namespace VisionPlatform
 
                 if (GlobalData.Config._InitConfig.initConfig.bDigitLight)
                 {
-                    LEDControl.OpenAllLedCom(ref DataSerializer._COMConfig.dicLed);
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                    {
+                        LEDControl.OpenAllLedCom(ref DataSerializer._COMConfig.dicLed);
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        ledControl_LAN.OpenAllLedLan(ref DataSerializer._COMConfig.dicLedLan);
+                    }
                     Thread.Sleep(10);
                 }
             }
@@ -703,9 +713,18 @@ namespace VisionPlatform
         {
             try
             {
-                formLED = new FormLED();
-                formLED.TopMost = true;
-                formLED.Show();
+                if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                {
+                    formLED = new FormLED();
+                    formLED.TopMost = true;
+                    formLED.Show();
+                }
+                else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                {
+                    formLED_LAN = new FormLED_LAN();
+                    formLED_LAN.TopMost = true;
+                    formLED_LAN.Show();
+                }
             }
             catch (Exception ex)
             {

@@ -129,7 +129,14 @@ namespace VisionPlatform
                 }
                 else
                 {
-                    myListImages = this.Fun.PhotometricGrabImages(camID, strCamSer, myListWndCtrl);
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                    {
+                        myListImages = this.Fun.PhotometricGrabImages(camID, strCamSer, myListWndCtrl);
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        myListImages = this.Fun.PhotometricGrabImages_LAN(camID, strCamSer, myListWndCtrl);
+                    }
                 }
             }
             catch (Exception ex)

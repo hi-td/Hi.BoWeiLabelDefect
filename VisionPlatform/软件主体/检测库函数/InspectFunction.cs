@@ -24,6 +24,7 @@ namespace VisionPlatform
     {
         public FrontFun myFrontFun = new FrontFun();
         public LEDControl myLEDCtrl = new LEDControl();
+        public LEDControl_LAN myLEDCtrl_LAN = new LEDControl_LAN();
         public int NGadd = 0;      //连续报警次数
         public static bool isAuto = false;
         ushort[] registerBufferOK = new ushort[1] { 1 };
@@ -823,7 +824,16 @@ namespace VisionPlatform
                             {
                                 bLock = true;
                                 bCheckOut = true;
-                                LEDControl.AllLEDOff();
+                                //拍照前先灭灯,根据选择的通讯方式进流程
+                                if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                                {
+                                    LEDControl.AllLEDOff();
+                                }
+                                else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                                {
+                                    //HACK:临时改为网口通讯
+                                    LEDControl_LAN.AllLEDOff();
+                                }
                                 Thread.Sleep(50);
                                 //接收信号
                                 var Receiveindex = keys[0].Index;
@@ -1242,7 +1252,15 @@ namespace VisionPlatform
                 int camID = inspectItem.camItem.cam;
                 CamCommon.OpenCam(inspectItem.strCamSer, inspectItem.fun);
                 TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
-                List<HObject> listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
+                List<HObject> listImages = new List<HObject>();
+                if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                {
+                    listImages = inspectItem.fun.PhotometricGrabImages(inspectItem.camItem.cam, inspectItem.strCamSer);
+                }
+                else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                {
+                    listImages = inspectItem.fun.PhotometricGrabImages_LAN(inspectItem.camItem.cam, inspectItem.strCamSer);
+                }
                 //拍照总用时
                 ts_grab = new TimeSpan(DateTime.Now.Ticks);
                 result.GrabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
@@ -1542,6 +1560,13 @@ namespace VisionPlatform
         //    }
         //}
 
+        /// <summary>
+        /// 光度立体拍照-光源串口通讯
+        /// </summary>
+        /// <param name="camID"></param>
+        /// <param name="strCamSer"></param>
+        /// <param name="listHWndCtrl"></param>
+        /// <returns></returns>
         public List<HObject> PhotometricGrabImages(int camID, string strCamSer, List<HWindowControl> listHWndCtrl = null)
         {
             List<HObject> listImages = new List<HObject>();
@@ -1586,6 +1611,80 @@ namespace VisionPlatform
                                 Thread.Sleep(2);
                             }
                             myLEDCtrl.LEDAllOff(ledRTU, cHBrights);
+                            break;
+                        }
+                        ts_timeOut = new TimeSpan(DateTime.Now.Ticks);
+                        double spanTotalSeconds = ts_timeOut.Subtract(ts).Duration().TotalSeconds;
+                        if (spanTotalSeconds > 3)
+                        {
+                            WriteStringtoImage(20, 40, 20, "抓图超时！", "red", strEnglish: "Capture timeout!");
+                            break;
+                        }
+                        Thread.Sleep(20);
+                    }
+                }
+            }
+            catch (SystemException ex)
+            {
+                StaticFun.MessageFun.ShowMessage(ex, true);
+            }
+            return listImages;
+        }
+        /// <summary>
+        /// 光度立体拍照-光源网口通讯
+        /// </summary>
+        /// <param name="camID"></param>
+        /// <param name="strCamSer"></param>
+        /// <param name="listHWndCtrl"></param>
+        /// <returns></returns>
+        public List<HObject> PhotometricGrabImages_LAN(int camID, string strCamSer, List<HWindowControl> listHWndCtrl = null)
+        {
+            List<HObject> listImages = new List<HObject>();
+            bool bStart = true;
+            TimeSpan ts_grab, ts_timeOut;
+            try
+            {
+                ClearObjShow();
+                CHBright[] cHBrights = new CHBright[4];
+                cHBrights[0] = new CHBright();
+                for (int i = 0; i < 4; i++)
+                {
+                    //设置相机的曝光时间
+                    CamSDK.CamCommon.SetExposure(strCamSer, (int)DataSerializer._globalData.dicImageing[camID].camParam.exposure);
+                    //设置光源亮度
+                    cHBrights = new CHBright[4];
+                    int nLight = DataSerializer._globalData.dicImageing[camID].CHBright[i].nBrightness;
+                    string strPort = DataSerializer._globalData.dicImageing[camID].strPort;
+
+                    //HACK:临时修改为网口通讯
+                    LEDLAN ledLAN = DataSerializer._COMConfig.dicLedLan[strPort];
+                    cHBrights[i] = new CHBright(true, nLight);
+                    myLEDCtrl_LAN.SetLED(ledLAN, cHBrights);
+
+                    b_image = false;
+                    CamCommon.GrabImage(strCamSer);
+                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks);
+                    while (bStart)
+                    {
+                        if (b_image)
+                        {
+                            b_image = false;
+                            //拍照时间
+                            ts_grab = new TimeSpan(DateTime.Now.Ticks);
+                            double grabTime = Math.Round((ts_grab.Subtract(ts).Duration().TotalSeconds) * 1000, 0);
+                            MessageFun.ShowMessage($"相机{camID}-【{i + 1}】拍照用时：{grabTime}");
+                            if (null != m_hImage)
+                            {
+                                listImages.Add(m_hImage.Clone());
+                                if (null != listHWndCtrl)
+                                {
+                                    listHWndCtrl[i].HalconWindow.DispObj(m_hImage);
+                                    ShowImageToHWnd(m_hImage, listHWndCtrl[i]);
+                                }
+                                Thread.Sleep(2);
+                            }
+                            //HACK:临时修改为网口通讯
+                            myLEDCtrl_LAN.LEDAllOff(ledLAN, cHBrights);
                             break;
                         }
                         ts_timeOut = new TimeSpan(DateTime.Now.Ticks);

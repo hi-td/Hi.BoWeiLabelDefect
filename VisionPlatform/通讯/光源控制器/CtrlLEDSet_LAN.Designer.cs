@@ -1,6 +1,6 @@
-﻿namespace VisionPlatform
+﻿namespace VisionPlatform.通讯.光源控制器
 {
-    partial class CtrlLEDSet
+    partial class CtrlLEDSet_LAN
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -56,7 +56,7 @@
             this.tLPanel.RowCount = 1;
             this.tLPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tLPanel.Size = new System.Drawing.Size(372, 29);
-            this.tLPanel.TabIndex = 15;
+            this.tLPanel.TabIndex = 16;
             // 
             // label_CH
             // 
@@ -110,13 +110,13 @@
             this.checkBox_bSel.UseVisualStyleBackColor = true;
             this.checkBox_bSel.CheckedChanged += new System.EventHandler(this.Inspect);
             // 
-            // CtrlLEDSet
+            // CtrlLEDSet_LAN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tLPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "CtrlLEDSet";
+            this.Name = "CtrlLEDSet_LAN";
             this.Size = new System.Drawing.Size(372, 29);
             this.tLPanel.ResumeLayout(false);
             this.tLPanel.PerformLayout();

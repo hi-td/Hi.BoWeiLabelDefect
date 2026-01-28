@@ -43,6 +43,8 @@ namespace VisionPlatform
             public int WENYU232_ComPort = -1;                                    //WENYU232转IO通讯端口号
             //<端口，光源控制器串口配置>
             public Dictionary<string, BaseData.LEDRTU> dicLed = new Dictionary<string, BaseData.LEDRTU>();
+            //<IP，光源控制器网口配置>
+            public Dictionary<string, BaseData.LEDLAN> dicLedLan = new Dictionary<string, BaseData.LEDLAN>();
         }
         public static GlobalData_COM _COMConfig = new GlobalData_COM();
         //plc串口配置

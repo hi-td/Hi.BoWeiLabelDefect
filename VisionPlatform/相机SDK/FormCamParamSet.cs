@@ -1,7 +1,9 @@
 ﻿using BaseData;
 using CamSDK;
+using StaticFun;
 using System;
 using System.Windows.Forms;
+using VisionPlatform.通讯.光源控制器;
 
 namespace VisionPlatform
 {
@@ -11,6 +13,7 @@ namespace VisionPlatform
         string myStrCamSer;
         CamCommon.CamParam m_CamParam = new CamCommon.CamParam();
         FormLightCH formLightSet;
+        FormLightCH_LAN formLightCH_LAN;
         public FormCamParamSet(int camID, string strCamSer)
         {
             InitializeComponent();
@@ -44,8 +47,23 @@ namespace VisionPlatform
                         cHBright = DataSerializer._globalData.dicImageing[myCamID].CHBright;
                         strPort = DataSerializer._globalData.dicImageing[myCamID].strPort;
                     }
-                    formLightSet = new FormLightCH(myCamID, strPort, cHBright);
-                    this.groupBox_Light.Controls.Add(formLightSet);
+                    //根据光源控制器类型，加载不同的控件
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                    {
+                        formLightSet = new FormLightCH(myCamID, strPort, cHBright);
+                        this.groupBox_Light.Controls.Add(formLightSet);
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        //HACK:串口通讯临时更改为网口通讯
+                        formLightCH_LAN = new FormLightCH_LAN(myCamID, strPort, cHBright);
+                        this.groupBox_Light.Controls.Add(formLightCH_LAN);
+                    }
+                    else
+                    {
+                        MessageFun.ShowMessage("未选择光源控制器通讯方式!");
+                    }
+
                 }
                 return true;
 

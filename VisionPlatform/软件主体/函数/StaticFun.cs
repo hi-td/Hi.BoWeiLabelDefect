@@ -243,25 +243,56 @@ namespace StaticFun
                 #region 检测光源控制器是否链接正常
                 if (_InitConfig.initConfig.bDigitLight)
                 {
-                    foreach (var led in DataSerializer._COMConfig.dicLed)
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
                     {
-                        BaseData.LEDRTU ledRTU = led.Value;
-                        if (!ledRTU.bOpen)
+                        foreach (var led in DataSerializer._COMConfig.dicLed)
                         {
-                            int try_connect = 0;
-                            while (!led.Value.bOpen && try_connect < 3)
+                            BaseData.LEDRTU ledRTU = led.Value;
+                            if (!ledRTU.bOpen)
                             {
-                                LEDControl.OpenLedCom(ref ledRTU);
-                                try_connect++;
-                                Thread.Sleep(20);
+                                int try_connect = 0;
+                                while (!led.Value.bOpen && try_connect < 3)
+                                {
+                                    LEDControl.OpenLedCom(ref ledRTU);
+                                    try_connect++;
+                                    Thread.Sleep(20);
+                                }
+                            }
+                            if (!ledRTU.bOpen)
+                            {
+                                MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
+                                return false;
                             }
                         }
-                        if (!ledRTU.bOpen)
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        LEDControl_LAN lEDControl_LAN = new LEDControl_LAN();
+                        foreach (var led in DataSerializer._COMConfig.dicLedLan)
                         {
-                            MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
-                            return false;
+                            BaseData.LEDLAN ledLAN = led.Value;
+                            if (!ledLAN.bOpen)
+                            {
+                                int try_connect = 0;
+                                while (!led.Value.bOpen && try_connect < 3)
+                                {
+                                    lEDControl_LAN.OpenLedLan(ref ledLAN);
+                                    try_connect++;
+                                    Thread.Sleep(20);
+                                }
+                            }
+                            if (!ledLAN.bOpen)
+                            {
+                                MessageBox.Show($"光源控制器{led.Key}链接异常，请检查。");
+                                return false;
+                            }
                         }
                     }
+                    else
+                    { 
+                        MessageFun.ShowMessage("光源控制器类型配置错误，请检查。", false, "Light controller type configuration error, please check.");
+                    }
+
                 }
                 #endregion
 

@@ -64,7 +64,23 @@ namespace BaseData
         public Parity parity;            //校验位
         public StopBits stopBits;        //停止位
     }
+    //光源网口通讯设置
+    [Serializable]
+    public struct LEDLAN
+    {
+        public string IP;               //IP地址
+        public int Port;                //端口号
+        public bool bOpen;              //是否打开
+    }
     #endregion
+
+    //光源控制器通讯类型
+    [Serializable]
+    public enum LedControllerType
+    {
+        LEDRTU,
+        LEDLAN
+    }
 
     //通讯方式：网口
     [Serializable]
@@ -160,7 +176,8 @@ namespace BaseData
         public Dictionary<int, int> dic_SubCam;   //相机及其对应的子画面数量
         public ComMode comMode;                   //通讯方式
         public bool bIOLight;                     //io板卡是否常亮模式
-        public bool bUSBCam;                     //是否USB相机
+        public bool bUSBCam;                      //是否USB相机
+        public LedControllerType ledType;         //光源控制器通讯方式
         public bool bDigitLight;                  //是否数字型光源控制器
         public int nLightCH;                      //光源控制器通道数
         public bool bLogo;                        //是否显示logo界面

@@ -503,6 +503,24 @@
     <Compile Include="通讯\光源控制器\CtrlLEDSet.Designer.cs">
       <DependentUpon>CtrlLEDSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="通讯\光源控制器\CtrlLEDSet_LAN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\CtrlLEDSet_LAN.Designer.cs">
+      <DependentUpon>CtrlLEDSet_LAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLED_LAN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLED_LAN.Designer.cs">
+      <DependentUpon>FormLED_LAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLightCH_LAN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="通讯\光源控制器\FormLightCH_LAN.Designer.cs">
+      <DependentUpon>FormLightCH_LAN.cs</DependentUpon>
+    </Compile>
     <Compile Include="通讯\光源控制器\LEDControl.cs" />
     <Compile Include="标准功能模块\颜色\颜色空间转换\CtrlColorSpaceTrans.cs">
       <SubType>UserControl</SubType>
@@ -759,6 +777,7 @@
     <Compile Include="通讯\光源控制器\FormLightCH.Designer.cs">
       <DependentUpon>FormLightCH.cs</DependentUpon>
     </Compile>
+    <Compile Include="通讯\光源控制器\LEDControl_LAN.cs" />
     <Compile Include="通讯\文煜IO\FormIOcomm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1075,17 +1094,26 @@
     <EmbeddedResource Include="通讯\串口\FormPLCRTU.resx">
       <DependentUpon>FormPLCRTU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\CtrlLEDSet_LAN.resx">
+      <DependentUpon>CtrlLEDSet_LAN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="通讯\光源控制器\FormLED.en-US.resx">
       <DependentUpon>FormLED.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\光源控制器\FormLED.resx">
       <DependentUpon>FormLED.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLED_LAN.resx">
+      <DependentUpon>FormLED_LAN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="通讯\光源控制器\FormLightCH.en-US.resx">
       <DependentUpon>FormLightCH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\光源控制器\FormLightCH.resx">
       <DependentUpon>FormLightCH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="通讯\光源控制器\FormLightCH_LAN.resx">
+      <DependentUpon>FormLightCH_LAN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="通讯\文煜IO\FormIOcomm.en-US.resx">
       <DependentUpon>FormIOcomm.cs</DependentUpon>
