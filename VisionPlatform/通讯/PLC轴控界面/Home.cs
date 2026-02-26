@@ -41,11 +41,10 @@ namespace VisionPlatform.多线插.PLC交互窗口
         private AxisT axises;
         private System.Timers.Timer timer;
         private bool isAction = false;
-        private List<Address> addresses;
+        private List<Hi.Ltd.Data.Address> addresses;
+        private List<Hi.Ltd.Data.Address> Axis_Addresses;
         private Color[] handleColor = [SystemColors.Control, Color.Lime];
-       
-        private Color[] initColor = [
-            SystemColors.Control,Color.Lime];
+        private Color[] initColor = [SystemColors.Control,Color.Lime];
         private bool[] switchStatus = [false, false, false, false, false, false];
         private bool[] switchStatus1 = [false];
         //存储Led亮灭的状态图片
@@ -58,6 +57,7 @@ namespace VisionPlatform.多线插.PLC交互窗口
             timer = new System.Timers.Timer(200);
             timer.Elapsed += Timer_Elapsed;
             addresses = new List<Address>();
+            Axis_Addresses = new List<Address>();
             foreach (var item in Controls)
             {
                 if (item is Button button)
@@ -131,11 +131,33 @@ namespace VisionPlatform.多线插.PLC交互窗口
                     }
                 }
             }
+            
+            add_some_new_addresses();
             addresses = addresses.DistinctAndSort();
             Load += Home_Load;
             FormClosed += Home_FormClosed;
         }
+        private void add_some_new_addresses()
+        {
+            Axis_Addresses.Clear();
 
+            var address2744 = new Hi.Ltd.Data.Address(SoftType.D, 2744, DataType.Single, 3);
+            Axis_Addresses.Add(address2744);
+            var address2644 = new Hi.Ltd.Data.Address(SoftType.D, 2644, DataType.Single, 3);
+            Axis_Addresses.Add(address2644);
+            var address2144 = new Hi.Ltd.Data.Address(SoftType.D, 2144, DataType.Single, 3);
+            Axis_Addresses.Add(address2144);
+            var address2544 = new Hi.Ltd.Data.Address(SoftType.D, 2544, DataType.Single, 3);
+            Axis_Addresses.Add(address2544);
+            var address2344 = new Hi.Ltd.Data.Address(SoftType.D, 2344, DataType.Single, 3);
+            Axis_Addresses.Add(address2344);
+            var address2244 = new Hi.Ltd.Data.Address(SoftType.D, 2244, DataType.Single, 3);
+            Axis_Addresses.Add(address2244);
+            var address2444 = new Hi.Ltd.Data.Address(SoftType.D, 2444, DataType.Single, 3);
+            Axis_Addresses.Add(address2444);
+
+            Axis_Addresses = Axis_Addresses.DistinctAndSort();
+        }
         private void TextBox_Click(object sender, EventArgs e)
         {
             if (sender is TextBox textBox)
@@ -372,7 +394,7 @@ namespace VisionPlatform.多线插.PLC交互窗口
         {
             if (sender is Button button)
             {
-                if (button.Tag != null)
+                if (button.Tag != null && Convert.ToUInt16(button.Tag) != 100)
                 {
                     var index = Convert.ToUInt16(button.Tag);
                     var address = new Address(SoftType.M, index, DataType.Bit);
@@ -395,6 +417,10 @@ namespace VisionPlatform.多线插.PLC交互窗口
                     }
                     plc.WriteDevice(address);
                 }
+                else if (Convert.ToUInt16(button.Tag) == 100)
+                {
+                    DataSave();
+                }
                 else if (Enum.TryParse(button.Name, out Index index))
                 {
                     InitBackColor();
@@ -403,7 +429,52 @@ namespace VisionPlatform.多线插.PLC交互窗口
                 }
             }
         }
+        private void DataSave()
+        {
+            //顶部升降步进轴
+            var address2781 = new Hi.Ltd.Data.Address(SoftType.M, 2781, DataType.Bit);
+            address2781.Value = 1;
+            plc.WriteDevice(address2781);
 
+            //左侧面平移步进轴
+            var address2681 = new Hi.Ltd.Data.Address(SoftType.M, 2681, DataType.Bit);
+            address2681.Value = 1;
+            plc.WriteDevice(address2681);
+            //左侧面升降步进轴
+            var address2181 = new Hi.Ltd.Data.Address(SoftType.M, 2181, DataType.Bit);
+            address2181.Value = 1;
+            plc.WriteDevice(address2181);
+            //左侧面旋转步进轴
+            var address2581 = new Hi.Ltd.Data.Address(SoftType.M, 2581, DataType.Bit);
+            address2581.Value = 1;
+            plc.WriteDevice(address2581);
+
+            //右侧面平移步进轴
+            var address2381 = new Hi.Ltd.Data.Address(SoftType.M, 2381, DataType.Bit);
+            address2381.Value = 1;
+            plc.WriteDevice(address2381);
+            //右侧面升降步进轴
+            var address2281 = new Hi.Ltd.Data.Address(SoftType.M, 2281, DataType.Bit);
+            address2281.Value = 1;
+            plc.WriteDevice(address2281);
+            //右侧面旋转步进轴
+            var address2481 = new Hi.Ltd.Data.Address(SoftType.M, 2481, DataType.Bit);
+            address2481.Value = 1;
+            plc.WriteDevice(address2481);
+
+            var res = plc.ReadDeviceRandom(Axis_Addresses, out var value);
+            if (res == 0)
+            {
+                DataSerializer._globalData.addressList.Clear();
+                foreach (var addr in Axis_Addresses)
+                {
+                    //var addrString = addr.Serialize();
+                    var addrString = VisionPlatform.Auxiliary.Parse.Serialize(addr);
+                    DataSerializer._globalData.addressList.Add(addrString);
+                }
+                MessageBox.Show("轴位置缓存成功!", "提示:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         private void UCLoad(Index index)
         {
             void Anonymous(object state)
@@ -502,5 +573,4 @@ namespace VisionPlatform.多线插.PLC交互窗口
             }
         }
     }
-
 }

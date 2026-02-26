@@ -8,6 +8,7 @@ using Hi.Ltd.Enumerations;
 using hzjd_modbusRTU;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using OpenCvSharp.XFeatures2D;
 using StaticFun;
 using System;
 using System.Collections.Generic;
@@ -650,9 +651,20 @@ namespace VisionPlatform
                         WENYU_PIO32P.WY_WriteOutPutBit2(WENYU.DevID, 1);
                         WENYU.CloseIO();
                     }
+
+                    if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDRTU)
+                    {
+                        LEDControl.AllLEDOff();
+                        LEDControl.CloseAllLED();
+                    }
+                    else if (GlobalData.Config._InitConfig.initConfig.ledType == LedControllerType.LEDLAN)
+                    {
+                        LEDControl_LAN.AllLEDOff();
+                        ledControl_LAN.CloseAllLED();
+                    }
                     //if (GlobalData.Config._InitConfig.initConfig.bDigitLight && LEDControl.isOpen)
                     //{
-                    //    //将所有光源通道亮度值设置为0
+                    //    //将所有光源通道亮度值设置为0c
                     //    for (int ch = 1; ch <= GlobalData.Config._InitConfig.initConfig.nLightCH; ch++)
                     //    {
                     //        LEDControl.SetBrightness(ch, 0);
@@ -1146,11 +1158,42 @@ namespace VisionPlatform
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             var address = new Address(SoftType.M, 1051, DataType.Bit);
             address.Value = 1;
             _plc.WriteDevice(address);
+        }
+        public static void MoveAxises()
+        {
+            //顶部升降步进轴
+            var M2733 = new Hi.Ltd.Data.Address(SoftType.M, 2733, DataType.Bit);
+            M2733.Value = 1;
+            _plc.WriteDevice(M2733);
 
+            //左侧面平移步进轴
+            var M2633 = new Hi.Ltd.Data.Address(SoftType.M, 2633, DataType.Bit);
+            M2633.Value = 1;
+            _plc.WriteDevice(M2633);
+            //左侧面升降步进轴
+            var M2133 = new Hi.Ltd.Data.Address(SoftType.M, 2133, DataType.Bit);
+            M2133.Value = 1;
+            _plc.WriteDevice(M2133);
+            //左侧面旋转步进轴
+            var M2533 = new Hi.Ltd.Data.Address(SoftType.M, 2533, DataType.Bit);
+            M2533.Value = 1;
+            _plc.WriteDevice(M2533);
+
+            //右侧面平移步进轴
+            var M2333 = new Hi.Ltd.Data.Address(SoftType.M, 2333, DataType.Bit);
+            M2333.Value = 1;
+            _plc.WriteDevice(M2333);
+            //右侧面升降步进轴
+            var M2233 = new Hi.Ltd.Data.Address(SoftType.M, 2233, DataType.Bit);
+            M2233.Value = 1;
+            _plc.WriteDevice(M2233);
+            //右侧面旋转步进轴
+            var M2433 = new Hi.Ltd.Data.Address(SoftType.M, 2433, DataType.Bit);
+            M2433.Value = 1;
+            _plc.WriteDevice(M2433);
         }
     }
 }

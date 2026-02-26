@@ -1,7 +1,9 @@
 ﻿//using Mewtocol;
 using Hi.Ltd;
 using Newtonsoft.Json;
+using StaticFun;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace VisionPlatform
@@ -45,6 +47,28 @@ namespace VisionPlatform
                 //将导入的序列化参数名称显示到主页面
                 tsLabel_SerialName.Text = selectFile;
                 tsLabel_SerialName1.Text = selectFile;
+
+                //将配方中的轴位置信息写入PLC
+                List<Hi.Ltd.Data.Address> listAddress = new List<Hi.Ltd.Data.Address>();
+                foreach (string addr in DataSerializer._globalData.addressList)
+                {
+                    //var address = Hi.Ltd.Data.Address.Deserialize(addr);
+                    var address = VisionPlatform.Auxiliary.Parse.Deserialize(addr);
+                    listAddress.Add(address);
+                }
+                try
+                {
+                    foreach (var addr in listAddress)
+                    {
+                        FormMainUI._plc.WriteDevice(addr);
+                    }
+                    //移动轴位置
+                    FormMainUI.MoveAxises();
+                }
+                catch(Exception ex)
+                {
+                    MessageFun.ShowMessage(ex.Message);
+                }
                 this.Close();
             }
             catch (Exception ex)

@@ -20,13 +20,14 @@ namespace VisionPlatform
             public Dictionary<int, Dictionary<InspectItem, FontShowParam>> dicFontShowSet = new Dictionary<int, Dictionary<InspectItem, FontShowParam>>();
             //<相机ID, 正面检测参数>
             public Dictionary<int, InspectData.FrontParam> dic_FrontParam = new Dictionary<int, InspectData.FrontParam>();
-            //<相机ID,背面检测参数>>
+            //<相机ID, 背面检测参数>>
             public Dictionary<int, InspectData.BackParam> dic_BackParam = new Dictionary<int, InspectData.BackParam>();
             //线序（颜色检测）
             public List<ColorID> listColorID = new List<ColorID>();          //颜色模板ID
             //PLC
             public SlmpPara SlmpPara = new SlmpPara();
             public LabelInspectItem labelInspect = new LabelInspectItem();
+            public List<string> addressList = new List<string>();            //轴位置表
         }
         public static GlobalData _globalData = new GlobalData();
         //标定

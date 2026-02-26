@@ -39,6 +39,7 @@ namespace VisionPlatform.多线插.PLC交互窗口
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Axis
@@ -110,10 +111,20 @@ namespace VisionPlatform.多线插.PLC交互窗口
             this.button4.Tag = "2";
             this.button4.UseVisualStyleBackColor = false;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button5.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.Tag = "100";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
             // Home
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -139,5 +150,6 @@ namespace VisionPlatform.多线插.PLC交互窗口
         private Button button2;
         private Button button3;
         private Button button4;
+        private Button button5;
     }
 }

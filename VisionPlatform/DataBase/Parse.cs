@@ -29,6 +29,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 
 using Hi.Ltd;
+using Hi.Ltd.Data;
 using Hi.Ltd.Enumerations;
 using Newtonsoft.Json.Linq;
 
@@ -604,6 +605,33 @@ namespace VisionPlatform.Auxiliary
                 index++;
             }
             return record;
+        }
+
+        public static string Serialize(Address address)
+        {
+            return $"{address.SoftType},{address.Index},{address.DataType},{address.DecimalPlace},{address.BitIndex},{address.Length},{(int)address.NumberBase},{address.Offset},{address.Value}";
+        }
+
+        public static Address Deserialize(string addressString)
+        {
+            if (string.IsNullOrWhiteSpace(addressString))
+            {
+                return null;
+            }
+
+            string[] array = addressString.Split(',');
+            if (array.Length < 9)
+            {
+                return null;
+            }
+
+            if (!Enum.TryParse<SoftType>(array[0], out var result) || !ushort.TryParse(array[1], out var result2) || !Enum.TryParse<DataType>(array[2], out var result3) || !int.TryParse(array[3], out var result4) || !int.TryParse(array[4], out var result5) || !ushort.TryParse(array[5], out var result6) || !Enum.TryParse<NumberBase>(array[6], out var result7) || !short.TryParse(array[7], out var result8) || array[8]==null)
+            {
+                return null;
+            }
+            var addr= new Address(result, result2, result3, result4, result5, result8, result6, result7);
+            addr.Value = Convert.ToSingle(array[8]);
+            return addr;
         }
     }
 }
